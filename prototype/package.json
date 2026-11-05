@@ -1,0 +1,21 @@
+{
+  "name": "ssed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "acorn": "^8.19.0",
+    "esbuild": "^0.28.2",
+    "playwright-core": "^1.64.1",
+    "prettier": "^3.9.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

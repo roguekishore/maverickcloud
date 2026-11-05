@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Site design and block picker</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Playfair+Display:wght@500;600&amp;family=Space+Grotesk:wght@500;600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;family=Lora:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+.ss{--accent:#2563EB;--accent-hover:color-mix(in srgb,var(--accent) 85%,#000);--accent-soft:color-mix(in srgb,var(--accent) 8%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 24%,transparent);--accent-text:color-mix(in srgb,var(--accent) 86%,#000);--bg:#FFFFFF;--bg-subtle:#F9F9FA;--bg-muted:#F3F3F5;--bg-emphasis:#EBEBEE;--bg-elevated:#FFFFFF;--canvas:#F1F1F3;--border:#E6E6E9;--border-strong:#D5D5DA;--fg:#18181B;--fg-muted:#52525B;--fg-subtle:#6B6B74;--danger:#C8322B;--ok:#15803D;--ok-soft:#EBF8F0;--warn:#9A4D00;--warn-soft:#FFF5E1;--warn-dot:#E8930C;--scrim:rgba(16,16,20,.28);--shadow-xs:0 1px 1px rgba(16,16,20,.04);--shadow-sm:0 1px 2px rgba(16,16,20,.07);--shadow-md:0 4px 12px -2px rgba(16,16,20,.08),0 1px 3px rgba(16,16,20,.06);--shadow-lg:0 16px 40px -12px rgba(16,16,20,.24),0 2px 6px rgba(16,16,20,.06);--s-brand:#1F5C4A;--s-brand-fg:#FFFFFF;--s-bg:#FBFAF7;--s-fg:#1C1A17;--s-muted:#5C574F;--s-line:#E6E1D8;--s-soft:#F2EEE7;--s-head:Manrope,Inter,system-ui,sans-serif;--s-body:Inter,system-ui,sans-serif;--s-pad:72px;--s-r:10px;--s-base:16px;--s-mark:28px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13px;line-height:20px;color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01";outline:none}
+.ss[data-theme="dark"]{--accent-text:color-mix(in srgb,var(--accent) 55%,#fff);--accent-soft:color-mix(in srgb,var(--accent) 16%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 38%,transparent);--bg:#141416;--bg-subtle:#0F0F11;--bg-muted:#1C1C1F;--bg-emphasis:#26262A;--bg-elevated:#1A1A1D;--canvas:#0A0A0B;--border:#26262B;--border-strong:#36363D;--fg:#EDEDEF;--fg-muted:#A8A8B1;--fg-subtle:#8C8C96;--danger:#F87171;--ok:#4ADE80;--ok-soft:rgba(74,222,128,.1);--warn:#FBBF24;--warn-soft:rgba(251,191,36,.1);--scrim:rgba(0,0,0,.5);--shadow-xs:none;--shadow-sm:0 1px 2px rgba(0,0,0,.5);--shadow-md:0 8px 20px -6px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03);--shadow-lg:0 24px 56px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.05);color-scheme:dark}
+.ss *,.ss *::before,.ss *::after{box-sizing:border-box}
+.ss button,.ss input,.ss textarea{font:inherit;color:inherit;letter-spacing:inherit;margin:0}
+.ss a{color:inherit;text-decoration:none}
+.ss p,.ss h1,.ss h2,.ss h3,.ss figure{margin:0}
+.ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+.ic-sm{width:14px;height:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:13px;font-weight:500;line-height:1;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap;transition:background .12s,border-color .12s,color .12s}
+.btn:hover{background:var(--bg-muted);border-color:var(--border-strong)}
+.btn:focus-visible,.ibtn:focus-visible,.seg button:focus-visible,.item:focus-visible,.chip:focus-visible,.sw:focus-visible,.fontrow:focus-visible,.bgcard:focus-visible,.switch:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn-primary{background:var(--accent);border-color:transparent;color:#fff;box-shadow:0 1px 2px rgba(16,16,20,.14),inset 0 1px 0 rgba(255,255,255,.12)}
+.btn-primary:hover{background:var(--accent-hover);border-color:transparent}
+.btn-ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--fg-muted)}
+.btn-ghost:hover{background:var(--bg-muted);color:var(--fg);border-color:transparent}
+.btn-sm{height:28px;padding:0 8px;font-size:12px;gap:4px}
+.ibtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0;border-radius:6px;border:1px solid transparent;background:transparent;color:var(--fg-muted);cursor:pointer;flex:none}
+.ibtn:hover{background:var(--bg-muted);color:var(--fg)}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.label{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:20px;font-size:12px;line-height:16px;font-weight:500;color:var(--fg-muted)}
+.hint{font-size:12px;line-height:16px;color:var(--fg-subtle)}
+.input{display:block;width:100%;min-width:0;height:32px;padding:0 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg);font-size:13px;box-shadow:var(--shadow-xs)}
+.input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.seg{display:flex;align-items:center;padding:2px;gap:2px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border)}
+.seg button{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:26px;padding:0 10px;border:0;border-radius:6px;background:transparent;color:var(--fg-muted);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;flex:1}
+.seg button:hover{color:var(--fg)}
+.seg button[aria-pressed="true"]{background:var(--bg);color:var(--fg);box-shadow:var(--shadow-sm)}
+.ss[data-theme="dark"] .seg button[aria-pressed="true"]{background:var(--bg-emphasis)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--fg-muted);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;flex:none}
+.chip:hover{border-color:var(--border-strong);color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.chip-n{opacity:.6}
+.menu{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-lg);padding:4px;animation:ssPop .14s ease-out}
+.item{display:flex;align-items:center;gap:10px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:6px;background:transparent;color:var(--fg);text-align:left;font-size:13px;cursor:pointer}
+.item:hover,.item[data-active="true"]{background:var(--bg-muted)}
+.scroll{overflow:auto;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+.hscroll{overflow-x:auto;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.trunc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.search{display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg-subtle);box-shadow:var(--shadow-xs)}
+.search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.bare{flex:1;min-width:0;height:30px;padding:0;border:0;background:transparent;color:var(--fg);font-size:13px;outline:none}
+.bare::placeholder{color:var(--fg-subtle)}
+.switch{position:relative;width:32px;height:20px;padding:0;border-radius:999px;border:0;background:var(--border-strong);cursor:pointer;flex:none}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:999px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+.switch[aria-checked="true"]{background:var(--accent)}
+.switch[aria-checked="true"]::after{transform:translateX(12px)}
+.dsec{display:flex;flex-direction:column;gap:16px;padding:20px 16px;border-bottom:1px solid var(--border)}
+.dsec-h{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;color:var(--fg)}
+.sw{position:relative;width:32px;height:32px;padding:0;border-radius:999px;border:1px solid rgba(0,0,0,.08);cursor:pointer;flex:none}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--fg)}
+.sw-input{width:32px;height:32px;padding:0;border:1px dashed var(--border-strong);border-radius:999px;background:var(--bg);cursor:pointer;-webkit-appearance:none;appearance:none;flex:none}
+.sw-input::-webkit-color-swatch-wrapper{padding:3px}
+.sw-input::-webkit-color-swatch{border:0;border-radius:999px}
+.sw-input::-moz-color-swatch{border:0;border-radius:999px}
+.bgcard{display:flex;flex-direction:column;gap:8px;padding:8px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);text-align:left;cursor:pointer;font-size:12px;font-weight:500}
+.bgcard[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.bgcard-sw{display:flex;align-items:center;gap:4px;height:28px;padding:0 8px;border-radius:5px;border:1px solid rgba(0,0,0,.08)}
+.fontrow{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);text-align:left;cursor:pointer}
+.fontrow:hover{border-color:var(--border-strong)}
+.fontrow[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.aa{width:36px;font-size:22px;line-height:28px;font-weight:600;text-align:center;color:var(--fg);flex:none}
+.range{width:100%;margin:0;accent-color:var(--accent);height:20px}
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pcard{display:flex;flex-direction:column;padding:0;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--fg);text-align:left;cursor:pointer;overflow:hidden;transition:border-color .12s,box-shadow .12s}
+.pcard:hover,.pcard[data-active="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.pcard:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tn{position:relative;display:flex;flex-direction:column;gap:5px;aspect-ratio:16 / 10;padding:10px;background:var(--s-bg);border-bottom:1px solid var(--border);overflow:hidden}
+.tn-h{display:block;height:6px;border-radius:2px;background:var(--s-fg)}
+.tn-l{display:block;height:3px;border-radius:2px;background:var(--s-muted);opacity:.45}
+.tn-b{display:block;height:8px;width:30px;border-radius:min(var(--s-r),4px);background:var(--s-brand);flex:none}
+.tn-e{display:block;height:3px;width:30%;border-radius:2px;background:var(--s-brand)}
+.tn-i{display:block;border-radius:min(var(--s-r),4px);background:#D3C7BA}
+.toast{position:absolute;left:50%;bottom:24px;z-index:80;display:flex;align-items:center;gap:12px;min-height:40px;padding:0 6px 0 14px;border-radius:10px;background:#18181B;color:#FAFAFA;box-shadow:var(--shadow-lg);font-size:13px;white-space:nowrap;animation:ssToast .2s ease-out;transform:translateX(-50%)}
+.ss[data-theme="dark"] .toast{background:#26262B;border:1px solid var(--border-strong)}
+.toast button{height:28px;padding:0 10px;border-radius:6px;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:500;cursor:pointer}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:50;display:flex;flex-direction:column;background:var(--bg-elevated);border-top:1px solid var(--border);border-radius:16px 16px 0 0;box-shadow:0 -16px 40px -16px rgba(16,16,20,.3);transition:height .22s cubic-bezier(.2,.8,.2,1)}
+.grab{display:block;width:100%;height:20px;padding:0;border:0;background:transparent;cursor:pointer;flex:none}
+.grab::before{content:"";display:block;width:36px;height:4px;margin:8px auto;border-radius:999px;background:var(--border-strong)}
+.ss[data-layout="mobile"] .btn{height:40px;font-size:14px;padding:0 14px}
+.ss[data-layout="mobile"] .ibtn{width:40px;height:40px}
+.ss[data-layout="mobile"] .seg button{height:34px;font-size:13px}
+.ss[data-layout="mobile"] .bare,.ss[data-layout="mobile"] .input{height:40px;font-size:16px}
+.ss[data-layout="mobile"] .search{height:40px}
+.ss[data-layout="mobile"] .chip{height:32px;padding:0 12px;font-size:13px}
+.ss[data-layout="mobile"] .sw,.ss[data-layout="mobile"] .sw-input{width:40px;height:40px}
+@keyframes ssPop{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes ssFade{from{opacity:0}to{opacity:1}}
+@keyframes ssToast{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes ssNew{0%{box-shadow:inset 0 0 0 2px var(--accent)}70%{box-shadow:inset 0 0 0 2px var(--accent)}100%{box-shadow:inset 0 0 0 2px transparent}}
+.blk{position:relative}
+.blk[data-ghost="true"]{outline:2px dashed var(--accent);outline-offset:-2px;animation:ssFade .15s}
+.blk[data-new="true"]{animation:ssNew 1.6s ease-out}
+.ghost-tag{position:absolute;top:12px;left:12px;z-index:5;display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:6px;background:var(--accent);color:#fff;font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:0;box-shadow:var(--shadow-md)}
+.marker{position:relative;z-index:4;display:flex;align-items:center;gap:8px;height:0;padding:0 24px}
+.marker::before{content:"";position:absolute;left:24px;right:24px;top:-1px;height:2px;background:var(--accent);border-radius:2px}
+.marker span{position:relative;top:-1px;margin-left:auto;margin-right:auto;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:var(--accent);color:#fff;font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:0;transform:translateY(-50%)}
+.ins{position:relative;height:0;z-index:6}
+.ins-hit{position:absolute;left:0;right:0;top:-12px;height:24px;display:flex;align-items:center;justify-content:center}
+.ins-hit::before{content:"";position:absolute;left:24px;right:24px;top:11px;height:2px;border-radius:2px;background:var(--accent);opacity:0;transition:opacity .12s}
+.ins-btn{position:relative;display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 10px 0 6px;border-radius:999px;border:0;background:var(--accent);color:#fff;font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:0;cursor:pointer;opacity:0;transition:opacity .12s;box-shadow:var(--shadow-md)}
+.ins-hit:hover::before,.ins-hit:hover .ins-btn,.ins-btn:focus-visible{opacity:1}
+.site{position:relative;background:var(--s-bg);color:var(--s-fg);font-family:var(--s-body);font-size:var(--s-base);line-height:1.6;letter-spacing:0;font-feature-settings:normal;transition:background .2s,color .2s}
+.s-wrap{max-width:1080px;margin:0 auto;padding:var(--s-pad) 48px}
+.site[data-device="mobile"] .s-wrap{padding:calc(var(--s-pad) * .6) 20px}
+.s-eyebrow{font-family:var(--s-body);font-size:calc(var(--s-base) * .8125);line-height:1.5;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--s-brand)}
+.site[data-bg="ink"] .s-eyebrow{color:color-mix(in srgb,var(--s-brand) 45%,#fff)}
+.s-h1{font-family:var(--s-head);font-size:calc(var(--s-base) * 3.25);line-height:1.06;font-weight:600;letter-spacing:-.025em;color:inherit}
+.site[data-device="mobile"] .s-h1{font-size:calc(var(--s-base) * 2.125);line-height:1.12}
+.s-h2{font-family:var(--s-head);font-size:calc(var(--s-base) * 2.125);line-height:1.15;font-weight:600;letter-spacing:-.02em;color:inherit}
+.site[data-device="mobile"] .s-h2{font-size:calc(var(--s-base) * 1.625)}
+.s-lead{font-size:calc(var(--s-base) * 1.125);line-height:1.6;color:var(--s-muted)}
+.s-body{font-size:calc(var(--s-base) * 1.0625);line-height:1.7;color:var(--s-muted)}
+.s-cap{font-size:calc(var(--s-base) * .8125);line-height:1.5;color:var(--s-muted);margin-top:10px}
+.s-btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:var(--s-r);background:var(--s-brand);color:var(--s-brand-fg);font-family:var(--s-body);font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.site[data-btn="outline"] .s-btn{background:transparent;color:var(--s-brand);box-shadow:inset 0 0 0 1.5px var(--s-brand)}
+.site[data-btn="pill"] .s-btn{border-radius:999px}
+.s-btn-sm{height:38px;padding:0 16px;font-size:14px}
+.s-img{position:relative;overflow:hidden;border-radius:var(--s-r);background:#D8D0C4}
+.s-nav{display:flex;align-items:center;gap:32px;height:72px;padding:0 48px;border-bottom:1px solid var(--s-line)}
+.site[data-device="mobile"] .s-nav{height:60px;padding:0 20px}
+.s-logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--s-head);font-weight:700;font-size:calc(var(--s-mark) * .64);letter-spacing:-.02em;color:var(--s-fg);margin-right:auto}
+.s-mark{display:inline-flex;align-items:center;justify-content:center;width:var(--s-mark);height:var(--s-mark);border-radius:calc(var(--s-r) * .7);background:var(--s-brand);color:var(--s-brand-fg);font-size:calc(var(--s-mark) * .5);font-weight:700;flex:none}
+.s-mark[data-up="true"]{border-radius:999px;background:transparent;color:var(--s-brand);box-shadow:inset 0 0 0 2px var(--s-brand);font-size:calc(var(--s-mark) * .42);letter-spacing:-.04em}
+.s-links{display:flex;gap:28px;font-size:15px;color:var(--s-muted)}
+.s-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center}
+.s-hero[data-layout="centered"]{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+.site[data-device="mobile"] .s-hero{grid-template-columns:minmax(0,1fr);gap:28px}
+.s-stack{display:flex;flex-direction:column;gap:20px;align-items:flex-start;min-width:0}
+.s-hero[data-layout="centered"] .s-stack{align-items:center;max-width:760px}
+.s-full{position:relative;display:flex;align-items:flex-end;min-height:540px;overflow:hidden}
+.site[data-device="mobile"] .s-full{min-height:460px}
+.s-over{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:16px;max-width:600px;margin:48px;padding:32px;border-radius:var(--s-r);background:rgba(20,18,16,.62);color:#fff}
+.site[data-device="mobile"] .s-over{margin:16px;padding:24px}
+.s-over .s-eyebrow{color:#fff;opacity:.85}
+.s-over .s-lead{color:rgba(255,255,255,.86)}
+.s-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:56px}
+.site[data-device="mobile"] .s-two{grid-template-columns:minmax(0,1fr);gap:16px}
+.s-gal{display:grid;gap:16px}
+.s-mas{columns:3;column-gap:16px}
+.site[data-device="mobile"] .s-mas{columns:2;column-gap:10px}
+.s-mas figure{break-inside:avoid;margin:0 0 16px}
+.s-car{display:flex;gap:16px;overflow:hidden}
+.s-car figure{flex:0 0 38%}
+.site[data-device="mobile"] .s-car figure{flex:0 0 76%}
+.s-car-ctl{display:flex;gap:8px}
+.s-car-ctl span{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--s-line);color:var(--s-fg)}
+.s-cta{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:48px;border-radius:calc(var(--s-r) * 1.6);background:var(--s-fg);color:var(--s-bg)}
+.site[data-device="mobile"] .s-cta{flex-direction:column;align-items:flex-start;padding:28px 24px;gap:20px}
+.s-cta-text{font-size:calc(var(--s-base) * 1.0625);line-height:1.6;opacity:.85;max-width:520px;margin-top:10px}
+.s-cta .s-btn{background:var(--s-bg);color:var(--s-fg);box-shadow:none}
+.s-wa{display:flex;align-items:center;gap:24px;padding:32px;border-radius:calc(var(--s-r) * 1.6);background:var(--s-soft);border:1px solid var(--s-line)}
+.site[data-device="mobile"] .s-wa{flex-direction:column;align-items:flex-start;padding:24px;gap:16px}
+.s-wa-ic{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:999px;background:var(--s-brand);color:var(--s-brand-fg);flex:none}
+.s-foot{border-top:1px solid var(--s-line);padding:40px 48px;background:var(--s-soft);color:var(--s-muted);font-size:14px}
+.site[data-device="mobile"] .s-foot{padding:28px 20px}
+</style>
+</helmet>
+<div class="ss" data-ds="1" data-theme="{{ theme }}" data-layout="{{ lay }}" ref="{{ setRoot }}" tabIndex="-1" onKeyDown="{{ onKey }}" style="position: relative; display: flex; flex-direction: column; width: 100%; height: {{ height }}; min-height: 480px; overflow: hidden; --accent: {{ accent }}">
+
+<header style="{{ headerStyle }}">
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; gap: 2px; flex: 1; min-width: 0">
+<span role="img" aria-label="selfsite" style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin: 0 6px 0 4px; border-radius: 6px; background: var(--fg); color: var(--bg); font-size: 13px; font-weight: 700; line-height: 1">s</span>
+<a class="btn btn-ghost" href="Main.dc.html" style="padding: 0 8px; color: var(--fg)">Teakline Studio</a>
+<span style="color: var(--border-strong)">/</span>
+<span style="padding: 0 8px; font-weight: 500">Site design</span>
+</div>
+<div class="seg" role="group" aria-label="Preview width">
+<button aria-pressed="{{ devDesktop }}" onClick="{{ setDevDesktop }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v12H3z M8 20h8 M12 16v4"></path></svg>Desktop</button>
+<button aria-pressed="{{ devMobile }}" onClick="{{ setDevMobile }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2.5h10v19H7z M11 18h2"></path></svg>Phone</button>
+</div>
+<div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex: 1; min-width: 0">
+<span class="hint trunc">{{ saveHint }}</span>
+<button class="ibtn" onClick="{{ toggleTheme }}" aria-label="Switch light or dark theme"><sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 2.5v2 M12 19.5v2 M4.6 4.6l1.4 1.4 M18 18l1.4 1.4 M2.5 12h2 M19.5 12h2 M4.6 19.4L6 18 M18 6l1.4-1.4"></path></svg></sc-if><sc-if value="{{ light }}" hint-placeholder-val="{{ true }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<button class="btn btn-ghost" onClick="{{ reset }}">Reset</button>
+<button class="btn btn-primary" onClick="{{ save }}" disabled="{{ notDirty }}">Save design</button>
+</div>
+</sc-if>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<a class="ibtn" href="Editor-mobile.dc.html" aria-label="Back to the page editor"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></a>
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-size: 15px; font-weight: 600; line-height: 20px">{{ mobileTitle }}</span><span class="hint trunc">{{ saveHint }}</span></div>
+<button class="ibtn" onClick="{{ toggleTheme }}" aria-label="Switch light or dark theme"><sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 2.5v2 M12 19.5v2 M4.6 4.6l1.4 1.4 M18 18l1.4 1.4 M2.5 12h2 M19.5 12h2 M4.6 19.4L6 18 M18 6l1.4-1.4"></path></svg></sc-if><sc-if value="{{ light }}" hint-placeholder-val="{{ true }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<button class="btn btn-primary" onClick="{{ save }}" disabled="{{ notDirty }}">Save</button>
+</sc-if>
+</header>
+
+<div style="position: relative; display: flex; flex: 1; min-height: 0">
+
+<aside class="{{ panelClass }}" style="{{ panelStyle }}" aria-label="Design tools">
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}"><button class="grab" onClick="{{ toggleSheet }}" aria-label="{{ grabLabel }}"></button></sc-if>
+<div style="{{ tabsWrapStyle }}">
+<div class="seg" role="tablist" aria-label="Panel">
+<button role="tab" aria-selected="{{ isDesign }}" aria-pressed="{{ isDesign }}" onClick="{{ tabDesign }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.7 1.6-1.5 0-1.1-.9-1.4-.9-2.4 0-.9.7-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.8 17 3 12 3z M7.5 11.5h.01 M10 7.5h.01 M14.5 7.5h.01"></path></svg>Site design</button>
+<button role="tab" aria-selected="{{ isBlocks }}" aria-pressed="{{ isBlocks }}" onClick="{{ tabBlocks }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"></path></svg>Insert block</button>
+</div>
+</div>
+
+<sc-if value="{{ showDesign }}" hint-placeholder-val="{{ true }}">
+<div class="scroll" style="flex: 1; min-height: 0">
+
+<section class="dsec">
+<div class="dsec-h"><span>Logo</span><span class="hint">Shown in the header and browser tab</span></div>
+<div style="display: flex; align-items: center; justify-content: center; height: 88px; border-radius: 8px; border: 1px solid var(--border); background: var(--s-bg); padding: 0 16px">
+<span class="s-logo" style="margin: 0">
+<sc-if value="{{ showMark }}" hint-placeholder-val="{{ true }}"><span class="s-mark" data-up="{{ logoUp }}">{{ markText }}</span></sc-if>
+<sc-if value="{{ showName }}" hint-placeholder-val="{{ true }}"><span>Teakline</span></sc-if>
+</span>
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<button class="btn btn-sm" onClick="{{ uploadLogo }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4 M7.5 8.5L12 4l4.5 4.5 M4 15v4h16v-4"></path></svg>{{ uploadLabel }}</button>
+<sc-if value="{{ logoUp }}" hint-placeholder-val="{{ false }}"><span class="hint trunc" style="flex: 1">teakline-logo.svg · 6 KB</span><button class="btn btn-ghost btn-sm" onClick="{{ removeLogo }}">Remove</button></sc-if>
+<sc-if value="{{ logoNotUp }}" hint-placeholder-val="{{ true }}"><span class="hint">SVG or PNG, square works best</span></sc-if>
+</div>
+<div class="field"><span class="label">Show</span>
+<div class="seg" role="group" aria-label="Logo parts"><sc-for list="{{ logoOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+</div>
+<div class="field"><div class="label"><label for="r-logo">Size</label><span class="hint">{{ logoSize }} px</span></div>
+<input id="r-logo" class="range" type="range" min="20" max="40" step="4" value="{{ logoSize }}" onChange="{{ onLogoSize }}">
+</div>
+</section>
+
+<section class="dsec">
+<div class="dsec-h"><span>Colours</span></div>
+<div class="field">
+<div class="label"><span>Brand colour</span><span class="hint" style="color: {{ contrastColor }}">{{ contrastText }}</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<sc-for list="{{ swatches }}" as="c" hint-placeholder-count="6"><button class="sw" aria-pressed="{{ c.on }}" onClick="{{ c.pick }}" aria-label="{{ c.name }}" title="{{ c.name }}" style="background: {{ c.hex }}"></button></sc-for>
+<input class="sw-input" type="color" value="{{ brand }}" onChange="{{ onBrandPick }}" aria-label="Pick a custom colour" title="Custom colour">
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="width: 32px; height: 32px; border-radius: 6px; flex: none; border: 1px solid var(--border); background: {{ brand }}"></span>
+<input class="input" value="{{ hexDraft }}" onChange="{{ onHex }}" aria-label="Brand colour hex value" spellCheck="false" style="font-variant-numeric: tabular-nums; text-transform: uppercase">
+<span class="hint" style="white-space: nowrap">{{ brandName }}</span>
+</div>
+</div>
+<div class="field"><span class="label">Background</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ bgOpts }}" as="b" hint-placeholder-count="4">
+<button class="bgcard" aria-pressed="{{ b.on }}" onClick="{{ b.pick }}"><span class="bgcard-sw" style="background: {{ b.bg }}"><span style="width: 18px; height: 4px; border-radius: 2px; background: {{ b.fg }}"></span><span style="width: 10px; height: 4px; border-radius: 2px; background: {{ b.fg }}; opacity: .4"></span></span>{{ b.label }}</button>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section class="dsec">
+<div class="dsec-h"><span>Fonts</span></div>
+<div class="field"><span class="label">Headings</span>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{ headFonts }}" as="f" hint-placeholder-count="5">
+<button class="fontrow" aria-pressed="{{ f.on }}" onClick="{{ f.pick }}">
+<span class="aa" style="font-family: {{ f.stack }}">Aa</span>
+<span style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-weight: 500">{{ f.name }}</span><span class="hint">{{ f.note }}</span></span>
+<sc-if value="{{ f.on }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--accent-text)"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></sc-if>
+</button>
+</sc-for>
+</div>
+</div>
+<div class="field"><span class="label">Body text</span>
+<div class="seg" role="group" aria-label="Body font"><sc-for list="{{ bodyFonts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}" style="font-family: {{ o.stack }}">{{ o.label }}</button></sc-for></div>
+</div>
+<div class="field"><div class="label"><span>Text size</span><span class="hint">{{ basePx }} px body</span></div>
+<div class="seg" role="group" aria-label="Text size"><sc-for list="{{ sizeOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+</div>
+</section>
+
+<section class="dsec">
+<div class="dsec-h"><span>Spacing and shape</span></div>
+<div class="field"><div class="label"><span>Space between sections</span><span class="hint">{{ pad }} px</span></div>
+<div class="seg" role="group" aria-label="Spacing"><sc-for list="{{ padOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+<input class="range" type="range" min="32" max="128" step="8" value="{{ pad }}" onChange="{{ onPad }}" aria-label="Space between sections in pixels">
+</div>
+<div class="field"><span class="label">Corners</span>
+<div class="seg" role="group" aria-label="Corners"><sc-for list="{{ radiusOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}"><span style="width: 12px; height: 12px; border: 1.5px solid currentColor; border-right: 0; border-bottom: 0; border-top-left-radius: {{ o.r }}"></span>{{ o.label }}</button></sc-for></div>
+</div>
+<div class="field"><span class="label">Buttons</span>
+<div class="seg" role="group" aria-label="Button style"><sc-for list="{{ btnOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+</div>
+</section>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 16px 24px">
+<span class="hint">Changes apply to every page. Visitors see them after you publish.</span>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}"><button class="btn" onClick="{{ reset }}">Reset to template defaults</button></sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showBlocks }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 12px 16px; flex: none; border-bottom: 1px solid var(--border)">
+<label class="search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M20 20l-4-4"></path></svg><input class="bare" value="{{ q }}" onChange="{{ onQ }}" placeholder="Search blocks" aria-label="Search blocks"></label>
+<div class="hscroll" role="group" aria-label="Block categories" style="display: flex; gap: 6px; margin: 0 -16px; padding: 0 16px"><sc-for list="{{ cats }}" as="c" hint-placeholder-count="6"><button class="chip" aria-pressed="{{ c.on }}" onClick="{{ c.pick }}">{{ c.label }}<span class="chip-n">{{ c.n }}</span></button></sc-for></div>
+<div style="position: relative">
+<button class="btn btn-sm" onClick="{{ togglePos }}" aria-expanded="{{ posMenu }}" style="width: 100%; justify-content: flex-start; height: 32px">
+<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--accent-text)"><path d="M4 12h16 M12 4v4 M12 16v4"></path></svg>
+<span class="trunc" style="flex: 1; text-align: left">{{ posLabel }}</span>
+<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="M7 10l5 5 5-5"></path></svg>
+</button>
+<sc-if value="{{ posMenu }}" hint-placeholder-val="{{ false }}">
+<div class="menu" style="position: absolute; top: 36px; left: 0; right: 0; z-index: 30">
+<div class="label" style="padding: 4px 8px">New blocks go</div>
+<sc-for list="{{ posOpts }}" as="o" hint-placeholder-count="5"><button class="item" data-active="{{ o.on }}" onClick="{{ o.pick }}"><span class="trunc">{{ o.label }}</span></button></sc-for>
+</div>
+</sc-if>
+</div>
+</div>
+<div class="scroll" style="flex: 1; min-height: 0; padding: 12px 16px 16px">
+<div class="pgrid">
+<sc-for list="{{ cards }}" as="v" hint-placeholder-count="6">
+<button class="pcard" data-active="{{ v.active }}" onMouseEnter="{{ v.hover }}" onMouseLeave="{{ v.unhover }}" onFocus="{{ v.hover }}" onBlur="{{ v.unhover }}" onClick="{{ v.click }}" aria-label="{{ v.aria }}">
+<span class="tn" aria-hidden="true">
+<sc-if value="{{ v.hSplit }}" hint-placeholder-val="{{ true }}"><span style="display: flex; gap: 8px; height: 100%"><span style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 5px"><span class="tn-e"></span><span class="tn-h" style="width: 92%"></span><span class="tn-h" style="width: 64%"></span><span class="tn-l" style="width: 86%"></span><span class="tn-b" style="margin-top: 2px"></span></span><span class="tn-i" style="width: 44%; background: #D6CBBE"></span></span></sc-if>
+<sc-if value="{{ v.hCentered }}" hint-placeholder-val="{{ false }}"><span style="display: flex; flex-direction: column; align-items: center; gap: 5px; height: 100%"><span class="tn-e" style="width: 22%"></span><span class="tn-h" style="width: 72%"></span><span class="tn-l" style="width: 50%"></span><span class="tn-b"></span><span class="tn-i" style="width: 100%; flex: 1; margin-top: 2px; background: #CFC5B6"></span></span></sc-if>
+<sc-if value="{{ v.hFull }}" hint-placeholder-val="{{ false }}"><span class="tn-i" style="position: absolute; inset: 0; border-radius: 0; background: #B9C0B4"></span><span style="position: relative; margin-top: auto; width: 62%; padding: 6px; border-radius: min(var(--s-r), 4px); background: rgba(20, 18, 16, .62); display: flex; flex-direction: column; gap: 4px"><span class="tn-h" style="width: 90%; background: #fff"></span><span class="tn-l" style="width: 70%; background: #fff; opacity: .7"></span><span class="tn-b"></span></span></sc-if>
+<sc-if value="{{ v.tSingle }}" hint-placeholder-val="{{ false }}"><span style="display: flex; flex-direction: column; justify-content: center; gap: 5px; height: 100%; padding: 0 10%"><span class="tn-h" style="width: 56%"></span><span class="tn-l"></span><span class="tn-l"></span><span class="tn-l" style="width: 72%"></span></span></sc-if>
+<sc-if value="{{ v.tTwo }}" hint-placeholder-val="{{ false }}"><span style="display: flex; gap: 10px; align-items: center; height: 100%"><span style="flex: 1; display: flex; flex-direction: column; gap: 5px"><span class="tn-h" style="width: 92%"></span><span class="tn-h" style="width: 56%"></span></span><span style="flex: 1.4; display: flex; flex-direction: column; gap: 5px"><span class="tn-l"></span><span class="tn-l"></span><span class="tn-l"></span><span class="tn-l" style="width: 60%"></span></span></span></sc-if>
+<sc-if value="{{ v.iContained }}" hint-placeholder-val="{{ false }}"><span style="display: flex; flex-direction: column; align-items: center; gap: 5px; height: 100%"><span class="tn-i" style="width: 78%; flex: 1; background: #CFC5B6"></span><span class="tn-l" style="width: 40%"></span></span></sc-if>
+<sc-if value="{{ v.iFull }}" hint-placeholder-val="{{ false }}"><span class="tn-i" style="margin: -10px -10px 0; flex: 1; border-radius: 0; background: #C9CEC4"></span><span class="tn-l" style="width: 36%; margin-top: 2px"></span></sc-if>
+<sc-if value="{{ v.gGrid }}" hint-placeholder-val="{{ false }}"><span class="tn-h" style="width: 36%"></span><span style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px"><span class="tn-i" style="background: #CCD0C6"></span><span class="tn-i" style="background: #D8CDBF"></span><span class="tn-i" style="background: #C3CABF"></span><span class="tn-i" style="background: #D2C8BC"></span><span class="tn-i" style="background: #DDD3C3"></span><span class="tn-i" style="background: #C7CBCB"></span></span></sc-if>
+<sc-if value="{{ v.gMasonry }}" hint-placeholder-val="{{ false }}"><span class="tn-h" style="width: 36%"></span><span style="flex: 1; display: flex; gap: 4px; min-height: 0"><span style="flex: 1; display: flex; flex-direction: column; gap: 4px"><span class="tn-i" style="flex: 3; background: #CCD0C6"></span><span class="tn-i" style="flex: 2; background: #D2C8BC"></span></span><span style="flex: 1; display: flex; flex-direction: column; gap: 4px"><span class="tn-i" style="flex: 2; background: #D8CDBF"></span><span class="tn-i" style="flex: 3; background: #DDD3C3"></span></span><span style="flex: 1; display: flex; flex-direction: column; gap: 4px"><span class="tn-i" style="flex: 4; background: #C3CABF"></span><span class="tn-i" style="flex: 1.5; background: #C7CBCB"></span></span></span></sc-if>
+<sc-if value="{{ v.gCarousel }}" hint-placeholder-val="{{ false }}"><span class="tn-h" style="width: 36%"></span><span style="flex: 1; display: flex; gap: 4px; margin-right: -10px; min-height: 0"><span class="tn-i" style="flex: 0 0 40%; background: #CCD0C6"></span><span class="tn-i" style="flex: 0 0 40%; background: #D8CDBF"></span><span class="tn-i" style="flex: 0 0 40%; background: #C3CABF"></span></span><span style="display: flex; gap: 3px; justify-content: center"><span style="width: 10px; height: 3px; border-radius: 2px; background: var(--s-fg)"></span><span style="width: 3px; height: 3px; border-radius: 2px; background: var(--s-muted); opacity: .5"></span><span style="width: 3px; height: 3px; border-radius: 2px; background: var(--s-muted); opacity: .5"></span></span></sc-if>
+<sc-if value="{{ v.cBanner }}" hint-placeholder-val="{{ false }}"><span style="margin: auto 0; display: flex; align-items: center; gap: 8px; padding: 10px; border-radius: min(calc(var(--s-r) * 1.6), 6px); background: var(--s-fg)"><span style="flex: 1; display: flex; flex-direction: column; gap: 4px"><span class="tn-h" style="width: 80%; background: var(--s-bg)"></span><span class="tn-l" style="width: 60%; background: var(--s-bg)"></span></span><span class="tn-b" style="background: var(--s-bg)"></span></span></sc-if>
+<sc-if value="{{ v.cWa }}" hint-placeholder-val="{{ false }}"><span style="margin: auto 0; display: flex; align-items: center; gap: 8px; padding: 10px; border-radius: min(calc(var(--s-r) * 1.6), 6px); background: var(--s-soft); border: 1px solid var(--s-line)"><span style="width: 16px; height: 16px; border-radius: 999px; background: var(--s-brand); flex: none"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 4px"><span class="tn-h" style="width: 70%"></span><span class="tn-l" style="width: 50%"></span></span><span class="tn-b"></span></span></sc-if>
+</span>
+<span style="display: flex; flex-direction: column; padding: 8px 10px 10px; min-width: 0">
+<span class="trunc" style="font-weight: 500">{{ v.name }}</span>
+<span class="hint trunc">{{ v.variant }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{ noCards }}" hint-placeholder-val="{{ false }}"><div class="hint" style="padding: 32px 8px; text-align: center">No blocks match “{{ q }}”. Try photo, text or button.</div></sc-if>
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}"><p class="hint" style="margin-top: 16px">Hover a block to preview it in your page. Click to insert it.</p></sc-if>
+</div>
+<sc-if value="{{ showInsertBar }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 16px; flex: none; border-top: 1px solid var(--border); background: var(--bg-elevated)">
+<button class="btn btn-primary" onClick="{{ insertPicked }}" style="width: 100%">Insert {{ pickedLabel }}</button>
+<span class="hint" style="text-align: center">{{ posLabel }}</span>
+</div>
+</sc-if>
+</sc-if>
+</aside>
+
+<main class="scroll" ref="{{ setScroller }}" style="{{ canvasStyle }}">
+<div style="{{ frameStyle }}">
+<sc-if value="{{ showUrl }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 12px; background: var(--bg); border-bottom: 1px solid var(--border); color: var(--fg-subtle); font-size: 12px">
+<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6z M9 11V8a3 3 0 0 1 6 0v3"></path></svg>teakline.selfsite.in<span style="padding: 0 6px; border: 1px solid var(--border); border-radius: 999px; font-size: 11px; line-height: 16px">Preview</span>
+</div>
+</sc-if>
+<div class="site" data-device="{{ siteDevice }}" data-btn="{{ btnStyle }}" data-bg="{{ bgKey }}">
+<div class="s-nav">
+<span class="s-logo">
+<sc-if value="{{ showMark }}" hint-placeholder-val="{{ true }}"><span class="s-mark" data-up="{{ logoUp }}">{{ markText }}</span></sc-if>
+<sc-if value="{{ showName }}" hint-placeholder-val="{{ true }}"><span>Teakline</span></sc-if>
+</span>
+<sc-if value="{{ siteDesktop }}" hint-placeholder-val="{{ true }}"><span class="s-links"><span>Projects</span><span>Studio</span><span>Journal</span><span>Contact</span></span><span class="s-btn s-btn-sm">Book a visit</span></sc-if>
+<sc-if value="{{ siteMobile }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 22px; height: 22px"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg></sc-if>
+</div>
+
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="4">
+<sc-if value="{{ r.isMarker }}" hint-placeholder-val="{{ false }}"><div class="marker" aria-hidden="true"><span><svg class="ic ic-sm" viewBox="0 0 24 24"><path d="M12 5v14 M5 12h14"></path></svg>New blocks go here</span></div></sc-if>
+<sc-if value="{{ r.isIns }}" hint-placeholder-val="{{ false }}"><div class="ins"><div class="ins-hit"><button class="ins-btn" onClick="{{ r.pick }}" aria-label="Insert a block here"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>Insert here</button></div></div></sc-if>
+<sc-if value="{{ r.isBlock }}" hint-placeholder-val="{{ true }}">
+<section class="blk" data-bid="{{ r.id }}" data-ghost="{{ r.ghost }}" data-new="{{ r.isNew }}">
+<sc-if value="{{ r.ghost }}" hint-placeholder-val="{{ false }}"><span class="ghost-tag"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg>Preview · {{ r.label }}</span></sc-if>
+
+<sc-if value="{{ r.hero }}" hint-placeholder-val="{{ true }}">
+<div class="s-wrap"><div class="s-hero" data-layout="{{ r.layout }}">
+<div class="s-stack"><p class="s-eyebrow">{{ r.eyebrow }}</p><h1 class="s-h1">{{ r.title }}</h1><p class="s-lead">{{ r.text }}</p><span class="s-btn">{{ r.button }}</span></div>
+<div class="s-img" style="width: 100%; aspect-ratio: {{ r.ratio }}; background: {{ r.tone }}"></div>
+</div></div>
+</sc-if>
+<sc-if value="{{ r.hFull }}" hint-placeholder-val="{{ false }}">
+<div class="s-full"><div class="s-img" style="position: absolute; inset: 0; border-radius: 0; background: {{ r.tone }}"></div>
+<div class="s-over"><p class="s-eyebrow">{{ r.eyebrow }}</p><h1 class="s-h1" style="font-size: calc(var(--s-base) * 2.5)">{{ r.title }}</h1><p class="s-lead">{{ r.text }}</p><span class="s-btn">{{ r.button }}</span></div>
+</div>
+</sc-if>
+<sc-if value="{{ r.tSingle }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)"><div style="display: flex; flex-direction: column; gap: 16px; max-width: 700px"><h2 class="s-h2">{{ r.title }}</h2><p class="s-body">{{ r.text }}</p></div></div>
+</sc-if>
+<sc-if value="{{ r.tTwo }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)"><div class="s-two"><h2 class="s-h2">{{ r.title }}</h2><p class="s-body">{{ r.text }}</p></div></div>
+</sc-if>
+<sc-if value="{{ r.iContained }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .4); padding-bottom: calc(var(--s-pad) * .4)"><div style="max-width: 760px; margin: 0 auto"><div class="s-img" style="aspect-ratio: 16 / 9; background: {{ r.tone }}"></div><p class="s-cap">{{ r.caption }}</p></div></div>
+</sc-if>
+<sc-if value="{{ r.iFull }}" hint-placeholder-val="{{ false }}">
+<div style="padding: calc(var(--s-pad) * .4) 0"><div class="s-img" style="aspect-ratio: 21 / 9; border-radius: 0; background: {{ r.tone }}"></div></div>
+</sc-if>
+<sc-if value="{{ r.gGrid }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)"><h2 class="s-h2" style="margin-bottom: 24px">{{ r.title }}</h2>
+<div class="s-gal" style="grid-template-columns: repeat({{ r.cols }}, minmax(0, 1fr))"><sc-for list="{{ r.gal }}" as="im" hint-placeholder-count="6"><figure><div class="s-img" style="aspect-ratio: 4 / 3; background: {{ im.tone }}"></div><figcaption class="s-cap" style="margin-top: 8px">{{ im.cap }}</figcaption></figure></sc-for></div></div>
+</sc-if>
+<sc-if value="{{ r.gMasonry }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)"><h2 class="s-h2" style="margin-bottom: 24px">{{ r.title }}</h2>
+<div class="s-mas"><sc-for list="{{ r.gal }}" as="im" hint-placeholder-count="6"><figure><div class="s-img" style="aspect-ratio: {{ im.r }}; background: {{ im.tone }}"></div><figcaption class="s-cap" style="margin-top: 8px">{{ im.cap }}</figcaption></figure></sc-for></div></div>
+</sc-if>
+<sc-if value="{{ r.gCarousel }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 24px"><h2 class="s-h2">{{ r.title }}</h2><span class="s-car-ctl" aria-hidden="true"><span><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></span><span><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></span></span></div>
+<div class="s-car"><sc-for list="{{ r.gal }}" as="im" hint-placeholder-count="4"><figure><div class="s-img" style="aspect-ratio: 4 / 5; background: {{ im.tone }}"></div><figcaption class="s-cap" style="margin-top: 8px">{{ im.cap }}</figcaption></figure></sc-for></div>
+</div>
+</sc-if>
+<sc-if value="{{ r.cBanner }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .5)"><div class="s-cta"><div style="flex: 1; min-width: 0"><h2 class="s-h2">{{ r.title }}</h2><p class="s-cta-text">{{ r.text }}</p></div><span class="s-btn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1-4.4A8.5 8.5 0 1 1 20.5 12z"></path></svg>{{ r.button }}</span></div></div>
+</sc-if>
+<sc-if value="{{ r.cWa }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .5); padding-bottom: calc(var(--s-pad) * .5)"><div class="s-wa"><span class="s-wa-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 26px; height: 26px"><path d="M20.5 12a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1-4.4A8.5 8.5 0 1 1 20.5 12z"></path></svg></span><div style="flex: 1; min-width: 0"><h2 class="s-h2" style="font-size: calc(var(--s-base) * 1.5)">{{ r.title }}</h2><p class="s-body" style="margin-top: 4px">{{ r.text }}</p></div><span class="s-btn">{{ r.button }}</span></div></div>
+</sc-if>
+</section>
+</sc-if>
+</sc-for>
+
+<footer class="s-foot"><div style="max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px"><span>Teakline Studio · 41 Avinashi Road, Peelamedu, Coimbatore</span><span>+91 98430 12345 · Mon–Sat, 10 am – 7 pm</span></div></footer>
+</div>
+</div>
+</main>
+</div>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<div class="toast" role="status" style="{{ toastStyle }}"><span>{{ toastText }}</span><sc-if value="{{ toastUndo }}" hint-placeholder-val="{{ false }}"><button onClick="{{ undo }}">Undo</button></sc-if></div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"layout":{"editor":"enum","options":["auto","mobile","desktop"],"default":"auto"},"tab":{"editor":"enum","options":["design","blocks"],"default":"design"},"accent":{"editor":"color","default":"#2563EB","options":["#2563EB","#0F766E","#C2410C","#18181B"]},"preview":{"editor":null,"default":""},"height":{"editor":null,"default":"100vh"},"$preview":{"width":1440,"height":900}}'>
+const V = [
+  { id: 'hero-split', cat: 'hero', name: 'Hero', variant: 'Split', d: { eyebrow: 'Interior design studio · Coimbatore', title: 'Homes that feel calm, warm and entirely yours', text: 'We design and furnish apartments and independent houses across Coimbatore and the Nilgiris.', button: 'Book a site visit', tone: '#D6CBBE' } },
+  { id: 'hero-centered', cat: 'hero', name: 'Hero', variant: 'Centered', d: { eyebrow: 'Since 2014', title: 'Rooms planned around daylight', text: 'Every Teakline plan starts with where the light comes in.', button: 'See our projects', tone: '#CFC5B6' } },
+  { id: 'hero-full', cat: 'hero', name: 'Hero', variant: 'Full-bleed photo', d: { eyebrow: 'New project', title: 'The Ooty holiday home', text: 'A three-bedroom cottage above Lovedale, finished in October.', button: 'Read the story', tone: '#B9C0B4' } },
+  { id: 'text-single', cat: 'text', name: 'Text', variant: 'Single column', d: { title: 'How we work', text: 'One site visit, two rounds of drawings and a fixed quote before any work starts. You get one WhatsApp group with your designer, the site supervisor and you.' } },
+  { id: 'text-two', cat: 'text', name: 'Text', variant: 'Two columns', d: { title: 'What a project costs', text: 'We share a line-by-line estimate after the first visit, so the number you agree to is the number you pay. Most changes after that are small, and we price them before we make them.' } },
+  { id: 'image-contained', cat: 'image', name: 'Image', variant: 'Contained', d: { tone: '#CFC5B6', caption: 'Dining nook, Saibaba Colony · 2026' } },
+  { id: 'image-full', cat: 'image', name: 'Image', variant: 'Full width', d: { tone: '#C9CEC4', caption: '' } },
+  { id: 'gallery-grid', cat: 'gallery', name: 'Gallery', variant: 'Grid', d: { title: 'Recent projects' } },
+  { id: 'gallery-masonry', cat: 'gallery', name: 'Gallery', variant: 'Masonry', d: { title: 'Details we love' } },
+  { id: 'gallery-carousel', cat: 'gallery', name: 'Gallery', variant: 'Carousel', d: { title: 'Before and after' } },
+  { id: 'cta-banner', cat: 'cta', name: 'Call to action', variant: 'Banner', d: { title: 'Planning a new home?', text: 'Send us your floor plan on WhatsApp. We reply within a day with a rough timeline.', button: 'Message us on WhatsApp' } },
+  { id: 'cta-wa', cat: 'cta', name: 'Call to action', variant: 'WhatsApp card', d: { title: 'Talk to a designer', text: '+91 98430 12345 · Mon–Sat, 10 am – 7 pm', button: 'Start a chat' } }
+];
+const CATS = [['all', 'All'], ['hero', 'Hero'], ['text', 'Text'], ['image', 'Image'], ['gallery', 'Gallery'], ['cta', 'Call to action']];
+const GAL = [
+  { tone: '#CCD0C6', cap: 'Kitchen, Peelamedu', r: '4 / 5' }, { tone: '#D8CDBF', cap: 'Bedroom, Race Course', r: '4 / 3' },
+  { tone: '#C3CABF', cap: 'Balcony, Ooty', r: '1 / 1' }, { tone: '#D2C8BC', cap: 'Study, Vadavalli', r: '4 / 3' },
+  { tone: '#DDD3C3', cap: 'Pooja room, Saravanampatti', r: '3 / 4' }, { tone: '#C7CBCB', cap: 'Bathroom, Kovaipudur', r: '4 / 3' }
+];
+const SWATCHES = [['#1F5C4A', 'Forest'], ['#8A5A35', 'Teak'], ['#B4532A', 'Terracotta'], ['#33449A', 'Indigo'], ['#6B3557', 'Plum'], ['#222222', 'Ink']];
+const BGS = {
+  warm: { label: 'Warm white', bg: '#FBFAF7', fg: '#1C1A17', muted: '#5C574F', line: '#E6E1D8', soft: '#F2EEE7' },
+  white: { label: 'Pure white', bg: '#FFFFFF', fg: '#18181B', muted: '#55555E', line: '#E7E7EA', soft: '#F5F5F6' },
+  stone: { label: 'Stone', bg: '#EFEBE4', fg: '#22201C', muted: '#56514A', line: '#DAD3C8', soft: '#E6E0D6' },
+  ink: { label: 'Ink (dark)', bg: '#161514', fg: '#F3F0EA', muted: '#B3ADA3', line: '#2E2C29', soft: '#211F1D' }
+};
+const HEADS = {
+  manrope: { name: 'Manrope', note: 'Modern and friendly', stack: 'Manrope, Inter, system-ui, sans-serif' },
+  fraunces: { name: 'Fraunces', note: 'Soft serif, warm', stack: '"Fraunces", Georgia, serif' },
+  playfair: { name: 'Playfair Display', note: 'Classic, high contrast', stack: '"Playfair Display", Georgia, serif' },
+  space: { name: 'Space Grotesk', note: 'Geometric and crisp', stack: '"Space Grotesk", Inter, sans-serif' },
+  dmsans: { name: 'DM Sans', note: 'Plain and neutral', stack: '"DM Sans", Inter, sans-serif' }
+};
+const BODIES = { inter: ['Inter', 'Inter, system-ui, sans-serif'], dmsans: ['DM Sans', '"DM Sans", Inter, sans-serif'], lora: ['Lora', 'Lora, Georgia, serif'] };
+const DEFAULTS = { brand: '#1F5C4A', bg: 'warm', head: 'manrope', body: 'inter', size: 'm', pad: 72, radius: 'soft', btn: 'solid', logo: 'both', logoSize: 28, logoUp: false };
+const START = [
+  { id: 'p1', v: 'hero-split' }, { id: 'p2', v: 'text-single', d: { title: 'A small studio, on purpose', text: 'Teakline is four designers and one very patient site supervisor. We take on eight homes a year, so every project gets our full attention and you always speak to the person drawing your plans.' } },
+  { id: 'p3', v: 'gallery-grid' }, { id: 'p4', v: 'cta-banner' }
+];
+let SEQ = 10;
+function clone(x) { return JSON.parse(JSON.stringify(x)); }
+function lum(hex) {
+  const h = String(hex).replace('#', '');
+  const c = [0, 2, 4].map((i) => parseInt(h.substr(i, 2), 16) / 255).map((x) => (x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4)));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+function ratio(a, b) { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
+function validHex(h) { return /^#[0-9a-fA-F]{6}$/.test(h); }
+function vById(id) { return V.find((x) => x.id === id) || null; }
+
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    this.state = Object.assign(clone(DEFAULTS), {
+      hexDraft: null, blocks: clone(START), insertAt: 2, hover: undefined, picked: undefined, cat: 'all', q: '', posMenu: false,
+      tab: undefined, device: 'desktop', dirty: false, savedAt: null, toast: null, dark: undefined, w: 0, collapsed: false, newId: null
+    });
+    this.setRoot = (el) => { this.root = el; };
+    this.setScroller = (el) => { this.scroller = el; };
+    this.measure = () => {
+      const el = this.root;
+      const w = Math.round(el ? el.getBoundingClientRect().width : (window.innerWidth || 0));
+      if (w && w !== this.state.w) this.setState({ w });
+    };
+  }
+  componentDidMount() {
+    this.measure();
+    try {
+      if (window.ResizeObserver && this.root) { this.ro = new ResizeObserver(this.measure); this.ro.observe(this.root); }
+      else { window.addEventListener('resize', this.measure); }
+    } catch (e) {}
+    this.applyVars();
+    this.tm = setTimeout(() => { if (this._hover) this.reveal('[data-ghost="true"]', false); }, 120);
+  }
+  componentDidUpdate() { this.applyVars(); }
+  componentWillUnmount() {
+    if (this.ro) this.ro.disconnect();
+    window.removeEventListener('resize', this.measure);
+    [this.tt, this.tm, this.th, this.tn].forEach((t) => clearTimeout(t));
+  }
+  vars() {
+    const s = this.state;
+    const bg = BGS[s.bg] || BGS.warm;
+    const fgOnBrand = ratio(s.brand, '#FFFFFF') >= 4.5 ? '#FFFFFF' : '#1C1A17';
+    return {
+      '--s-brand': s.brand, '--s-brand-fg': fgOnBrand, '--s-bg': bg.bg, '--s-fg': bg.fg, '--s-muted': bg.muted, '--s-line': bg.line, '--s-soft': bg.soft,
+      '--s-head': HEADS[s.head].stack, '--s-body': BODIES[s.body][1], '--s-pad': s.pad + 'px',
+      '--s-r': ({ square: 0, soft: 10, round: 20 })[s.radius] + 'px', '--s-base': ({ s: 15, m: 16, l: 17 })[s.size] + 'px', '--s-mark': s.logoSize + 'px'
+    };
+  }
+  applyVars() {
+    let el = this.root;
+    if (!el) { try { el = document.querySelector('.ss[data-ds="1"]'); } catch (e) {} }
+    if (!el || !el.style) return;
+    const v = this.vars();
+    Object.keys(v).forEach((k) => { try { el.style.setProperty(k, v[k]); } catch (e) {} });
+  }
+  reveal(selector, smooth) {
+    const sc = this.scroller, r = this.root;
+    if (!sc || !r) return;
+    const el = r.querySelector(selector);
+    if (!el) return;
+    const scale = r.offsetWidth ? r.getBoundingClientRect().width / r.offsetWidth : 1;
+    const er = el.getBoundingClientRect(), sr = sc.getBoundingClientRect();
+    const top = (er.top - sr.top) / (scale || 1), bottom = (er.bottom - sr.top) / (scale || 1);
+    const h = sc.clientHeight - (this._mobile ? this._sheetH : 0);
+    let delta = 0;
+    if (top < 16) delta = top - 16;
+    else if (bottom > h - 16) delta = Math.min(bottom - (h - 16), top - 16);
+    if (!delta) return;
+    try { sc.scrollTo({ top: sc.scrollTop + delta, behavior: smooth ? 'smooth' : 'auto' }); } catch (e) { sc.scrollTop += delta; }
+  }
+  flash(toast) { clearTimeout(this.tt); this.setState({ toast }); this.tt = setTimeout(() => this.setState({ toast: null }), 4000); }
+  set(ch) { this.setState(Object.assign({ dirty: true }, ch)); }
+  insert(vid) {
+    const v = vById(vid);
+    if (!v) return;
+    const s = this.state;
+    SEQ += 1;
+    const b = { id: 'n' + SEQ, v: vid };
+    const at = Math.min(s.insertAt, s.blocks.length);
+    const a = s.blocks.slice(); a.splice(at, 0, b);
+    const before = s.blocks;
+    this.setState({ blocks: a, insertAt: at + 1, hover: null, picked: null, newId: b.id, dirty: true });
+    this.flash({ text: v.name + ' · ' + v.variant + ' added', undo: { blocks: before, insertAt: at } });
+    clearTimeout(this.tn); this.tn = setTimeout(() => { this.setState({ newId: null }); }, 1700);
+    clearTimeout(this.th); this.th = setTimeout(() => this.reveal('[data-bid="' + b.id + '"]', true), 40);
+  }
+  hoverCard(id) {
+    if (this._hover === id) return;
+    this.setState({ hover: id });
+    clearTimeout(this.th); this.th = setTimeout(() => this.reveal('[data-ghost="true"]', true), 140);
+  }
+  blockVm(b, c, extra) {
+    const v = vById(b.v);
+    const d = Object.assign({}, v.d, b.d || {});
+    return Object.assign({
+      isBlock: true, isMarker: false, isIns: false, id: b.id, label: v.name + ' · ' + v.variant,
+      hero: b.v === 'hero-split' || b.v === 'hero-centered', layout: b.v === 'hero-centered' ? 'centered' : 'split',
+      ratio: b.v === 'hero-centered' ? '16 / 7' : (c.siteMobile ? '4 / 3' : '4 / 5'),
+      hFull: b.v === 'hero-full', tSingle: b.v === 'text-single', tTwo: b.v === 'text-two',
+      iContained: b.v === 'image-contained', iFull: b.v === 'image-full',
+      gGrid: b.v === 'gallery-grid', gMasonry: b.v === 'gallery-masonry', gCarousel: b.v === 'gallery-carousel',
+      cBanner: b.v === 'cta-banner', cWa: b.v === 'cta-wa',
+      eyebrow: d.eyebrow || '', title: d.title || '', text: d.text || '', button: d.button || '', tone: d.tone || '#D3C7BA', caption: d.caption || '',
+      cols: c.siteMobile ? 2 : 3, gal: GAL, ghost: false, isNew: this.state.newId === b.id
+    }, extra || {});
+  }
+  renderVals() {
+    const s = this.state;
+    const p = this.props || {};
+    const dark = s.dark === undefined ? !!p.dark : s.dark;
+    const lay = p.layout && p.layout !== 'auto' ? p.layout : (s.w && s.w < 760 ? 'mobile' : 'desktop');
+    const mobile = lay === 'mobile';
+    const tab = s.tab === undefined ? (p.tab || 'design') : s.tab;
+    const hover = s.hover === undefined ? (p.preview || null) : s.hover;
+    const picked = s.picked === undefined ? (mobile ? (p.preview || null) : null) : s.picked;
+    const ghostId = tab === 'blocks' ? (hover || picked) : null;
+    this._mobile = mobile; this._hover = ghostId;
+    const siteMobile = mobile || s.device === 'mobile';
+    const c = { siteMobile };
+    const n = s.blocks.length;
+    const at = Math.min(s.insertAt, n);
+    const rows = [];
+    const ins = (i) => ({ isIns: true, isBlock: false, isMarker: false, pick: () => this.setState({ insertAt: i, tab: 'blocks', posMenu: false, collapsed: false }) });
+    s.blocks.forEach((b, i) => {
+      if (tab === 'blocks' && i === at) rows.push(ghostId ? this.blockVm({ id: 'ghost', v: ghostId }, c, { ghost: true }) : { isMarker: true, isBlock: false, isIns: false });
+      else if (!mobile && i > 0) rows.push(ins(i));
+      rows.push(this.blockVm(b, c));
+    });
+    if (tab === 'blocks' && at >= n) rows.push(ghostId ? this.blockVm({ id: 'ghost', v: ghostId }, c, { ghost: true }) : { isMarker: true, isBlock: false, isIns: false });
+    const q = s.q.trim().toLowerCase();
+    const inQ = (v) => !q || (v.name + ' ' + v.variant + ' ' + v.cat).toLowerCase().indexOf(q) >= 0;
+    const list = V.filter((v) => inQ(v) && (s.cat === 'all' || v.cat === s.cat));
+    const cards = list.map((v) => ({
+      name: v.name, variant: v.variant, aria: 'Insert ' + v.name + ', ' + v.variant, active: ghostId === v.id,
+      hSplit: v.id === 'hero-split', hCentered: v.id === 'hero-centered', hFull: v.id === 'hero-full',
+      tSingle: v.id === 'text-single', tTwo: v.id === 'text-two', iContained: v.id === 'image-contained', iFull: v.id === 'image-full',
+      gGrid: v.id === 'gallery-grid', gMasonry: v.id === 'gallery-masonry', gCarousel: v.id === 'gallery-carousel',
+      cBanner: v.id === 'cta-banner', cWa: v.id === 'cta-wa',
+      hover: () => { if (!mobile) this.hoverCard(v.id); },
+      unhover: () => { if (!mobile && this.state.hover === v.id) this.setState({ hover: null }); },
+      click: () => {
+        if (mobile) { this.setState({ picked: v.id, hover: null }); clearTimeout(this.th); this.th = setTimeout(() => this.reveal('[data-ghost="true"]', true), 60); }
+        else this.insert(v.id);
+      }
+    }));
+    const prevBlock = at > 0 ? s.blocks[at - 1] : null;
+    const prevV = prevBlock ? vById(prevBlock.v) : null;
+    const posLabel = prevV ? 'Goes after ' + prevV.name.toLowerCase() + ' (' + prevV.variant.toLowerCase() + ')' : 'Goes at the top of the page';
+    const bg = BGS[s.bg];
+    const r1 = ratio(s.brand, '#FFFFFF');
+    const pickedV = picked ? vById(picked) : null;
+    const sheetH = s.collapsed ? 76 : Math.round(((p.height && String(p.height).indexOf('px') > 0) ? parseInt(p.height, 10) : (s.w ? s.w * 2.16 : 844)) * 0.56);
+    this._sheetH = sheetH;
+    const toast = s.toast;
+    const opt = (key, list2) => list2.map((o) => ({ label: o[1], on: s[key] === o[0], pick: () => this.set({ [key]: o[0] }) }));
+    return {
+      theme: dark ? 'dark' : 'light', dark, light: !dark, lay, mobile, desktop: !mobile, yes: true,
+      height: p.height || '100vh', accent: p.accent || '#2563EB',
+      setRoot: this.setRoot, setScroller: this.setScroller,
+      onKey: (e) => { if (e.key === 'Escape') this.setState({ posMenu: false, hover: null, picked: null }); },
+      headerStyle: mobile
+        ? 'display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 8px; flex: none; background: var(--bg); border-bottom: 1px solid var(--border)'
+        : 'display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 12px; flex: none; background: var(--bg); border-bottom: 1px solid var(--border)',
+      mobileTitle: tab === 'blocks' ? 'Insert block' : 'Site design',
+      saveHint: s.dirty ? 'Unsaved changes' : (s.savedAt ? 'Saved at ' + s.savedAt + ' · goes live on publish' : 'Theme: Teakline, edited 3 Nov'),
+      notDirty: !s.dirty,
+      save: () => { let t = 'now'; try { t = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); } catch (e) {} this.setState({ dirty: false, savedAt: t }); this.flash({ text: 'Design saved. It goes live with your next publish.' }); },
+      reset: () => { const before = {}; Object.keys(DEFAULTS).forEach((k) => { before[k] = s[k]; }); this.setState(Object.assign(clone(DEFAULTS), { dirty: true, hexDraft: null })); this.flash({ text: 'Reset to the template defaults', undo: { design: before } }); },
+      toggleTheme: () => this.setState({ dark: !dark }),
+      devDesktop: s.device === 'desktop', devMobile: s.device === 'mobile',
+      setDevDesktop: () => this.setState({ device: 'desktop' }), setDevMobile: () => this.setState({ device: 'mobile' }),
+      panelClass: mobile ? 'sheet' : '',
+      panelStyle: mobile
+        ? 'height: ' + sheetH + 'px'
+        : 'display: flex; flex-direction: column; width: 360px; flex: none; min-height: 0; background: var(--bg); border-right: 1px solid var(--border)',
+      tabsWrapStyle: mobile ? 'padding: 0 16px 12px; flex: none; border-bottom: 1px solid var(--border)' : 'padding: 12px 16px; flex: none; border-bottom: 1px solid var(--border)',
+      toggleSheet: () => this.setState({ collapsed: !s.collapsed }), grabLabel: s.collapsed ? 'Expand panel' : 'Collapse panel',
+      isDesign: tab === 'design', isBlocks: tab === 'blocks',
+      tabDesign: () => this.setState({ tab: 'design', hover: null, picked: null, collapsed: false }),
+      tabBlocks: () => this.setState({ tab: 'blocks', collapsed: false }),
+      showDesign: tab === 'design' && !(mobile && s.collapsed), showBlocks: tab === 'blocks' && !(mobile && s.collapsed),
+      showMark: s.logo !== 'name', showName: s.logo !== 'mark', logoUp: s.logoUp, logoNotUp: !s.logoUp, markText: s.logoUp ? 'Tl' : 'T',
+      uploadLabel: s.logoUp ? 'Replace logo' : 'Upload logo',
+      uploadLogo: () => { this.set({ logoUp: true }); this.flash({ text: 'teakline-logo.svg uploaded to Media' }); },
+      removeLogo: () => this.set({ logoUp: false }),
+      logoOpts: opt('logo', [['both', 'Mark and name'], ['name', 'Name only'], ['mark', 'Mark only']]),
+      logoSize: s.logoSize, onLogoSize: (e) => this.set({ logoSize: parseInt(e.target.value, 10) || 28 }),
+      brand: s.brand.toLowerCase(), brandName: (SWATCHES.find((x) => x[0].toLowerCase() === s.brand.toLowerCase()) || [0, 'Custom'])[1],
+      hexDraft: s.hexDraft !== null ? s.hexDraft : s.brand.toUpperCase(),
+      onHex: (e) => { let v = e.target.value.trim(); if (v && v[0] !== '#') v = '#' + v; if (validHex(v)) this.set({ brand: v.toUpperCase(), hexDraft: null }); else this.setState({ hexDraft: e.target.value }); },
+      onBrandPick: (e) => this.set({ brand: String(e.target.value).toUpperCase(), hexDraft: null }),
+      swatches: SWATCHES.map((x) => ({ hex: x[0], name: x[1], on: x[0].toLowerCase() === s.brand.toLowerCase(), pick: () => this.set({ brand: x[0], hexDraft: null }) })),
+      contrastText: r1 >= 4.5 ? 'White text ' + r1.toFixed(1) + ':1 · passes' : 'Too light for white text, buttons use dark text',
+      contrastColor: r1 >= 4.5 ? 'var(--ok)' : 'var(--warn)',
+      bgOpts: Object.keys(BGS).map((k) => ({ label: BGS[k].label, bg: BGS[k].bg, fg: BGS[k].fg, on: s.bg === k, pick: () => this.set({ bg: k }) })),
+      headFonts: Object.keys(HEADS).map((k) => ({ name: HEADS[k].name, note: HEADS[k].note, stack: HEADS[k].stack, on: s.head === k, pick: () => this.set({ head: k }) })),
+      bodyFonts: Object.keys(BODIES).map((k) => ({ label: BODIES[k][0], stack: BODIES[k][1], on: s.body === k, pick: () => this.set({ body: k }) })),
+      sizeOpts: opt('size', [['s', 'Small'], ['m', 'Medium'], ['l', 'Large']]), basePx: ({ s: 15, m: 16, l: 17 })[s.size],
+      pad: s.pad, onPad: (e) => this.set({ pad: parseInt(e.target.value, 10) || 72 }),
+      padOpts: [[48, 'Compact'], [72, 'Comfortable'], [104, 'Spacious']].map((o) => ({ label: o[1], on: s.pad === o[0], pick: () => this.set({ pad: o[0] }) })),
+      radiusOpts: [['square', 'Square', '0'], ['soft', 'Soft', '4px'], ['round', 'Round', '8px']].map((o) => ({ label: o[1], r: o[2], on: s.radius === o[0], pick: () => this.set({ radius: o[0] }) })),
+      btnOpts: opt('btn', [['solid', 'Solid'], ['outline', 'Outline'], ['pill', 'Pill']]),
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }),
+      cats: CATS.map((cc) => ({ label: cc[1], n: V.filter((v) => (cc[0] === 'all' || v.cat === cc[0]) && inQ(v)).length, on: s.cat === cc[0], pick: () => this.setState({ cat: cc[0] }) })),
+      cards, noCards: cards.length === 0,
+      posMenu: s.posMenu, togglePos: () => this.setState({ posMenu: !s.posMenu }), posLabel,
+      posOpts: [{ label: 'At the top of the page', on: at === 0, pick: () => this.setState({ insertAt: 0, posMenu: false }) }]
+        .concat(s.blocks.map((b, i) => { const vv = vById(b.v); return { label: 'After ' + vv.name.toLowerCase() + ' · ' + vv.variant.toLowerCase(), on: at === i + 1, pick: () => this.setState({ insertAt: i + 1, posMenu: false }) }; })),
+      showInsertBar: mobile && tab === 'blocks' && !!pickedV && !s.collapsed,
+      pickedLabel: pickedV ? pickedV.name.toLowerCase() + ' · ' + pickedV.variant.toLowerCase() : '',
+      insertPicked: () => { if (picked) this.insert(picked); },
+      canvasStyle: mobile
+        ? 'position: relative; flex: 1; min-width: 0; background: var(--s-bg); padding-bottom: ' + sheetH + 'px'
+        : 'position: relative; flex: 1; min-width: 0; background: var(--canvas); padding: 24px 32px 48px',
+      frameStyle: mobile ? '' : (s.device === 'mobile'
+        ? 'width: 390px; margin: 0 auto; border: 1px solid var(--border); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--bg)'
+        : 'max-width: 1120px; margin: 0 auto; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); background: var(--bg)'),
+      showUrl: !mobile && s.device === 'desktop',
+      siteDevice: siteMobile ? 'mobile' : 'desktop', siteMobile, siteDesktop: !siteMobile, btnStyle: s.btn, bgKey: s.bg,
+      rows,
+      hasToast: !!toast, toastText: toast ? toast.text : '', toastUndo: !!(toast && toast.undo),
+      toastStyle: mobile ? 'bottom: ' + (sheetH + 12) + 'px' : '',
+      undo: () => {
+        const t = this.state.toast;
+        if (!t || !t.undo) return;
+        clearTimeout(this.tt);
+        if (t.undo.design) this.setState(Object.assign({}, t.undo.design, { toast: null, hexDraft: null }));
+        else this.setState({ blocks: t.undo.blocks, insertAt: t.undo.insertAt, toast: null });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

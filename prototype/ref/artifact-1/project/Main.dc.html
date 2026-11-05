@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page editor</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap">
+<style>
+body{margin:0}
+.ss{--accent:#2563EB;--accent-hover:color-mix(in srgb,var(--accent) 85%,#000);--accent-soft:color-mix(in srgb,var(--accent) 8%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 24%,transparent);--accent-text:color-mix(in srgb,var(--accent) 86%,#000);--bg:#FFFFFF;--bg-subtle:#F9F9FA;--bg-muted:#F3F3F5;--bg-emphasis:#EBEBEE;--bg-elevated:#FFFFFF;--canvas:#F1F1F3;--border:#E6E6E9;--border-strong:#D5D5DA;--fg:#18181B;--fg-muted:#52525B;--fg-subtle:#6B6B74;--danger:#C8322B;--ok:#15803D;--ok-soft:#EBF8F0;--ok-dot:#16A34A;--warn:#9A4D00;--warn-soft:#FFF5E1;--warn-dot:#E8930C;--scrim:rgba(16,16,20,.28);--shadow-xs:0 1px 1px rgba(16,16,20,.04);--shadow-sm:0 1px 2px rgba(16,16,20,.07);--shadow-md:0 4px 12px -2px rgba(16,16,20,.08),0 1px 3px rgba(16,16,20,.06);--shadow-lg:0 16px 40px -12px rgba(16,16,20,.24),0 2px 6px rgba(16,16,20,.06);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13px;line-height:20px;color:var(--fg);background:var(--bg-subtle);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01";outline:none}
+.ss[data-theme="dark"]{--accent-text:color-mix(in srgb,var(--accent) 55%,#fff);--accent-soft:color-mix(in srgb,var(--accent) 16%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 38%,transparent);--bg:#141416;--bg-subtle:#0F0F11;--bg-muted:#1C1C1F;--bg-emphasis:#26262A;--bg-elevated:#1A1A1D;--canvas:#0A0A0B;--border:#26262B;--border-strong:#36363D;--fg:#EDEDEF;--fg-muted:#A8A8B1;--fg-subtle:#8C8C96;--danger:#F87171;--ok:#4ADE80;--ok-soft:rgba(74,222,128,.1);--ok-dot:#22C55E;--warn:#FBBF24;--warn-soft:rgba(251,191,36,.1);--warn-dot:#F59E0B;--scrim:rgba(0,0,0,.5);--shadow-xs:none;--shadow-sm:0 1px 2px rgba(0,0,0,.5);--shadow-md:0 8px 20px -6px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03);--shadow-lg:0 24px 56px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.05);color-scheme:dark}
+.ss *,.ss *::before,.ss *::after{box-sizing:border-box}
+.ss button,.ss input,.ss textarea{font:inherit;color:inherit;letter-spacing:inherit;margin:0}
+.ss a{color:inherit;text-decoration:none}
+.ss p,.ss h1,.ss h2,.ss h3{margin:0}
+.ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+.ic-sm{width:14px;height:14px}
+.ic-dot{stroke-width:2.6}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:13px;font-weight:500;line-height:1;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap;transition:background .12s,border-color .12s,color .12s}
+.btn:hover{background:var(--bg-muted);border-color:var(--border-strong)}
+.btn:focus-visible,.ibtn:focus-visible,.seg button:focus-visible,.item:focus-visible,.chip:focus-visible,.switch:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.btn[disabled]{opacity:.55;cursor:default}
+.btn-primary{background:var(--accent);border-color:transparent;color:#fff;box-shadow:0 1px 2px rgba(16,16,20,.14),inset 0 1px 0 rgba(255,255,255,.12)}
+.btn-primary:hover{background:var(--accent-hover);border-color:transparent}
+.btn-ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--fg-muted)}
+.btn-ghost:hover{background:var(--bg-muted);color:var(--fg);border-color:transparent}
+.btn-sm{height:28px;padding:0 8px;font-size:12px;gap:4px}
+.ibtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0;border-radius:6px;border:1px solid transparent;background:transparent;color:var(--fg-muted);cursor:pointer;flex:none;transition:background .12s,color .12s}
+.ibtn:hover{background:var(--bg-muted);color:var(--fg)}
+.ibtn[disabled]{opacity:.35;cursor:default;background:transparent}
+.ibtn[aria-pressed="true"]{background:var(--bg-emphasis);color:var(--fg)}
+.ibtn-sm{width:28px;height:28px}
+.ibtn-danger:hover{color:var(--danger);background:color-mix(in srgb,var(--danger) 10%,transparent)}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.label{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:20px;font-size:12px;line-height:16px;font-weight:500;color:var(--fg-muted)}
+.hint{font-size:12px;line-height:16px;color:var(--fg-subtle)}
+.input,.textarea{display:block;width:100%;min-width:0;height:32px;padding:0 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg);font-size:13px;box-shadow:var(--shadow-xs);transition:border-color .12s,box-shadow .12s}
+.textarea{height:auto;padding:6px 10px;line-height:20px;resize:vertical}
+.input::placeholder,.textarea::placeholder{color:var(--fg-subtle)}
+.input:hover,.textarea:hover{border-color:var(--border-strong)}
+.input:focus,.textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:4px;border:1px solid var(--border);background:var(--bg-subtle);color:var(--fg-subtle);font-size:11px;font-weight:500;line-height:1;font-family:inherit}
+.badge{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;font-size:12px;font-weight:500;line-height:1;border:1px solid var(--border);background:var(--bg);color:var(--fg-muted);white-space:nowrap}
+.badge-ok{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.badge-warn{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.badge-info{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.dot{width:6px;height:6px;border-radius:999px;background:currentColor;flex:none}
+.seg{display:flex;align-items:center;padding:2px;gap:2px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border)}
+.seg button{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:26px;padding:0 10px;border:0;border-radius:6px;background:transparent;color:var(--fg-muted);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;flex:1}
+.seg button:hover{color:var(--fg)}
+.seg button[aria-pressed="true"]{background:var(--bg);color:var(--fg);box-shadow:var(--shadow-sm)}
+.ss[data-theme="dark"] .seg button[aria-pressed="true"]{background:var(--bg-emphasis)}
+.menu{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-lg);padding:4px;animation:ssPop .14s ease-out}
+.item{display:flex;align-items:center;gap:10px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:6px;background:transparent;color:var(--fg);text-align:left;font-size:13px;line-height:20px;cursor:pointer}
+.item:hover,.item[data-active="true"]{background:var(--bg-muted)}
+.item .ic{color:var(--fg-subtle)}
+.sep{height:1px;background:var(--border);margin:4px 0;flex:none}
+.scroll{overflow:auto;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+.trunc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.switch{position:relative;width:32px;height:20px;padding:0;border-radius:999px;border:0;background:var(--border-strong);cursor:pointer;flex:none;transition:background .15s}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:999px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+.switch[aria-checked="true"]{background:var(--accent)}
+.switch[aria-checked="true"]::after{transform:translateX(12px)}
+.meter{height:4px;border-radius:999px;background:var(--bg-emphasis);overflow:hidden}
+.meter span{display:block;height:100%;background:var(--accent);border-radius:inherit}
+.toast{position:absolute;left:50%;bottom:24px;z-index:80;display:flex;align-items:center;gap:12px;height:40px;padding:0 6px 0 14px;border-radius:10px;background:#18181B;color:#FAFAFA;box-shadow:var(--shadow-lg);font-size:13px;white-space:nowrap;animation:ssToast .2s ease-out;transform:translateX(-50%)}
+.ss[data-theme="dark"] .toast{background:#26262B;border:1px solid var(--border-strong)}
+.toast button{height:28px;padding:0 10px;border-radius:6px;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:500;cursor:pointer}
+.toast button:hover{background:rgba(255,255,255,.2)}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:50;display:flex;flex-direction:column;background:var(--bg-elevated);border-top:1px solid var(--border);border-radius:16px 16px 0 0;box-shadow:0 -16px 40px -16px rgba(16,16,20,.3);animation:ssUp .22s cubic-bezier(.2,.8,.2,1)}
+.grab{width:36px;height:4px;border-radius:999px;background:var(--border-strong);margin:8px auto 0;flex:none}
+.scrim{position:absolute;inset:0;z-index:45;width:100%;height:100%;padding:0;border:0;background:var(--scrim);cursor:default;animation:ssFade .15s}
+.ss[data-layout="mobile"] .btn{height:40px;font-size:14px;padding:0 14px}
+.ss[data-layout="mobile"] .ibtn{width:40px;height:40px}
+.ss[data-layout="mobile"] .input{height:40px;font-size:16px}
+.ss[data-layout="mobile"] .textarea{font-size:16px;line-height:24px}
+.ss[data-layout="mobile"] .seg button{height:34px;font-size:13px}
+@keyframes ssPop{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes ssUp{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@keyframes ssFade{from{opacity:0}to{opacity:1}}
+@keyframes ssToast{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes ssSpin{to{transform:rotate(360deg)}}
+.spin{animation:ssSpin .8s linear infinite}
+.lrow{position:relative;display:flex;align-items:center;border-radius:6px;border-top:2px solid transparent}
+.lrow:hover{background:var(--bg-muted)}
+.lrow[data-active="true"]{background:var(--accent-soft)}
+.lrow[data-over="true"]{border-top-color:var(--accent)}
+.lrow-main{display:flex;align-items:center;gap:8px;flex:1;min-width:0;height:44px;padding:0 8px 0 4px;border:0;background:transparent;border-radius:6px;text-align:left;cursor:pointer;color:var(--fg)}
+.lrow-main:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.lrow-act{display:flex;padding-right:4px;opacity:0;transition:opacity .12s}
+.lrow:hover .lrow-act,.lrow:focus-within .lrow-act,.lrow[data-active="true"] .lrow-act{opacity:1}
+.lrow-static{display:flex;align-items:center;gap:8px;height:32px;padding:0 8px;color:var(--fg-subtle);font-size:12px}
+.grip{color:var(--fg-subtle);cursor:grab}
+.licon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:var(--bg-muted);border:1px solid var(--border);color:var(--fg-muted);flex:none}
+.lrow[data-active="true"] .licon{color:var(--accent-text);background:var(--bg);border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
+.blk{position:relative;outline:1px solid transparent;outline-offset:-1px;transition:outline-color .12s}
+.blk[data-edit="true"]:hover{outline-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+.blk[data-selected="true"]{outline:2px solid var(--accent);outline-offset:-2px}
+.blk-hit{position:absolute;inset:0;z-index:2;width:100%;height:100%;padding:0;margin:0;border:0;background:transparent;cursor:pointer}
+.blk-hit:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.blk-tag{position:absolute;top:0;left:0;z-index:3;display:none;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:0 0 6px 0;background:var(--accent);color:#fff;font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:0;pointer-events:none}
+.blk[data-edit="true"]:hover .blk-tag,.blk[data-selected="true"] .blk-tag{display:inline-flex}
+.blk-bar{position:absolute;top:8px;right:8px;z-index:4;display:flex;align-items:center;gap:2px;padding:2px;border-radius:8px;background:var(--bg-elevated);border:1px solid var(--border);box-shadow:var(--shadow-md);color:var(--fg);font-family:Inter,system-ui,sans-serif;font-size:13px;line-height:20px;letter-spacing:0}
+.ins{position:relative;height:0;z-index:6}
+.ins-hit{position:absolute;left:0;right:0;top:-12px;height:24px;display:flex;align-items:center;justify-content:center}
+.ins-hit::before{content:"";position:absolute;left:24px;right:24px;top:11px;height:2px;border-radius:2px;background:var(--accent);opacity:0;transition:opacity .12s}
+.ins-btn{position:relative;display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 10px 0 6px;border-radius:999px;border:0;background:var(--accent);color:#fff;font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:0;cursor:pointer;opacity:0;transform:scale(.92);transition:opacity .12s,transform .12s;box-shadow:var(--shadow-md)}
+.ins-hit:hover::before,.ins[data-open="true"] .ins-hit::before{opacity:1}
+.ins-hit:hover .ins-btn,.ins-btn:focus-visible,.ins[data-open="true"] .ins-btn{opacity:1;transform:none}
+.ins-pop{position:absolute;top:16px;left:50%;width:340px;margin-left:-170px;z-index:40;font-family:Inter,system-ui,sans-serif;font-size:13px;line-height:20px;letter-spacing:0;color:var(--fg)}
+.edit{display:block;width:100%;min-width:0;margin:0;padding:0;border:0;background:transparent;font:inherit;color:inherit;letter-spacing:inherit;line-height:inherit;text-align:inherit;resize:none;overflow:hidden;field-sizing:content;border-radius:4px;outline:1px dashed color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:4px}
+.edit:hover{outline-color:color-mix(in srgb,var(--accent) 75%,transparent)}
+.edit:focus{outline:2px solid var(--accent);outline-offset:4px;background:color-mix(in srgb,var(--accent) 5%,transparent)}
+.edit-inline{display:inline-block;width:auto;min-width:6ch;outline-color:rgba(255,255,255,.5)}
+.site{--s-brand:#1F5C4A;--s-bg:#FBFAF7;--s-fg:#1C1A17;--s-muted:#5C574F;--s-line:#E6E1D8;--s-soft:#F2EEE7;--s-head:Manrope,Inter,system-ui,sans-serif;--s-body:Inter,system-ui,sans-serif;--s-pad:72px;--s-r:10px;position:relative;background:var(--s-bg);color:var(--s-fg);font-family:var(--s-body);font-size:16px;line-height:1.6;letter-spacing:0;font-feature-settings:normal}
+.s-wrap{max-width:1080px;margin:0 auto;padding:var(--s-pad) 48px}
+.site[data-device="mobile"] .s-wrap{padding:calc(var(--s-pad) * .6) 20px}
+.s-eyebrow{font-family:var(--s-body);font-size:13px;line-height:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--s-brand)}
+.s-h1{font-family:var(--s-head);font-size:52px;line-height:1.06;font-weight:600;letter-spacing:-.025em;color:var(--s-fg)}
+.site[data-device="mobile"] .s-h1{font-size:34px;line-height:1.12}
+.s-h2{font-family:var(--s-head);font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.02em;color:inherit}
+.site[data-device="mobile"] .s-h2{font-size:26px}
+.s-lead{font-size:18px;line-height:1.6;color:var(--s-muted)}
+.site[data-device="mobile"] .s-lead{font-size:16px}
+.s-body{font-size:17px;line-height:1.7;color:var(--s-muted)}
+.site[data-device="mobile"] .s-body{font-size:16px}
+.s-small{font-size:14px;line-height:1.6;color:var(--s-muted)}
+.s-cap{font-size:13px;line-height:1.5;color:var(--s-muted);margin-top:10px}
+.s-btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:var(--s-r);background:var(--s-brand);color:#fff;font-family:var(--s-body);font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.s-btn-sm{height:38px;padding:0 16px;font-size:14px}
+.s-img{position:relative;overflow:hidden;border-radius:var(--s-r);background:#D8D0C4}
+.s-img-tag{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;background:rgba(255,255,255,.85);color:#3F3B35;font:500 11px/1 Inter,system-ui,sans-serif;letter-spacing:0}
+.s-nav{display:flex;align-items:center;gap:32px;height:72px;padding:0 48px;border-bottom:1px solid var(--s-line)}
+.site[data-device="mobile"] .s-nav{height:60px;padding:0 20px}
+.s-logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--s-head);font-weight:700;font-size:18px;letter-spacing:-.02em;color:var(--s-fg);margin-right:auto}
+.s-mark{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:7px;background:var(--s-brand);color:#fff;font-size:14px;font-weight:700}
+.s-links{display:flex;gap:28px;font-size:15px;color:var(--s-muted)}
+.s-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center}
+.s-hero[data-layout="centered"]{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+.site[data-device="mobile"] .s-hero{grid-template-columns:minmax(0,1fr);gap:28px}
+.s-stack{display:flex;flex-direction:column;gap:20px;align-items:flex-start;min-width:0;width:100%}
+.s-hero[data-layout="centered"] .s-stack{align-items:center;max-width:760px}
+.s-gal{display:grid;gap:16px}
+.site[data-device="mobile"] .s-gal{gap:10px}
+.s-cta{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:48px;border-radius:calc(var(--s-r) * 1.6);background:var(--s-fg);color:#F6F3EE}
+.s-cta[data-tone="light"]{background:var(--s-soft);color:var(--s-fg)}
+.s-cta[data-tone="brand"]{background:var(--s-brand);color:#fff}
+.site[data-device="mobile"] .s-cta{flex-direction:column;align-items:flex-start;padding:28px 24px;gap:20px}
+.s-cta-text{font-size:17px;line-height:1.6;opacity:.85;max-width:520px;margin-top:10px}
+.s-cta .s-btn{background:#fff;color:#1C1A17}
+.s-cta[data-tone="light"] .s-btn{background:var(--s-brand);color:#fff}
+.s-foot{border-top:1px solid var(--s-line);padding:48px;background:var(--s-soft)}
+.s-foot-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.site[data-device="mobile"] .s-foot{padding:32px 20px}
+.site[data-device="mobile"] .s-foot-grid{grid-template-columns:1fr 1fr;gap:24px}
+.s-foot-h{font-size:13px;font-weight:600;margin-bottom:6px;color:var(--s-fg)}
+.ss[data-layout="desktop"] .s-foot{border-radius:0 0 11px 11px}
+.shared{position:relative}
+.shared-tag{position:absolute;top:8px;right:8px;z-index:3;display:none;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:6px;background:var(--bg-elevated);border:1px solid var(--border);box-shadow:var(--shadow-sm);color:var(--fg-muted);font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:0}
+.shared[data-edit="true"]:hover{outline:1px dashed var(--border-strong);outline-offset:-1px}
+.shared[data-edit="true"]:hover .shared-tag{display:inline-flex}
+</style>
+</helmet>
+<div class="ss" data-theme="{{ theme }}" data-layout="{{ lay }}" ref="{{ setRoot }}" tabIndex="-1" onKeyDown="{{ onKey }}" style="position: relative; display: flex; flex-direction: column; width: 100%; height: {{ height }}; min-height: 480px; overflow: hidden; --accent: {{ accent }}">
+
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<header style="display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 12px; flex: none; background: var(--bg); border-bottom: 1px solid var(--border)">
+<div style="display: flex; align-items: center; gap: 2px; flex: 1; min-width: 0">
+<span aria-label="selfsite" role="img" style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin: 0 6px 0 4px; border-radius: 6px; background: var(--fg); color: var(--bg); font-size: 13px; font-weight: 700; line-height: 1">s</span>
+<button class="btn btn-ghost" style="padding: 0 8px; gap: 8px; color: var(--fg)">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; background: #1F5C4A; color: #fff; font-size: 10px; font-weight: 700">T</span>
+Teakline Studio
+<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="M7 10l5 5 5-5"></path></svg>
+</button>
+<span style="color: var(--border-strong)">/</span>
+<button class="btn btn-ghost" style="padding: 0 8px; color: var(--fg)">Home<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="M7 10l5 5 5-5"></path></svg></button>
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<div class="seg" role="group" aria-label="Mode" style="width: 168px">
+<button aria-pressed="{{ editing }}" onClick="{{ setEdit }}">Edit</button>
+<button aria-pressed="{{ preview }}" onClick="{{ setPreview }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg>Preview</button>
+</div>
+<sc-if value="{{ preview }}" hint-placeholder-val="{{ false }}">
+<div class="seg" role="group" aria-label="Preview width">
+<button aria-pressed="{{ devDesktop }}" onClick="{{ setDevDesktop }}" aria-label="Desktop width"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v12H3z M8 20h8 M12 16v4"></path></svg></button>
+<button aria-pressed="{{ devMobile }}" onClick="{{ setDevMobile }}" aria-label="Phone width"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2.5h10v19H7z M11 18h2"></path></svg></button>
+</div>
+</sc-if>
+</div>
+<div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex: 1; min-width: 0">
+<sc-if value="{{ isDraft }}" hint-placeholder-val="{{ true }}">
+<span class="badge"><span class="dot" style="color: var(--warn-dot)"></span>Draft</span>
+<span class="hint trunc">{{ changesText }}</span>
+</sc-if>
+<sc-if value="{{ isPublished }}" hint-placeholder-val="{{ false }}">
+<span class="badge badge-ok"><span class="dot"></span>Published</span>
+<span class="hint trunc">{{ publishedText }}</span>
+</sc-if>
+<button class="ibtn" onClick="{{ toggleTheme }}" aria-label="Switch light or dark theme"><sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 2.5v2 M12 19.5v2 M4.6 4.6l1.4 1.4 M18 18l1.4 1.4 M2.5 12h2 M19.5 12h2 M4.6 19.4L6 18 M18 6l1.4-1.4"></path></svg></sc-if><sc-if value="{{ light }}" hint-placeholder-val="{{ true }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<button class="ibtn" onClick="{{ openLive }}" aria-label="Open live site" title="teakline.selfsite.in"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5 M19 5l-8 8 M17 14v5H5V7h5"></path></svg></button>
+<sc-if value="{{ isDraft }}" hint-placeholder-val="{{ true }}">
+<button class="btn btn-primary" onClick="{{ publish }}">Publish</button>
+</sc-if>
+<sc-if value="{{ publishing }}" hint-placeholder-val="{{ false }}">
+<button class="btn btn-primary" disabled="{{ yes }}" style="opacity: 1"><svg class="ic ic-sm spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>Publishing</button>
+</sc-if>
+<sc-if value="{{ isPublished }}" hint-placeholder-val="{{ false }}">
+<button class="btn" onClick="{{ nothingToPublish }}" style="color: var(--ok)"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Published</button>
+</sc-if>
+</div>
+</header>
+</sc-if>
+
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<header style="display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 8px; flex: none; background: var(--bg); border-bottom: 1px solid var(--border)">
+<sc-if value="{{ editing }}" hint-placeholder-val="{{ true }}">
+<a class="ibtn" href="Collections-mobile.dc.html" aria-label="Back to site"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></a>
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0">
+<span style="font-size: 15px; font-weight: 600; line-height: 20px">Home</span>
+<span class="hint trunc" style="display: flex; align-items: center; gap: 6px"><span class="dot" style="color: {{ statusDot }}"></span>{{ statusShort }}</span>
+</div>
+<button class="ibtn" onClick="{{ toggleTheme }}" aria-label="Switch light or dark theme"><sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 2.5v2 M12 19.5v2 M4.6 4.6l1.4 1.4 M18 18l1.4 1.4 M2.5 12h2 M19.5 12h2 M4.6 19.4L6 18 M18 6l1.4-1.4"></path></svg></sc-if><sc-if value="{{ light }}" hint-placeholder-val="{{ true }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<button class="ibtn" onClick="{{ setPreview }}" aria-label="Preview page"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg></button>
+<sc-if value="{{ isDraft }}" hint-placeholder-val="{{ true }}">
+<button class="btn btn-primary" onClick="{{ publish }}">Publish</button>
+</sc-if>
+<sc-if value="{{ publishing }}" hint-placeholder-val="{{ false }}">
+<button class="btn btn-primary" disabled="{{ yes }}" style="opacity: 1"><svg class="ic ic-sm spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>Publishing</button>
+</sc-if>
+<sc-if value="{{ isPublished }}" hint-placeholder-val="{{ false }}">
+<button class="btn" onClick="{{ nothingToPublish }}" style="color: var(--ok)"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Live</button>
+</sc-if>
+</sc-if>
+<sc-if value="{{ preview }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0; padding-left: 8px">
+<span style="font-size: 15px; font-weight: 600; line-height: 20px">Preview</span>
+<span class="hint">teakline.selfsite.in</span>
+</div>
+<button class="btn" onClick="{{ setEdit }}">Done</button>
+</sc-if>
+</header>
+</sc-if>
+
+<div style="position: relative; display: flex; flex: 1; min-height: 0">
+
+<sc-if value="{{ showSidebar }}" hint-placeholder-val="{{ true }}">
+<aside style="display: flex; flex-direction: column; width: 256px; flex: none; min-height: 0; background: var(--bg); border-right: 1px solid var(--border)">
+<nav aria-label="Site" style="display: flex; flex-direction: column; gap: 2px; padding: 8px">
+<button class="item" data-active="true" aria-current="page"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v4h4"></path></svg>Pages</button>
+<a class="item" href="Collections.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3z M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6 M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"></path></svg>Collections</a>
+<a class="item" href="Design.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.7 1.6-1.5 0-1.1-.9-1.4-.9-2.4 0-.9.7-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.8 17 3 12 3z M7.5 11.5h.01 M10 7.5h.01 M14.5 7.5h.01"></path></svg>Site design</a>
+</nav>
+<div class="sep" style="margin: 0"></div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 12px 8px 8px">
+<div class="label" style="padding: 0 8px 4px">Pages</div>
+<sc-for list="{{ pages }}" as="pg" hint-placeholder-count="5">
+<button class="item" data-active="{{ pg.active }}" style="min-height: 28px; padding: 4px 8px">{{ pg.name }}<span class="hint" style="margin-left: auto">{{ pg.path }}</span></button>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 8px 4px 16px">
+<span class="label">Blocks on Home</span>
+<button class="ibtn ibtn-sm" onClick="{{ openAddEnd }}" aria-label="Add block"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg></button>
+</div>
+<div class="scroll" style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-height: 0; padding: 0 8px 8px">
+<div class="lrow-static"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6z M9 11V8a3 3 0 0 1 6 0v3"></path></svg>Header<span style="margin-left: auto">Shared</span></div>
+<sc-for list="{{ blocks }}" as="b" hint-placeholder-count="5">
+<div class="lrow" data-active="{{ b.sel }}" data-over="{{ b.over }}" draggable="true" onDragStart="{{ b.dragStart }}" onDragOver="{{ b.dragOver }}" onDrop="{{ b.drop }}" onDragEnd="{{ b.dragEnd }}">
+<button class="lrow-main" onClick="{{ b.selectRow }}" aria-label="Select {{ b.label }} block">
+<svg class="ic ic-sm ic-dot grip" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h.01 M9 12h.01 M9 18h.01 M15 6h.01 M15 12h.01 M15 18h.01"></path></svg>
+<span class="licon"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ b.icon }}"></path></svg></span>
+<span style="display: flex; flex-direction: column; flex: 1; min-width: 0">
+<span style="font-weight: 500; line-height: 18px">{{ b.label }}</span>
+<span class="hint trunc">{{ b.summary }}</span>
+</span>
+</button>
+<span class="lrow-act">
+<button class="ibtn ibtn-sm" onClick="{{ b.up }}" disabled="{{ b.upDisabled }}" aria-label="Move up"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5 M6 11l6-6 6 6"></path></svg></button>
+<button class="ibtn ibtn-sm" onClick="{{ b.down }}" disabled="{{ b.downDisabled }}" aria-label="Move down"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M6 13l6 6 6-6"></path></svg></button>
+<button class="ibtn ibtn-sm ibtn-danger" onClick="{{ b.del }}" aria-label="Delete block"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16 M10 11v6 M14 11v6 M6 7l1 13h10l1-13 M9 7V4h6v3"></path></svg></button>
+</span>
+</div>
+</sc-for>
+<div class="lrow-static"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6z M9 11V8a3 3 0 0 1 6 0v3"></path></svg>Footer<span style="margin-left: auto">Shared</span></div>
+<button class="btn btn-ghost btn-sm" onClick="{{ openAddEnd }}" style="justify-content: flex-start; margin-top: 4px; height: 32px"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>Add block</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px 16px; border-top: 1px solid var(--border)">
+<div class="label"><span>AI credits</span><span class="hint">{{ credits }} of 50 left</span></div>
+<div class="meter"><span style="width: {{ creditPct }}%"></span></div>
+<span class="hint">Resets on 1 December</span>
+</div>
+</aside>
+</sc-if>
+
+<main class="scroll" ref="{{ setScroller }}" onClick="{{ canvasClick }}" style="{{ canvasStyle }}">
+<div style="{{ frameStyle }}">
+<sc-if value="{{ showUrlBar }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 12px; background: var(--bg); border-bottom: 1px solid var(--border); border-radius: 12px 12px 0 0; color: var(--fg-subtle); font-size: 12px">
+<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6z M9 11V8a3 3 0 0 1 6 0v3"></path></svg>
+<span>teakline.selfsite.in</span>
+<span class="badge" style="height: 18px; padding: 0 6px; font-size: 11px">{{ urlBadge }}</span>
+</div>
+</sc-if>
+<div class="site" data-device="{{ siteDevice }}">
+
+<div class="s-nav shared" data-edit="{{ editing }}">
+<span class="s-logo"><span class="s-mark">T</span>Teakline</span>
+<sc-if value="{{ siteDesktop }}" hint-placeholder-val="{{ true }}">
+<span class="s-links"><span>Projects</span><span>Studio</span><span>Journal</span><span>Contact</span></span>
+<span class="s-btn s-btn-sm">Book a visit</span>
+</sc-if>
+<sc-if value="{{ siteMobile }}" hint-placeholder-val="{{ false }}">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 22px; height: 22px"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg>
+</sc-if>
+<sc-if value="{{ editing }}" hint-placeholder-val="{{ true }}">
+<span class="shared-tag"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6z M9 11V8a3 3 0 0 1 6 0v3"></path></svg>Shared header · edit in Site design</span>
+</sc-if>
+</div>
+
+<sc-for list="{{ blocks }}" as="b" hint-placeholder-count="5">
+<div class="ins" data-open="{{ b.insOpen }}">
+<sc-if value="{{ b.showIns }}" hint-placeholder-val="{{ false }}">
+<div class="ins-hit"><button class="ins-btn" onClick="{{ b.openAdd }}" aria-label="Add a block here"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>Add</button></div>
+</sc-if>
+<sc-if value="{{ b.addHere }}" hint-placeholder-val="{{ false }}">
+<div class="ins-pop"><div class="menu">
+<div class="label" style="padding: 6px 8px 4px">Add a block here</div>
+<sc-for list="{{ b.addTypes }}" as="t" hint-placeholder-count="5">
+<button class="item" onClick="{{ t.add }}"><span class="licon" style="width: 32px; height: 32px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ t.icon }}"></path></svg></span><span style="display: flex; flex-direction: column; min-width: 0"><span style="font-weight: 500">{{ t.label }}</span><span class="hint">{{ t.desc }}</span></span></button>
+</sc-for>
+<div class="sep"></div>
+<a class="item" href="Design-dark.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"></path></svg>Browse all blocks and layouts<span class="hint" style="margin-left: auto">12</span></a>
+</div></div>
+</sc-if>
+</div>
+<section class="blk" data-bid="{{ b.id }}" data-selected="{{ b.sel }}" data-edit="{{ b.editing }}">
+<sc-if value="{{ b.hit }}" hint-placeholder-val="{{ true }}">
+<button class="blk-hit" onClick="{{ b.select }}" aria-label="Edit {{ b.label }} block"></button>
+</sc-if>
+<sc-if value="{{ b.editing }}" hint-placeholder-val="{{ true }}">
+<span class="blk-tag"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ b.icon }}"></path></svg>{{ b.label }}</span>
+</sc-if>
+<sc-if value="{{ b.showBar }}" hint-placeholder-val="{{ false }}">
+<div class="blk-bar">
+<button class="ibtn ibtn-sm" onClick="{{ b.up }}" disabled="{{ b.upDisabled }}" aria-label="Move up" title="Move up"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5 M6 11l6-6 6 6"></path></svg></button>
+<button class="ibtn ibtn-sm" onClick="{{ b.down }}" disabled="{{ b.downDisabled }}" aria-label="Move down" title="Move down"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M6 13l6 6 6-6"></path></svg></button>
+<button class="ibtn ibtn-sm" onClick="{{ b.dup }}" aria-label="Duplicate" title="Duplicate"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h11v11H9z M15 9V4H4v11h5"></path></svg></button>
+<span style="width: 1px; height: 16px; background: var(--border); margin: 0 2px"></span>
+<button class="ibtn ibtn-sm ibtn-danger" onClick="{{ b.del }}" aria-label="Delete block" title="Delete"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16 M10 11v6 M14 11v6 M6 7l1 13h10l1-13 M9 7V4h6v3"></path></svg></button>
+</div>
+</sc-if>
+
+<sc-if value="{{ b.isHero }}" hint-placeholder-val="{{ true }}">
+<div class="s-wrap">
+<div class="s-hero" data-layout="{{ b.layout }}">
+<div class="s-stack">
+<sc-if value="{{ b.sel }}" hint-placeholder-val="{{ false }}">
+<input class="edit s-eyebrow" value="{{ b.eyebrow }}" onChange="{{ b.onEyebrow }}" aria-label="Eyebrow text">
+<textarea class="edit s-h1" rows="{{ b.rTitle }}" value="{{ b.title }}" onChange="{{ b.onTitle }}" aria-label="Heading"></textarea>
+<textarea class="edit s-lead" rows="{{ b.rSub }}" value="{{ b.subtitle }}" onChange="{{ b.onSubtitle }}" aria-label="Subheading"></textarea>
+<sc-if value="{{ b.showButton }}" hint-placeholder-val="{{ true }}">
+<span class="s-btn"><input class="edit edit-inline" size="{{ b.btnSize }}" value="{{ b.button }}" onChange="{{ b.onButton }}" aria-label="Button label"></span>
+</sc-if>
+</sc-if>
+<sc-if value="{{ b.notSel }}" hint-placeholder-val="{{ true }}">
+<p class="s-eyebrow">{{ b.eyebrow }}</p>
+<h1 class="s-h1">{{ b.title }}</h1>
+<p class="s-lead">{{ b.subtitle }}</p>
+<sc-if value="{{ b.showButton }}" hint-placeholder-val="{{ true }}">
+<span class="s-btn">{{ b.button }}</span>
+</sc-if>
+</sc-if>
+</div>
+<div class="s-img" style="width: 100%; aspect-ratio: {{ b.heroRatio }}; background: {{ b.tone }}"><span class="s-img-tag">{{ b.file }}</span></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ b.isText }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 700px; {{ b.textStyle }}">
+<sc-if value="{{ b.sel }}" hint-placeholder-val="{{ false }}">
+<textarea class="edit s-h2" rows="{{ b.rHeading }}" value="{{ b.heading }}" onChange="{{ b.onHeading }}" aria-label="Heading"></textarea>
+<textarea class="edit s-body" rows="{{ b.rBody }}" value="{{ b.body }}" onChange="{{ b.onBody }}" aria-label="Paragraph"></textarea>
+</sc-if>
+<sc-if value="{{ b.notSel }}" hint-placeholder-val="{{ true }}">
+<h2 class="s-h2">{{ b.heading }}</h2>
+<p class="s-body" style="white-space: pre-line">{{ b.body }}</p>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ b.isImage }}" hint-placeholder-val="{{ false }}">
+<div style="{{ b.imgOuter }}">
+<div style="{{ b.imgInner }}">
+<div class="s-img" style="aspect-ratio: 16 / 9; background: {{ b.tone }}; {{ b.imgRadius }}"><span class="s-img-tag">{{ b.file }}</span></div>
+<sc-if value="{{ b.sel }}" hint-placeholder-val="{{ false }}">
+<input class="edit s-cap" value="{{ b.caption }}" onChange="{{ b.onCaption }}" placeholder="Add a caption" aria-label="Caption" style="{{ b.capPad }}">
+</sc-if>
+<sc-if value="{{ b.showCap }}" hint-placeholder-val="{{ true }}">
+<p class="s-cap" style="{{ b.capPad }}">{{ b.caption }}</p>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ b.isGallery }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)">
+<sc-if value="{{ b.sel }}" hint-placeholder-val="{{ false }}">
+<input class="edit s-h2" value="{{ b.heading }}" onChange="{{ b.onHeading }}" aria-label="Gallery heading" style="margin-bottom: 24px">
+</sc-if>
+<sc-if value="{{ b.notSel }}" hint-placeholder-val="{{ true }}">
+<h2 class="s-h2" style="margin-bottom: 24px">{{ b.heading }}</h2>
+</sc-if>
+<div class="s-gal" style="grid-template-columns: repeat({{ b.cols }}, minmax(0, 1fr))">
+<sc-for list="{{ b.images }}" as="im" hint-placeholder-count="6">
+<figure style="margin: 0; min-width: 0">
+<div class="s-img" style="aspect-ratio: {{ im.ratio }}; background: {{ im.tone }}"></div>
+<figcaption class="s-cap" style="margin-top: 8px">{{ im.caption }}</figcaption>
+</figure>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ b.isCta }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .5)">
+<div class="s-cta" data-tone="{{ b.tone }}">
+<div style="min-width: 0; flex: 1; width: 100%">
+<sc-if value="{{ b.sel }}" hint-placeholder-val="{{ false }}">
+<input class="edit s-h2" value="{{ b.heading }}" onChange="{{ b.onHeading }}" aria-label="Heading">
+<textarea class="edit s-cta-text" rows="{{ b.rText }}" value="{{ b.text }}" onChange="{{ b.onText }}" aria-label="Text"></textarea>
+</sc-if>
+<sc-if value="{{ b.notSel }}" hint-placeholder-val="{{ true }}">
+<h2 class="s-h2">{{ b.heading }}</h2>
+<p class="s-cta-text">{{ b.text }}</p>
+</sc-if>
+</div>
+<span class="s-btn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ b.actionIcon }}"></path></svg>{{ b.button }}</span>
+</div>
+</div>
+</sc-if>
+</section>
+</sc-for>
+
+<div class="ins" data-open="{{ endOpen }}">
+<sc-if value="{{ showEndIns }}" hint-placeholder-val="{{ false }}">
+<div class="ins-hit"><button class="ins-btn" onClick="{{ openAddEnd }}" aria-label="Add a block at the end"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>Add</button></div>
+</sc-if>
+<sc-if value="{{ endAddHere }}" hint-placeholder-val="{{ false }}">
+<div class="ins-pop" style="top: auto; bottom: 16px"><div class="menu">
+<div class="label" style="padding: 6px 8px 4px">Add a block at the end</div>
+<sc-for list="{{ endTypes }}" as="t" hint-placeholder-count="5">
+<button class="item" onClick="{{ t.add }}"><span class="licon" style="width: 32px; height: 32px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ t.icon }}"></path></svg></span><span style="display: flex; flex-direction: column; min-width: 0"><span style="font-weight: 500">{{ t.label }}</span><span class="hint">{{ t.desc }}</span></span></button>
+</sc-for>
+<div class="sep"></div>
+<a class="item" href="Design-dark.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"></path></svg>Browse all blocks and layouts<span class="hint" style="margin-left: auto">12</span></a>
+</div></div>
+</sc-if>
+</div>
+
+<footer class="s-foot shared" data-edit="{{ editing }}">
+<div class="s-foot-grid">
+<div style="grid-column: {{ footSpan }}">
+<span class="s-logo" style="margin-bottom: 8px"><span class="s-mark">T</span>Teakline</span>
+<p class="s-small">Interior design for homes in Coimbatore and the Nilgiris.</p>
+</div>
+<div><p class="s-foot-h">Visit</p><p class="s-small">2nd floor, 41 Avinashi Road<br>Peelamedu, Coimbatore 641004</p></div>
+<div><p class="s-foot-h">Hours</p><p class="s-small">Mon–Sat, 10 am – 7 pm<br>Sunday by appointment</p></div>
+<div><p class="s-foot-h">Contact</p><p class="s-small">+91 98430 12345<br>hello@teaklinestudio.in</p></div>
+</div>
+<sc-if value="{{ editing }}" hint-placeholder-val="{{ true }}">
+<span class="shared-tag"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6z M9 11V8a3 3 0 0 1 6 0v3"></path></svg>Shared footer · phone and hours come from Business info</span>
+</sc-if>
+</footer>
+</div>
+</div>
+</main>
+
+<sc-if value="{{ showPanel }}" hint-placeholder-val="{{ true }}">
+<aside class="{{ panelClass }}" style="{{ panelStyle }}" aria-label="Block settings">
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}"><div class="grab"></div></sc-if>
+
+<sc-if value="{{ hasSel }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; gap: 8px; padding: 12px 12px 12px 16px; flex: none">
+<span class="licon" style="width: 32px; height: 32px; color: var(--accent-text)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ sb.icon }}"></path></svg></span>
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0">
+<span style="font-size: 14px; font-weight: 600; line-height: 20px">{{ sb.label }}</span>
+<span class="hint">Block {{ sb.pos }} of {{ count }} on Home</span>
+</div>
+<button class="ibtn ibtn-sm" onClick="{{ sb.up }}" disabled="{{ sb.upDisabled }}" aria-label="Move block up"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5 M6 11l6-6 6 6"></path></svg></button>
+<button class="ibtn ibtn-sm" onClick="{{ sb.down }}" disabled="{{ sb.downDisabled }}" aria-label="Move block down"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M6 13l6 6 6-6"></path></svg></button>
+<button class="ibtn ibtn-sm ibtn-danger" onClick="{{ sb.del }}" aria-label="Delete block"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16 M10 11v6 M14 11v6 M6 7l1 13h10l1-13 M9 7V4h6v3"></path></svg></button>
+<button class="ibtn ibtn-sm" onClick="{{ sb.close }}" aria-label="Close block settings"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+</div>
+<div style="padding: 0 16px 12px; flex: none; border-bottom: 1px solid var(--border)">
+<div class="seg" role="group" aria-label="Settings section">
+<button aria-pressed="{{ tabContent }}" onClick="{{ setTabContent }}">Content</button>
+<button aria-pressed="{{ tabStyle }}" onClick="{{ setTabStyle }}">Style</button>
+</div>
+</div>
+<div class="scroll" style="display: flex; flex-direction: column; gap: 16px; flex: 1; min-height: 0; padding: 16px">
+
+<sc-if value="{{ P.heroC }}" hint-placeholder-val="{{ true }}">
+<div class="field"><label class="label" for="f-eyebrow">Eyebrow</label><input id="f-eyebrow" class="input" value="{{ sb.eyebrow }}" onChange="{{ sb.onEyebrow }}"></div>
+<div class="field">
+<div class="label"><label for="f-title">Heading</label><button class="btn btn-ghost btn-sm" onClick="{{ sb.aiTitle }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>{{ sb.aiTitleLabel }}</button></div>
+<textarea id="f-title" class="textarea" rows="2" value="{{ sb.title }}" onChange="{{ sb.onTitle }}"></textarea>
+<span class="hint">{{ sb.titleCount }} / 70 characters</span>
+</div>
+<div class="field">
+<div class="label"><label for="f-sub">Subheading</label><button class="btn btn-ghost btn-sm" onClick="{{ sb.aiSubtitle }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>{{ sb.aiSubtitleLabel }}</button></div>
+<textarea id="f-sub" class="textarea" rows="3" value="{{ sb.subtitle }}" onChange="{{ sb.onSubtitle }}"></textarea>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div class="field"><label class="label" for="f-btn">Button label</label><input id="f-btn" class="input" value="{{ sb.button }}" onChange="{{ sb.onButton }}"></div>
+<div class="field"><label class="label" for="f-link">Links to</label><input id="f-link" class="input" value="{{ sb.link }}" onChange="{{ sb.onLink }}"></div>
+</div>
+<div class="field">
+<span class="label">Photo</span>
+<div style="display: flex; align-items: center; gap: 12px; padding: 8px; border: 1px solid var(--border); border-radius: 8px">
+<span style="width: 56px; height: 56px; border-radius: 6px; flex: none; background: {{ sb.tone }}"></span>
+<span style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span class="trunc" style="font-weight: 500">{{ sb.file }}</span><span class="hint">1600 × 2000 · 284 KB</span></span>
+<button class="btn btn-sm" onClick="{{ sb.replaceImg }}">Replace</button>
+</div>
+</div>
+<div class="field"><label class="label" for="f-halt">Alt text</label><textarea id="f-halt" class="textarea" rows="2" value="{{ sb.alt }}" onChange="{{ sb.onAlt }}" placeholder="Describe the photo for people using screen readers"></textarea></div>
+</sc-if>
+
+<sc-if value="{{ P.heroS }}" hint-placeholder-val="{{ false }}">
+<div class="field"><span class="label">Layout</span>
+<div class="seg" role="group" aria-label="Layout"><sc-for list="{{ sb.layoutOpts }}" as="o" hint-placeholder-count="2"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+<span class="hint">Split puts the photo beside the text. Centered stacks it below.</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: flex; flex-direction: column"><span style="font-weight: 500">Show button</span><span class="hint">Hide it if the hero is purely a welcome</span></span>
+<button class="switch" role="switch" aria-checked="{{ sb.showButton }}" onClick="{{ sb.toggleButton }}" aria-label="Show button"></button>
+</div>
+</sc-if>
+
+<sc-if value="{{ P.textC }}" hint-placeholder-val="{{ false }}">
+<div class="field">
+<div class="label"><label for="f-th">Heading</label><button class="btn btn-ghost btn-sm" onClick="{{ sb.aiHeading }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>{{ sb.aiHeadingLabel }}</button></div>
+<input id="f-th" class="input" value="{{ sb.heading }}" onChange="{{ sb.onHeading }}">
+</div>
+<div class="field">
+<div class="label"><label for="f-tb">Paragraph</label><button class="btn btn-ghost btn-sm" onClick="{{ sb.aiBody }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>{{ sb.aiBodyLabel }}</button></div>
+<textarea id="f-tb" class="textarea" rows="7" value="{{ sb.body }}" onChange="{{ sb.onBody }}"></textarea>
+<span class="hint">{{ sb.bodyWords }} words</span>
+</div>
+</sc-if>
+
+<sc-if value="{{ P.textS }}" hint-placeholder-val="{{ false }}">
+<div class="field"><span class="label">Alignment</span>
+<div class="seg" role="group" aria-label="Alignment"><sc-for list="{{ sb.alignOpts }}" as="o" hint-placeholder-count="2"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ P.imageC }}" hint-placeholder-val="{{ false }}">
+<div class="field">
+<span class="label">Photo</span>
+<div style="position: relative; aspect-ratio: 16 / 9; border-radius: 8px; background: {{ sb.tone }}; overflow: hidden"><span class="s-img-tag">{{ sb.file }}</span></div>
+<div style="display: flex; gap: 8px">
+<button class="btn btn-sm" onClick="{{ sb.replaceImg }}" style="flex: 1"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4 M7.5 8.5L12 4l4.5 4.5 M4 15v4h16v-4"></path></svg>Replace</button>
+<button class="btn btn-sm" style="flex: 1">Crop</button>
+</div>
+</div>
+<div class="field">
+<div class="label"><label for="f-alt">Alt text</label><button class="btn btn-ghost btn-sm" onClick="{{ sb.aiAlt }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>{{ sb.aiAltLabel }}</button></div>
+<textarea id="f-alt" class="textarea" rows="3" value="{{ sb.alt }}" onChange="{{ sb.onAlt }}" placeholder="Describe the photo for people using screen readers"></textarea>
+</div>
+<div class="field"><label class="label" for="f-cap">Caption</label><input id="f-cap" class="input" value="{{ sb.caption }}" onChange="{{ sb.onCaption }}" placeholder="Optional"></div>
+</sc-if>
+
+<sc-if value="{{ P.imageS }}" hint-placeholder-val="{{ false }}">
+<div class="field"><span class="label">Width</span>
+<div class="seg" role="group" aria-label="Image width"><sc-for list="{{ sb.widthOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ P.galleryC }}" hint-placeholder-val="{{ false }}">
+<div class="field"><label class="label" for="f-gh">Heading</label><input id="f-gh" class="input" value="{{ sb.heading }}" onChange="{{ sb.onHeading }}"></div>
+<div class="field">
+<div class="label"><span>Photos</span><span class="hint">{{ sb.photoCount }} of 12</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{ sb.images }}" as="im" hint-placeholder-count="6">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="width: 40px; height: 40px; border-radius: 6px; flex: none; background: {{ im.tone }}"></span>
+<input class="input" value="{{ im.caption }}" onChange="{{ im.onCaption }}" aria-label="Caption for {{ im.file }}">
+<button class="ibtn ibtn-sm ibtn-danger" onClick="{{ im.remove }}" aria-label="Remove photo"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+</div>
+</sc-for>
+</div>
+<button class="btn btn-sm" onClick="{{ sb.addPhoto }}" disabled="{{ sb.galleryFull }}" style="align-self: flex-start; margin-top: 4px"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>Add photos</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ P.galleryS }}" hint-placeholder-val="{{ false }}">
+<div class="field"><span class="label">Columns on desktop</span>
+<div class="seg" role="group" aria-label="Columns"><sc-for list="{{ sb.colOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+<span class="hint">Phones always show two columns.</span>
+</div>
+<div class="field"><span class="label">Photo shape</span>
+<div class="seg" role="group" aria-label="Photo shape"><sc-for list="{{ sb.shapeOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ P.ctaC }}" hint-placeholder-val="{{ false }}">
+<div class="field">
+<div class="label"><label for="f-ch">Heading</label><button class="btn btn-ghost btn-sm" onClick="{{ sb.aiCtaHeading }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>{{ sb.aiCtaHeadingLabel }}</button></div>
+<input id="f-ch" class="input" value="{{ sb.heading }}" onChange="{{ sb.onHeading }}">
+</div>
+<div class="field">
+<div class="label"><label for="f-ct">Text</label><button class="btn btn-ghost btn-sm" onClick="{{ sb.aiCtaText }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>{{ sb.aiCtaTextLabel }}</button></div>
+<textarea id="f-ct" class="textarea" rows="3" value="{{ sb.text }}" onChange="{{ sb.onText }}"></textarea>
+</div>
+<div class="field"><label class="label" for="f-cb">Button label</label><input id="f-cb" class="input" value="{{ sb.button }}" onChange="{{ sb.onButton }}"></div>
+<div class="field"><span class="label">When tapped</span>
+<div class="seg" role="group" aria-label="Button action"><sc-for list="{{ sb.actionOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+</div>
+<div class="field"><label class="label" for="f-target">{{ sb.targetLabel }}</label><input id="f-target" class="input" value="{{ sb.target }}" onChange="{{ sb.onTarget }}"><span class="hint">{{ sb.targetHint }}</span></div>
+</sc-if>
+
+<sc-if value="{{ P.ctaS }}" hint-placeholder-val="{{ false }}">
+<div class="field"><span class="label">Background</span>
+<div class="seg" role="group" aria-label="Background"><sc-for list="{{ sb.toneOpts }}" as="o" hint-placeholder-count="3"><button aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+</div>
+</sc-if>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex: none">
+<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>
+<span class="hint" style="flex: 1">AI actions cost 1 credit · {{ credits }} left this month</span>
+</div>
+</sc-if>
+
+<sc-if value="{{ showPageSettings }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; flex: none; border-bottom: 1px solid var(--border)">
+<span class="licon" style="width: 32px; height: 32px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v4h4"></path></svg></span>
+<span style="display: flex; flex-direction: column; flex: 1"><span style="font-size: 14px; font-weight: 600; line-height: 20px">Home</span><span class="hint">Page settings</span></span>
+</div>
+<div class="scroll" style="display: flex; flex-direction: column; gap: 16px; flex: 1; min-height: 0; padding: 16px">
+<div style="display: flex; gap: 10px; padding: 12px; border-radius: 8px; background: var(--bg-muted); color: var(--fg-muted)">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="margin-top: 2px"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M12 11v5 M12 8h.01"></path></svg>
+<span>Click any block on the page to edit it. Hover between blocks to add a new one.</span>
+</div>
+<div class="field"><label class="label" for="f-pt">Page title</label><input id="f-pt" class="input" value="{{ pageTitle }}" onChange="{{ onPageTitle }}"></div>
+<div class="field"><span class="label">Address</span>
+<div style="display: flex; align-items: center; height: 32px; padding: 0 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-muted); color: var(--fg-subtle)">teakline.selfsite.in<span style="color: var(--fg)">/</span></div>
+<span class="hint">The home page always lives at the root of your site.</span>
+</div>
+<div class="field">
+<div class="label"><label for="f-pd">Search description</label><span class="hint">{{ pageDescCount }} / 160</span></div>
+<textarea id="f-pd" class="textarea" rows="4" value="{{ pageDesc }}" onChange="{{ onPageDesc }}"></textarea>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: flex; flex-direction: column"><span style="font-weight: 500">Show in navigation</span><span class="hint">Adds Home to the site menu</span></span>
+<button class="switch" role="switch" aria-checked="{{ inNav }}" onClick="{{ toggleNav }}" aria-label="Show in navigation"></button>
+</div>
+</div>
+</sc-if>
+</aside>
+</sc-if>
+
+<sc-if value="{{ showMobileBar }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 20; display: flex; gap: 8px; padding: 8px; border-radius: 14px; background: var(--bg-elevated); border: 1px solid var(--border); box-shadow: var(--shadow-lg)">
+<button class="btn" onClick="{{ openLayers }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z M3 13l9 5 9-5"></path></svg>Blocks</button>
+<button class="btn btn-primary" onClick="{{ openAddEnd }}" style="flex: 1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>Add block</button>
+<a class="btn" href="Design-mobile.dc.html" aria-label="Site design"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.7 1.6-1.5 0-1.1-.9-1.4-.9-2.4 0-.9.7-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.8 17 3 12 3z M7.5 11.5h.01 M10 7.5h.01 M14.5 7.5h.01"></path></svg></a>
+</div>
+</sc-if>
+
+<sc-if value="{{ showLayersSheet }}" hint-placeholder-val="{{ false }}">
+<button class="scrim" onClick="{{ closeSheets }}" aria-label="Close"></button>
+<div class="sheet" style="max-height: 72%">
+<div class="grab"></div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 8px 8px 16px">
+<span style="flex: 1; font-size: 15px; font-weight: 600">Blocks on Home</span>
+<button class="ibtn" onClick="{{ closeSheets }}" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+</div>
+<div class="scroll" style="display: flex; flex-direction: column; gap: 2px; padding: 0 8px 16px">
+<sc-for list="{{ blocks }}" as="b" hint-placeholder-count="5">
+<div class="lrow" data-active="{{ b.sel }}">
+<button class="lrow-main" onClick="{{ b.selectRow }}" style="height: 52px">
+<span class="licon" style="width: 32px; height: 32px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ b.icon }}"></path></svg></span>
+<span style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-weight: 500; font-size: 14px">{{ b.label }}</span><span class="hint trunc">{{ b.summary }}</span></span>
+</button>
+<span style="display: flex">
+<button class="ibtn" onClick="{{ b.up }}" disabled="{{ b.upDisabled }}" aria-label="Move up"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5 M6 11l6-6 6 6"></path></svg></button>
+<button class="ibtn" onClick="{{ b.down }}" disabled="{{ b.downDisabled }}" aria-label="Move down"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M6 13l6 6 6-6"></path></svg></button>
+<button class="ibtn ibtn-danger" onClick="{{ b.del }}" aria-label="Delete block"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16 M10 11v6 M14 11v6 M6 7l1 13h10l1-13 M9 7V4h6v3"></path></svg></button>
+</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showAddSheet }}" hint-placeholder-val="{{ false }}">
+<button class="scrim" onClick="{{ closeSheets }}" aria-label="Close"></button>
+<div class="sheet">
+<div class="grab"></div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 8px 4px 16px">
+<span style="display: flex; flex-direction: column; flex: 1"><span style="font-size: 15px; font-weight: 600">Add a block</span><span class="hint">{{ addWhere }}</span></span>
+<button class="ibtn" onClick="{{ closeSheets }}" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 4px 8px 8px">
+<sc-for list="{{ sheetTypes }}" as="t" hint-placeholder-count="5">
+<button class="item" onClick="{{ t.add }}" style="min-height: 56px"><span class="licon" style="width: 36px; height: 36px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ t.icon }}"></path></svg></span><span style="display: flex; flex-direction: column; min-width: 0"><span style="font-weight: 500; font-size: 14px">{{ t.label }}</span><span class="hint">{{ t.desc }}</span></span></button>
+</sc-for>
+</div>
+<div style="padding: 0 16px 16px"><a class="btn btn-block" href="Design-mobile-dark.dc.html" style="width: 100%">Browse all blocks and layouts</a></div>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<div class="toast" role="status" style="{{ toastStyle }}">
+<span>{{ toastText }}</span>
+<sc-if value="{{ toastUndo }}" hint-placeholder-val="{{ false }}"><button onClick="{{ undo }}">Undo</button></sc-if>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"layout":{"editor":"enum","options":["auto","mobile","desktop"],"default":"auto"},"accent":{"editor":"color","default":"#2563EB","options":["#2563EB","#0F766E","#C2410C","#18181B"]},"selected":{"editor":null,"default":"b1"},"height":{"editor":null,"default":"100vh"},"$preview":{"width":1440,"height":900}}'>
+const IC = {
+  hero: 'M4 4h16v16H4z M8 9h8 M8 13h5',
+  text: 'M5 6h14 M5 10h14 M5 14h10 M5 18h7',
+  image: 'M4 5h16v14H4z M4 16l5-5 4 4 2-2 5 5 M15 9h.01',
+  gallery: 'M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z',
+  cta: 'M3 7h18v10H3z M8 12h8'
+};
+const META = {
+  hero: { label: 'Hero', desc: 'Big heading, photo and a button' },
+  text: { label: 'Text', desc: 'A heading with a paragraph or two' },
+  image: { label: 'Image', desc: 'One photo with a caption' },
+  gallery: { label: 'Gallery', desc: 'A grid of photos' },
+  cta: { label: 'Call to action', desc: 'A button that starts a chat, call or link' }
+};
+const TYPES = ['hero', 'text', 'image', 'gallery', 'cta'];
+const ACTION_ICON = {
+  whatsapp: 'M20.5 12a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1-4.4A8.5 8.5 0 1 1 20.5 12z',
+  call: 'M6.5 3.5h3l1.5 4.5-2 1.3a11 11 0 0 0 5.7 5.7l1.3-2 4.5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z',
+  link: 'M5 12h14 M13 6l6 6-6 6'
+};
+const AI = {
+  'hero.title': ['Calm, warm homes, designed around the way you live', 'Interiors for Coimbatore homes, from first sketch to last cushion', 'Homes that feel calm, warm and entirely yours'],
+  'hero.subtitle': ['From floor plan to furniture, we design apartments and houses across Coimbatore and the Nilgiris, and stay on site until the last cushion is in place.', 'We design and furnish apartments and independent houses across Coimbatore and the Nilgiris, from the first sketch to the last cushion.'],
+  'text.heading': ['Eight homes a year, and full attention for each', 'A small studio, on purpose'],
+  'text.body': ['We are four designers and one site supervisor. Because we take on only eight homes a year, your project never waits in a queue, and the person drawing your plans is the person you talk to.', 'Teakline is four designers and one very patient site supervisor. We take on eight homes a year, so every project gets our full attention and you always speak to the person drawing your plans.'],
+  'image.alt': ['Round teak dining table with four cane chairs under a brass pendant lamp, beside a window with sheer white curtains', 'Dining nook with a round teak table, cane chairs and a brass pendant'],
+  'cta.heading': ['Have a floor plan? Let’s talk', 'Planning a new home?'],
+  'cta.text': ['Share your floor plan on WhatsApp and we will reply within one working day with a rough timeline and a budget range.', 'Send us your floor plan on WhatsApp. We reply within a day with a rough timeline and budget range.']
+};
+const TONES = ['#D3C7BA', '#C9CEC4', '#D8CDBF', '#C4C9CE', '#DDD3C3', '#CBC3B8'];
+let SEQ = 20;
+function nid() { SEQ += 1; return 'b' + SEQ; }
+function clone(x) { return JSON.parse(JSON.stringify(x)); }
+function fresh(type) {
+  if (type === 'hero') return { type, eyebrow: 'New section', title: 'A heading that says what you do', subtitle: 'One or two sentences that tell visitors why they should get in touch.', button: 'Get in touch', link: '/contact', layout: 'centered', showButton: true, img: { file: 'hero-photo.webp', tone: '#D8CDBF', alt: '' } };
+  if (type === 'text') return { type, heading: 'Add a heading', body: 'Write a short paragraph here. Keep it to what a visitor needs to know before they get in touch.', align: 'left' };
+  if (type === 'image') return { type, img: { file: 'new-photo.webp', tone: '#C9CEC4', alt: '' }, caption: '', width: 'wide' };
+  if (type === 'gallery') return { type, heading: 'Gallery', columns: 3, shape: 'landscape', images: [{ file: 'photo-1.webp', tone: '#D3C7BA', caption: 'Add a caption' }, { file: 'photo-2.webp', tone: '#C9CEC4', caption: 'Add a caption' }, { file: 'photo-3.webp', tone: '#D8CDBF', caption: 'Add a caption' }] };
+  return { type: 'cta', heading: 'Ready to talk?', text: 'Tell us a little about your home and we will get back to you within a day.', button: 'Message us on WhatsApp', action: 'whatsapp', target: '+91 98430 12345', tone: 'light' };
+}
+const START = [
+  { id: 'b1', type: 'hero', eyebrow: 'Interior design studio · Coimbatore', title: 'Homes that feel calm, warm and entirely yours', subtitle: 'We design and furnish apartments and independent houses across Coimbatore and the Nilgiris, from the first sketch to the last cushion.', button: 'Book a site visit', link: '/contact', layout: 'split', showButton: true, img: { file: 'living-room-rs-puram.webp', tone: '#D6CBBE', alt: 'Living room with a low teak sofa, linen cushions and afternoon light' } },
+  { id: 'b2', type: 'text', heading: 'A small studio, on purpose', body: 'Teakline is four designers and one very patient site supervisor. We take on eight homes a year, so every project gets our full attention and you always speak to the person drawing your plans.', align: 'left' },
+  { id: 'b3', type: 'image', img: { file: 'dining-nook-saibaba-colony.webp', tone: '#CFC5B6', alt: '' }, caption: 'Dining nook, Saibaba Colony · completed March 2026', width: 'wide' },
+  { id: 'b4', type: 'gallery', heading: 'Recent projects', columns: 3, shape: 'landscape', images: [
+    { file: 'kitchen-peelamedu.webp', tone: '#CCD0C6', caption: 'Kitchen, Peelamedu' },
+    { file: 'bedroom-race-course.webp', tone: '#D8CDBF', caption: 'Bedroom, Race Course' },
+    { file: 'balcony-ooty.webp', tone: '#C3CABF', caption: 'Balcony garden, Ooty' },
+    { file: 'study-vadavalli.webp', tone: '#D2C8BC', caption: 'Study, Vadavalli' },
+    { file: 'pooja-room-saravanampatti.webp', tone: '#DDD3C3', caption: 'Pooja room, Saravanampatti' },
+    { file: 'bathroom-kovaipudur.webp', tone: '#C7CBCB', caption: 'Bathroom, Kovaipudur' }
+  ] },
+  { id: 'b5', type: 'cta', heading: 'Planning a new home?', text: 'Send us your floor plan on WhatsApp. We reply within a day with a rough timeline and budget range.', button: 'Message us on WhatsApp', action: 'whatsapp', target: '+91 98430 12345', tone: 'dark' }
+];
+const PAGES = [['Home', '/'], ['Projects', '/projects'], ['Studio', '/studio'], ['Journal', '/journal'], ['Contact', '/contact']];
+function summary(b) {
+  if (b.type === 'hero') return b.title;
+  if (b.type === 'text') return b.heading;
+  if (b.type === 'image') return b.caption || b.img.file;
+  if (b.type === 'gallery') return b.heading + ' · ' + b.images.length + ' photos';
+  return b.heading;
+}
+function rowsFor(text, per) { return Math.max(1, Math.ceil(String(text || '').length / per)); }
+function words(t) { const m = String(t || '').trim().match(/\S+/g); return m ? m.length : 0; }
+function clock() { try { return new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); } catch (e) { return 'just now'; } }
+
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      blocks: clone(START), sel: undefined, preview: false, device: 'desktop',
+      status: 'draft', dirty: { b2: true, b4: true }, publishing: false, publishedAt: '3 Nov, 4:12 pm',
+      addAt: null, layers: false, toast: null, dark: undefined, w: 0, tab: 'content',
+      credits: 38, aiBusy: null, overId: null,
+      pageTitle: 'Home', pageDesc: 'Teakline is an interior design studio in Coimbatore designing calm, warm apartments and houses. Book a site visit.', inNav: true
+    };
+    this.setRoot = (el) => { this.root = el; };
+    this.setScroller = (el) => { this.scroller = el; };
+    this.measure = () => {
+      const el = this.root;
+      const w = Math.round(el ? el.getBoundingClientRect().width : (window.innerWidth || 0));
+      if (w && w !== this.state.w) this.setState({ w });
+    };
+  }
+  componentDidMount() {
+    this.measure();
+    try {
+      if (window.ResizeObserver && this.root) { this.ro = new ResizeObserver(this.measure); this.ro.observe(this.root); }
+      else { window.addEventListener('resize', this.measure); }
+    } catch (e) {}
+    this.tm = setTimeout(() => { if (this._mobile && this._sel) this.scrollToId(this._sel, false); }, 80);
+  }
+  componentWillUnmount() {
+    if (this.ro) this.ro.disconnect();
+    window.removeEventListener('resize', this.measure);
+    clearTimeout(this.tt); clearTimeout(this.tp); clearTimeout(this.ta); clearTimeout(this.tm); clearTimeout(this.ts);
+  }
+  scrollToId(id, smooth) {
+    const sc = this.scroller, r = this.root;
+    if (!sc || !r || !id) return;
+    const el = r.querySelector('[data-bid="' + id + '"]');
+    if (!el) return;
+    const scale = r.offsetWidth ? r.getBoundingClientRect().width / r.offsetWidth : 1;
+    const top = (el.getBoundingClientRect().top - sc.getBoundingClientRect().top) / (scale || 1) + sc.scrollTop - 12;
+    try { sc.scrollTo({ top: Math.max(0, top), behavior: smooth ? 'smooth' : 'auto' }); } catch (e) { sc.scrollTop = Math.max(0, top); }
+  }
+  flash(toast) {
+    clearTimeout(this.tt);
+    this.setState({ toast });
+    this.tt = setTimeout(() => this.setState({ toast: null }), 4200);
+  }
+  patch(id, ch) {
+    this.setState((s) => ({
+      blocks: s.blocks.map((b) => (b.id === id ? Object.assign({}, b, ch) : b)),
+      dirty: Object.assign({}, s.dirty, { [id]: true }), status: 'draft'
+    }));
+  }
+  select(id, scroll) {
+    this.setState({ sel: id, addAt: null, layers: false, tab: 'content' });
+    if (scroll || this._mobile) { clearTimeout(this.ts); this.ts = setTimeout(() => this.scrollToId(id, true), 30); }
+  }
+  move(id, dir) {
+    this.setState((s) => {
+      const a = s.blocks.slice();
+      const i = a.findIndex((b) => b.id === id);
+      const j = i + dir;
+      if (i < 0 || j < 0 || j >= a.length) return null;
+      const t = a[i]; a[i] = a[j]; a[j] = t;
+      return { blocks: a, dirty: Object.assign({}, s.dirty, { order: true }), status: 'draft' };
+    });
+  }
+  moveTo(id, to) {
+    this.setState((s) => {
+      const a = s.blocks.slice();
+      const i = a.findIndex((b) => b.id === id);
+      if (i < 0 || i === to) return { overId: null };
+      const item = a.splice(i, 1)[0];
+      a.splice(to > i ? to - 1 : to, 0, item);
+      return { blocks: a, overId: null, dirty: Object.assign({}, s.dirty, { order: true }), status: 'draft' };
+    });
+  }
+  remove(id) {
+    const s = this.state;
+    const b = s.blocks.find((x) => x.id === id);
+    if (!b) return;
+    const before = s.blocks;
+    this.setState({ blocks: s.blocks.filter((x) => x.id !== id), sel: null, dirty: Object.assign({}, s.dirty, { order: true }), status: 'draft' });
+    this.flash({ text: META[b.type].label + ' block deleted', undo: { blocks: before, sel: id } });
+  }
+  dup(id) {
+    const s = this.state;
+    const i = s.blocks.findIndex((x) => x.id === id);
+    if (i < 0) return;
+    const c = clone(s.blocks[i]); c.id = nid();
+    const a = s.blocks.slice(); a.splice(i + 1, 0, c);
+    this.setState({ blocks: a, sel: c.id, dirty: Object.assign({}, s.dirty, { [c.id]: true }), status: 'draft' });
+    this.flash({ text: 'Block duplicated', undo: { blocks: s.blocks, sel: id } });
+  }
+  insert(type, at) {
+    const s = this.state;
+    const b = Object.assign({ id: nid() }, fresh(type));
+    const a = s.blocks.slice(); a.splice(at, 0, b);
+    this.setState({ blocks: a, sel: b.id, addAt: null, layers: false, tab: 'content', dirty: Object.assign({}, s.dirty, { [b.id]: true }), status: 'draft' });
+    this.flash({ text: META[type].label + ' block added', undo: { blocks: s.blocks, sel: null } });
+    clearTimeout(this.ts); this.ts = setTimeout(() => this.scrollToId(b.id, true), 40);
+  }
+  undo() {
+    const t = this.state.toast;
+    if (t && t.undo) { clearTimeout(this.tt); this.setState({ blocks: t.undo.blocks, sel: t.undo.sel, toast: null }); }
+  }
+  publish() {
+    if (this.state.status !== 'draft' || this.state.publishing) return;
+    this.setState({ publishing: true, addAt: null });
+    clearTimeout(this.tp);
+    this.tp = setTimeout(() => {
+      this.setState({ publishing: false, status: 'published', dirty: {}, publishedAt: 'today, ' + clock() });
+      this.flash({ text: 'Published to teakline.selfsite.in' });
+    }, 1300);
+  }
+  ai(b, field) {
+    const key = b.type + '.' + field;
+    const list = AI[key];
+    if (!list || this.state.aiBusy) return;
+    if (this.state.credits <= 0) { this.flash({ text: 'No AI credits left this month' }); return; }
+    this.setState({ aiBusy: b.id + field });
+    clearTimeout(this.ta);
+    this.ta = setTimeout(() => {
+      const s = this.state;
+      const cur = s.blocks.find((x) => x.id === b.id);
+      if (!cur) { this.setState({ aiBusy: null }); return; }
+      const curVal = field === 'alt' ? cur.img.alt : cur[field];
+      const next = list[(list.indexOf(curVal) + 1) % list.length];
+      const ch = field === 'alt' ? { img: Object.assign({}, cur.img, { alt: next }) } : { [field]: next };
+      this.setState({
+        blocks: s.blocks.map((x) => (x.id === b.id ? Object.assign({}, x, ch) : x)),
+        aiBusy: null, credits: s.credits - 1, dirty: Object.assign({}, s.dirty, { [b.id]: true }), status: 'draft'
+      });
+      this.flash({ text: (field === 'alt' ? 'Alt text written' : 'Rewritten') + ' · 1 credit used', undo: { blocks: s.blocks, sel: b.id } });
+    }, 900);
+  }
+  opts(b, field, list) {
+    return list.map((o) => ({ label: o[1], on: b[field] === o[0], pick: () => this.patch(b.id, { [field]: o[0] }) }));
+  }
+  vm(b, i, n, c) {
+    const sel = c.editing && b.id === c.selId;
+    const stop = (fn) => (e) => { if (e && e.stopPropagation) e.stopPropagation(); fn(); };
+    const set = (k) => (e) => this.patch(b.id, { [k]: e.target.value });
+    const busy = (f) => this.state.aiBusy === b.id + f;
+    const lbl = (f, idle) => (busy(f) ? 'Writing…' : idle);
+    const t = b.type;
+    const v = {
+      id: b.id, type: t, label: META[t].label, icon: IC[t], summary: summary(b), pos: i + 1,
+      sel, notSel: !sel, editing: c.editing, hit: c.editing && !sel, showBar: sel && !c.mobile,
+      isHero: t === 'hero', isText: t === 'text', isImage: t === 'image', isGallery: t === 'gallery', isCta: t === 'cta',
+      upDisabled: i === 0, downDisabled: i === n - 1, over: this.state.overId === b.id,
+      showIns: c.editing && !c.mobile, insOpen: c.addAt === i, addHere: c.editing && !c.mobile && c.addAt === i,
+      addTypes: TYPES.map((ty) => ({ label: META[ty].label, desc: META[ty].desc, icon: IC[ty], add: stop(() => this.insert(ty, i)) })),
+      select: () => this.select(b.id, false),
+      selectRow: () => this.select(b.id, true),
+      openAdd: stop(() => this.setState({ addAt: this.state.addAt === i ? null : i })),
+      up: stop(() => this.move(b.id, -1)), down: stop(() => this.move(b.id, 1)),
+      dup: stop(() => this.dup(b.id)), del: stop(() => this.remove(b.id)),
+      close: () => this.setState({ sel: null }),
+      dragStart: (e) => { this.dragId = b.id; try { e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', b.id); } catch (x) {} },
+      dragOver: (e) => { e.preventDefault(); if (this.state.overId !== b.id) this.setState({ overId: b.id }); },
+      drop: (e) => { e.preventDefault(); if (this.dragId) this.moveTo(this.dragId, i); this.dragId = null; },
+      dragEnd: () => { this.dragId = null; if (this.state.overId) this.setState({ overId: null }); },
+      replaceImg: () => {
+        const k = (TONES.indexOf(b.img ? b.img.tone : '') + 1) % TONES.length;
+        this.patch(b.id, { img: Object.assign({}, b.img, { tone: TONES[k], file: 'upload-' + (k + 1) + '.webp' }) });
+        this.flash({ text: 'Photo replaced · 312 KB of 500 MB used' });
+      }
+    };
+    if (b.img) {
+      v.tone = b.img.tone; v.file = b.img.file; v.alt = b.img.alt;
+      v.onAlt = (e) => this.patch(b.id, { img: Object.assign({}, b.img, { alt: e.target.value }) });
+    }
+    if (t === 'hero') {
+      Object.assign(v, {
+        eyebrow: b.eyebrow, title: b.title, subtitle: b.subtitle, button: b.button, link: b.link, layout: b.layout,
+        showButton: b.showButton !== false, heroRatio: b.layout === 'centered' ? '16 / 7' : (c.siteMobile ? '4 / 3' : '4 / 5'),
+        onEyebrow: set('eyebrow'), onTitle: set('title'), onSubtitle: set('subtitle'), onButton: set('button'), onLink: set('link'),
+        rTitle: rowsFor(b.title, c.siteMobile ? 16 : 24), rSub: rowsFor(b.subtitle, c.siteMobile ? 34 : 52), btnSize: Math.max(6, b.button.length),
+        titleCount: b.title.length,
+        aiTitle: () => this.ai(b, 'title'), aiTitleLabel: lbl('title', 'Rewrite'),
+        aiSubtitle: () => this.ai(b, 'subtitle'), aiSubtitleLabel: lbl('subtitle', 'Rewrite'),
+        layoutOpts: this.opts(b, 'layout', [['split', 'Split'], ['centered', 'Centered']]),
+        toggleButton: () => this.patch(b.id, { showButton: b.showButton === false })
+      });
+    }
+    if (t === 'text') {
+      Object.assign(v, {
+        heading: b.heading, body: b.body, onHeading: set('heading'), onBody: set('body'),
+        textStyle: b.align === 'center' ? 'text-align: center; margin: 0 auto' : 'text-align: left; margin: 0',
+        rHeading: rowsFor(b.heading, c.siteMobile ? 22 : 40), rBody: rowsFor(b.body, c.siteMobile ? 36 : 70),
+        bodyWords: words(b.body),
+        aiHeading: () => this.ai(b, 'heading'), aiHeadingLabel: lbl('heading', 'Rewrite'),
+        aiBody: () => this.ai(b, 'body'), aiBodyLabel: lbl('body', 'Rewrite'),
+        alignOpts: this.opts(b, 'align', [['left', 'Left'], ['center', 'Center']])
+      });
+    }
+    if (t === 'image') {
+      const full = b.width === 'full';
+      const pad = c.siteMobile ? '20px' : '48px';
+      Object.assign(v, {
+        caption: b.caption, onCaption: set('caption'), showCap: !sel && !!b.caption,
+        imgOuter: full ? 'padding: 24px 0' : 'max-width: 1080px; margin: 0 auto; padding: 24px ' + pad,
+        imgInner: b.width === 'contained' ? 'max-width: 720px; margin: 0 auto' : '',
+        imgRadius: full ? 'border-radius: 0' : '',
+        capPad: full ? 'padding: 0 ' + pad : '',
+        aiAlt: () => this.ai(b, 'alt'), aiAltLabel: lbl('alt', b.img.alt ? 'Rewrite' : 'Write with AI'),
+        widthOpts: this.opts(b, 'width', [['contained', 'Contained'], ['wide', 'Wide'], ['full', 'Full width']])
+      });
+    }
+    if (t === 'gallery') {
+      const ratio = b.shape === 'square' ? '1 / 1' : (b.shape === 'portrait' ? '3 / 4' : '4 / 3');
+      Object.assign(v, {
+        heading: b.heading, onHeading: set('heading'), cols: c.siteMobile ? 2 : b.columns,
+        photoCount: b.images.length, galleryFull: b.images.length >= 12,
+        images: b.images.map((im, j) => ({
+          file: im.file, tone: im.tone, caption: im.caption, ratio,
+          onCaption: (e) => this.patch(b.id, { images: b.images.map((x, k) => (k === j ? Object.assign({}, x, { caption: e.target.value }) : x)) }),
+          remove: () => this.patch(b.id, { images: b.images.filter((x, k) => k !== j) })
+        })),
+        addPhoto: () => {
+          if (b.images.length >= 12) return;
+          const k = b.images.length;
+          this.patch(b.id, { images: b.images.concat([{ file: 'upload-' + (k + 1) + '.webp', tone: TONES[k % TONES.length], caption: 'New photo' }]) });
+        },
+        colOpts: this.opts(b, 'columns', [[2, '2'], [3, '3'], [4, '4']]),
+        shapeOpts: this.opts(b, 'shape', [['landscape', 'Landscape'], ['square', 'Square'], ['portrait', 'Portrait']])
+      });
+    }
+    if (t === 'cta') {
+      const labels = { whatsapp: 'WhatsApp number', call: 'Phone number', link: 'Page or web address' };
+      const hints = { whatsapp: 'Opens a WhatsApp chat with this number.', call: 'Starts a phone call on mobiles.', link: 'Opens this page or address.' };
+      Object.assign(v, {
+        heading: b.heading, text: b.text, button: b.button, tone: b.tone, target: b.target,
+        onHeading: set('heading'), onText: set('text'), onButton: set('button'), onTarget: set('target'),
+        rText: rowsFor(b.text, c.siteMobile ? 30 : 56), actionIcon: ACTION_ICON[b.action] || ACTION_ICON.link,
+        targetLabel: labels[b.action], targetHint: hints[b.action],
+        aiCtaHeading: () => this.ai(b, 'heading'), aiCtaHeadingLabel: lbl('heading', 'Rewrite'),
+        aiCtaText: () => this.ai(b, 'text'), aiCtaTextLabel: lbl('text', 'Rewrite'),
+        actionOpts: this.opts(b, 'action', [['whatsapp', 'WhatsApp'], ['call', 'Call'], ['link', 'Link']]),
+        toneOpts: this.opts(b, 'tone', [['dark', 'Dark'], ['light', 'Light'], ['brand', 'Brand']])
+      });
+    }
+    return v;
+  }
+  renderVals() {
+    const s = this.state;
+    const p = this.props || {};
+    const dark = s.dark === undefined ? !!p.dark : s.dark;
+    const lay = p.layout && p.layout !== 'auto' ? p.layout : (s.w && s.w < 760 ? 'mobile' : 'desktop');
+    const mobile = lay === 'mobile';
+    const editing = !s.preview;
+    const selId = s.sel === undefined ? (p.selected || 'b1') : s.sel;
+    this._mobile = mobile;
+    this._sel = selId;
+    const siteMobile = mobile || (s.preview && s.device === 'mobile');
+    const n = s.blocks.length;
+    const ctx = { editing, selId, siteMobile, mobile, addAt: s.addAt };
+    const blocks = s.blocks.map((b, i) => this.vm(b, i, n, ctx));
+    const sb = blocks.find((b) => b.sel) || null;
+    const changes = Object.keys(s.dirty).length;
+    const isDraft = s.status === 'draft' && !s.publishing;
+    const isPublished = s.status === 'published' && !s.publishing;
+    const tab = s.tab;
+    const P = {
+      heroC: !!sb && sb.isHero && tab === 'content', heroS: !!sb && sb.isHero && tab === 'style',
+      textC: !!sb && sb.isText && tab === 'content', textS: !!sb && sb.isText && tab === 'style',
+      imageC: !!sb && sb.isImage && tab === 'content', imageS: !!sb && sb.isImage && tab === 'style',
+      galleryC: !!sb && sb.isGallery && tab === 'content', galleryS: !!sb && sb.isGallery && tab === 'style',
+      ctaC: !!sb && sb.isCta && tab === 'content', ctaS: !!sb && sb.isCta && tab === 'style'
+    };
+    const typeList = (at) => TYPES.map((ty) => ({ label: META[ty].label, desc: META[ty].desc, icon: IC[ty], add: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.insert(ty, at); } }));
+    let frameStyle = 'position: relative; background: #FBFAF7';
+    if (!mobile) {
+      if (editing) frameStyle = 'position: relative; max-width: 1120px; margin: 0 auto; background: #FBFAF7; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-md)';
+      else if (s.device === 'mobile') frameStyle = 'position: relative; width: 390px; margin: 0 auto; background: #FBFAF7; border: 1px solid var(--border); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg)';
+      else frameStyle = 'position: relative; max-width: 1280px; margin: 0 auto; background: #FBFAF7; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md)';
+    }
+    let canvasStyle = 'position: relative; flex: 1; min-width: 0; background: var(--canvas); padding: 24px 32px 64px';
+    if (mobile) canvasStyle = 'position: relative; flex: 1; min-width: 0; background: #FBFAF7; padding: 0 0 ' + (sb ? '70vh' : (editing ? '96px' : '0'));
+    const panelStyle = mobile
+      ? 'max-height: 62%'
+      : 'position: relative; display: flex; flex-direction: column; width: 336px; flex: none; min-height: 0; background: var(--bg); border-left: 1px solid var(--border)';
+    const toast = s.toast;
+    return {
+      theme: dark ? 'dark' : 'light', dark, light: !dark, lay, mobile, desktop: !mobile,
+      height: p.height || '100vh', accent: p.accent || '#2563EB', yes: true,
+      setRoot: this.setRoot, setScroller: this.setScroller,
+      editing, preview: !editing, devDesktop: s.device === 'desktop', devMobile: s.device === 'mobile',
+      setEdit: () => this.setState({ preview: false }),
+      setPreview: () => this.setState({ preview: true, addAt: null, layers: false }),
+      setDevDesktop: () => this.setState({ device: 'desktop' }),
+      setDevMobile: () => this.setState({ device: 'mobile' }),
+      toggleTheme: () => this.setState({ dark: !dark }),
+      isDraft, isPublished, publishing: s.publishing,
+      changesText: changes === 0 ? 'No changes yet' : changes + (changes === 1 ? ' unpublished change' : ' unpublished changes'),
+      publishedText: 'Live since ' + s.publishedAt,
+      statusDot: s.status === 'published' ? 'var(--ok-dot)' : 'var(--warn-dot)',
+      statusShort: s.publishing ? 'Publishing…' : (s.status === 'published' ? 'Published · ' + s.publishedAt : 'Draft · ' + changes + (changes === 1 ? ' change' : ' changes')),
+      publish: () => this.publish(),
+      nothingToPublish: () => this.flash({ text: 'Everything is live. Edit a block to start a new draft.' }),
+      openLive: () => this.flash({ text: s.status === 'published' ? 'Opening teakline.selfsite.in in a new tab' : 'The live site still shows the last published version' }),
+      showSidebar: !mobile && editing, showUrlBar: !mobile && editing,
+      urlBadge: s.status === 'published' ? 'Live' : 'Draft',
+      pages: PAGES.map((pg, k) => ({ name: pg[0], path: pg[1], active: k === 0 })),
+      blocks, count: n, credits: s.credits, creditPct: Math.round((s.credits / 50) * 100),
+      siteDevice: siteMobile ? 'mobile' : 'desktop', siteMobile, siteDesktop: !siteMobile,
+      footSpan: siteMobile ? '1 / -1' : 'auto',
+      canvasStyle, frameStyle,
+      canvasClick: (e) => { if (e.target === e.currentTarget) this.setState({ sel: null, addAt: null }); },
+      showEndIns: editing && !mobile, endOpen: s.addAt === n, endAddHere: editing && !mobile && s.addAt === n,
+      endTypes: typeList(n),
+      openAddEnd: (e) => {
+        if (e && e.stopPropagation) e.stopPropagation();
+        this.setState({ addAt: n, layers: false, sel: mobile ? null : this._sel });
+        if (!mobile) { clearTimeout(this.ts); this.ts = setTimeout(() => { if (this.scroller) { try { this.scroller.scrollTo({ top: this.scroller.scrollHeight, behavior: 'smooth' }); } catch (x) {} } }, 30); }
+      },
+      showPanel: editing && (!!sb || !mobile), panelClass: mobile ? 'sheet' : '', panelStyle,
+      hasSel: !!sb, sb: sb || {}, P,
+      tabContent: tab === 'content', tabStyle: tab === 'style',
+      setTabContent: () => this.setState({ tab: 'content' }), setTabStyle: () => this.setState({ tab: 'style' }),
+      showPageSettings: !sb && !mobile && editing,
+      pageTitle: s.pageTitle, pageDesc: s.pageDesc, pageDescCount: s.pageDesc.length, inNav: s.inNav,
+      onPageTitle: (e) => this.setState({ pageTitle: e.target.value, dirty: Object.assign({}, s.dirty, { page: true }), status: 'draft' }),
+      onPageDesc: (e) => this.setState({ pageDesc: e.target.value, dirty: Object.assign({}, s.dirty, { page: true }), status: 'draft' }),
+      toggleNav: () => this.setState({ inNav: !s.inNav, dirty: Object.assign({}, s.dirty, { page: true }), status: 'draft' }),
+      showMobileBar: mobile && editing && !sb && !s.layers && s.addAt === null,
+      openLayers: () => this.setState({ layers: true, addAt: null }),
+      showLayersSheet: mobile && editing && s.layers,
+      showAddSheet: mobile && editing && s.addAt !== null,
+      sheetTypes: typeList(s.addAt === null ? n : s.addAt),
+      addWhere: 'Goes at the end of the page',
+      closeSheets: () => this.setState({ layers: false, addAt: null }),
+      hasToast: !!toast, toastText: toast ? toast.text : '', toastUndo: !!(toast && toast.undo),
+      toastStyle: mobile ? 'bottom: ' + (sb ? '64%' : '88px') : '',
+      undo: () => this.undo(),
+      onKey: (e) => {
+        if (e.key !== 'Escape') return;
+        if (this.state.addAt !== null) this.setState({ addAt: null });
+        else if (this.state.layers) this.setState({ layers: false });
+        else if (this._sel) this.setState({ sel: null });
+        else if (this.state.preview) this.setState({ preview: false });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

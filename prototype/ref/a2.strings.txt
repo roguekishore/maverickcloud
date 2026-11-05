@@ -1,0 +1,1878 @@
+translate(
+) scale(
+M-46 -40 Q-50 40 -36 70 L36 70 Q50 40 46 -40 Z
+M-78 140 Q-74 70 -30 60 L30 60 Q74 70 78 140 Z
+M-40 -6 Q-42 -52 0 -50 Q42 -52 40 -6 Q30 -34 0 -34 Q-28 -34 -40 -6 Z
+M-38 -10 Q-40 -50 0 -50 Q40 -50 38 -10 Q34 -30 18 -32 Q-10 -24 -36 -30 Z
+M-10 22 Q0 30 10 22
+url(#
+M238 112h124M300 34v156
+238,190 362,190 330,300 180,300
+url(#
+ 80 Q
+ 52 
+ 80 Z
+rotate(
+rotate(
+M200 176 C178 158 168 146 180 134 C188 126 198 130 200 140 C202 130 212 126 220 134 C232 146 222 158 200 176 Z
+M200 166 C188 156 184 148 190 142 M200 166 C212 156 216 148 210 142
+M-20 300 Q120 190 420 250 L420 300 Z
+M40 300 Q200 230 380 270
+M118 228 L282 228 L262 270 Q200 284 138 270 Z
+url(#
+M162 98 L238 98 L230 222 Q200 230 170 222 Z
+url(#
+M186 84 Q178 66 190 50 Q200 36 192 18
+M212 84 Q222 66 210 50 Q202 38 210 22
+M0 40 L400 0 L400 300 L0 300 Z
+M0 40 L400 0
+ 300
+M258 222 l30 -6 l-4 18 z
+url(#
+340,40 400,10 400,300 340,280
+60,40 340,40 170,280 60,280
+ 232 L
+ 110 A34 34 0 0 1 
+ 110 L
+ 232 Z
+ 232 L
+ 112 A26 26 0 0 1 
+ 112 L
+ 232 Z
+,232 
+,232 
+,300 
+M150 30h220v170H150z M260 30v170
+M40 270 L40 110 Q40 70 90 74
+M78 74 Q92 56 108 74 Z
+M250 90h120M310 30v120
+M170 210 Q160 160 200 150 L300 132 Q318 130 320 146 L322 160 Q322 172 308 174 L224 186 Q214 210 230 214 Z
+M300 132 Q330 118 344 126 Q350 132 340 140 L320 146 Z
+M210 50 L260 74
+M150 236 Q200 200 250 236 Z
+Georgia, serif
+A & R
+Georgia, serif
+14 · 02 · 2026
+url(#
+ 200 L
+ 160 A9 9 0 0 1 
+ 160 L
+ 200 Z
+translate(0 400) scale(1 -1)
+url(#
+rotate(4 338 170)
+rotate(
+ 340 118) translate(30 0)
+url(#
+ 0V300M0 
+url(#
+166,180 190,166 214,172 238,146 262,152 286,124 306,130
+M182 157 Q200 168 218 157 Q200 162 182 157 Z
+translate(0 0)
+M0 260 Q140 200 400 240
+M0 260 Q140 200 400 240
+M200 116 C200 92 232 92 232 116 C232 134 216 146 216 150 C216 146 200 134 200 116 Z
+0 0 400 300
+xMidYMid slice
+ and 
+ GB
+ MB
+ KB
+just now
+s ago
+ min ago
+ h ago
+Type here
+sf-img sf-img-empty
+Image removed: pick another
+Add an image
+M7 3C4.6 3 3 5 3 7.6c0 3 1.5 4.4 2 7.4.4 2.6 1 6 2.6 6 1.4 0 1.8-4.2 2.4-6h4c.6 1.8 1 6 2.4 6 1.6 0 2.2-3.4 2.6-6 .5-3 2-4.4 2-7.4C21 5 19.4 3 17 3c-2 0-3 1-5 1S9 3 7 3z
+M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z
+M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2
+M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3zM9 12l2 2 4-4
+M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z
+M5 19c0-8 6-14 15-14 0 9-6 15-14 15M5 19l7-7
+M4 9h12v4.5A5.5 5.5 0 0 1 10.5 19h-1A5.5 5.5 0 0 1 4 13.5V9zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3M12 3v3
+M4 16L16 4l4 4L8 20l-4-4zM8 12l2 2M11 9l2 2M14 6l2 2
+M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9z
+M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3z
+M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z
+M9 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.2c2.2.6 3.5 2.6 3.5 5.8
+M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM3 10h18M8 3v4M16 3v4
+M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16
+M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5
+M13 2L4 14h7l-1 8 9-12h-7l1-8z
+M8 19a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 12l9-9M17 6l3 3
+M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z
+M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM8.5 14L7 22l5-3 5 3-1.5-8
+M5 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 5a2 2 0 0 1 2-2z
+M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01
+M5 11l2-5h10l2 5M3 11h18v6H3zM6.5 17v2M17.5 17v2M7 14h.01M17 14h.01
+M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 9V4M12 20v-5M9 12H4M20 12h-5M9.9 9.9L6.3 6.3M17.7 17.7l-3.6-3.6M14.1 9.9l3.6-3.6M6.3 17.7l3.6-3.6
+M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z
+M4 20V10M10 20V4M16 20v-7M22 20H2
+0 0 24 24
+0 0 24 24
+M6 6l12 12M18 6L6 18
+M4 7h16M4 12h16M4 17h16
+sf-wrap sf-hdr-row
+@home
+sf-btn sf-btn-sm sf-hdr-cta
+sf-wrap sf-mnav
+sf-hdr sf-hdr-c
+sf-wrap sf-hdr-c-row
+@home
+sf-logo sf-logo-lg
+sf-wrap sf-hdr-c-nav
+sf-nav sf-nav-c
+sf-wrap sf-mnav
+sf-wrap sf-split
+sf-btn ghost
+sf-wrap sf-stack
+sf-h1 sf-mega
+sf-wrap sf-big-imgwrap
+sf-wrap sf-slides-copy
+Slide 
+sf-wrap sf-split sf-split-about
+sf-rich sf-body
+No entries yet. Add them in Collections.
+Learn more
+sf-grid cols-3
+sf-wrap sf-bigquote
+Most chosen
+sf-wrap sf-faq
+sf-body sf-faq-a
+No posts yet. Write your first one in Collections → Blog.
+sf-grid cols-3
+sf-muted sf-small
+sf-wrap sf-split sf-contact
+WhatsApp us
+sf-btn ghost
+Call 
+sf-img sf-map
+Thanks! We’ll call you back within a working day.
+Your name
+Priya Sharma
++91 98xxx xxxxx
+How can we help?
+Send message
+sf-wrap sf-cta
+sf-btn ghost
+Google reviews
+sf-wrap sf-foot-grid
+sf-stack sf-foot-brand
+sf-wrap sf-foot-base
+Made with selfsite
+sf-foot sf-foot-s
+sf-wrap sf-foot-s-row
+sf-wrap sf-foot-base
+Made with selfsite
+sf-h2 sf-rt-h
+sf-rich sf-body sf-rt
+This template shows one entry at a time. Add an entry to see it here.
+sf-wrap sf-split sf-entry
+sf-wrap sf-narrow
+sf-rich sf-body sf-rt
+<p>Write the details for this entry in Collections.</p>
+Pricing table
+Call to action
+Classic header
+Logo on the left, menu and a button on the right. Collapses to a menu button on phones.
+Business name
+Show a button
+Your business
+Book now
+@home
+Centred header
+A large centred name with the menu underneath and an optional info strip on top.
+Business name
+Show info strip
+Info strip
+Your business
+Open today 9 am – 9 pm · +91 98450 00000
+Split hero
+Headline, short intro and two buttons beside a photo.
+Small label
+Main button
+Second button
+Show rating line
+Rating line
+Since 2012
+A short line that says what you do
+One or two sentences for the people you serve: what you offer, where you are, and why they should pick you.
+Book a visit
+@home
+Call us
+4.8 on Google · 600+ reviews
+Big-type hero
+An oversized headline that fills the width, with a wide photo underneath.
+Small label
+Show wide photo
+Spaces that age well.
+A short paragraph about your work and who it is for.
+See our work
+@home
+Slideshow hero
+Full-width photos that change every few seconds, with text on top.
+New slide
+Change slides automatically
+Your best photo goes here
+A caption that adds one useful detail.
+A second slide
+Up to six slides.
+Visit us
+@home
+Story with photo
+A photo beside your story, with up to four numbers that build trust.
+Small label
+Photo side
+About us
+How we started
+<p>Tell people how you started and what you care about. Two short paragraphs work best.</p>
+Years in business
+Happy customers
+A heading and formatted text. Good for policies, notes and longer stories.
+A heading
+<p>Write anything here. Use bold, lists and links from the toolbar.</p>
+Feature grid
+Short points with an icon each, in two, three or four columns.
+Small label
+Show as cards
+New point
+One sentence about it.
+Why us
+Three reasons people come back
+On time
+We respect your schedule.
+Hygiene you can see.
+We explain before we start.
+Collection cards
+Cards filled from a collection, such as your services or blog posts. Each card opens its detail page.
+Small label
+Show entries from
+How many
+Show prices
+Card link text
+“View all” link
+What we offer
+Learn more
+@home
+Photo gallery
+A grid or mosaic of photos with optional captions.
+Small label
+Show captions
+A look inside
+Front room
+Review cards
+Three or more short reviews with names and photos.
+Small label
+Show stars
+A new review.
+Customer name
+What people say
+Lovely experience from start to finish.
+Anita R.
+Clear prices and no surprises.
+Vikram S.
+We recommend them to everyone.
+Fatima K.
+Large quote
+One review set large, for a strong personal recommendation.
+They listened first, then designed. Two years on, the house still feels exactly right.
+Rohan & Meghna Desai
+Residence, Bopal
+Price list
+A menu-style list with names, short descriptions and prices in ₹.
+Small label
+New item
+Show a note
+Filter coffee
+Chicory blend, brass dabara
+Cold brew
+16-hour steep
+All prices include GST.
+Package cards
+Two or three packages side by side, with one highlighted.
+Small label
+Highlight label
+Price note
+What’s included (one per line)
+New package
+First item
+@home
+Pick what suits you
+Most chosen
+one time
+Item one\nItem two
+@home
+one time
+Everything in Basic\nItem three
+@home
+FAQ accordion
+Questions that open to show their answers.
+Small label
+Open the first answer
+A new question?
+The answer.
+Questions people ask
+Do I need an appointment?
+Walk-ins are welcome, but booking saves you the wait.
+Is there parking?
+Yes, free parking for two-wheelers and cars.
+Latest posts
+Your newest blog posts, filled in automatically from the Blog collection.
+Small label
+How many
+Show date and author
+“All posts” link
+From the blog
+All posts
+@home
+Contact details
+Address, phone, WhatsApp, hours and an enquiry form, with a map.
+Small label
+WhatsApp number
+WhatsApp opening message
+Opening hours
+Show map
+Show enquiry form
+Form button text
+Come and see us
+12, 4th Cross, Indiranagar\nBengaluru 560038
++91 98450 00000
++91 98450 00000
+Hi! I found you on your website.
+hello@yourbusiness.in
+Mon – Sat
+9 am – 9 pm
+Send message
+Call-to-action band
+A short push to book or call, on a dark band.
+Main button
+Second button
+Ready when you are
+Most visits can be booked for the same week.
+Book now
+@home
+@home
+Footer with columns
+Name, address, the footer menu and social links in four columns.
+Business name
+Short description
+Social links
+Copyright line
+Show “Made with selfsite”
+Your business
+One line about you.
+Your address
++91 98450 00000
+hello@yourbusiness.in
+© 2026 Your business
+Simple footer
+Name, the footer menu in one line, and a copyright line.
+Business name
+Copyright line
+Show “Made with selfsite”
+Your business
+© 2026 Your business
+Entry header
+For detail pages: shows the entry’s title, summary, price or date, and photo.
+Show photo
+Show price / date line
+Book an appointment
+@home
+Entry content
+For detail pages: the entry’s full text.
+Show a back link
+Back link text
+All entries
+\n.sf-site{container:site/inline-size;background:var(--sf-bg);color:var(--sf-fg);font-family:var(--sf-font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-align:left;min-height:100%}\n:where(.sf-site) *,:where(.sf-site) *::before,:where(.sf-site) *::after{box-sizing:border-box}\n:where(.sf-site) :where(h1,h2,h3,p,ul,ol,dl,dd,figure,blockquote){margin:0}\n:where(.sf-site) ul{padding:0;list-style:none}\n:where(.sf-site) a{color:inherit;text-decoration:none}\n:where(.sf-site) button{font:inherit;color:inherit}\n.sf-sec{--sf-fg2:color-mix(in oklab,var(--sf-fg) 70%,var(--sf-bg));background:var(--sf-bg);color:var(--sf-fg);padding-block:var(--sf-space-sm);position:relative}\n.sf-sec.tone-muted{--sf-bg:var(--sf-muted)}\n.sf-sec.tone-dark{--sf-bg:var(--sf-dk-bg);--sf-fg:var(--sf-dk-fg);--sf-muted:var(--sf-dk-muted);--sf-border:var(--sf-dk-border);--sf-primary:var(--sf-dk-primary);--sf-on-primary:var(--sf-dk-on-primary)}\n@container site (min-width:760px){.sf-sec{padding-block:var(--sf-space)}}\n.sf-wrap{width:100%;max-width:var(--sf-width);margin-inline:auto;padding-inline:20px}\n@container site (min-width:760px){.sf-wrap{padding-inline:40px}}\n.sf-narrow{max-width:min(var(--sf-width),760px)}\n.sf-stack{display:flex;flex-direction:column;gap:18px;min-width:0}\n.sf-h1,.sf-h2,.sf-h3,.sf-logo{font-family:var(--sf-font-display);font-weight:var(--sf-dw);letter-spacing:var(--sf-dt)}\n.sf-h1{font-size:clamp(36px,6.2cqi,78px);line-height:1.04;text-wrap:balance}\n.sf-mega{font-size:clamp(50px,11.5cqi,176px);line-height:.93;white-space:pre-line}\n.sf-h2{font-size:clamp(28px,3.9cqi,48px);line-height:1.1;text-wrap:balance}\n.sf-h3{font-size:clamp(18px,1.7cqi,22px);line-height:1.3}\n.sf-eyebrow{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--sf-primary)}\n.tone-dark .sf-eyebrow{color:var(--sf-accent)}\n.sf-lead{font-size:clamp(16px,1.45cqi,19px);color:var(--sf-fg2);max-width:60ch;white-space:pre-line}\n.sf-body{color:var(--sf-fg2);white-space:pre-line}\n.sf-rich{white-space:normal}\n.sf-rich p+p,.sf-rich p+ul,.sf-rich ul+p{margin-top:.85em}\n.sf-rich ul,.sf-rich ol{padding-left:1.2em;list-style:disc}\n.sf-rich ol{list-style:decimal}\n.sf-rich li+li{margin-top:.3em}\n.sf-rich a{color:var(--sf-primary);text-decoration:underline;text-underline-offset:3px}\n.sf-rich strong,.sf-rich b{color:var(--sf-fg);font-weight:700}\n.sf-rich h3{font-family:var(--sf-font-display);font-weight:var(--sf-dw);color:var(--sf-fg);font-size:22px;margin:1.3em 0 .4em;line-height:1.3}\n.sf-rt{font-size:17px}\n.sf-rt-h{margin-bottom:20px}\n.sf-muted{color:var(--sf-fg2)}\n.sf-small{font-size:13.5px}\n.sf-btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}\n.sf-btns:empty{display:none}\n.sf-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:var(--sf-rb);background:var(--sf-primary);color:var(--sf-on-primary);font-weight:600;font-size:15.5px;border:1px solid var(--sf-primary);font-family:var(--sf-font-body);line-height:1.2;cursor:pointer;transition:filter .15s}\n.sf-btn:hover{filter:brightness(1.07)}\n.sf-btn.ghost{background:transparent;color:var(--sf-fg);border-color:color-mix(in oklab,var(--sf-fg) 26%,transparent)}\n.sf-btn-sm{min-height:40px;padding:0 18px;font-size:14.5px}\n.sf-link{color:var(--sf-fg);font-weight:600;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px;white-space:nowrap}\n.sf-img{position:relative;overflow:hidden;background:var(--sf-muted);border-radius:var(--sf-radius);aspect-ratio:4/3;max-width:100%}\n.sf-img>svg,.sf-img>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}\n.sf-img-empty{display:grid;place-items:center;color:var(--sf-fg2);font-size:13px;border:1px dashed var(--sf-border);background:var(--sf-muted)}\n.sf-fill{position:absolute;inset:0;border-radius:0;aspect-ratio:auto}\n.sf-ed{outline:none;border-radius:2px;cursor:text;transition:box-shadow .12s}.sf-ed:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ed-accent,#3E63DD) 70%,transparent)}\n.sf-ed:focus{box-shadow:0 0 0 2px var(--ed-accent,#3E63DD)}\n.sf-ed:empty::before{content:attr(data-ph);opacity:.45}\n.sf-badge{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--sf-fg2)}\n.sf-stars{color:var(--sf-accent);letter-spacing:2px;font-size:15px}\n.sf-draft{display:inline-block;margin-left:8px;font:600 11px/1 var(--sf-font-body);padding:4px 6px;border-radius:4px;background:var(--sf-highlight);color:var(--sf-fg);vertical-align:middle;letter-spacing:0}\n.sf-empty{padding:28px;border:1px dashed var(--sf-border);border-radius:var(--sf-radius);color:var(--sf-fg2);text-align:center;font-size:15px}\n\n/* header */\n.sf-hdr{padding-block:0;border-bottom:1px solid var(--sf-border);position:relative;z-index:2}\n.sf-hdr-row{display:flex;align-items:center;gap:24px;min-height:68px}\n.sf-logo{font-size:21px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}\n.sf-logo-lg{font-size:clamp(26px,3.2cqi,40px);text-align:center}\n.sf-nav{display:none;gap:28px;margin-left:auto;align-items:center}\n.sf-nav>li{position:relative}\n.sf-navlink{font-size:15px;color:var(--sf-fg2);transition:color .15s;display:inline-block;padding-block:6px}\n.sf-navlink:hover,.sf-navlink.is-current{color:var(--sf-fg)}\n.sf-navlink.is-current{text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:1.5px;text-decoration-color:var(--sf-primary)}\n.sf-sub{display:none;position:absolute;top:100%;left:-14px;min-width:220px;background:var(--sf-bg);border:1px solid var(--sf-border);border-radius:var(--sf-radius);padding:8px 14px;box-shadow:0 12px 32px -12px color-mix(in oklab,var(--sf-fg) 30%,transparent);z-index:5}\n.has-sub:hover .sf-sub{display:block}\n.sf-sub .sf-navlink{display:block;padding-block:7px}\n.sf-hdr-end{display:flex;align-items:center;gap:12px;margin-left:auto}\n.sf-hdr-cta{display:none}\n.sf-burger{display:inline-grid;place-items:center;width:42px;height:42px;border:1px solid var(--sf-border);border-radius:var(--sf-radius);background:transparent;cursor:pointer;color:var(--sf-fg)}\n.sf-mnav{padding-block:8px 20px;display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--sf-border)}\n.sf-mnav-list li{border-bottom:1px solid var(--sf-border)}\n.sf-mnav-list .sf-navlink{display:block;padding-block:12px;font-size:17px;color:var(--sf-fg)}\n.sf-mnav-list .sf-sub{display:block;position:static;border:0;box-shadow:none;padding:0 0 8px 14px;min-width:0;background:transparent}\n.sf-mnav-list .sf-sub li{border:0}\n.sf-mnav-list .sf-sub .sf-navlink{font-size:15px;padding-block:6px;color:var(--sf-fg2)}\n@container site (min-width:900px){.sf-nav{display:flex}.sf-hdr-end{margin-left:0}.sf-burger{display:none}.sf-hdr-cta{display:inline-flex}.sf-mnav{display:none}}\n.sf-topline{background:var(--sf-muted);font-size:13px;color:var(--sf-fg2);text-align:center;padding-block:8px}\n.sf-hdr-c-row{display:grid;grid-template-columns:42px 1fr 42px;align-items:center;min-height:72px;gap:12px}\n.sf-hdr-c-nav{display:none}\n@container site (min-width:900px){.sf-hdr-c-row{grid-template-columns:1fr;min-height:92px}.sf-hdr-c-row .sf-burger,.sf-hdr-c-spacer{display:none}.sf-hdr-c-nav{display:flex;justify-content:center;border-top:1px solid var(--sf-border)}.sf-nav-c{margin:0;gap:36px;min-height:52px}}\n\n/* split layouts */\n.sf-split{display:grid;gap:36px;align-items:center}\n.sf-split-img{aspect-ratio:4/3}\n@container site (min-width:900px){\n  .sf-split{grid-template-columns:1.05fr .95fr;gap:64px}\n  .sf-split-img{aspect-ratio:4/5}\n  .sf-split-about{grid-template-columns:.9fr 1.1fr}\n  .sf-split-about.img-right{grid-template-columns:1.1fr .9fr}\n  .sf-split-about.img-right>.sf-img{order:2}\n}\n.sf-about-img{aspect-ratio:5/4}\n.sf-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding-top:12px;border-top:1px solid var(--sf-border);margin-top:6px}\n@container site (min-width:900px){.sf-stats{grid-template-columns:repeat(4,minmax(0,1fr))}}\n.sf-stats dt{font-family:var(--sf-font-display);font-weight:var(--sf-dw);font-size:clamp(26px,2.6cqi,36px);line-height:1.1}\n.sf-stats dd{font-size:13.5px;color:var(--sf-fg2)}\n\n/* big type */\n.sf-big-row{display:flex;flex-direction:column;gap:20px;align-items:flex-start;padding-top:8px}\n@container site (min-width:900px){.sf-big-row{flex-direction:row;justify-content:space-between;align-items:flex-end}}\n.sf-big-imgwrap{margin-top:clamp(28px,5cqi,64px)}\n.sf-wide-img{aspect-ratio:16/9}\n@container site (min-width:900px){.sf-wide-img{aspect-ratio:21/9}}\n\n/* slides */\n.sf-slides{padding-block:0}\n.sf-slides-stage{position:relative;min-height:min(560px,140cqi);display:flex;align-items:flex-end;overflow:hidden}\n@container site (min-width:900px){.sf-slides-stage{min-height:640px;align-items:center}}\n.sf-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s}\n.sf-slide.on{opacity:1}\n.sf-shade{position:absolute;inset:0;background:color-mix(in oklab,var(--sf-dk-bg) 52%,transparent)}\n.sf-slides-copy{position:relative;color:var(--sf-dk-fg);padding-block:48px 72px;display:flex;flex-direction:column;gap:16px}\n.sf-slides-copy .sf-lead{color:color-mix(in oklab,var(--sf-dk-fg) 85%,transparent)}\n.sf-slides-copy .sf-h1{max-width:16ch}\n.sf-dots{position:absolute;bottom:24px;left:0;right:0;display:flex;justify-content:center;gap:8px}\n.sf-dot{width:8px;height:8px;border-radius:99px;border:0;background:color-mix(in oklab,var(--sf-dk-fg) 45%,transparent);cursor:pointer;padding:0;transition:width .2s}\n.sf-dot.on{width:24px;background:var(--sf-dk-fg)}\n\n/* section heads + grids */\n.sf-head{display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(28px,3.6cqi,48px);max-width:720px}\n.sf-head.center{text-align:center;align-items:center;margin-inline:auto}\n.sf-head-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px}\n.sf-head-row .sf-head{flex:1 1 320px}\n.sf-head-row>.sf-link{margin-bottom:clamp(28px,3.6cqi,48px)}\n.sf-grid{display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}\n@container site (min-width:640px){.sf-grid.cols-2,.sf-grid.cols-3,.sf-grid.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}}\n@container site (min-width:980px){.sf-grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sf-grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}\n.sf-feat{display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid var(--sf-border);border-radius:var(--sf-radius);background:var(--sf-bg)}\n.sf-feat.plain{border:0;padding:0;background:transparent}\n.sf-feat-ic{width:44px;height:44px;border-radius:calc(var(--sf-radius) * .75);display:grid;place-items:center;background:var(--sf-highlight);color:var(--sf-primary)}\n.tone-dark .sf-feat-ic{background:var(--sf-muted);color:var(--sf-accent)}\n.sf-card,.sf-post{display:flex;flex-direction:column;border:1px solid var(--sf-border);border-radius:var(--sf-radius);overflow:hidden;background:var(--sf-bg);transition:border-color .15s,transform .15s}\n.sf-card:hover,.sf-post:hover{border-color:color-mix(in oklab,var(--sf-fg) 30%,var(--sf-border))}\n.sf-card-img{border-radius:0;aspect-ratio:16/10}\n.sf-card-body{display:flex;flex-direction:column;gap:8px;padding:20px;flex:1}\n.sf-card-meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px;font-size:14.5px}\n.sf-price{font-weight:700;color:var(--sf-fg);font-variant-numeric:tabular-nums;white-space:nowrap}\n.sf-more{color:var(--sf-primary);font-weight:600}\n.sf-post{border:0;background:transparent;gap:10px}\n.sf-post .sf-card-img{border-radius:var(--sf-radius);margin-bottom:6px}\n\n/* gallery */\n.sf-gallery{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}\n@container site (min-width:760px){.sf-gallery.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sf-gallery.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}\n.sf-gallery.mosaic .sf-fig:first-child{grid-column:span 2;grid-row:span 2}\n.sf-gallery.mosaic .sf-fig:first-child .sf-gal-img{aspect-ratio:auto;height:100%;min-height:220px}\n.sf-fig{display:flex;flex-direction:column;gap:8px;min-width:0}\n.sf-gal-img{aspect-ratio:1/1}\n.sf-fig figcaption{font-size:13.5px;color:var(--sf-fg2)}\n\n/* testimonials */\n.sf-quote-card{display:flex;flex-direction:column;gap:16px;padding:26px;border-radius:var(--sf-radius);background:var(--sf-muted)}\n.tone-muted .sf-quote-card{background:var(--sf-bg)}\n.sf-quote-card blockquote{font-size:17px;line-height:1.55;white-space:pre-line}\n.sf-quote-card figcaption,.sf-bigquote-by{display:flex;align-items:center;gap:12px;margin-top:auto;font-size:14.5px}\n.sf-quote-card figcaption span,.sf-bigquote-by span{display:flex;flex-direction:column;line-height:1.35}\n.sf-avatar{width:44px;height:44px;border-radius:999px;aspect-ratio:1;flex:none}\n.sf-bigquote{display:flex;flex-direction:column;gap:24px;max-width:980px}\n.sf-qmark{font-family:var(--sf-font-display);font-size:96px;line-height:.6;color:var(--sf-accent);height:44px}\n.sf-bigquote blockquote{font-size:clamp(26px,3.6cqi,46px);line-height:1.18;white-space:pre-line}\n\n/* pricing */\n.sf-menu{display:grid;gap:4px 56px}\n@container site (min-width:860px){.sf-menu.two{grid-template-columns:repeat(2,minmax(0,1fr))}}\n.sf-menu li{padding-block:16px;border-bottom:1px solid var(--sf-border);display:flex;flex-direction:column;gap:4px}\n.sf-menu-top{display:flex;align-items:baseline;gap:10px}\n.sf-menu-top .sf-h3{font-size:18px}\n.sf-dotfill{flex:1;border-bottom:1px dotted color-mix(in oklab,var(--sf-fg) 30%,transparent);transform:translateY(-4px);min-width:16px}\n.sf-tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:4px;background:var(--sf-highlight);color:var(--sf-fg);white-space:nowrap}\n.sf-tag:empty{display:none}\n.sf-note{margin-top:20px;font-size:14px;color:var(--sf-fg2)}\n.sf-plan{position:relative;display:flex;flex-direction:column;gap:16px;padding:28px;border:1px solid var(--sf-border);border-radius:var(--sf-radius);background:var(--sf-bg)}\n.sf-plan.hl{border-color:var(--sf-primary);box-shadow:0 0 0 1px var(--sf-primary)}\n.sf-plan-flag{position:absolute;top:-12px;left:24px;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--sf-primary);color:var(--sf-on-primary)}\n.sf-plan-price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}\n.sf-plan-price strong{font-family:var(--sf-font-display);font-weight:var(--sf-dw);font-size:34px;line-height:1;font-variant-numeric:tabular-nums}\n.sf-checks{display:flex;flex-direction:column;gap:9px;font-size:15px;color:var(--sf-fg2);flex:1}\n.sf-checks li{padding-left:24px;position:relative}\n.sf-checks li::before{content:"";position:absolute;left:2px;top:.45em;width:10px;height:6px;border-left:2px solid var(--sf-primary);border-bottom:2px solid var(--sf-primary);transform:rotate(-45deg)}\n\n/* faq */\n.sf-faq{display:grid;gap:8px}\n@container site (min-width:900px){.sf-faq{grid-template-columns:.8fr 1.2fr;gap:64px}}\n.sf-faq-list{border-top:1px solid var(--sf-border)}\n.sf-faq-item{border-bottom:1px solid var(--sf-border)}\n.sf-faq-q{display:flex;width:100%;justify-content:space-between;gap:16px;align-items:center;text-align:left;padding:20px 0;background:none;border:0;cursor:pointer;font-size:17px;font-weight:600;color:var(--sf-fg)}\n.sf-faq-ic{font-size:22px;font-weight:400;transition:transform .2s;color:var(--sf-fg2);flex:none}\n.sf-faq-item.open .sf-faq-ic{transform:rotate(45deg)}\n.sf-faq-a{padding-bottom:20px;max-width:62ch}\n\n/* contact */\n.sf-contact{align-items:start}\n.sf-cdl{display:grid;gap:18px;padding-block:6px}\n.sf-cdl>div{display:grid;grid-template-columns:96px 1fr;gap:12px;font-size:15.5px}\n.sf-cdl dt{color:var(--sf-fg2);font-size:13.5px;padding-top:2px}\n.sf-cdl dd{white-space:pre-line}\n.sf-cdl a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--sf-border)}\n.sf-hours{display:flex;justify-content:space-between;gap:12px;max-width:320px}\n.sf-map{aspect-ratio:16/10}\n.sf-form{display:flex;flex-direction:column;gap:14px;padding:24px;border:1px solid var(--sf-border);border-radius:var(--sf-radius);background:var(--sf-bg)}\n.tone-muted .sf-form{background:var(--sf-bg)}\n.sf-form label{display:flex;flex-direction:column;gap:6px;font-size:13.5px;font-weight:600}\n.sf-form input,.sf-form textarea{font:inherit;font-weight:400;font-size:15px;padding:11px 13px;border:1px solid var(--sf-border);border-radius:calc(var(--sf-radius) * .6);background:var(--sf-bg);color:var(--sf-fg);resize:vertical}\n.sf-form .sf-btn{align-self:flex-start}\n.sf-sent{padding:20px 0;font-size:16px}\n\n/* cta */\n.sf-cta{display:flex;flex-direction:column;gap:24px}\n@container site (min-width:900px){.sf-cta{flex-direction:row;align-items:center;justify-content:space-between;gap:48px}}\n.sf-cta .sf-h2{max-width:20ch}\n\n/* footer */\n.sf-foot{border-top:1px solid var(--sf-border);padding-bottom:28px}\n.sf-foot-grid{display:grid;gap:32px;grid-template-columns:repeat(2,minmax(0,1fr))}\n.sf-foot-brand{grid-column:1/-1}\n@container site (min-width:900px){.sf-foot-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}.sf-foot-brand{grid-column:auto}}\n.sf-foot-h{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:12px;color:var(--sf-fg2)}\n.sf-foot-nav{display:flex;flex-direction:column;gap:2px}\n.sf-foot-nav .sf-sub{display:none}\n.sf-foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:40px;padding-top:20px;border-top:1px solid var(--sf-border);font-size:13.5px;color:var(--sf-fg2)}\n.sf-foot-s-row{display:flex;flex-direction:column;gap:16px;align-items:flex-start}\n@container site (min-width:760px){.sf-foot-s-row{flex-direction:row;justify-content:space-between;align-items:center}}\n.sf-foot-inline{display:flex;flex-wrap:wrap;gap:6px 24px}\n.sf-foot-inline .sf-sub{display:none}\n.sf-foot-s .sf-foot-base{margin-top:24px}\n\n/* entries */\n.sf-entry{align-items:center}\n.sf-crumbs{font-size:14px;color:var(--sf-fg2)}\n.sf-crumbs a{text-decoration:underline;text-underline-offset:3px}\n.sf-entry-meta{display:flex;flex-wrap:wrap;gap:8px}\n.sf-entry-meta span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--sf-muted)}\n.sf-back{margin-top:32px}\n
+2026-09-12T10:00:00+05:30
+Smiling patient after treatment
+Bright treatment room with a dental chair
+Portrait of Dr. Meera Raghavan
+The front desk team
+Café front room with pendant lamps
+Latte with heart latte art
+Filter coffee in a steel tumbler and dabara
+Weekend thali on a banana leaf
+House facade with deep window fins
+Arched colonnade in warm stone
+Living room facing a garden
+Mandap decorated with marigold strings
+Marigold wall with the couple’s initials
+Palace venue on a lake at dusk
+Villa with pool and palm tree
+Apartment towers at dusk
+Abstract network of connected points
+Laptop showing a dashboard
+Map pin on the clinic location
+2026-10-01T10:00:00+05:30
+2026-10-28T10:00:00+05:30
+2026-08-20T10:00:00+05:30
+Clinic walkthrough video
+2026-06-14T10:00:00+05:30
+Aligner results reel
+2026-07-02T10:00:00+05:30
+Dental clinic
+Calm, trustworthy pages for clinics: treatments with fees, doctor profiles, reviews and WhatsApp booking.
+Pearl Dental Studio
+Pearl Dental Studio
+Book appointment
+Pearl Dental Studio
+Family and cosmetic dentistry in Anna Nagar since 2011.
+AG-41, 2nd Avenue, Anna Nagar\nChennai 600040
++91 98400 21456
+hello@pearldental.in
+© 2026 Pearl Dental Studio · Regd. with the Tamil Nadu State Dental Council
+Our team
+About us
+Our team
+Anna Nagar, Chennai
+Gentle dental care for the whole family
+Painless root canals, clear aligners and same-day crowns. Dr. Meera Raghavan and her team have cared for more than 9,000 smiles since 2011.
+Book an appointment
+Call +91 98400 21456
+4.9 on Google · 1,240 reviews
+Why Pearl
+Dentistry that doesn’t make you nervous
+Pain-free by default
+Numbing gel before every injection, and we stop whenever you raise a hand.
+Same-day crowns
+Our in-house mill makes a ceramic crown while you wait.
+Fees in writing
+A written estimate before any treatment starts. No surprise bills.
+Hospital-grade sterilisation
+Class B autoclave, and sealed pouches opened in front of you.
+Everything your teeth need, under one roof
+All treatments
+Patient reviews
+From our Google reviews
+I have been scared of dentists since childhood. Dr. Meera explained every step and my root canal was honestly painless.
+Lakshmi Narayanan
+Got my aligners here. Clear plan, monthly check-ins on WhatsApp, and the result is better than I hoped.
+Arjun Mehta
+Anna Nagar West
+They handled my six-year-old’s first filling so calmly that she now asks when we are going back.
+Shabnam Rahman
+Shenoy Nagar
+Before your first visit
+Anything else? Ask us on WhatsApp and a dentist will reply the same day.
+Do you accept health insurance?
+We offer cashless treatment with Star Health, HDFC ERGO and Niva Bupa for covered procedures, and help you file claims for the rest.
+How long does a root canal take?
+Most root canals take one sitting of 60 to 90 minutes. The crown is fitted the same day or at a short second visit.
+Can I pay in instalments?
+Yes. Aligners and implants can be paid over 6 or 12 months at no extra cost through our partner bank.
+Is there parking?
+Four car spaces in front of the clinic, and two-wheeler parking along 2nd Avenue.
+Due for a check-up?
+A full check-up with scaling and an X-ray is ₹1,500. Most weekday slots are free within two days.
+Book on WhatsApp
+Hi, I would like to book a check-up at Pearl Dental Studio.
+See all fees
+Pearl Dental Studio · Dentist in Anna Nagar, Chennai
+Painless root canals, clear aligners, implants and same-day crowns in Anna Nagar, Chennai. Rated 4.9 on Google by 1,240 patients.
+About the clinic
+Fifteen years of\ncareful dentistry.
+Pearl started as a two-chair practice on 2nd Avenue. Today we are five dentists, and we still know most of our patients by name.
+Meet the team
+Dr. Meera Raghavan, BDS, MDS (Prosthodontics)
+<p>Dr. Meera trained at a government dental college in Chennai and spent six years at a teaching hospital in Vellore before opening Pearl in 2011.</p><p>She still sees patients four days a week, and personally plans every implant and smile makeover at the clinic.</p>
+patients treated
+implants placed
+Google rating
+years in Anna Nagar
+The clinic
+Bright, quiet and spotless
+Treatment room 1
+Our front desk team
+Smile design consults
+Opposite Tower Park, Gate 2
+Dr. Meera Raghavan
+Questions about a treatment?
+Send us a photo on WhatsApp and a dentist will reply the same day.
+See this month’s offers
+Contact us
+About Pearl Dental Studio
+Our team
+Our dentists
+<p>Five dentists, each focused on one area, so you always see a specialist. Every treatment plan is reviewed by two of us before it is shared with you.</p>
+Dr. Meera Raghavan · Prosthodontist
+Dr. Karthik Subramanian · Endodontist
+Dr. Ayesha Siddiqui · Orthodontist
+Dr. Vivek Iyer · Implantologist
+Dr. Nandini Rao · Children’s dentist
+Revathi S. · Clinic manager
+Treatments and fees
+Every treatment starts with a consultation (₹500, adjusted in your bill). Prices are starting fees; you get a written estimate first.
+Fee card
+Common procedures
+Consultation and X-ray
+Adjusted in your treatment bill
+Scaling and polishing
+Ultrasonic, about 40 minutes
+Tooth-coloured filling
+Per tooth
+Root canal, front tooth
+Single sitting
+Root canal, molar
+Rotary, under a microscope
+Zirconia crown
+Made the same day
+Teeth whitening
+In-clinic, one visit
+Dental implant with crown
+Includes CBCT scan
+from ₹38,000
+Fees include GST where it applies. Card, UPI and cashless insurance accepted.
+Want the full fee card?
+All 42 procedures with prices, on one page.
+Download fee card (PDF)
+Ask on WhatsApp
+Hi, I have a question about a treatment.
+Dental treatments and fees · Pearl Dental Studio
+Root canals, aligners, implants, whitening and more, with starting fees in rupees.
+Treatment page
+Book this treatment
+All treatments
+Not sure this is right for you?
+Book a ₹500 consultation and we will tell you honestly.
+Book a consultation
+Notes from the clinic
+Dental care blog · Pearl Dental Studio
+Plain-language answers about check-ups, aligners, children’s teeth and more, from our dentists.
+Blog post
+All posts
+More from the blog
+Visit us
+Book an appointment
+Call, WhatsApp or send the form. We reply during clinic hours, usually within the hour.
+AG-41, 2nd Avenue, Anna Nagar\nChennai 600040\nOpposite Tower Park, Gate 2
++91 98400 21456
++91 98400 21456
+Hi, I would like to book an appointment.
+hello@pearldental.in
+Mon – Sat
+10 am – 8 pm
+10 am – 1 pm, by appointment
+Request a call back
+Contact Pearl Dental Studio, Anna Nagar
+Call +91 98400 21456 or WhatsApp us. AG-41, 2nd Avenue, Anna Nagar, Chennai 600040. Open Mon–Sat 10 am to 8 pm.
+Teeth whitening
+In-clinic whitening that lifts most teeth four to six shades in one 75-minute visit.
+From ₹12,000
+75 min · one visit
+<p>We use a professional whitening gel activated by a cool LED light. It works on stains from tea, coffee and age, and is safe for enamel when done under supervision.</p><h3>Who it suits</h3><ul><li>Yellowing from tea, coffee or smoking</li><li>Even, healthy teeth without large fillings at the front</li></ul><h3>What to expect</h3><p>Mild sensitivity for a day or two is normal. You go home with a desensitising gel and a shade card to track the result.</p>
+Root canal treatment
+Single-sitting root canals with rotary instruments under a microscope, and the crown the same day.
+From ₹6,500
+60–90 min
+<p>A root canal removes infected pulp from inside the tooth, cleans the canals and seals them, so you keep your natural tooth.</p><h3>Does it hurt?</h3><p>With modern numbing, most patients say it feels like a long filling. We check in every few minutes.</p>
+Clear aligners
+Straighten teeth without braces. A 3D scan shows your final smile before you commit.
+From ₹85,000
+6–14 months
+<p>Clear aligners are thin, removable trays that move your teeth a little at a time. You change trays every two weeks and visit us every six to eight weeks.</p><p>Pay over 12 months at no extra cost.</p>
+Dental implants
+A fixed replacement for a missing tooth, planned on a 3D CBCT scan.
+From ₹38,000
+2 visits over 3 months
+<p>An implant is a titanium post placed in the jaw, topped with a crown. It looks and works like a natural tooth and can last decades with good care.</p>
+Children’s dentistry
+First visits, fluoride, sealants and fillings for children, with a dentist trained to work with kids.
+From ₹800
+30 min
+<p>We see children from their first birthday. Short, friendly visits build trust, so treatment is easy if it is ever needed.</p>
+How often should you really get a dental check-up?
+Dr. Meera Raghavan
+Every six months is the rule of thumb, but your ideal gap depends on your gums, your diet and your history.
+<p>Six months is a good default. If your gums bleed easily, you smoke, or you have diabetes, every three to four months is safer.</p><p>If you have had no cavities for years and your gums are healthy, once a year can be enough. Ask us at your next visit.</p>
+Clear aligners or braces: an honest comparison
+Dr. Ayesha Siddiqui
+Cost, comfort, speed and results, side by side, from an orthodontist who offers both.
+<p>Braces are still the most predictable option for complex cases and cost less. Aligners are nearly invisible and easier to clean around, but only work if you wear them 22 hours a day.</p>
+Your child’s first dental visit: what to expect
+Dr. Nandini Rao
+Bring them in by their first birthday. Here is how we make the first visit fun, not frightening.
+<p>The first visit is mostly a chat and a quick look. We count teeth, check for early decay and show your child the chair that goes up and down.</p>
+Food & café
+Café
+Warm, photo-led pages for cafés and restaurants: menu with ₹ prices, a slideshow, hours and directions.
+Thottam Café
+Thottam Café
+Open daily 8 am – 11 pm · 12th Main, Indiranagar · +91 98450 33127
+Thottam Café
+© 2026 Thottam Café, Bengaluru · FSSAI 11224333000875
+Our story
+Our story
+Slow coffee, all day
+South Indian filter coffee and small plates on 12th Main, Indiranagar.
+Fresh decoction every 40 minutes
+Chikmagalur beans with 20% chicory, served in brass.
+Weekend thali, 12 to 3
+Eleven dishes, unlimited refills, ₹320.
+See the menu
+Thottam means garden
+A café built around an old jackfruit tree
+Single-estate beans
+Roasted every Monday by a family farm in Baba Budangiri.
+Garden seating
+Thirty seats under a 40-year-old jackfruit tree.
+Work-friendly mornings
+Fast Wi-Fi and plug points until noon on weekdays.
+What people order
+Filter coffee
+Chicory blend, brass dabara
+Ghee podi idli
+Four mini idlis, gunpowder, ghee
+Benne masala dosa
+Davangere style, white butter
+Jackfruit cold brew
+16-hour steep, jackfruit syrup
+Ragi banana pancakes
+Jaggery, coconut cream
+Kesari bath
+Pineapple, saffron, cashew
+Prices include GST. We do not add a service charge.
+The filter coffee tastes like my grandmother’s kitchen in Mysuru. I come every Sunday with my newspaper.
+Shreyas Kulkarni
+Regular since 2019
+From the café journal
+All posts
+Thottam Café · Filter coffee in Indiranagar, Bengaluru
+Filter coffee, dosas and a weekend thali under a jackfruit tree on 12th Main, Indiranagar.
+All day
+Coffee and tea
+Filter coffee
+By the tumbler
+Double decoction
+Stronger, less milk
+Cold brew
+16-hour steep
+Masala chai
+Ginger, cardamom
+Till noon
+Benne masala dosa
+Davangere style
+Ghee podi idli
+Four mini idlis
+Akki rotti
+Rice flatbread, coconut chutney
+Ragi banana pancakes
+Jaggery, coconut cream
+Ask us about Jain and gluten-free options.
+Taking the menu home?
+Download this month’s menu, or order on WhatsApp for pickup.
+Download menu (PDF)
+Order on WhatsApp
+Hi Thottam, I would like to order for pickup.
+Our story
+Since 2019
+Started by two sisters and their grandmother’s recipes
+<p>Divya and Kavya Gowda grew up drinking filter coffee on a verandah in Mysuru. In 2019 they rented a house with a jackfruit tree on 12th Main and opened Thottam with eight tables.</p><p>Every recipe on the breakfast menu comes from their grandmother’s notebook.</p>
+seats in the garden
+cups on a Sunday
+dishes in the thali
+Inside Thottam
+A morning at Thottam
+The front room at 8 am
+Cold brew latte
+Filter coffee, the way it should be
+Weekend thali
+Shreyas, our Sunday regular
+Notes from the café
+Journal post
+Back to the journal
+Find us on 12th Main
+Ten minutes’ walk from Indiranagar metro. Street parking after 7 pm.
+1146, 12th Main, HAL 2nd Stage\nIndiranagar, Bengaluru 560008
++91 98450 33127
++91 98450 33127
+Hi Thottam!
+hello@thottamcafe.in
+Mon – Fri
+8 am – 11 pm
+Sat – Sun
+7:30 am – 11:30 pm
+Good to know
+Do you take reservations?
+Only for groups of six or more. Call us a day ahead.
+Are pets allowed?
+Yes, in the garden. We keep water bowls by the gate.
+Why we brew decoction every 40 minutes
+Kavya Gowda
+Old decoction turns bitter. Here is the routine behind every tumbler we pour.
+<p>Decoction starts losing its aroma after about 45 minutes. So a timer runs on the counter all day, and a fresh brass filter goes on every 40.</p>
+Meet our roaster: the Gowda family farm
+Divya Gowda
+Our beans come from a 12-acre farm in Baba Budangiri, roasted every Monday.
+<p>Our uncle’s farm grows Arabica under silver oak and pepper vines. We roast in small batches every Monday.</p>
+Software studio
+A dark, technical look for software studios and agencies: services, case studies and engagement models.
+Stackwise Labs
+Stackwise Labs
+Start a project
+Stackwise Labs
+Product engineering for teams in logistics, healthcare and fintech.
+Office 504, Sai Radiance\nBaner Road, Pune 411045
++91 98220 41870
+hello@stackwise.dev
+© 2026 Stackwise Labs Pvt. Ltd.
+Product engineering · Pune
+We build the software\nyour ops team runs on.
+Internal tools, customer apps and data pipelines for logistics, healthcare and fintech teams across India.
+Book a 30-minute call
+What we do
+Small senior teams, shipped every two weeks
+Web and mobile apps
+React, React Native and Flutter, released in two-week cycles.
+Data platforms
+Pipelines and dashboards on BigQuery, Postgres and dbt.
+Security reviews
+VAPT and DPDP Act readiness for growing teams.
+Ways to work with us
+How it works
+All services
+What our clients say
+They replaced three spreadsheets and a WhatsApp group with one dispatch tool. Our planners got two hours of their day back.
+Neha Kulkarni
+CTO, freight-tech startup, Pune
+Clear weekly demos and no surprises on the invoice. Rare in this industry.
+Rahul Bhandari
+Founder, diagnostics chain
+Our DPDP audit went from panic to a two-page checklist.
+Sana Qureshi
+Head of Compliance, NBFC
+Have a project in mind?
+Tell us what is slowing your team down. We reply within one working day.
+Start a project
+See our work
+What we can take off your plate
+How it works
+Engagement models
+Fixed scope or a dedicated squad
+All prices exclude GST.
+Most teams start here
+Discovery sprint
+2 weeks, fixed
+Workshops with your team\nClickable prototype\nTechnical plan and estimate
+Book a sprint
+Product squad
+per month
+Tech lead, 2 engineers, designer\nTwo-week releases\nWeekly demo
+Talk to us
+per month
+Bug fixes and small features\nUptime monitoring\n48-hour response
+Talk to us
+Service page
+Talk to us
+All services
+Selected work
+Recent projects
+Fleet dashboard for a 3PL in Chakan
+Lab results pipeline for a diagnostics chain
+Loan servicing app for an NBFC
+Inventory sync for 40 pharmacies
+Eleven engineers, no account managers
+<p>Stackwise was started in 2018 by three engineers who were tired of handing projects to people who had never written code.</p><p>Everyone who talks to you is someone who builds.</p>
+products shipped
+8 yrs
+average experience
+Tell us about your project
+A short note is enough. We will set up a 30-minute call.
+Office 504, Sai Radiance\nBaner Road, Pune 411045
++91 98220 41870
++91 98220 41870
+Hi Stackwise, I have a project to discuss.
+hello@stackwise.dev
+Mon – Fri
+10 am – 7 pm
+Send brief
+MVP in 10 weeks
+From idea to a product your first customers can use, with analytics from day one.
+From ₹18,00,000
+10 weeks
+<p>Five two-week sprints, each ending in a demo you can click through.</p>
+Data platform setup
+One source of truth for your ops data, with dashboards your team actually opens.
+From ₹7,50,000
+6 weeks
+<p>We connect your sources, model the data in dbt and build the first ten dashboards with your team.</p>
+Security and DPDP review
+A practical audit of your apps and data handling, with a fix list in priority order.
+From ₹3,40,000
+3 weeks
+<p>Automated scans plus a manual review by a senior engineer.</p>
+A two-page DPDP checklist for startups
+Aditya Joshi
+What the Digital Personal Data Protection rules mean for a 20-person company.
+<p>Start with a data map: what you collect, where it lives and who can see it.</p>
+Design studio
+Architecture studio
+Big type and quiet layouts for architects and interior designers. Lets the photographs do the work.
+Studio Karvi
+Studio Karvi
+Studio Karvi
+© 2026 Studio Karvi Architects, Ahmedabad · COA reg. CA/2015/71843
+Studio Karvi · Ahmedabad
+Architecture\nfor the long\nIndian summer.
+We design homes, schools and workplaces in Gujarat that stay cool without leaning on air-conditioning.
+View projects
+Climate first, then form
+<p>Every project starts with the sun path, the wind and the soil. Deep verandahs, jaalis, courtyards and thick walls do most of the cooling.</p><p>What is left is a quieter building that costs less to run.</p>
+completed projects
+4°C
+cooler inside, on average
+years of practice
+Selected work
+Recent projects
+Shaleen House, Bopal
+Courtyard school, Sanand
+Riverside apartment, Ellisbridge
+Farmhouse, Nal Sarovar
+Notes on building
+All entries
+<p>Homes, schools and workplaces across Gujarat, 2015 to now. Ask us for drawings and costs of any project.</p>
+Shaleen House, Bopal · 2025
+Courtyard school, Sanand · 2024
+Riverside apartment · 2024
+Farmhouse, Nal Sarovar · 2023
+Nine people, one long table
+<p>Founded by Ar. Ishita Karvi in 2015. We take on about eight projects a year so the partners stay on every site.</p>
+architects and designers
+projects a year
+How we work
+Four stages, one fee
+Our fee is a fixed share of construction cost, agreed before we start.
+Site study
+Sun, wind, soil and neighbours.
+Two or three options, with rough costs.
+Working drawings and BOQ.
+On site
+Weekly visits until handover.
+Notes on building
+Journal entry
+Back to the journal
+Start a conversation
+Tell us about your site and what you need. We reply within a week.
+3rd floor, 14 Sahajanand Society\nNavrangpura, Ahmedabad 380009
++91 79 4893 2210
++91 98250 61144
+Hello Studio Karvi.
+studio@karvi.in
+Mon – Fri
+10 am – 6:30 pm
+Send enquiry
+Jaali, revisited
+Ishita Karvi
+A perforated screen that cuts glare and keeps the breeze. Why we use it on nearly every facade.
+<p>A jaali filters sunlight into small patches and speeds up air through its openings.</p>
+Lime plaster in 2026
+Manan Shah
+Slower to apply, cheaper to live with. Notes from three sites.
+<p>Lime breathes, so walls stay drier and cooler.</p>
+What a courtyard does
+Ishita Karvi
+Light, air and a place for the family to meet. A courtyard does three jobs at once.
+<p>Warm air rises out of the courtyard and pulls cooler air through the rooms.</p>
+Wedding planner
+Elegant serif pages for wedding planners and photographers: packages, galleries and couple stories.
+Mangalam Weddings
+Mangalam Weddings
+Now booking weddings for Nov 2026 – Mar 2027 · +91 94140 55210
+Mangalam Weddings
+Wedding planning and décor in Jaipur and across Rajasthan.
+C-22, Bhawani Singh Road\nC-Scheme, Jaipur 302001
++91 94140 55210
+namaste@mangalamweddings.in
+https://youtube.com/@mangalamweddings
+© 2026 Mangalam Weddings
+Weddings that feel like family
+Planning and décor for 150 to 1,500 guests, in Jaipur and across Rajasthan.
+Palace and lakeside venues
+Udaipur, Jodhpur, Samode and Pushkar, with travel and stays handled.
+Every detail, handled
+From the haldi to the vidaai, one team and one point of contact.
+See packages
+What we do
+One team for every ceremony
+Décor
+Mandap, phoolon ki chaadar, stage and lighting.
+Shortlists, site visits and negotiation.
+Guest travel, rooms and welcome desks.
+Sangeet choreography, DJs and folk artists.
+Six hundred guests, three days, and not a single thing for our parents to worry about. They even found my nani’s favourite folk singer.
+Ananya & Rohit
+Samode Palace, Feb 2026
+Planning a wedding this season?
+Share your date and guest count. We send a detailed proposal within 48 hours.
+Check availability
+WhatsApp us
+Hi, we are planning a wedding.
+Planning packages
+Planning fee only. Venue, catering and décor are billed at cost with no markup.
+Most booked
+up to 150 guests
+Two ceremonies\nVenue shortlist and booking\nDécor design and on-day team
+up to 400 guests
+Four ceremonies\nGuest hospitality desk\nSangeet choreography\nDedicated planner from day one
+Royal destination
+palace venues, 3 days
+Everything in Signature\nTravel and stays for guests\nFolk artists and fireworks
+Questions couples ask
+How early should we book?
+Six to nine months ahead for winter dates. Some palace venues book a year out.
+Do you work outside Rajasthan?
+Yes, in Goa, Kerala and Uttarakhand, with a travel fee.
+Recent weddings
+Phera mandap, Jaipur
+Lakeside sangeet, Udaipur
+Welcome wall, Pushkar
+Ananya before the haldi
+Couples we have planned for
+Calm, organised and kind to our families. We actually enjoyed our own wedding.
+Meera & Kabir
+Jaipur, Dec 2025
+They managed 900 guests across two hotels without one missed pickup.
+Pooja & Harsh
+Udaipur, Jan 2026
+The décor was exactly the old-Jaipur look we showed them on Pinterest.
+Zoya & Imran
+Jaipur, Nov 2025
+Tell us about your wedding
+Your date, city and guest count are enough to start.
+C-22, Bhawani Singh Road\nC-Scheme, Jaipur 302001
++91 94140 55210
++91 94140 55210
+Hi, we are planning a wedding.
+namaste@mangalamweddings.in
+Mon – Sat
+11 am – 7 pm
+Send enquiry
+Real estate
+Real estate developer
+Clear, trustworthy pages for developers and brokers: project listings with prices, RERA details and brochures.
+Banyan Grove Realty
+Banyan Grove Realty
+Schedule a site visit
+Banyan Grove Realty
+RERA-registered homes in west Hyderabad since 2009.
+8-2-293, Road No. 82\nJubilee Hills, Hyderabad 500033
++91 99890 47120
+sales@banyangrove.in
+https://youtube.com/@banyangrove
+© 2026 Banyan Grove Realty LLP
+West Hyderabad
+Homes near your work, not just your budget
+Three RERA-registered projects within 20 minutes of the Financial District, with bank tie-ups for quick loans.
+Schedule a site visit
+Download brochure
+2,300 families moved in since 2009
+Now selling
+View project
+All projects
+Why Banyan Grove
+Buying a home without the guesswork
+RERA registered
+Every project and its approvals are on the TS-RERA site.
+On-time possession
+14 of our last 15 projects were handed over early or on time.
+Loan tie-ups
+Pre-approved with five leading banks for faster sanction.
+From families who moved in
+Possession two months early, and the finish was better than the show flat.
+Srinivas Reddy
+Skyline One, 2025
+The site team answered every call, even after handover.
+Madhavi Rao
+Palm Court Villas
+Clear paperwork and no hidden charges at registration.
+Imtiaz Ali
+Banyan Grove Residences
+See a home this weekend
+Free pickup from Gachibowli and HITEC City for site visits.
+Book a site visit
+Call sales
+All projects
+Prices are base prices before registration and GST.
+View project
+Buying questions
+Which banks have approved your projects?
+SBI, HDFC Bank, ICICI Bank, Axis Bank and LIC Housing Finance.
+Can NRIs buy?
+Yes. We handle power of attorney and video walk-throughs.
+Project page
+Book a site visit
+All projects
+Want the floor plans?
+The brochure has every plan, price and specification.
+Download brochure
+A family firm that builds what it would live in
+<p>Banyan Grove was started by K. Venkat Rao in 2009 with one apartment block in Madhapur. His children now run the company.</p>
+projects delivered
+Google rating
+Schedule a site visit
+Pick a day and we will send a car.
+8-2-293, Road No. 82\nJubilee Hills, Hyderabad 500033
++91 99890 47120
++91 99890 47120
+Hi, I would like to visit a project.
+sales@banyangrove.in
+Every day
+9:30 am – 7:30 pm
+Book a visit
+Banyan Grove Residences, Kokapet
+3 and 4 BHK apartments with a 2-acre central garden.
+₹1.45 Cr onwards
+3 & 4 BHK · Possession Dec 2027
+<p>Two towers of 32 floors, 412 homes, 70% open space. RERA no. P02400006718.</p>
+Palm Court Villas, Shankarpally
+Gated community of 86 villas with private gardens.
+₹2.8 Cr onwards
+4 BHK villas · Ready to move
+<p>Villas on 300 to 450 square yard plots, with a clubhouse and pool.</p>
+Skyline One, Gachibowli
+Compact 2 and 3 BHK homes, 8 minutes from the Financial District.
+₹92 L onwards
+2 & 3 BHK · Possession Jun 2027
+<p>A single 28-floor tower with 220 homes. RERA no. P02400005123.</p>
+Food & café
+Design studio
+Real estate
+Big type
+"Fraunces", Georgia, serif
+Instrument Serif
+"Instrument Serif", Georgia, serif
+Cormorant Garamond
+"Cormorant Garamond", Georgia, serif
+Playfair Display
+"Playfair Display", Georgia, serif
+Space Grotesk
+"Space Grotesk", "Helvetica Neue", Arial, sans-serif
+"Outfit", "Helvetica Neue", Arial, sans-serif
+"Archivo", "Helvetica Neue", Arial, sans-serif
+"Poppins", "Helvetica Neue", Arial, sans-serif
+"Manrope", "Helvetica Neue", Arial, sans-serif
+DM Sans
+"DM Sans", "Helvetica Neue", Arial, sans-serif
+IBM Plex Sans
+"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif
+Nunito Sans
+"Nunito Sans", "Helvetica Neue", Arial, sans-serif
+Work Sans
+"Work Sans", "Helvetica Neue", Arial, sans-serif
+"Mulish", "Helvetica Neue", Arial, sans-serif
+"Inter", "Helvetica Neue", Arial, sans-serif
+DM Sans
+Space Grotesk
+IBM Plex Sans
+Instrument Serif
+Nunito Sans
+Cormorant Garamond
+Work Sans
+Work Sans
+Playfair Display
+@home
+Page not found
+Page not found
+This page does not exist.
+We couldn’t find that page
+<p>The link may be old or mistyped. Go back to the <a href="/">home page</a>, or use the menu above to find what you need.</p>
+@home
+No link set
+The page it pointed to was deleted
+The page it pointed to was deleted
+No visible #
+ section on 
+No section chosen
+That entry was deleted
+ has no detail page
+Not a valid web address
+No web address
+tel:+
+Phone number looks incomplete
+?text=
+WhatsApp number looks incomplete
+?subject=
+Email address looks wrong
+That file was deleted from the media library
+Unknown link
+No link
+Deleted page
+ on 
+deleted page
+ on this page
+Deleted entry
+No address
+Call 
+WhatsApp 
+Email 
+Download 
+Deleted file
+Shared header
+Shared footer
+ header
+ footer
+Header menu
+Footer menu
+” has a broken link
+” links to 
+a draft
+a hidden
+ page
+. Visitors 
+will see the 404 page until it is published
+can open it, but it is hidden from search
+A photo was deleted
+. Pick another photo to publish.
+ and 
+ has no search 
+ · Google will guess one from the page text.
+ and 
+ share a URL
+Both are at 
+. Change one slug.
+1 draft page stays
+ draft pages stay
+ unpublished
+ draft 
+entry stays
+entries stay
+ unpublished
+Every link works
+No links to hidden or draft pages
+Every page has a search title and description
+All photos are in place
+Every page has its own URL
+First publish
+New · draft, not published
+New page
+ section
+ edited
+ added
+ removed
+sections reordered
+settings changed
+own header/footer
+Deleted · will go offline
+Colours, fonts or spacing · affects every page
+Shared header
+Affects every page that uses it
+Shared footer
+Affects every page that uses it
+Header or footer menu
+ redirects
+ entr
+ changed
+@home
+<p>Start writing, or add sections from the library.</p>
+ (copy)
+ (share image)
+Pearl Dental Studio
+See this month’s offers
+2026-08-04T12:10:00+05:30
+/treatments/*
+/services/*
+2026-08-04T12:10:00+05:30
+2026-05-19T09:30:00+05:30
+Monsoon offers
+Monsoon offers
+Check-up and whitening offers for July to September.
+Monsoon offers
+<p>Check-up with scaling for ₹999 until 30 September.</p>
+Gentle dentistry for the whole family
+From ₹10,500
+Work with us
+<p>We are hiring a <strong>dental assistant</strong> and a <strong>front desk executive</strong> for our Anna Nagar clinic.</p><ul><li>Six-day week, 10 am to 8 pm, with a rota for Sundays</li><li>Health insurance for you and your family</li><li>Paid training on our scanners and software</li></ul><p>Send your CV to hello@pearldental.in or WhatsApp +91 98400 21456.</p>
+4.9 on Google · 1,180 reviews
+2026-11-02T18:42:00+05:30
+Dr. Meera R.
+Added monsoon offers page
+2026-10-27T11:05:00+05:30
+Revathi S.
+Updated review count
+2026-10-09T16:20:00+05:30
+Dr. Meera R.
+New FAQ section, teal colour
+2026-09-14T10:02:00+05:30
+Dr. Meera R.
+Blog launched
+M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM14 3v5h5
+M4 4h16v6H4zM4 14h16v6H4z
+M4 7h16M4 12h10M4 17h16
+M12 3a9 9 0 1 0 0 18c1.1 0 1.5-.8 1.5-1.6 0-1-.7-1.4-.7-2.3 0-.9.7-1.6 1.6-1.6H17a4 4 0 0 0 4-4c0-4.7-4-8.5-9-8.5zM7.5 11.5h.01M10 7.5h.01M15 7.5h.01
+M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM3 16l5-5 4 4 3-3 6 6M15.5 9.5h.01
+M12 5v14M5 12h14
+M5 12h14
+M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3
+M9 9h10v10H9zM5 15V5h10
+M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z
+M3 3l18 18M10.6 5.1A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6C3.8 8.4 2 12 2 12s3.5 7 10 7a9.6 9.6 0 0 0 5.4-1.6M9.9 9.9a3 3 0 0 0 4.2 4.2
+M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01
+M6 9l6 6 6-6
+M9 6l6 6-6 6
+M15 6l-6 6 6 6
+M6 15l6-6 6 6
+M9 14L4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3
+M15 14l5-5-5-5M20 9H9a5 5 0 0 0 0 10h3
+M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4
+M8 3h8a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM11 18h2
+M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM11 17h2
+M3 4h18v12H3zM8 20h8M12 16v4
+M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5
+M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1
+M3 11l9-7 9 7M5 9.5V20h14V9.5
+M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1M15 4v4M9 10v4M17 16v4
+M6 6l12 12M18 6L6 18
+M5 12.5l4.5 4.5L19 7
+M12 4l9 16H3l9-16zM12 10v4M12 17h.01
+M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5M12 7.5h.01
+M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7
+M5 12h.01M12 12h.01M19 12h.01
+M12 19V5M6 11l6-6 6 6
+M12 5v14M6 13l6 6 6-6
+M5 12h14M13 6l6 6-6 6
+M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z
+M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2
+M12 16V4M7 9l5-5 5 5M4 20h16
+M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM14 3v5h5M9 13h6M9 17h4
+M6 11h12v9H6zM8 11V8a4 4 0 0 1 8 0v3
+M12 8c4.4 0 8-1.3 8-3s-3.6-3-8-3-8 1.3-8 3 3.6 3 8 3zM4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3
+M4 4h16v16H4zM4 9h16M9 9v11
+M15 4l5 5-5 5M20 9H9a5 5 0 0 0-5 5v6
+M7 5l12 7-12 7V5z
+M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4
+M4 7h16M4 12h16M4 17h16
+M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6z
+M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20zM9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1a3.5 3.5 0 0 1-2-2l1-1-1-2L9 9.5z
+M4 6h16v12H4zM4 7l8 6 8-6
+M5 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 5a2 2 0 0 1 2-2z
+M5 9h14M5 15h14M10 4L8 20M16 4l-2 16
+M12 4v12M7 11l5 5 5-5M4 20h16
+M9 15l6-6M8.5 6.5L10 5a4 4 0 0 1 6 6l-1.5 1.5M15.5 17.5L14 19a4 4 0 0 1-6-6l1.5-1.5
+M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z
+M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4
+M7 4h6a4 4 0 0 1 0 8H7zM7 12h7a4 4 0 0 1 0 8H7z
+M10 4h8M6 20h8M14 4l-4 16
+M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01
+M4 6h16M11 12h9M4 18h16M4 9.5l3 2.5-3 2.5
+M4 6h16M11 12h9M4 18h16M7 9.5L4 12l3 2.5
+M4 5h16M4 10h16M4 15h10M4 20h7
+M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6z
+M4 4h16v16H4zM4 10h16M10 10v10
+M12 12h.01
+M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z
+M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M9 13l2 2M14.5 4.5c2-1 4.5-1.5 5.5-.5s.5 3.5-.5 5.5L13 16l-5-5 6.5-6.5zM15 9h.01
+M4 6h11a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zM16 10l5-3v10l-5-3
+0 0 24 24
+field-msg err
+field-msg warn
+input textarea
+[data-autofocus]
+overlay overlay-sheet light
+dialog as-sheet panel-sheet
+dialog-body sheet-body
+scale(
+Shared 
+This page’s 
+· Hidden
+thumb thumb-file
+thumb thumb-empty
+Bulleted list
+Link selected text
+Clear formatting
+ words
+Select some text first, then add a link.
+/contact or https://…
+Button text (leave empty to hide)
+Choose where it goes
+field-msg err
+field-msg warn
+Links to a 
+ page
+Image deleted, pick another
+No image
+row gap-4
+Drag to reorder
+Move up
+Move down
+Maximum of 
+ reached
+Add 
+field field-row
+Between 
+ and 
+stepper-btn minus
+Page settings
+Add a subpage
+Set as home page
+Edit 
+ entries
+Delete page
+ template
+Options for 
+tree-row tree-entry
+Add page
+Special pages
+Content and URLs
+Collection · 
+Detach a copy for this page
+Hide on this page
+Use the shared 
+ again
+Hide on this page
+Show the shared 
+sec-row sec-fixed
+sec-grip is-fixed
+Shared · 
+This page’s own copy
+Hidden on this page
+ options
+Sections 
+ template
+Add a section before 
+Drag to reorder
+ · #
+Move up
+Move down
+Show section
+Hide section
+ options
+Edit content
+Swap for another block
+Move up
+Move down
+Add section
+Drag to reorder. Header and footer are shared by every page unless a page detaches its own copy.
+Drag to reorder
+anchor nav-main
+Menu label
+Goes to
+ options
+Move up
+Move down
+Put under “
+Move out of the dropdown
+Remove from menu
+muted small
+muted small pad-8
+No links yet.
+Add link
+Pages not in this menu
+Every page is already here.
+New link
+Custom link…
+panel-note top
+Menus are shared by every page. Drag to reorder, or put a link under another to make a dropdown.
+Header menu
+ links
+Footer menu
+ links
+field field-row nav-auto
+Add new pages to the header menu automatically
+Menu setting
+Add new pages automatically
+Section not found
+It may have been deleted. Pick another section.
+Edit 
+Shared 
+This page’s 
+row gap-2
+Swap block
+banner banner-info
+Shared by 
+ Edit it once and every page changes.
+Detach a copy for 
+banner banner-warn
+Only 
+ uses this copy.
+ Changes to the shared 
+ won’t show here.
+Use the shared 
+ again
+banner banner-plain
+Filled from the 
+ entry being shown.
+Cards come from 
+ published).
+Edit 
+ entries
+banner banner-plain
+The menu links come from Navigation.
+Edit the 
+ menu
+ Tip: click text on the selected section to edit it in place.
+Sections use your theme colours. Pick how this one sits on the page.
+Section background
+Anchor name
+Links can jump here with #
+Give the section a name so buttons can jump to it.
+Anchor name
+field field-row
+Hide this section
+field-hint block
+Stays in the editor, not on your live site.
+Hide section
+Google will pick text from the page if you leave this empty.
+Page not found
+Page settings
+None (top level)
+Collection template
+Special page
+Page settings
+ template
+banner banner-plain
+One page design for every 
+ entry, at 
+. The entry fills in the title, text and photo.
+Edit entries
+banner banner-plain
+Visitors see this page when they open an address that doesn’t exist. Edit it like any other page.
+Page title
+Page title
+URL slug
+ already uses 
+. Pick another slug.
+Follows the title until you publish. You can change it any time.
+Changing it adds a redirect from the old address automatically.
+Match the title: /
+readonly mono
+Parent page
+Nesting changes the URL. A redirect is added for the old one.
+field field-row
+Show in the header menu
+Show in menu
+Published with the site and listed in search.
+Not published. Only you can see it here.
+Published, but only people with the link can open it. Hidden from search and menus.
+Page visibility
+Set as home page
+Header and footer
+Shared 
+Own copy for this page
+None on this page
+Search and sharing
+Search title
+Shown as the blue link in Google results.
+Search title
+Search description
+Missing. Write one or two sentences about this page.
+What will someone find on this page?
+Search description
+Share image (WhatsApp, Facebook, LinkedIn)
+Share image
+Delete page
+ colour picker
+anchor block
+muted small
+menu fontlist
+Every section reads these settings, so one change restyles the whole site.
+Theme preset 
+inset 0 0 0 1px 
+Light or dark
+Colours · 
+Primary colour
+Accent colour
+All colour tokens
+ colour
+Heading font
+Body text
+Body font
+Shape and spacing
+Corner radius
+Section spacing
+Section spacing
+Page width
+Page width
+Gentle care, honest fees
+This is how body text reads with 
+row gap-8
+Book now
+theme-sample-btn ghost
+Call us
+@home
+@home
+@home
++91 
+Link to
+Open in a new tab
+Open in a new tab
+Save link
+Search pages
+@home
+@home
+pick-sub mono
+On page
+The same page as the button
+Only sections with an anchor name are listed. Add one under a section’s Style tab.
+No section on this page has an anchor name yet. Add one under a section’s Style tab.
+muted small pad-8
+No entries yet.
+pick-sub mono
+no detail page
+Web address
+Phone number
+WhatsApp number
+Include the country code, e.g. +91 98400 21456.
+Opening message (optional)
+Filled into the chat so the visitor only has to press send.
+Hi, I would like to book an appointment.
+Email address
+hello@yourbusiness.in
+Subject (optional)
+Upload a file
+· goes to a 
+ page
+Detail pages
+Swap for another 
+ block
+Add a section
+Your text, photos and links carry over where the fields match.
+Previews use your theme, so they look the way they will on your site.
+Search blocks
+All blocks 
+No other blocks in this category yet
+Every block in SITEFOUNDRY shares the same theme, so new ones will match.
+Try another search.
+muted small
+None (top level)
+Add a page
+foot-left muted small
+New pages start as drafts. Publish when you’re ready.
+Add page
+Blank page
+Start with a heading and a text block.
+From a template
+Copy any page from any template. It takes on your theme.
+Duplicate a page
+Copy one of your pages with all its sections.
+form mt-16
+Page title
+Address: 
+You can change the address later.
+e.g. Teeth whitening
+Parent page
+tplpick mt-16
+field-group-title mt-16
+ sections
+Parent page
+, shown in your theme
+form mt-16
+Page to copy
+Copies 
+, the header and footer settings and the SEO fields. The copy starts as a draft.
+Delete “
+Delete page
+ will go offline when you next publish. You can undo this until then.
+banner banner-plain
+Nothing else on your site links to this page.
+Removed from 
+ · “
+refbox warn
+button or link
+buttons and links
+ point here
+ · “
+Point them to
+If you leave them, they show up as broken links before you publish.
+Leave them (fix later)
+Pages inside it
+ moves up to 
+the top level
+The 
+ detail template is deleted too. Entries are kept.
+field field-row
+Redirect visitors from 
+field-hint block
+to 
+Choose a page above to redirect to.
+Add redirect
+Edit redirect
+Send visitors from old addresses to new ones. Renaming a page’s slug adds one automatically.
+No redirects yet.
+From path
+cell-msg err
+A live page uses this address, so the redirect never runs.
+cell-msg err
+Duplicate rule.
+To path
+cell-msg err
+No page at this address.
+muted small
+Delete redirect
+Delete redirect
+row between mt-8 gap-8
+Add redirect
+Add redirect
+muted small
+301 tells Google the move is permanent. Use 302 for a short-term change.
+Try an address
+Use * at the end of a rule to redirect everything under a path.
+Shows the 404 page
+ redirect to 
+ · no page there (404)
+Opens 
+Edit 
+ entry
+New post
+<p></p>
+New service
+<p></p>
+Add entry
+Entries fill the list page and their own detail page. Edit them here; the page design stays the same.
+foot-left muted small
+Detail pages live at 
+ has no detail page yet. Add one from a template.
+row between mb-8
+Collection name
+Collection name
+Add entry
+No entries yet. Add one to fill the 
+ pages.
+cell-msg err
+Another entry uses this slug.
+From ₹
+Edit details
+Open its page
+Delete entry
+Delete entry
+Duration or detail
+Full text
+Not enough space: 
+ left. Delete files you no longer use, then try again.
+Uploaded 
+Choose a file
+Choose an image
+Media library
+foot-left muted small
+Select an item
+Use 
+of 500 MB used
+muted small
+ free
+% of storage used
+ Images 
+ Videos 
+ Files 
+.pdf,.doc,.docx,.xls,.xlsx
+image/*
+image/*,video/*,.pdf
+Uploading 
+Nothing here yet
+Drop files here or use Upload.
+Select a file
+See where it’s used, edit its description, or delete it.
+mono small
+Description (alt text)
+Read out by screen readers and used by Google Images.
+Used on
+muted small
+Not used anywhere.
+refbox warn
+Delete 
+It’s used in 
+. Those spots show a placeholder, and publishing is blocked until you pick another image.
+This can’t be undone.
+row gap-8
+Keep it
+Deleted 
+Delete permanently
+Go to
+Publish your site
+Version history
+ · last published 
+ by 
+foot-left ok-text
+ Version 
+ is live.
+foot-left muted small
+Fix 
+ to publish.
+ will go live.
+Nothing has changed since the last publish.
+Not now
+Building pages…
+Going live…
+Building 
+Uploading to the CDN
+Changes since version 
+muted small
+muted small
+Your draft matches what’s live.
+Open page
+Discard draft changes…
+hist-row draft
+hist-dot draft
+Draft 
+No changes
+Only you see this until you publish.
+Version 
+refbox mt-8
+Your draft will be replaced by version 
+. Nothing goes live until you publish. You can undo this.
+row gap-8 mt-8
+Restore into draft
+Discard draft
+muted small mt-8
+Your plan keeps the last 10 published versions.
+Add a section
+Add 
+ section
+to this page
+Add a page
+Duplicate this page
+Page settings
+Media library
+Navigation menus
+Version history
+Switch to Preview
+Switch to Edit
+Phone view
+Tablet view
+Desktop view
+Start a new site from a template
+Jump to a page, add a section or run an action…
+muted small pad-12
+No matches.
+cmd-hint mono
+ to move
+ to run
+ to open anywhere
+ pages
+Back to editor
+Pick a starting point
+Every template is a complete site you can change. Pages and sections from any template match your theme, so you can mix them later.
+Business type
+chip chip-outline
+No template matches all of those filters.
+Clear filters
+This link isn’t set up yet: 
+Calls 
+ on a phone
+Opens an email to 
+Downloads 
+a file
+muted small
+Use this template
+urlbar urlbar-static
+url-path mono
+Click links to move between pages
+.selfsite.in is taken. Try 
+Use 3–30 lowercase letters, numbers or hyphens.
+Name your site
+Starting from 
+. You can change everything later.
+Create site
+Business name
+Used in the header, footer and page titles.
+Site address
+.selfsite.in is available. Connect your own domain any time.
+This is where your site lives until you connect your own domain.
+[data-anchor="
+Redirected from 
+ to 
+This link is broken: 
+ is a draft. Visitors would see the 404 page.
+[data-anchor="
+On a phone this calls 
+Opens a new email to 
+Downloads 
+[data-sid="
+Undid: 
+Redid: 
+Move section
+Reorder sections
+Duplicate section
+Section duplicated
+Hide section
+Hidden. It stays here but won’t show on your live site.
+Section is visible again
+Delete 
+Deleted 
+Swap to 
+Swapped to 
+. Matching content carried over.
+Add 
+Detach 
+Use shared 
+Hide 
+ now has its own 
+. Edits to it won’t change other pages.
+ uses the shared 
+ again.
+No 
+ on 
+Add page
+Added 
+ as a draft
+, and to the header menu
+Duplicate page
+Created 
+ as a draft
+Set home page
+ is now the home page. 
+ moved to /
+Delete 
+Deleted 
+Change page address
+Redirect added: 
+ and 
+ more
+Show in menu
+Reorder menu
+Make dropdown
+Move out of dropdown
+Remove menu link
+Add menu link
+Edit menu link
+ more
+Published version 
+.selfsite.in is up to date.
+Restore version 
+Version 
+ restored into your draft. Publish to make it live.
+Edit text
+ is ready at 
+.selfsite.in. Nothing is public until you publish.
+Move up
+Move down
+Swap block
+canvas-foot muted small
+Click a section to edit it. Click its text to type in place.
+Preview: links work like on your live site.
+Draft vs live, and version history
+Draft · 
+Saving…
+Saved 
+ problems
+Media library
+Version history
+Start a new site from a template
+Go back to the Pearl Dental demo
+row gap-2
+Undo 
+Nothing to undo
+Redo 
+⇧Z)
+Nothing to redo
+app is-phone
+Shared 
+Move up
+Move down
+Swap for another block
+Edit section
+Page settings
+Preview size
+Page settings
+Navigation menus
+Media library
+Version history
+Search and commands
+Start a new site
+Search or jump to…
+Media library
+inspector drawer
+url-path mono
+Page address. Type a path and press Enter.

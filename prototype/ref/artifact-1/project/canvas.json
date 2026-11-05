@@ -1,0 +1,53 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-11-05T09:30:00Z" },
+  "title": "1",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 940, "y": 0, "w": 1440, "h": 900, "title": "1 · Page editor — desktop", "expand": "fill", "is_interactive": true },
+    "Editor-mobile.dc.html": { "x": 0, "y": 0, "w": 390, "h": 844, "title": "1 · Page editor — mobile", "is_interactive": true },
+    "Editor-mobile-dark.dc.html": { "x": 470, "y": 0, "w": 390, "h": 844, "title": "1 · Page editor — mobile, dark", "is_interactive": true },
+    "Editor-dark.dc.html": { "x": 2460, "y": 0, "w": 1440, "h": 900, "title": "1 · Page editor — desktop, dark", "expand": "fill", "is_interactive": true },
+
+    "Focus.dc.html": { "x": 940, "y": 1340, "w": 1440, "h": 900, "title": "2 · Focus editor — desktop", "expand": "fill", "is_interactive": true },
+    "Focus-mobile.dc.html": { "x": 0, "y": 1340, "w": 390, "h": 844, "title": "2 · Focus editor — mobile", "is_interactive": true },
+    "Focus-mobile-dark.dc.html": { "x": 470, "y": 1340, "w": 390, "h": 844, "title": "2 · Focus editor — mobile, dark", "is_interactive": true },
+    "Focus-dark.dc.html": { "x": 2460, "y": 1340, "w": 1440, "h": 900, "title": "2 · Focus editor — desktop, dark", "expand": "fill", "is_interactive": true },
+
+    "Collections.dc.html": { "x": 940, "y": 2680, "w": 1440, "h": 900, "title": "3 · Collections — desktop", "expand": "fill", "is_interactive": true },
+    "Collections-mobile.dc.html": { "x": 0, "y": 2680, "w": 390, "h": 844, "title": "3 · Collections — mobile", "is_interactive": true },
+    "Collections-mobile-dark.dc.html": { "x": 470, "y": 2680, "w": 390, "h": 844, "title": "3 · Collections — mobile, dark (entry editor)", "is_interactive": true },
+    "Collections-dark.dc.html": { "x": 2460, "y": 2680, "w": 1440, "h": 900, "title": "3 · Collections — desktop, dark (entry editor)", "expand": "fill", "is_interactive": true },
+
+    "Design.dc.html": { "x": 940, "y": 4020, "w": 1440, "h": 900, "title": "4 · Site design — desktop", "expand": "fill", "is_interactive": true },
+    "Design-mobile.dc.html": { "x": 0, "y": 4020, "w": 390, "h": 844, "title": "4 · Site design — mobile", "is_interactive": true },
+    "Design-mobile-dark.dc.html": { "x": 470, "y": 4020, "w": 390, "h": 844, "title": "4 · Block picker — mobile, dark", "is_interactive": true },
+    "Design-dark.dc.html": { "x": 2460, "y": 4020, "w": 1440, "h": 900, "title": "4 · Block picker — desktop, dark", "expand": "fill", "is_interactive": true },
+
+    "Landing.dc.html": { "x": 940, "y": 5360, "w": 1440, "h": 5600, "title": "5 · Landing page — desktop", "expand": "fill", "is_interactive": true },
+    "Landing-mobile.dc.html": { "x": 0, "y": 5360, "w": 390, "h": 7400, "title": "5 · Landing page — mobile", "is_interactive": true },
+    "Landing-mobile-dark.dc.html": { "x": 470, "y": 5360, "w": 390, "h": 7400, "title": "5 · Landing page — mobile, dark", "is_interactive": true },
+    "Landing-dark.dc.html": { "x": 2460, "y": 5360, "w": 1440, "h": 5600, "title": "5 · Landing page — desktop, dark", "expand": "fill", "is_interactive": true }
+  },
+  "order": [
+    "Main.dc.html", "Editor-mobile.dc.html", "Editor-mobile-dark.dc.html", "Editor-dark.dc.html",
+    "Focus.dc.html", "Focus-mobile.dc.html", "Focus-mobile-dark.dc.html", "Focus-dark.dc.html",
+    "Collections.dc.html", "Collections-mobile.dc.html", "Collections-mobile-dark.dc.html", "Collections-dark.dc.html",
+    "Design.dc.html", "Design-mobile.dc.html", "Design-mobile-dark.dc.html", "Design-dark.dc.html",
+    "Landing.dc.html", "Landing-mobile.dc.html", "Landing-mobile-dark.dc.html", "Landing-dark.dc.html"
+  ],
+  "notes": {
+    "t1": { "x": 0, "y": -300, "text": "1 · Page editor", "kind": "title1", "maxW": 3900 },
+    "t2": { "x": 0, "y": 1040, "text": "2 · Focus editor: full-screen page, floating toolbar, / and ⌘K", "kind": "title1", "maxW": 3900 },
+    "t3": { "x": 0, "y": 2380, "text": "3 · Collections (the CMS side)", "kind": "title1", "maxW": 3900 },
+    "t4": { "x": 0, "y": 3720, "text": "4 · Block picker and site design", "kind": "title1", "maxW": 3900 },
+    "t5": { "x": 0, "y": 5060, "text": "5 · selfsite landing page", "kind": "title1", "maxW": 3900 },
+    "s1": { "x": -460, "y": 0, "w": 380, "size": "s", "text": "Try it (press Play on any frame)\n\n• Tap a block to edit its text right on the page. Its settings open in the right panel on desktop and in a bottom sheet on mobile.\n• Hover between blocks for +, or use Add block.\n• Reorder with the arrows, or drag rows in the Blocks list. The bin deletes, with Undo.\n• Edit / Preview sits in the top bar; Preview has desktop and phone widths.\n• Publish turns Draft into Published. Any edit makes it a draft again.\n• Rewrite and Write alt text spend 1 AI credit each." },
+    "s2": { "x": -460, "y": 1340, "w": 380, "size": "s", "text": "Keyboard (click the page once to focus it)\n\nJ / K or ↑ ↓  select block\nEnter  edit text · Esc  back out\n/  insert a block after the selection\n⌘K  command menu\n⌥↑ ⌥↓  move block\n⌘D  duplicate · ⌫  delete\n⌘Z / ⇧⌘Z  undo / redo\nP  preview · ⌘↵  publish\nG then C · G then D  jump to Collections / Design\n?  every shortcut\n\nOn phones the toolbar buttons do the same jobs." },
+    "s3": { "x": -460, "y": 2680, "w": 380, "size": "s", "text": "Try it\n\n• Switch between Blog posts, Projects and Testimonials.\n• Search, filter by status and tag.\n• Open an entry: the body is real rich text (select words, use the toolbar).\n• Save draft, Publish and Version history (with Restore) all work.\n\nThe dark frames open straight into the entry editor." },
+    "s4": { "x": -460, "y": 4020, "w": 380, "size": "s", "text": "Try it\n\n• Site design: brand colour, background, heading and body fonts, spacing, corner radius, button style and logo. The preview updates as you change them.\n• Blocks: search or pick a category. Hover a card to see it in the page at the insertion point; click to insert.\n\nLight frames open on Site design, dark frames on the block picker." },
+    "s5": { "x": -460, "y": 5360, "w": 380, "size": "s", "text": "The hero mockup is the real page editor from row 1, scaled down (desktop window plus phone).\n\nNo prices are shown for selfsite plans because tiers aren't settled yet. The agency bundle uses the fixed ₹5,000 figure from DECISIONS.md." }
+  },
+  "designSystems": []
+}

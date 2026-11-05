@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Focus editor</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap">
+<style>
+body{margin:0}
+.ss{--accent:#2563EB;--accent-hover:color-mix(in srgb,var(--accent) 85%,#000);--accent-soft:color-mix(in srgb,var(--accent) 8%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 24%,transparent);--accent-text:color-mix(in srgb,var(--accent) 86%,#000);--bg:#FFFFFF;--bg-subtle:#F9F9FA;--bg-muted:#F3F3F5;--bg-emphasis:#EBEBEE;--bg-elevated:#FFFFFF;--canvas:#F1F1F3;--border:#E6E6E9;--border-strong:#D5D5DA;--fg:#18181B;--fg-muted:#52525B;--fg-subtle:#6B6B74;--danger:#C8322B;--ok:#15803D;--ok-soft:#EBF8F0;--ok-dot:#16A34A;--warn:#9A4D00;--warn-soft:#FFF5E1;--warn-dot:#E8930C;--scrim:rgba(16,16,20,.28);--shadow-xs:0 1px 1px rgba(16,16,20,.04);--shadow-sm:0 1px 2px rgba(16,16,20,.07);--shadow-md:0 4px 12px -2px rgba(16,16,20,.08),0 1px 3px rgba(16,16,20,.06);--shadow-lg:0 16px 40px -12px rgba(16,16,20,.24),0 2px 6px rgba(16,16,20,.06);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13px;line-height:20px;color:var(--fg);background:var(--bg-subtle);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01";outline:none}
+.ss[data-theme="dark"]{--accent-text:color-mix(in srgb,var(--accent) 55%,#fff);--accent-soft:color-mix(in srgb,var(--accent) 16%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 38%,transparent);--bg:#141416;--bg-subtle:#0F0F11;--bg-muted:#1C1C1F;--bg-emphasis:#26262A;--bg-elevated:#1A1A1D;--canvas:#0A0A0B;--border:#26262B;--border-strong:#36363D;--fg:#EDEDEF;--fg-muted:#A8A8B1;--fg-subtle:#8C8C96;--danger:#F87171;--ok:#4ADE80;--ok-soft:rgba(74,222,128,.1);--ok-dot:#22C55E;--warn:#FBBF24;--warn-soft:rgba(251,191,36,.1);--warn-dot:#F59E0B;--scrim:rgba(0,0,0,.5);--shadow-xs:none;--shadow-sm:0 1px 2px rgba(0,0,0,.5);--shadow-md:0 8px 20px -6px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03);--shadow-lg:0 24px 56px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.05);color-scheme:dark}
+.ss *,.ss *::before,.ss *::after{box-sizing:border-box}
+.ss button,.ss input,.ss textarea{font:inherit;color:inherit;letter-spacing:inherit;margin:0}
+.ss a{color:inherit;text-decoration:none}
+.ss p,.ss h1,.ss h2,.ss h3{margin:0}
+.ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+.ic-sm{width:14px;height:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:13px;font-weight:500;line-height:1;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap;transition:background .12s,border-color .12s,color .12s}
+.btn:hover{background:var(--bg-muted);border-color:var(--border-strong)}
+.btn:focus-visible,.ibtn:focus-visible,.item:focus-visible,.ftb-search:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.btn-primary{background:var(--accent);border-color:transparent;color:#fff;box-shadow:0 1px 2px rgba(16,16,20,.14),inset 0 1px 0 rgba(255,255,255,.12)}
+.btn-primary:hover{background:var(--accent-hover);border-color:transparent}
+.btn-ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--fg-muted)}
+.btn-ghost:hover{background:var(--bg-muted);color:var(--fg);border-color:transparent}
+.ibtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0;border-radius:6px;border:1px solid transparent;background:transparent;color:var(--fg-muted);cursor:pointer;flex:none;transition:background .12s,color .12s}
+.ibtn:hover{background:var(--bg-muted);color:var(--fg)}
+.ibtn[disabled]{opacity:.35;cursor:default;background:transparent}
+.ibtn[aria-pressed="true"]{background:var(--bg-emphasis);color:var(--fg)}
+.ibtn-sm{width:28px;height:28px}
+.ibtn-danger:hover{color:var(--danger);background:color-mix(in srgb,var(--danger) 10%,transparent)}
+.hint{font-size:12px;line-height:16px;color:var(--fg-subtle)}
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:4px;border:1px solid var(--border);background:var(--bg-subtle);color:var(--fg-subtle);font-size:11px;font-weight:500;line-height:1;font-family:inherit}
+.badge{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;font-size:12px;font-weight:500;line-height:1;border:1px solid var(--border);background:var(--bg);color:var(--fg-muted);white-space:nowrap}
+.badge-ok{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.dot{width:6px;height:6px;border-radius:999px;background:currentColor;flex:none}
+.menu{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-lg);padding:4px;animation:ssPop .14s ease-out}
+.item{display:flex;align-items:center;gap:10px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:6px;background:transparent;color:var(--fg);text-align:left;font-size:13px;line-height:20px;cursor:pointer}
+.item[data-active="true"]{background:var(--bg-muted)}
+.item .ic{color:var(--fg-subtle)}
+.licon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:var(--bg-muted);border:1px solid var(--border);color:var(--fg-muted);flex:none}
+.item[data-active="true"] .licon{background:var(--bg);color:var(--accent-text);border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
+.sep{height:1px;background:var(--border);margin:4px 0;flex:none}
+.vsep{width:1px;height:20px;background:var(--border);margin:0 4px;flex:none}
+.scroll{overflow:auto;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+.trunc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bare{flex:1;min-width:0;height:32px;padding:0;border:0;background:transparent;color:var(--fg);font-size:13px;outline:none}
+.bare::placeholder{color:var(--fg-subtle)}
+.toast{position:absolute;left:50%;bottom:84px;z-index:80;display:flex;align-items:center;gap:12px;height:40px;padding:0 6px 0 14px;border-radius:10px;background:#18181B;color:#FAFAFA;box-shadow:var(--shadow-lg);font-size:13px;white-space:nowrap;animation:ssToast .2s ease-out;transform:translateX(-50%)}
+.ss[data-theme="dark"] .toast{background:#26262B;border:1px solid var(--border-strong)}
+.toast button{height:28px;padding:0 10px;border-radius:6px;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:500;cursor:pointer}
+.scrim{position:absolute;inset:0;z-index:60;width:100%;height:100%;padding:0;border:0;background:var(--scrim);cursor:default;animation:ssFade .12s}
+[data-tip]{position:relative}
+[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);z-index:100;white-space:pre;padding:4px 8px;border-radius:6px;background:#18181B;color:#FAFAFA;font:500 12px/16px Inter,system-ui,sans-serif;letter-spacing:0;pointer-events:none;box-shadow:var(--shadow-md)}
+[data-tip-below]:hover::after{bottom:auto;top:calc(100% + 8px)}
+.ss[data-layout="mobile"] [data-tip]:hover::after{display:none}
+.ss[data-layout="mobile"] .kbd,.ss[data-layout="mobile"] .desk{display:none}
+.ss[data-layout="desktop"] .mob{display:none}
+.ss[data-layout="mobile"] .ibtn{width:40px;height:40px}
+.ss[data-layout="mobile"] .btn{height:40px;font-size:14px}
+.ss[data-layout="mobile"] .item{min-height:44px;font-size:14px}
+.ss[data-layout="mobile"] .bare{font-size:16px;height:40px}
+@keyframes ssPop{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes ssFade{from{opacity:0}to{opacity:1}}
+@keyframes ssToast{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes ssSpin{to{transform:rotate(360deg)}}
+.spin{animation:ssSpin .8s linear infinite}
+.ftb{position:absolute;left:50%;bottom:20px;z-index:30;display:flex;align-items:center;gap:2px;height:48px;padding:0 6px;border-radius:14px;background:var(--bg-elevated);border:1px solid var(--border);box-shadow:var(--shadow-lg);white-space:nowrap;transform:translateX(-50%)}
+.ss[data-layout="mobile"] .ftb{left:12px;right:12px;bottom:12px;transform:none;height:56px;padding:0 6px;justify-content:space-between}
+.ftb-site{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 8px;border:0;border-radius:8px;background:transparent;color:var(--fg);font-size:13px;font-weight:500;cursor:pointer}
+.ftb-site:hover{background:var(--bg-muted)}
+.ftb-search{display:inline-flex;align-items:center;gap:8px;width:248px;height:32px;padding:0 6px 0 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-subtle);color:var(--fg-subtle);font-size:13px;cursor:pointer;text-align:left}
+.ftb-search:hover{border-color:var(--border-strong);color:var(--fg-muted)}
+.ftb-tip{position:absolute;left:50%;bottom:80px;z-index:29;display:flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;background:var(--bg-elevated);border:1px solid var(--border);box-shadow:var(--shadow-md);color:var(--fg-muted);font-size:12px;white-space:nowrap;transform:translateX(-50%);animation:ssFade .15s}
+.cmdk{position:absolute;left:50%;top:13%;z-index:70;display:flex;flex-direction:column;width:600px;max-width:calc(100% - 32px);background:var(--bg-elevated);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);overflow:hidden;transform:translateX(-50%)}
+.ss[data-layout="mobile"] .cmdk{top:8px;left:8px;right:8px;width:auto;max-width:none;transform:none}
+.cmd-input{flex:1;min-width:0;height:52px;padding:0;border:0;background:transparent;color:var(--fg);font-size:15px;outline:none}
+.cmd-input::placeholder{color:var(--fg-subtle)}
+.cmd-head{padding:10px 10px 4px;font-size:12px;line-height:16px;font-weight:500;color:var(--fg-subtle)}
+.cmd-keys{display:inline-flex;gap:4px;margin-left:auto}
+.modal{position:absolute;left:50%;top:50%;z-index:70;width:760px;max-width:calc(100% - 32px);max-height:calc(100% - 48px);display:flex;flex-direction:column;background:var(--bg-elevated);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);transform:translate(-50%,-50%);animation:ssFade .12s}
+.sc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;height:32px;padding:0 4px;border-bottom:1px solid var(--border)}
+.blk{position:relative;outline:1px solid transparent;outline-offset:-1px;transition:outline-color .12s}
+.blk[data-mode="edit"]:hover{outline-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+.blk[data-selected="true"]{outline:2px solid var(--accent);outline-offset:-2px}
+.blk[data-typing="true"]{outline:2px dashed color-mix(in srgb,var(--accent) 70%,transparent);outline-offset:-2px}
+.blk-hit{position:absolute;inset:0;z-index:2;width:100%;height:100%;padding:0;margin:0;border:0;background:transparent;cursor:pointer}
+.blk-hit:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.blk-bar{position:absolute;top:12px;left:12px;z-index:5;display:flex;align-items:center;gap:2px;padding:2px;border-radius:8px;background:var(--bg-elevated);border:1px solid var(--border);box-shadow:var(--shadow-md);color:var(--fg);font:400 13px/20px Inter,system-ui,sans-serif;letter-spacing:0;animation:ssFade .12s}
+.blk-name{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 8px 0 6px;font-weight:500;color:var(--fg)}
+.blk-name .ic{color:var(--accent-text)}
+.slot{position:relative;z-index:20;padding:12px 48px;font-family:Inter,system-ui,sans-serif;font-size:13px;line-height:20px;letter-spacing:0}
+.slot-line{display:flex;align-items:center;gap:8px;height:40px;padding:0 12px;border:1px dashed color-mix(in srgb,var(--accent) 60%,transparent);border-radius:8px;background:color-mix(in srgb,var(--accent) 5%,transparent);color:var(--accent-text);font-weight:500}
+.slot-pop{position:absolute;top:60px;left:48px;width:340px;z-index:40;color:var(--fg)}
+.ss[data-layout="mobile"] .slot{padding:12px 12px}
+.ss[data-layout="mobile"] .slot-pop{left:12px;right:12px;width:auto}
+.edit{display:block;width:100%;min-width:0;margin:0;padding:0;border:0;background:transparent;font:inherit;color:inherit;letter-spacing:inherit;line-height:inherit;text-align:inherit;text-transform:inherit;resize:none;overflow:hidden;field-sizing:content;border-radius:4px;outline:1px dashed color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:4px}
+.edit:focus{outline:2px solid var(--accent);outline-offset:4px;background:color-mix(in srgb,var(--accent) 5%,transparent)}
+.edit::placeholder{color:color-mix(in srgb,currentColor 45%,transparent)}
+.edit-inline{display:inline-block;width:auto;min-width:6ch;outline-color:rgba(255,255,255,.5)}
+.site{--s-brand:#1F5C4A;--s-bg:#FBFAF7;--s-fg:#1C1A17;--s-muted:#5C574F;--s-line:#E6E1D8;--s-soft:#F2EEE7;--s-head:Manrope,Inter,system-ui,sans-serif;--s-body:Inter,system-ui,sans-serif;--s-pad:72px;--s-r:10px;position:relative;background:var(--s-bg);color:var(--s-fg);font-family:var(--s-body);font-size:16px;line-height:1.6;letter-spacing:0;font-feature-settings:normal}
+.s-wrap{max-width:1080px;margin:0 auto;padding:var(--s-pad) 48px}
+.site[data-device="mobile"] .s-wrap{padding:calc(var(--s-pad) * .6) 20px}
+.s-eyebrow{font-family:var(--s-body);font-size:13px;line-height:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--s-brand)}
+.s-h1{font-family:var(--s-head);font-size:56px;line-height:1.05;font-weight:600;letter-spacing:-.025em;color:var(--s-fg)}
+.site[data-device="mobile"] .s-h1{font-size:34px;line-height:1.12}
+.s-h2{font-family:var(--s-head);font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.02em;color:inherit}
+.site[data-device="mobile"] .s-h2{font-size:26px}
+.s-lead{font-size:18px;line-height:1.6;color:var(--s-muted)}
+.site[data-device="mobile"] .s-lead{font-size:16px}
+.s-body{font-size:17px;line-height:1.7;color:var(--s-muted)}
+.site[data-device="mobile"] .s-body{font-size:16px}
+.s-small{font-size:14px;line-height:1.6;color:var(--s-muted)}
+.s-cap{font-size:13px;line-height:1.5;color:var(--s-muted);margin-top:10px}
+.s-btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:var(--s-r);background:var(--s-brand);color:#fff;font-family:var(--s-body);font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.s-btn-sm{height:38px;padding:0 16px;font-size:14px}
+.s-img{position:relative;overflow:hidden;border-radius:var(--s-r);background:#D8D0C4}
+.s-img-tag{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;background:rgba(255,255,255,.85);color:#3F3B35;font:500 11px/1 Inter,system-ui,sans-serif;letter-spacing:0}
+.s-nav{display:flex;align-items:center;gap:32px;height:72px;padding:0 48px;border-bottom:1px solid var(--s-line)}
+.site[data-device="mobile"] .s-nav{height:60px;padding:0 20px}
+.s-logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--s-head);font-weight:700;font-size:18px;letter-spacing:-.02em;color:var(--s-fg);margin-right:auto}
+.s-mark{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:7px;background:var(--s-brand);color:#fff;font-size:14px;font-weight:700}
+.s-links{display:flex;gap:28px;font-size:15px;color:var(--s-muted)}
+.s-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center}
+.s-hero[data-layout="centered"]{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+.site[data-device="mobile"] .s-hero{grid-template-columns:minmax(0,1fr);gap:28px}
+.s-stack{display:flex;flex-direction:column;gap:20px;align-items:flex-start;min-width:0;width:100%}
+.s-hero[data-layout="centered"] .s-stack{align-items:center;max-width:760px}
+.s-gal{display:grid;gap:16px}
+.site[data-device="mobile"] .s-gal{gap:10px}
+.s-cta{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:48px;border-radius:calc(var(--s-r) * 1.6);background:var(--s-fg);color:#F6F3EE}
+.s-cta[data-tone="light"]{background:var(--s-soft);color:var(--s-fg)}
+.s-cta[data-tone="brand"]{background:var(--s-brand);color:#fff}
+.site[data-device="mobile"] .s-cta{flex-direction:column;align-items:flex-start;padding:28px 24px;gap:20px}
+.s-cta-text{font-size:17px;line-height:1.6;opacity:.85;max-width:520px;margin-top:10px}
+.s-cta .s-btn{background:#fff;color:#1C1A17}
+.s-cta[data-tone="light"] .s-btn{background:var(--s-brand);color:#fff}
+.s-foot{border-top:1px solid var(--s-line);padding:48px 48px 128px;background:var(--s-soft)}
+.s-foot-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.site[data-device="mobile"] .s-foot{padding:32px 20px 112px}
+.site[data-device="mobile"] .s-foot-grid{grid-template-columns:1fr 1fr;gap:24px}
+.s-foot-h{font-size:13px;font-weight:600;margin-bottom:6px;color:var(--s-fg)}
+</style>
+</helmet>
+<div class="ss" data-theme="{{ theme }}" data-layout="{{ lay }}" ref="{{ setRoot }}" tabIndex="0" onKeyDown="{{ onKey }}" onFocus="{{ onFocusIn }}" onBlur="{{ onFocusOut }}" aria-label="Page editor. Press question mark for keyboard shortcuts." style="position: relative; width: 100%; height: {{ height }}; min-height: 480px; overflow: hidden; --accent: {{ accent }}">
+
+<main class="scroll" ref="{{ setScroller }}" style="position: absolute; inset: 0; background: #FBFAF7">
+<div class="site" data-device="{{ siteDevice }}">
+<div class="s-nav">
+<span class="s-logo"><span class="s-mark">T</span>Teakline</span>
+<sc-if value="{{ siteDesktop }}" hint-placeholder-val="{{ true }}">
+<span class="s-links"><span>Projects</span><span>Studio</span><span>Journal</span><span>Contact</span></span>
+<span class="s-btn s-btn-sm">Book a visit</span>
+</sc-if>
+<sc-if value="{{ siteMobile }}" hint-placeholder-val="{{ false }}">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 22px; height: 22px"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg>
+</sc-if>
+</div>
+
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+<sc-if value="{{ r.isSlot }}" hint-placeholder-val="{{ false }}">
+<div class="slot" data-slot="1">
+<div class="slot-line"><span class="kbd" style="color: var(--accent-text)">/</span><span>New block goes here</span><span class="hint desk" style="margin-left: auto">{{ r.where }}</span></div>
+<div class="slot-pop"><div class="menu" role="listbox" aria-label="Insert a block">
+<div style="display: flex; align-items: center; gap: 8px; padding: 2px 8px 6px; margin-bottom: 4px; border-bottom: 1px solid var(--border)">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M20 20l-4-4"></path></svg>
+<input class="bare" autoFocus="{{ r.auto }}" value="{{ r.q }}" onChange="{{ r.onQ }}" onKeyDown="{{ r.onKey }}" placeholder="Filter blocks" aria-label="Filter blocks">
+<button class="ibtn ibtn-sm" onClick="{{ r.close }}" aria-label="Close insert menu"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+</div>
+<sc-for list="{{ r.items }}" as="it" hint-placeholder-count="6">
+<button class="item" role="option" aria-selected="{{ it.active }}" data-active="{{ it.active }}" onMouseMove="{{ it.hover }}" onClick="{{ it.run }}">
+<span class="licon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ it.icon }}"></path></svg></span>
+<span style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-weight: 500">{{ it.label }}</span><span class="hint trunc">{{ it.desc }}</span></span>
+<sc-if value="{{ it.active }}" hint-placeholder-val="{{ false }}"><span class="kbd">↵</span></sc-if>
+</button>
+</sc-for>
+<sc-if value="{{ r.empty }}" hint-placeholder-val="{{ false }}"><div class="hint" style="padding: 12px 8px">No block matches “{{ r.q }}”. Try photo, text or button.</div></sc-if>
+<div class="desk" style="display: flex; gap: 12px; padding: 8px 8px 4px; margin-top: 4px; border-top: 1px solid var(--border)">
+<span class="hint" style="display: inline-flex; align-items: center; gap: 4px"><span class="kbd">↑</span><span class="kbd">↓</span>move</span>
+<span class="hint" style="display: inline-flex; align-items: center; gap: 4px"><span class="kbd">↵</span>insert</span>
+<span class="hint" style="display: inline-flex; align-items: center; gap: 4px"><span class="kbd">esc</span>close</span>
+</div>
+</div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.isBlock }}" hint-placeholder-val="{{ true }}">
+<section class="blk" data-bid="{{ r.id }}" data-mode="{{ r.mode }}" data-selected="{{ r.selOnly }}" data-typing="{{ r.ed }}">
+<sc-if value="{{ r.hit }}" hint-placeholder-val="{{ true }}">
+<button class="blk-hit" tabIndex="-1" onClick="{{ r.click }}" onDoubleClick="{{ r.edit }}" aria-label="{{ r.hitLabel }}"></button>
+</sc-if>
+<sc-if value="{{ r.showBar }}" hint-placeholder-val="{{ false }}">
+<div class="blk-bar">
+<span class="blk-name"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ r.icon }}"></path></svg>{{ r.label }}</span>
+<span class="vsep" style="height: 16px; margin: 0 2px"></span>
+<button class="ibtn ibtn-sm" data-tip="Edit text  ↵" data-tip-below="1" onClick="{{ r.edit }}" aria-label="Edit text"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z M14 6l4 4"></path></svg></button>
+<button class="ibtn ibtn-sm" data-tip="{{ r.tipUp }}" data-tip-below="1" onClick="{{ r.up }}" disabled="{{ r.upDisabled }}" aria-label="Move up"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5 M6 11l6-6 6 6"></path></svg></button>
+<button class="ibtn ibtn-sm" data-tip="{{ r.tipDown }}" data-tip-below="1" onClick="{{ r.down }}" disabled="{{ r.downDisabled }}" aria-label="Move down"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M6 13l6 6 6-6"></path></svg></button>
+<button class="ibtn ibtn-sm" data-tip="{{ r.tipDup }}" data-tip-below="1" onClick="{{ r.dup }}" aria-label="Duplicate"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h11v11H9z M15 9V4H4v11h5"></path></svg></button>
+<button class="ibtn ibtn-sm" data-tip="Insert below  /" data-tip-below="1" onClick="{{ r.slash }}" aria-label="Insert a block below"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg></button>
+<button class="ibtn ibtn-sm ibtn-danger" data-tip="Delete  ⌫" data-tip-below="1" onClick="{{ r.del }}" aria-label="Delete block"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16 M10 11v6 M14 11v6 M6 7l1 13h10l1-13 M9 7V4h6v3"></path></svg></button>
+</div>
+</sc-if>
+<sc-if value="{{ r.ed }}" hint-placeholder-val="{{ false }}">
+<div class="blk-bar">
+<span class="blk-name"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z M14 6l4 4"></path></svg>Editing {{ r.labelLower }}</span>
+<button class="btn btn-ghost" onClick="{{ r.done }}" style="height: 28px; padding: 0 8px; font-size: 12px">Done<span class="kbd">esc</span></button>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.isHero }}" hint-placeholder-val="{{ true }}">
+<div class="s-wrap">
+<div class="s-hero" data-layout="{{ r.layout }}">
+<div class="s-stack">
+<sc-if value="{{ r.ed }}" hint-placeholder-val="{{ false }}">
+<input class="edit s-eyebrow" value="{{ r.eyebrow }}" onChange="{{ r.onEyebrow }}" aria-label="Eyebrow text">
+<textarea class="edit s-h1" autoFocus="{{ r.yes }}" rows="{{ r.rTitle }}" value="{{ r.title }}" onChange="{{ r.onTitle }}" aria-label="Heading"></textarea>
+<textarea class="edit s-lead" rows="{{ r.rSub }}" value="{{ r.subtitle }}" onChange="{{ r.onSubtitle }}" aria-label="Subheading"></textarea>
+<span class="s-btn"><input class="edit edit-inline" size="{{ r.btnSize }}" value="{{ r.button }}" onChange="{{ r.onButton }}" aria-label="Button label"></span>
+</sc-if>
+<sc-if value="{{ r.notEd }}" hint-placeholder-val="{{ true }}">
+<p class="s-eyebrow">{{ r.eyebrow }}</p>
+<h1 class="s-h1">{{ r.title }}</h1>
+<p class="s-lead">{{ r.subtitle }}</p>
+<span class="s-btn">{{ r.button }}</span>
+</sc-if>
+</div>
+<div class="s-img" style="width: 100%; aspect-ratio: {{ r.heroRatio }}; background: {{ r.tone }}"><span class="s-img-tag">{{ r.file }}</span></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.isText }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 700px; {{ r.textStyle }}">
+<sc-if value="{{ r.ed }}" hint-placeholder-val="{{ false }}">
+<textarea class="edit s-h2" autoFocus="{{ r.yes }}" rows="{{ r.rHeading }}" value="{{ r.heading }}" onChange="{{ r.onHeading }}" aria-label="Heading"></textarea>
+<textarea class="edit s-body" rows="{{ r.rBody }}" value="{{ r.body }}" onChange="{{ r.onBody }}" onKeyDown="{{ r.onBodyKey }}" placeholder="Write something, or type / to insert a block" aria-label="Paragraph"></textarea>
+</sc-if>
+<sc-if value="{{ r.notEd }}" hint-placeholder-val="{{ true }}">
+<h2 class="s-h2">{{ r.heading }}</h2>
+<p class="s-body" style="white-space: pre-line">{{ r.body }}</p>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.isImage }}" hint-placeholder-val="{{ false }}">
+<div style="{{ r.imgOuter }}">
+<div class="s-img" style="aspect-ratio: 16 / 9; background: {{ r.tone }}; {{ r.imgRadius }}"><span class="s-img-tag">{{ r.file }}</span></div>
+<sc-if value="{{ r.ed }}" hint-placeholder-val="{{ false }}">
+<input class="edit s-cap" autoFocus="{{ r.yes }}" value="{{ r.caption }}" onChange="{{ r.onCaption }}" placeholder="Add a caption" aria-label="Caption" style="{{ r.capPad }}">
+</sc-if>
+<sc-if value="{{ r.showCap }}" hint-placeholder-val="{{ true }}">
+<p class="s-cap" style="{{ r.capPad }}">{{ r.caption }}</p>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.isGallery }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .75); padding-bottom: calc(var(--s-pad) * .75)">
+<sc-if value="{{ r.ed }}" hint-placeholder-val="{{ false }}">
+<input class="edit s-h2" autoFocus="{{ r.yes }}" value="{{ r.heading }}" onChange="{{ r.onHeading }}" aria-label="Gallery heading" style="margin-bottom: 24px">
+</sc-if>
+<sc-if value="{{ r.notEd }}" hint-placeholder-val="{{ true }}">
+<h2 class="s-h2" style="margin-bottom: 24px">{{ r.heading }}</h2>
+</sc-if>
+<div class="s-gal" style="grid-template-columns: repeat({{ r.cols }}, minmax(0, 1fr))">
+<sc-for list="{{ r.images }}" as="im" hint-placeholder-count="6">
+<figure style="margin: 0; min-width: 0">
+<div class="s-img" style="aspect-ratio: 4 / 3; background: {{ im.tone }}"></div>
+<figcaption class="s-cap" style="margin-top: 8px">{{ im.caption }}</figcaption>
+</figure>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.isCta }}" hint-placeholder-val="{{ false }}">
+<div class="s-wrap" style="padding-top: calc(var(--s-pad) * .5)">
+<div class="s-cta" data-tone="{{ r.tone }}">
+<div style="min-width: 0; flex: 1; width: 100%">
+<sc-if value="{{ r.ed }}" hint-placeholder-val="{{ false }}">
+<input class="edit s-h2" autoFocus="{{ r.yes }}" value="{{ r.heading }}" onChange="{{ r.onHeading }}" aria-label="Heading">
+<textarea class="edit s-cta-text" rows="{{ r.rText }}" value="{{ r.text }}" onChange="{{ r.onText }}" aria-label="Text"></textarea>
+</sc-if>
+<sc-if value="{{ r.notEd }}" hint-placeholder-val="{{ true }}">
+<h2 class="s-h2">{{ r.heading }}</h2>
+<p class="s-cta-text">{{ r.text }}</p>
+</sc-if>
+</div>
+<span class="s-btn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ r.actionIcon }}"></path></svg>{{ r.button }}</span>
+</div>
+</div>
+</sc-if>
+</section>
+</sc-if>
+</sc-for>
+
+<footer class="s-foot">
+<div class="s-foot-grid">
+<div style="grid-column: {{ footSpan }}">
+<span class="s-logo" style="margin-bottom: 8px"><span class="s-mark">T</span>Teakline</span>
+<p class="s-small">Interior design for homes in Coimbatore and the Nilgiris.</p>
+</div>
+<div><p class="s-foot-h">Visit</p><p class="s-small">2nd floor, 41 Avinashi Road<br>Peelamedu, Coimbatore 641004</p></div>
+<div><p class="s-foot-h">Hours</p><p class="s-small">Mon–Sat, 10 am – 7 pm<br>Sunday by appointment</p></div>
+<div><p class="s-foot-h">Contact</p><p class="s-small">+91 98430 12345<br>hello@teaklinestudio.in</p></div>
+</div>
+</footer>
+</div>
+</main>
+
+<sc-if value="{{ showGHint }}" hint-placeholder-val="{{ false }}">
+<div class="ftb-tip" role="status"><span class="kbd">G</span><span>then</span><span class="kbd">C</span>Collections<span class="kbd">D</span>Site design<span class="kbd">E</span>Classic editor<span class="kbd">L</span>Landing page</div>
+</sc-if>
+<sc-if value="{{ showFocusHint }}" hint-placeholder-val="{{ false }}">
+<div class="ftb-tip">Click the page to use keyboard shortcuts<span class="kbd">?</span></div>
+</sc-if>
+
+<sc-if value="{{ editMode }}" hint-placeholder-val="{{ true }}">
+<div class="ftb" role="toolbar" aria-label="Editor">
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<button class="ftb-site" data-tip="Switch page  G then H" onClick="{{ goTop }}">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 5px; background: #1F5C4A; color: #fff; font-size: 11px; font-weight: 700">T</span>
+<span>Teakline</span><span style="color: var(--fg-subtle)">/</span><span>Home</span>
+<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="M7 10l5 5 5-5"></path></svg>
+</button>
+<span class="vsep"></span>
+<button class="ftb-search" onClick="{{ openCmd }}" aria-label="Open command menu">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M20 20l-4-4"></path></svg>
+<span style="flex: 1">Search or run a command</span>
+<span class="kbd">{{ mod }}</span><span class="kbd">K</span>
+</button>
+<span class="vsep"></span>
+</sc-if>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<button class="ibtn" onClick="{{ openCmd }}" aria-label="Search or run a command"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M20 20l-4-4"></path></svg></button>
+</sc-if>
+<button class="ibtn" data-tip="Insert block  /" onClick="{{ openSlash }}" aria-label="Insert block"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg></button>
+<button class="ibtn" data-tip="{{ tipUndo }}" onClick="{{ undo }}" disabled="{{ noUndo }}" aria-label="Undo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5 M4 9h10.5a5.5 5.5 0 0 1 0 11H11"></path></svg></button>
+<button class="ibtn" data-tip="{{ tipRedo }}" onClick="{{ redo }}" disabled="{{ noRedo }}" aria-label="Redo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14l5-5-5-5 M20 9H9.5a5.5 5.5 0 0 0 0 11H13"></path></svg></button>
+<button class="ibtn" data-tip="Preview  P" onClick="{{ togglePreview }}" aria-label="Preview"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg></button>
+<button class="ibtn" data-tip="Theme" onClick="{{ toggleTheme }}" aria-label="Switch light or dark theme"><sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 2.5v2 M12 19.5v2 M4.6 4.6l1.4 1.4 M18 18l1.4 1.4 M2.5 12h2 M19.5 12h2 M4.6 19.4L6 18 M18 6l1.4-1.4"></path></svg></sc-if><sc-if value="{{ light }}" hint-placeholder-val="{{ true }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<button class="ibtn" data-tip="Keyboard shortcuts  ?" onClick="{{ openHelp }}" aria-label="Keyboard shortcuts"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z M7 10h.01 M11 10h.01 M15 10h.01 M7 14h10"></path></svg></button>
+<span class="vsep"></span>
+<sc-if value="{{ isDraft }}" hint-placeholder-val="{{ true }}"><span class="badge" style="margin: 0 4px"><span class="dot" style="color: var(--warn-dot)"></span>{{ draftText }}</span></sc-if>
+<sc-if value="{{ isPublished }}" hint-placeholder-val="{{ false }}"><span class="badge badge-ok" style="margin: 0 4px"><span class="dot"></span>Published</span></sc-if>
+</sc-if>
+<sc-if value="{{ isDraft }}" hint-placeholder-val="{{ true }}">
+<button class="btn btn-primary" data-tip="{{ tipPublish }}" onClick="{{ publish }}" style="gap: 8px">Publish<span class="desk" style="display: inline-flex; gap: 2px; opacity: .75; font-size: 11px">{{ mod }}↵</span></button>
+</sc-if>
+<sc-if value="{{ publishing }}" hint-placeholder-val="{{ false }}">
+<button class="btn btn-primary" disabled="{{ yes }}"><svg class="ic ic-sm spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>Publishing</button>
+</sc-if>
+<sc-if value="{{ isPublished }}" hint-placeholder-val="{{ false }}">
+<button class="btn" onClick="{{ nothingToPublish }}" style="color: var(--ok)"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Live</button>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ preview }}" hint-placeholder-val="{{ false }}">
+<div class="ftb" style="height: 40px; padding: 0 4px 0 14px; gap: 8px; left: 50%; right: auto; transform: translateX(-50%)">
+<span class="dot" style="color: var(--accent)"></span><span style="font-weight: 500">Previewing as a visitor</span>
+<button class="btn btn-ghost" onClick="{{ togglePreview }}" style="height: 30px">Exit<span class="kbd">P</span></button>
+</div>
+</sc-if>
+
+<sc-if value="{{ cmdOpen }}" hint-placeholder-val="{{ false }}">
+<button class="scrim" onClick="{{ closeCmd }}" aria-label="Close command menu"></button>
+<div class="cmdk" role="dialog" aria-label="Command menu">
+<div style="display: flex; align-items: center; gap: 10px; padding: 0 12px 0 16px; border-bottom: 1px solid var(--border)">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M20 20l-4-4"></path></svg>
+<input class="cmd-input" autoFocus="{{ cmdAuto }}" value="{{ cmdQ }}" onChange="{{ onCmdQ }}" onKeyDown="{{ onCmdKey }}" placeholder="Type a command or search" aria-label="Type a command or search">
+<sc-if value="{{ hasSelLabel }}" hint-placeholder-val="{{ true }}"><span class="badge" style="max-width: 180px"><span class="trunc">{{ selLabel }}</span></span></sc-if>
+<button class="ibtn ibtn-sm" onClick="{{ closeCmd }}" aria-label="Close"><span class="kbd">esc</span><svg class="ic mob" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+</div>
+<div class="scroll" ref="{{ setCmdList }}" style="position: relative; max-height: 380px; padding: 4px 6px 6px">
+<sc-for list="{{ cmdRows }}" as="c" hint-placeholder-count="10">
+<sc-if value="{{ c.isHead }}" hint-placeholder-val="{{ false }}"><div class="cmd-head">{{ c.label }}</div></sc-if>
+<sc-if value="{{ c.isBtn }}" hint-placeholder-val="{{ true }}">
+<button class="item" data-cmd="{{ c.id }}" data-active="{{ c.active }}" onMouseMove="{{ c.hover }}" onClick="{{ c.run }}">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ c.icon }}"></path></svg>
+<span class="trunc">{{ c.label }}</span>
+<span class="cmd-keys"><sc-for list="{{ c.keys }}" as="k" hint-placeholder-count="1"><span class="kbd">{{ k.k }}</span></sc-for></span>
+</button>
+</sc-if>
+<sc-if value="{{ c.isLink }}" hint-placeholder-val="{{ false }}">
+<a class="item" href="{{ c.href }}" data-cmd="{{ c.id }}" data-active="{{ c.active }}" onMouseMove="{{ c.hover }}">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ c.icon }}"></path></svg>
+<span class="trunc">{{ c.label }}</span>
+<span class="cmd-keys"><sc-for list="{{ c.keys }}" as="k" hint-placeholder-count="2"><span class="kbd">{{ k.k }}</span></sc-for></span>
+</a>
+</sc-if>
+</sc-for>
+<sc-if value="{{ cmdEmpty }}" hint-placeholder-val="{{ false }}"><div class="hint" style="padding: 24px 12px; text-align: center">No commands match “{{ cmdQ }}”</div></sc-if>
+</div>
+<div class="desk" style="display: flex; align-items: center; gap: 16px; height: 40px; padding: 0 16px; border-top: 1px solid var(--border); background: var(--bg-subtle)">
+<span class="hint" style="display: inline-flex; align-items: center; gap: 4px"><span class="kbd">↑</span><span class="kbd">↓</span>navigate</span>
+<span class="hint" style="display: inline-flex; align-items: center; gap: 4px"><span class="kbd">↵</span>run</span>
+<span class="hint" style="display: inline-flex; align-items: center; gap: 4px"><span class="kbd">esc</span>close</span>
+<span class="hint" style="margin-left: auto">Teakline Studio · Home</span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ helpOpen }}" hint-placeholder-val="{{ false }}">
+<button class="scrim" onClick="{{ closeHelp }}" aria-label="Close shortcuts"></button>
+<div class="modal" role="dialog" aria-label="Keyboard shortcuts">
+<div style="display: flex; align-items: center; gap: 8px; padding: 14px 12px 14px 20px; border-bottom: 1px solid var(--border)">
+<span style="flex: 1; font-size: 14px; font-weight: 600">Keyboard shortcuts</span>
+<span class="hint">Press <span class="kbd">?</span> any time</span>
+<button class="ibtn ibtn-sm" onClick="{{ closeHelp }}" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+</div>
+<div class="scroll" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; padding: 16px 20px 24px">
+<sc-for list="{{ helpGroups }}" as="g" hint-placeholder-count="3">
+<div>
+<div class="cmd-head" style="padding: 0 4px 6px">{{ g.title }}</div>
+<sc-for list="{{ g.rows }}" as="h" hint-placeholder-count="5">
+<div class="sc-row"><span>{{ h.label }}</span><span class="cmd-keys"><sc-for list="{{ h.keys }}" as="k" hint-placeholder-count="2"><span class="kbd">{{ k.k }}</span></sc-for></span></div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<div aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap">
+<a data-nav="collections" href="{{ nav.collections }}" tabIndex="-1">Collections</a>
+<a data-nav="design" href="{{ nav.design }}" tabIndex="-1">Site design</a>
+<a data-nav="editor" href="{{ nav.editor }}" tabIndex="-1">Classic editor</a>
+<a data-nav="landing" href="{{ nav.landing }}" tabIndex="-1">Landing page</a>
+</div>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<div class="toast" role="status" style="{{ toastStyle }}">
+<span>{{ toastText }}</span>
+<sc-if value="{{ toastUndo }}" hint-placeholder-val="{{ false }}"><button onClick="{{ undo }}">Undo<span style="opacity: .6; margin-left: 6px">{{ mod }}Z</span></button></sc-if>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"layout":{"editor":"enum","options":["auto","mobile","desktop"],"default":"auto"},"open":{"editor":"enum","options":["none","cmd","slash","help"],"default":"cmd"},"accent":{"editor":"color","default":"#2563EB","options":["#2563EB","#0F766E","#C2410C","#18181B"]},"selected":{"editor":null,"default":"b2"},"height":{"editor":null,"default":"100vh"},"$preview":{"width":1440,"height":900}}'>
+const IC = {
+  hero: 'M4 4h16v16H4z M8 9h8 M8 13h5',
+  text: 'M5 6h14 M5 10h14 M5 14h10 M5 18h7',
+  image: 'M4 5h16v14H4z M4 16l5-5 4 4 2-2 5 5 M15 9h.01',
+  gallery: 'M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z',
+  cta: 'M3 7h18v10H3z M8 12h8',
+  edit: 'M4 20h4L19 9l-4-4L4 16z M14 6l4 4',
+  up: 'M12 19V5 M6 11l6-6 6 6',
+  down: 'M12 5v14 M6 13l6 6 6-6',
+  copy: 'M9 9h11v11H9z M15 9V4H4v11h5',
+  trash: 'M4 7h16 M10 11v6 M14 11v6 M6 7l1 13h10l1-13 M9 7V4h6v3',
+  publish: 'M12 15V4 M7.5 8.5L12 4l4.5 4.5 M4 15v4h16v-4',
+  eye: 'M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  undo: 'M9 14L4 9l5-5 M4 9h10.5a5.5 5.5 0 0 1 0 11H11',
+  redo: 'M15 14l5-5-5-5 M20 9H9.5a5.5 5.5 0 0 0 0 11H13',
+  moon: 'M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z',
+  go: 'M5 12h14 M13 6l6 6-6 6',
+  key: 'M3 6h18v12H3z M7 10h.01 M11 10h.01 M15 10h.01 M7 14h10',
+  db: 'M4 6c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3z M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6 M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3',
+  palette: 'M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.7 1.6-1.5 0-1.1-.9-1.4-.9-2.4 0-.9.7-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.8 17 3 12 3z M7.5 11.5h.01 M10 7.5h.01 M14.5 7.5h.01',
+  page: 'M6 3h8l4 4v14H6z M14 3v4h4',
+  globe: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M3 12h18 M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z'
+};
+const META = {
+  hero: 'Hero', text: 'Text', image: 'Image', gallery: 'Gallery', cta: 'Call to action'
+};
+const ACTION_ICON = {
+  whatsapp: 'M20.5 12a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1-4.4A8.5 8.5 0 1 1 20.5 12z',
+  call: 'M6.5 3.5h3l1.5 4.5-2 1.3a11 11 0 0 0 5.7 5.7l1.3-2 4.5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z',
+  link: 'M5 12h14 M13 6l6 6-6 6'
+};
+const SLASH = [
+  { id: 'hero', type: 'hero', label: 'Hero', desc: 'Heading, photo and a button, side by side', keys: 'hero banner header top intro', preset: { layout: 'split' } },
+  { id: 'hero-c', type: 'hero', label: 'Hero, centered', desc: 'Heading over a wide photo', keys: 'hero centered banner intro', preset: { layout: 'centered' } },
+  { id: 'text', type: 'text', label: 'Text', desc: 'A heading and a paragraph', keys: 'text paragraph heading copy about story', preset: {} },
+  { id: 'image', type: 'image', label: 'Image', desc: 'One photo with a caption', keys: 'image photo picture', preset: { width: 'wide' } },
+  { id: 'image-f', type: 'image', label: 'Image, full width', desc: 'Edge-to-edge photo', keys: 'image photo full wide bleed', preset: { width: 'full' } },
+  { id: 'gallery', type: 'gallery', label: 'Gallery', desc: 'A grid of photos', keys: 'gallery photos grid portfolio projects work', preset: {} },
+  { id: 'cta', type: 'cta', label: 'WhatsApp button', desc: 'Call to action that opens a chat', keys: 'cta call to action button whatsapp contact chat', preset: { action: 'whatsapp' } },
+  { id: 'cta-call', type: 'cta', label: 'Call button', desc: 'Call to action that starts a phone call', keys: 'cta call to action phone contact', preset: { action: 'call', button: 'Call +91 98430 12345', heading: 'Prefer to talk?', text: 'We pick up between 10 am and 7 pm, Monday to Saturday.' } }
+];
+let SEQ = 40;
+function nid() { SEQ += 1; return 'b' + SEQ; }
+function clone(x) { return JSON.parse(JSON.stringify(x)); }
+function fresh(type) {
+  if (type === 'hero') return { type, eyebrow: 'New section', title: 'A heading that says what you do', subtitle: 'One or two sentences that tell visitors why they should get in touch.', button: 'Get in touch', layout: 'split', img: { file: 'hero-photo.webp', tone: '#D8CDBF' } };
+  if (type === 'text') return { type, heading: 'Add a heading', body: '', align: 'left' };
+  if (type === 'image') return { type, img: { file: 'new-photo.webp', tone: '#C9CEC4' }, caption: '', width: 'wide' };
+  if (type === 'gallery') return { type, heading: 'Gallery', columns: 3, images: [{ tone: '#D3C7BA', caption: 'Add a caption' }, { tone: '#C9CEC4', caption: 'Add a caption' }, { tone: '#D8CDBF', caption: 'Add a caption' }] };
+  return { type: 'cta', heading: 'Ready to talk?', text: 'Tell us a little about your home and we will get back to you within a day.', button: 'Message us on WhatsApp', action: 'whatsapp', tone: 'light' };
+}
+const START = [
+  { id: 'b1', type: 'hero', eyebrow: 'Interior design studio · Coimbatore', title: 'Homes that feel calm, warm and entirely yours', subtitle: 'We design and furnish apartments and independent houses across Coimbatore and the Nilgiris, from the first sketch to the last cushion.', button: 'Book a site visit', layout: 'split', img: { file: 'living-room-rs-puram.webp', tone: '#D6CBBE' } },
+  { id: 'b2', type: 'text', heading: 'A small studio, on purpose', body: 'Teakline is four designers and one very patient site supervisor. We take on eight homes a year, so every project gets our full attention and you always speak to the person drawing your plans.', align: 'left' },
+  { id: 'b3', type: 'image', img: { file: 'dining-nook-saibaba-colony.webp', tone: '#CFC5B6' }, caption: 'Dining nook, Saibaba Colony · completed March 2026', width: 'wide' },
+  { id: 'b4', type: 'gallery', heading: 'Recent projects', columns: 3, images: [
+    { tone: '#CCD0C6', caption: 'Kitchen, Peelamedu' }, { tone: '#D8CDBF', caption: 'Bedroom, Race Course' }, { tone: '#C3CABF', caption: 'Balcony garden, Ooty' },
+    { tone: '#D2C8BC', caption: 'Study, Vadavalli' }, { tone: '#DDD3C3', caption: 'Pooja room, Saravanampatti' }, { tone: '#C7CBCB', caption: 'Bathroom, Kovaipudur' }
+  ] },
+  { id: 'b5', type: 'cta', heading: 'Planning a new home?', text: 'Send us your floor plan on WhatsApp. We reply within a day with a rough timeline and budget range.', button: 'Message us on WhatsApp', action: 'whatsapp', tone: 'dark' }
+];
+function rowsFor(text, per) { return Math.max(1, Math.ceil(String(text || '').length / per)); }
+function clock() { try { return new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); } catch (e) { return 'just now'; } }
+function isMac() { try { return /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || ''); } catch (e) { return true; } }
+function keys(arr) { return arr.map((k) => ({ k })); }
+
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      blocks: clone(START), sel: undefined, editId: null, preview: false,
+      status: 'draft', dirty: { b2: true, b4: true }, publishing: false,
+      past: [], future: [], cmd: undefined, slash: undefined, help: undefined,
+      toast: null, dark: undefined, w: 0, focused: false, gHint: false
+    };
+    this.MOD = isMac() ? '⌘' : 'Ctrl';
+    this.setRoot = (el) => { this.root = el; };
+    this.setScroller = (el) => { this.scroller = el; };
+    this.setCmdList = (el) => { this.cmdList = el; };
+    this.measure = () => {
+      const el = this.root;
+      const w = Math.round(el ? el.getBoundingClientRect().width : (window.innerWidth || 0));
+      if (w && w !== this.state.w) this.setState({ w });
+    };
+  }
+  componentDidMount() {
+    this.measure();
+    try {
+      if (window.ResizeObserver && this.root) { this.ro = new ResizeObserver(this.measure); this.ro.observe(this.root); }
+      else { window.addEventListener('resize', this.measure); }
+    } catch (e) {}
+    this.tm = setTimeout(() => {
+      if (this._slash) this.reveal('[data-slot]', false);
+      else if (this._sel && this._sel !== 'b1') this.reveal('[data-bid="' + this._sel + '"]', false);
+    }, 120);
+  }
+  componentWillUnmount() {
+    if (this.ro) this.ro.disconnect();
+    window.removeEventListener('resize', this.measure);
+    [this.tt, this.tp, this.tg, this.tm, this.tr].forEach((t) => clearTimeout(t));
+  }
+  focusRoot() { const r = this.root; if (r) { try { r.focus({ preventScroll: true }); } catch (e) { r.focus(); } } }
+  reveal(selector, smooth) {
+    const sc = this.scroller, r = this.root;
+    if (!sc || !r) return;
+    const el = r.querySelector(selector);
+    if (!el) return;
+    const scale = r.offsetWidth ? r.getBoundingClientRect().width / r.offsetWidth : 1;
+    const er = el.getBoundingClientRect(), sr = sc.getBoundingClientRect();
+    const top = (er.top - sr.top) / (scale || 1);
+    const bottom = (er.bottom - sr.top) / (scale || 1);
+    const h = sc.clientHeight, padTop = 24, padBottom = this._mobile ? 96 : 104;
+    let delta = 0;
+    if (top < padTop) delta = top - padTop;
+    else if (bottom > h - padBottom) delta = Math.min(bottom - (h - padBottom), top - padTop);
+    if (!delta) return;
+    try { sc.scrollTo({ top: sc.scrollTop + delta, behavior: smooth ? 'smooth' : 'auto' }); } catch (e) { sc.scrollTop += delta; }
+  }
+  flash(toast) {
+    clearTimeout(this.tt);
+    this.setState({ toast });
+    this.tt = setTimeout(() => this.setState({ toast: null }), 3800);
+  }
+  commit(blocks, extra) {
+    this.setState((s) => Object.assign({
+      past: s.past.concat([{ blocks: s.blocks, sel: this._sel }]).slice(-60), future: [],
+      blocks, status: 'draft', dirty: Object.assign({}, s.dirty, { order: true })
+    }, extra || {}));
+  }
+  patch(id, ch) {
+    this.setState((s) => ({
+      blocks: s.blocks.map((b) => (b.id === id ? Object.assign({}, b, ch) : b)),
+      dirty: Object.assign({}, s.dirty, { [id]: true }), status: 'draft'
+    }));
+  }
+  idx() { return this.state.blocks.findIndex((b) => b.id === this._sel); }
+  select(id) {
+    this.setState({ sel: id, editId: null });
+    clearTimeout(this.tr);
+    this.tr = setTimeout(() => this.reveal('[data-bid="' + id + '"]', true), 20);
+  }
+  step(d) {
+    const a = this.state.blocks;
+    if (!a.length) return;
+    let i = this.idx();
+    i = i < 0 ? (d > 0 ? 0 : a.length - 1) : Math.max(0, Math.min(a.length - 1, i + d));
+    this.select(a[i].id);
+  }
+  startEdit(id) {
+    const target = id || this._sel;
+    if (!target) return;
+    this.setState((s) => ({ sel: target, editId: target, past: s.past.concat([{ blocks: s.blocks, sel: target }]).slice(-60), future: [] }));
+  }
+  stopEdit() { if (this.state.editId) { this.setState({ editId: null }); this.focusRoot(); } }
+  move(d) {
+    const i = this.idx(), a = this.state.blocks.slice(), j = i + d;
+    if (i < 0 || j < 0 || j >= a.length) return;
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+    this.commit(a);
+    clearTimeout(this.tr); this.tr = setTimeout(() => this.reveal('[data-bid="' + this._sel + '"]', true), 30);
+  }
+  dup() {
+    const i = this.idx();
+    if (i < 0) return;
+    const c = clone(this.state.blocks[i]); c.id = nid();
+    const a = this.state.blocks.slice(); a.splice(i + 1, 0, c);
+    this.commit(a, { sel: c.id, editId: null });
+    this.flash({ text: 'Block duplicated', undo: true });
+  }
+  del() {
+    const i = this.idx();
+    if (i < 0) return;
+    const a = this.state.blocks.slice();
+    const gone = a.splice(i, 1)[0];
+    const next = a[Math.min(i, a.length - 1)];
+    this.commit(a, { sel: next ? next.id : null, editId: null });
+    this.flash({ text: META[gone.type] + ' block deleted', undo: true });
+  }
+  undo() {
+    const s = this.state;
+    if (!s.past.length) return;
+    const prev = s.past[s.past.length - 1];
+    clearTimeout(this.tt);
+    this.setState({ past: s.past.slice(0, -1), future: [{ blocks: s.blocks, sel: this._sel }].concat(s.future), blocks: prev.blocks, sel: prev.sel, editId: null, toast: { text: 'Undone' } });
+    this.tt = setTimeout(() => this.setState({ toast: null }), 1600);
+  }
+  redo() {
+    const s = this.state;
+    if (!s.future.length) return;
+    const nx = s.future[0];
+    this.setState({ future: s.future.slice(1), past: s.past.concat([{ blocks: s.blocks, sel: this._sel }]), blocks: nx.blocks, sel: nx.sel, editId: null });
+    this.flash({ text: 'Redone' });
+  }
+  publish() {
+    if (this.state.status !== 'draft' || this.state.publishing) { this.flash({ text: 'Everything is already live' }); return; }
+    this.setState({ publishing: true, editId: null });
+    clearTimeout(this.tp);
+    this.tp = setTimeout(() => {
+      this.setState({ publishing: false, status: 'published', dirty: {} });
+      this.flash({ text: 'Published to teakline.selfsite.in at ' + clock() });
+    }, 1200);
+  }
+  togglePreview() { this.setState((s) => ({ preview: !s.preview, editId: null, cmd: null, slash: null })); this.focusRoot(); }
+  openSlash(auto) {
+    const i = this.idx();
+    const at = i < 0 ? this.state.blocks.length : i + 1;
+    this.setState({ slash: { q: '', i: 0, at, auto: auto !== false }, cmd: null, editId: null });
+    clearTimeout(this.tr); this.tr = setTimeout(() => this.reveal('[data-slot]', true), 40);
+  }
+  closeSlash() { this.setState({ slash: null }); this.focusRoot(); }
+  slashList(q) {
+    const t = String(q || '').trim().toLowerCase();
+    return SLASH.filter((it) => !t || it.label.toLowerCase().indexOf(t) >= 0 || it.keys.indexOf(t) >= 0);
+  }
+  insertItem(it, at) {
+    const b = Object.assign({ id: nid() }, fresh(it.type), clone(it.preset || {}));
+    const a = this.state.blocks.slice(); a.splice(at, 0, b);
+    this.commit(a, { sel: b.id, slash: null, cmd: null, editId: b.type === 'text' ? b.id : null });
+    this.flash({ text: it.label + ' inserted', undo: true });
+    if (b.type !== 'text') this.focusRoot();
+    clearTimeout(this.tr); this.tr = setTimeout(() => this.reveal('[data-bid="' + b.id + '"]', true), 40);
+  }
+  go(where) {
+    const r = this.root;
+    if (where === 'top') { if (this.scroller) { try { this.scroller.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {} } return; }
+    const a = r && r.querySelector('[data-nav="' + where + '"]');
+    if (a) a.click();
+  }
+  commands() {
+    const s = this.state, has = !!this._selBlock, M = this.MOD, dark = this._dark, mob = this._mobile;
+    const groups = [];
+    if (has) {
+      groups.push(['Selected block · ' + META[this._selBlock.type], [
+        { id: 'edit', label: 'Edit text', icon: IC.edit, keys: ['↵'], run: () => this.startEdit() },
+        { id: 'ins', label: 'Insert a block below', icon: 'M12 5v14 M5 12h14', keys: ['/'], run: () => this.openSlash() },
+        { id: 'up', label: 'Move up', icon: IC.up, keys: ['⌥', '↑'], run: () => this.move(-1) },
+        { id: 'down', label: 'Move down', icon: IC.down, keys: ['⌥', '↓'], run: () => this.move(1) },
+        { id: 'dup', label: 'Duplicate', icon: IC.copy, keys: [M, 'D'], run: () => this.dup() },
+        { id: 'del', label: 'Delete', icon: IC.trash, keys: ['⌫'], run: () => this.del() }
+      ]]);
+    }
+    groups.push(['Insert', SLASH.map((it) => ({ id: 'i-' + it.id, label: 'Insert ' + it.label.charAt(0).toLowerCase() + it.label.slice(1), icon: IC[it.type], keys: [], run: () => this.insertItem(it, this.idx() < 0 ? s.blocks.length : this.idx() + 1) }))]);
+    groups.push(['Page', [
+      { id: 'publish', label: s.status === 'draft' ? 'Publish Home' : 'Home is published', icon: IC.publish, keys: [M, '↵'], run: () => this.publish() },
+      { id: 'preview', label: s.preview ? 'Exit preview' : 'Preview as a visitor', icon: IC.eye, keys: ['P'], run: () => this.togglePreview() },
+      { id: 'undo', label: 'Undo', icon: IC.undo, keys: [M, 'Z'], run: () => this.undo() },
+      { id: 'redo', label: 'Redo', icon: IC.redo, keys: ['⇧', M, 'Z'], run: () => this.redo() },
+      { id: 'theme', label: dark ? 'Switch to light theme' : 'Switch to dark theme', icon: IC.moon, keys: [], run: () => this.setState({ dark: !dark }) }
+    ]]);
+    groups.push(['Go to', [
+      { id: 'nav-collections', label: 'Collections', icon: IC.db, keys: ['G', 'C'], href: mob ? 'Collections-mobile.dc.html' : 'Collections.dc.html' },
+      { id: 'nav-design', label: 'Site design', icon: IC.palette, keys: ['G', 'D'], href: mob ? 'Design-mobile.dc.html' : 'Design.dc.html' },
+      { id: 'nav-editor', label: 'Classic page editor', icon: IC.page, keys: ['G', 'E'], href: mob ? 'Editor-mobile.dc.html' : 'Main.dc.html' },
+      { id: 'nav-landing', label: 'selfsite.in landing page', icon: IC.globe, keys: ['G', 'L'], href: mob ? 'Landing-mobile.dc.html' : 'Landing.dc.html' }
+    ]]);
+    groups.push(['Help', [{ id: 'help', label: 'Keyboard shortcuts', icon: IC.key, keys: ['?'], run: () => this.setState({ help: true, cmd: null }) }]]);
+    return groups;
+  }
+  runCmd(c) {
+    if (!c) return;
+    if (c.href) { const a = this.root && this.root.querySelector('a[data-cmd="' + c.id + '"]'); if (a) a.click(); return; }
+    this.setState({ cmd: null });
+    this.focusRoot();
+    c.run();
+  }
+  scrollCmd(i) {
+    const list = this.cmdList;
+    if (!list) return;
+    const el = list.querySelectorAll('[data-cmd]')[i];
+    if (!el) return;
+    const top = el.offsetTop, bottom = top + el.offsetHeight;
+    if (top < list.scrollTop + 8) list.scrollTop = top - 32;
+    else if (bottom > list.scrollTop + list.clientHeight - 8) list.scrollTop = bottom - list.clientHeight + 8;
+  }
+  onKey(e) {
+    const k = e.key, mod = e.metaKey || e.ctrlKey;
+    const t = e.target || {};
+    const tag = t.tagName || '';
+    const inField = tag === 'INPUT' || tag === 'TEXTAREA' || !!t.isContentEditable;
+    if (mod && (k === 'k' || k === 'K')) { e.preventDefault(); this.setState((s) => ({ cmd: this._cmd ? null : { q: '', i: 0, auto: true }, slash: null, help: false, editId: null })); if (this._cmd) this.focusRoot(); return; }
+    if (this._cmd || this._slash) {
+      if (k === 'Escape') { e.preventDefault(); this.setState({ cmd: null, slash: null }); this.focusRoot(); }
+      return;
+    }
+    if (this._help) { if (k === 'Escape' || k === '?') { e.preventDefault(); this.setState({ help: false }); } return; }
+    if (inField) {
+      if (k === 'Escape') { e.preventDefault(); this.stopEdit(); }
+      else if (mod && k === 'Enter') { e.preventDefault(); this.stopEdit(); this.publish(); }
+      return;
+    }
+    if ((tag === 'BUTTON' || tag === 'A') && (k === 'Enter' || k === ' ')) return;
+    if (mod && k === 'Enter') { e.preventDefault(); this.publish(); return; }
+    if (mod && (k === 'z' || k === 'Z')) { e.preventDefault(); if (e.shiftKey) this.redo(); else this.undo(); return; }
+    if (mod && (k === 'y' || k === 'Y')) { e.preventDefault(); this.redo(); return; }
+    if (mod && (k === 'd' || k === 'D')) { e.preventDefault(); this.dup(); return; }
+    if (mod) return;
+    if (e.altKey && (k === 'ArrowUp' || k === 'ArrowDown')) { e.preventDefault(); this.move(k === 'ArrowUp' ? -1 : 1); return; }
+    if (this.gPending) {
+      this.gPending = false; clearTimeout(this.tg);
+      const map = { c: 'collections', d: 'design', e: 'editor', l: 'landing', h: 'top' };
+      const target = map[String(k).toLowerCase()];
+      this.setState({ gHint: false });
+      if (target) { e.preventDefault(); this.go(target); }
+      return;
+    }
+    if (this.state.preview) {
+      if (k === 'p' || k === 'P' || k === 'Escape') { e.preventDefault(); this.togglePreview(); }
+      return;
+    }
+    if (k === 'j' || k === 'J' || k === 'ArrowDown') { e.preventDefault(); this.step(1); }
+    else if (k === 'k' || k === 'K' || k === 'ArrowUp') { e.preventDefault(); this.step(-1); }
+    else if (k === 'Home') { e.preventDefault(); if (this.state.blocks[0]) this.select(this.state.blocks[0].id); }
+    else if (k === 'End') { e.preventDefault(); const a = this.state.blocks; if (a.length) this.select(a[a.length - 1].id); }
+    else if (k === 'Enter') { e.preventDefault(); if (this._sel) this.startEdit(); else this.step(1); }
+    else if (k === 'Escape') { e.preventDefault(); this.setState({ sel: null }); }
+    else if (k === '/') { e.preventDefault(); this.openSlash(); }
+    else if (k === 'Backspace' || k === 'Delete') { e.preventDefault(); this.del(); }
+    else if (k === 'p' || k === 'P') { e.preventDefault(); this.togglePreview(); }
+    else if (k === '?') { e.preventDefault(); this.setState({ help: true }); }
+    else if (k === 'g' || k === 'G') {
+      this.gPending = true; this.setState({ gHint: true });
+      clearTimeout(this.tg); this.tg = setTimeout(() => { this.gPending = false; this.setState({ gHint: false }); }, 1500);
+    }
+  }
+  vm(b, i, n, c) {
+    const sel = c.selId === b.id && !c.preview;
+    const ed = c.editId === b.id && !c.preview;
+    const set = (k) => (e) => this.patch(b.id, { [k]: e.target.value });
+    const stop = (fn) => (e) => { if (e && e.stopPropagation) e.stopPropagation(); fn(); };
+    const t = b.type, M = this.MOD;
+    const v = {
+      isBlock: true, isSlot: false, id: b.id, type: t, label: META[t], labelLower: META[t].toLowerCase(), icon: IC[t], yes: true,
+      sel, ed, notEd: !ed, selOnly: sel && !ed, mode: c.preview ? 'preview' : 'edit',
+      hit: !c.preview && !ed, showBar: sel && !ed,
+      hitLabel: sel ? 'Edit ' + META[t] + ' block text' : 'Select ' + META[t] + ' block',
+      upDisabled: i === 0, downDisabled: i === n - 1,
+      tipUp: 'Move up  ⌥↑', tipDown: 'Move down  ⌥↓', tipDup: 'Duplicate  ' + M + 'D',
+      click: () => { if (this._sel === b.id) this.startEdit(b.id); else this.select(b.id); },
+      edit: stop(() => this.startEdit(b.id)),
+      done: stop(() => this.stopEdit()),
+      up: stop(() => { this.setState({ sel: b.id }); this._sel = b.id; this.move(-1); }),
+      down: stop(() => { this.setState({ sel: b.id }); this._sel = b.id; this.move(1); }),
+      dup: stop(() => { this._sel = b.id; this.dup(); }),
+      del: stop(() => { this._sel = b.id; this.del(); }),
+      slash: stop(() => { this._sel = b.id; this.openSlash(); })
+    };
+    if (b.img) { v.tone = b.img.tone; v.file = b.img.file; }
+    if (t === 'hero') Object.assign(v, {
+      eyebrow: b.eyebrow, title: b.title, subtitle: b.subtitle, button: b.button, layout: b.layout,
+      heroRatio: b.layout === 'centered' ? '16 / 7' : (c.siteMobile ? '4 / 3' : '4 / 5'),
+      onEyebrow: set('eyebrow'), onTitle: set('title'), onSubtitle: set('subtitle'), onButton: set('button'),
+      rTitle: rowsFor(b.title, c.siteMobile ? 16 : 24), rSub: rowsFor(b.subtitle, c.siteMobile ? 34 : 52), btnSize: Math.max(6, b.button.length)
+    });
+    if (t === 'text') Object.assign(v, {
+      heading: b.heading, body: b.body, onHeading: set('heading'), onBody: set('body'),
+      textStyle: b.align === 'center' ? 'text-align: center; margin: 0 auto' : 'text-align: left; margin: 0',
+      rHeading: rowsFor(b.heading, c.siteMobile ? 22 : 40), rBody: Math.max(2, rowsFor(b.body, c.siteMobile ? 36 : 70)),
+      onBodyKey: (e) => { if (e.key === '/' && !e.target.value) { e.preventDefault(); e.stopPropagation(); this._sel = b.id; this.openSlash(); } }
+    });
+    if (t === 'image') {
+      const full = b.width === 'full', pad = c.siteMobile ? '20px' : '48px';
+      Object.assign(v, {
+        caption: b.caption, onCaption: set('caption'), showCap: !ed && !!b.caption,
+        imgOuter: full ? 'padding: 24px 0' : 'max-width: 1080px; margin: 0 auto; padding: 24px ' + pad,
+        imgRadius: full ? 'border-radius: 0' : '', capPad: full ? 'padding: 0 ' + pad : ''
+      });
+    }
+    if (t === 'gallery') Object.assign(v, { heading: b.heading, onHeading: set('heading'), cols: c.siteMobile ? 2 : b.columns, images: b.images });
+    if (t === 'cta') Object.assign(v, {
+      heading: b.heading, text: b.text, button: b.button, tone: b.tone, onHeading: set('heading'), onText: set('text'),
+      rText: rowsFor(b.text, c.siteMobile ? 30 : 56), actionIcon: ACTION_ICON[b.action] || ACTION_ICON.link
+    });
+    return v;
+  }
+  renderVals() {
+    const s = this.state;
+    const p = this.props || {};
+    const dark = s.dark === undefined ? !!p.dark : s.dark;
+    const lay = p.layout && p.layout !== 'auto' ? p.layout : (s.w && s.w < 760 ? 'mobile' : 'desktop');
+    const mobile = lay === 'mobile';
+    const open = p.open || 'cmd';
+    const selId = s.sel === undefined ? (p.selected || 'b2') : s.sel;
+    const cmd = s.cmd === undefined ? (open === 'cmd' ? { q: '', i: 0, auto: false } : null) : s.cmd;
+    const slash = s.slash === undefined ? (open === 'slash' ? { q: '', i: 0, at: 1, auto: false } : null) : s.slash;
+    const help = s.help === undefined ? open === 'help' : s.help;
+    const preview = s.preview;
+    this._mobile = mobile; this._dark = dark; this._sel = selId; this._cmd = cmd; this._slash = slash; this._help = help;
+    this._selBlock = s.blocks.find((b) => b.id === selId) || null;
+    const siteMobile = mobile;
+    const n = s.blocks.length;
+    const ctx = { selId, editId: s.editId, preview, siteMobile };
+    const vms = s.blocks.map((b, i) => this.vm(b, i, n, ctx));
+    let slot = null;
+    if (slash && !preview) {
+      const list = this.slashList(slash.q);
+      this._slashItems = list;
+      const active = Math.min(slash.i, Math.max(0, list.length - 1));
+      const before = s.blocks[slash.at - 1];
+      slot = {
+        isSlot: true, isBlock: false, q: slash.q, auto: !!slash.auto, empty: list.length === 0,
+        where: before ? 'After ' + META[before.type].toLowerCase() : 'At the top',
+        items: list.map((it, k) => ({
+          label: it.label, desc: it.desc, icon: IC[it.type], active: k === active,
+          hover: () => { if (this.state.slash && this.state.slash.i !== k) this.setState({ slash: Object.assign({}, this._slash, { i: k }) }); },
+          run: () => this.insertItem(it, slash.at)
+        })),
+        onQ: (e) => this.setState({ slash: Object.assign({}, this._slash, { q: e.target.value, i: 0, auto: true }) }),
+        onKey: (e) => {
+          const items = this._slashItems || [];
+          const cur = this._slash || { i: 0 };
+          if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.preventDefault(); e.stopPropagation();
+            const d = e.key === 'ArrowDown' ? 1 : -1;
+            const ni = items.length ? (cur.i + d + items.length) % items.length : 0;
+            this.setState({ slash: Object.assign({}, cur, { i: ni }) });
+          } else if (e.key === 'Enter') {
+            e.preventDefault(); e.stopPropagation();
+            const it = items[Math.min(cur.i, items.length - 1)];
+            if (it) this.insertItem(it, cur.at);
+          } else if (e.key === 'Escape' || (e.key === 'Backspace' && !cur.q)) {
+            e.preventDefault(); e.stopPropagation(); this.closeSlash();
+          } else if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+            e.preventDefault(); e.stopPropagation(); this.setState({ slash: null, cmd: { q: '', i: 0, auto: true } });
+          } else { e.stopPropagation(); }
+        },
+        close: () => this.closeSlash()
+      };
+    }
+    const rows = [];
+    vms.forEach((v, i) => { if (slot && slash.at === i) rows.push(slot); rows.push(v); });
+    if (slot && slash.at >= n) rows.push(slot);
+
+    let cmdRows = [], cmdEmpty = false;
+    if (cmd) {
+      const q = String(cmd.q || '').trim().toLowerCase();
+      const flat = [];
+      this.commands().forEach((g) => {
+        const items = g[1].filter((c) => !q || c.label.toLowerCase().indexOf(q) >= 0 || g[0].toLowerCase().indexOf(q) >= 0);
+        if (!items.length) return;
+        cmdRows.push({ isHead: true, isBtn: false, isLink: false, label: g[0], keys: [] });
+        items.forEach((c) => { flat.push(c); cmdRows.push({ c }); });
+      });
+      this._cmdItems = flat;
+      const active = Math.min(cmd.i, Math.max(0, flat.length - 1));
+      let k = -1;
+      cmdRows = cmdRows.map((r) => {
+        if (r.isHead) return r;
+        k += 1;
+        const idx = k, c = r.c;
+        return {
+          isHead: false, isBtn: !c.href, isLink: !!c.href, id: c.id, label: c.label, icon: c.icon, href: c.href || '',
+          keys: keys(c.keys), active: idx === active,
+          hover: () => { if (this._cmd && this._cmd.i !== idx) this.setState({ cmd: Object.assign({}, this._cmd, { i: idx }) }); },
+          run: () => this.runCmd(c)
+        };
+      });
+      cmdEmpty = flat.length === 0;
+    }
+    const changes = Object.keys(s.dirty).length;
+    const M = this.MOD;
+    const toast = s.toast;
+    return {
+      theme: dark ? 'dark' : 'light', dark, light: !dark, lay, mobile, desktop: !mobile, yes: true,
+      height: p.height || '100vh', accent: p.accent || '#2563EB', mod: M,
+      setRoot: this.setRoot, setScroller: this.setScroller, setCmdList: this.setCmdList,
+      onKey: (e) => this.onKey(e),
+      onFocusIn: () => { if (!this.state.focused) this.setState({ focused: true }); },
+      onFocusOut: (e) => { const r = this.root; if (r && e.relatedTarget && r.contains(e.relatedTarget)) return; if (this.state.focused) this.setState({ focused: false }); },
+      siteDevice: siteMobile ? 'mobile' : 'desktop', siteMobile, siteDesktop: !siteMobile, footSpan: siteMobile ? '1 / -1' : 'auto',
+      rows, editMode: !preview, preview,
+      showGHint: s.gHint && !mobile,
+      showFocusHint: !mobile && !s.focused && !s.gHint && !preview && !cmd && !help && !slash && !s.toast,
+      isDraft: s.status === 'draft' && !s.publishing, isPublished: s.status === 'published' && !s.publishing, publishing: s.publishing,
+      draftText: changes ? 'Draft · ' + changes : 'Draft',
+      tipPublish: 'Publish  ' + M + '↵', tipUndo: 'Undo  ' + M + 'Z', tipRedo: 'Redo  ⇧' + M + 'Z',
+      noUndo: !s.past.length, noRedo: !s.future.length,
+      publish: () => this.publish(), undo: () => this.undo(), redo: () => this.redo(),
+      nothingToPublish: () => this.flash({ text: 'Everything is live. Edit a block to start a new draft.' }),
+      togglePreview: () => this.togglePreview(),
+      toggleTheme: () => this.setState({ dark: !dark }),
+      goTop: () => this.go('top'),
+      openSlash: () => this.openSlash(),
+      openCmd: () => this.setState({ cmd: { q: '', i: 0, auto: true }, slash: null, editId: null }),
+      openHelp: () => this.setState({ help: true, cmd: null }),
+      closeHelp: () => { this.setState({ help: false }); this.focusRoot(); },
+      cmdOpen: !!cmd, cmdAuto: !!(cmd && cmd.auto), cmdQ: cmd ? cmd.q : '', cmdRows, cmdEmpty,
+      hasSelLabel: !!this._selBlock, selLabel: this._selBlock ? META[this._selBlock.type] + ' block' : '',
+      closeCmd: () => { this.setState({ cmd: null }); this.focusRoot(); },
+      onCmdQ: (e) => this.setState({ cmd: Object.assign({}, this._cmd, { q: e.target.value, i: 0, auto: true }) }),
+      onCmdKey: (e) => {
+        const items = this._cmdItems || [];
+        const cur = this._cmd || { i: 0 };
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || (e.ctrlKey && (e.key === 'n' || e.key === 'p'))) {
+          e.preventDefault(); e.stopPropagation();
+          const d = (e.key === 'ArrowDown' || e.key === 'n') ? 1 : -1;
+          const ni = items.length ? (Math.min(cur.i, items.length - 1) + d + items.length) % items.length : 0;
+          this.setState({ cmd: Object.assign({}, cur, { i: ni }) });
+          setTimeout(() => this.scrollCmd(ni), 0);
+        } else if (e.key === 'Enter') {
+          e.preventDefault(); e.stopPropagation();
+          this.runCmd(items[Math.min(cur.i, items.length - 1)]);
+        } else if (e.key === 'Escape' || ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K'))) {
+          e.preventDefault(); e.stopPropagation(); this.setState({ cmd: null }); this.focusRoot();
+        } else { e.stopPropagation(); }
+      },
+      helpOpen: !!help,
+      helpGroups: [
+        { title: 'Move around', rows: [
+          { label: 'Next block', keys: keys(['J']) }, { label: 'Previous block', keys: keys(['K']) },
+          { label: 'First or last block', keys: keys(['Home', 'End']) }, { label: 'Edit selected block', keys: keys(['↵']) },
+          { label: 'Stop editing or deselect', keys: keys(['esc']) }, { label: 'Go to Collections', keys: keys(['G', 'C']) },
+          { label: 'Go to Site design', keys: keys(['G', 'D']) }
+        ] },
+        { title: 'Blocks', rows: [
+          { label: 'Insert a block', keys: keys(['/']) }, { label: 'Move block up', keys: keys(['⌥', '↑']) },
+          { label: 'Move block down', keys: keys(['⌥', '↓']) }, { label: 'Duplicate block', keys: keys([M, 'D']) },
+          { label: 'Delete block', keys: keys(['⌫']) }, { label: 'Insert from an empty paragraph', keys: keys(['/']) }
+        ] },
+        { title: 'Page', rows: [
+          { label: 'Command menu', keys: keys([M, 'K']) }, { label: 'Preview as a visitor', keys: keys(['P']) },
+          { label: 'Undo', keys: keys([M, 'Z']) }, { label: 'Redo', keys: keys(['⇧', M, 'Z']) },
+          { label: 'Publish', keys: keys([M, '↵']) }, { label: 'This list', keys: keys(['?']) }
+        ] }
+      ],
+      nav: {
+        collections: mobile ? 'Collections-mobile.dc.html' : 'Collections.dc.html',
+        design: mobile ? 'Design-mobile.dc.html' : 'Design.dc.html',
+        editor: mobile ? 'Editor-mobile.dc.html' : 'Main.dc.html',
+        landing: mobile ? 'Landing-mobile.dc.html' : 'Landing.dc.html'
+      },
+      hasToast: !!toast, toastText: toast ? toast.text : '', toastUndo: !!(toast && toast.undo),
+      toastStyle: mobile ? 'bottom: 80px' : ''
+    };
+  }
+}
+</script>
+</body>
+</html>

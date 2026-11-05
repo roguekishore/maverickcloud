@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Collections</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+.ss{--accent:#2563EB;--accent-hover:color-mix(in srgb,var(--accent) 85%,#000);--accent-soft:color-mix(in srgb,var(--accent) 8%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 24%,transparent);--accent-text:color-mix(in srgb,var(--accent) 86%,#000);--bg:#FFFFFF;--bg-subtle:#F9F9FA;--bg-muted:#F3F3F5;--bg-emphasis:#EBEBEE;--bg-elevated:#FFFFFF;--canvas:#F1F1F3;--border:#E6E6E9;--border-strong:#D5D5DA;--fg:#18181B;--fg-muted:#52525B;--fg-subtle:#6B6B74;--danger:#C8322B;--ok:#15803D;--ok-soft:#EBF8F0;--ok-dot:#16A34A;--warn:#9A4D00;--warn-soft:#FFF5E1;--warn-dot:#E8930C;--scrim:rgba(16,16,20,.28);--shadow-xs:0 1px 1px rgba(16,16,20,.04);--shadow-sm:0 1px 2px rgba(16,16,20,.07);--shadow-md:0 4px 12px -2px rgba(16,16,20,.08),0 1px 3px rgba(16,16,20,.06);--shadow-lg:0 16px 40px -12px rgba(16,16,20,.24),0 2px 6px rgba(16,16,20,.06);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13px;line-height:20px;color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01";outline:none}
+.ss[data-theme="dark"]{--accent-text:color-mix(in srgb,var(--accent) 55%,#fff);--accent-soft:color-mix(in srgb,var(--accent) 16%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 38%,transparent);--bg:#141416;--bg-subtle:#0F0F11;--bg-muted:#1C1C1F;--bg-emphasis:#26262A;--bg-elevated:#1A1A1D;--canvas:#0A0A0B;--border:#26262B;--border-strong:#36363D;--fg:#EDEDEF;--fg-muted:#A8A8B1;--fg-subtle:#8C8C96;--danger:#F87171;--ok:#4ADE80;--ok-soft:rgba(74,222,128,.1);--ok-dot:#22C55E;--warn:#FBBF24;--warn-soft:rgba(251,191,36,.1);--warn-dot:#F59E0B;--scrim:rgba(0,0,0,.5);--shadow-xs:none;--shadow-sm:0 1px 2px rgba(0,0,0,.5);--shadow-md:0 8px 20px -6px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03);--shadow-lg:0 24px 56px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.05);color-scheme:dark}
+.ss *,.ss *::before,.ss *::after{box-sizing:border-box}
+.ss button,.ss input,.ss textarea{font:inherit;color:inherit;letter-spacing:inherit;margin:0}
+.ss a{color:inherit;text-decoration:none}
+.ss p,.ss h1,.ss h2,.ss h3{margin:0}
+.ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+.ic-sm{width:14px;height:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:13px;font-weight:500;line-height:1;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap;transition:background .12s,border-color .12s,color .12s}
+.btn:hover{background:var(--bg-muted);border-color:var(--border-strong)}
+.btn:focus-visible,.ibtn:focus-visible,.item:focus-visible,.chip:focus-visible,.trow:focus-visible,.tb:focus-visible,.switch:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn-primary{background:var(--accent);border-color:transparent;color:#fff;box-shadow:0 1px 2px rgba(16,16,20,.14),inset 0 1px 0 rgba(255,255,255,.12)}
+.btn-primary:hover{background:var(--accent-hover);border-color:transparent}
+.btn-ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--fg-muted)}
+.btn-ghost:hover{background:var(--bg-muted);color:var(--fg);border-color:transparent}
+.btn-sm{height:28px;padding:0 8px;font-size:12px;gap:4px}
+.ibtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0;border-radius:6px;border:1px solid transparent;background:transparent;color:var(--fg-muted);cursor:pointer;flex:none;transition:background .12s,color .12s}
+.ibtn:hover{background:var(--bg-muted);color:var(--fg)}
+.ibtn-sm{width:28px;height:28px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.label{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:20px;font-size:12px;line-height:16px;font-weight:500;color:var(--fg-muted)}
+.hint{font-size:12px;line-height:16px;color:var(--fg-subtle)}
+.input,.textarea{display:block;width:100%;min-width:0;height:32px;padding:0 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg);font-size:13px;box-shadow:var(--shadow-xs);transition:border-color .12s,box-shadow .12s}
+.textarea{height:auto;padding:6px 10px;line-height:20px;resize:vertical}
+.input::placeholder,.textarea::placeholder{color:var(--fg-subtle)}
+.input:hover,.textarea:hover{border-color:var(--border-strong)}
+.input:focus,.textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:4px;border:1px solid var(--border);background:var(--bg-subtle);color:var(--fg-subtle);font-size:11px;font-weight:500;line-height:1;font-family:inherit}
+.badge{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;font-size:12px;font-weight:500;line-height:1;border:1px solid var(--border);background:var(--bg);color:var(--fg-muted);white-space:nowrap}
+.badge[data-k="published"]{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.badge[data-k="changed"]{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.badge[data-k="scheduled"]{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.badge[data-k="draft"]{background:var(--bg-muted);color:var(--fg-muted);border-color:transparent}
+.dot{width:6px;height:6px;border-radius:999px;background:currentColor;flex:none}
+.tag{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:6px;background:var(--bg-muted);color:var(--fg-muted);font-size:12px;font-weight:500;white-space:nowrap}
+.tag button{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;margin-right:-4px;padding:0;border:0;border-radius:4px;background:transparent;color:inherit;cursor:pointer}
+.tag button:hover{background:var(--bg-emphasis);color:var(--fg)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--fg-muted);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;flex:none}
+.chip:hover{border-color:var(--border-strong);color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.chip-n{opacity:.6;font-variant-numeric:tabular-nums}
+.menu{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-lg);padding:4px;animation:ssPop .14s ease-out}
+.item{display:flex;align-items:center;gap:10px;width:100%;min-height:32px;padding:6px 8px;border:0;border-radius:6px;background:transparent;color:var(--fg);text-align:left;font-size:13px;line-height:20px;cursor:pointer}
+.item:hover,.item[data-active="true"]{background:var(--bg-muted)}
+.item .ic{color:var(--fg-subtle)}
+.item[data-active="true"] .ic{color:var(--fg)}
+.sep{height:1px;background:var(--border);margin:4px 0;flex:none}
+.scroll{overflow:auto;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+.hscroll{overflow-x:auto;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.trunc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meter{height:4px;border-radius:999px;background:var(--bg-emphasis);overflow:hidden}
+.meter span{display:block;height:100%;background:var(--fg-muted);border-radius:inherit}
+.av{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;color:#2B2924;font-size:10px;font-weight:600;flex:none}
+.card{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:10px;background:var(--bg)}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:8px;height:44px;padding:0 16px;border-bottom:1px solid var(--border);font-weight:600}
+.card-b{display:flex;flex-direction:column;gap:16px;padding:16px}
+.kv{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:24px}
+.kv>span:first-child{color:var(--fg-subtle)}
+.search{display:flex;align-items:center;gap:8px;height:32px;padding:0 6px 0 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg-subtle);box-shadow:var(--shadow-xs)}
+.search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.bare{flex:1;min-width:0;height:30px;padding:0;border:0;background:transparent;color:var(--fg);font-size:13px;outline:none}
+.bare::placeholder{color:var(--fg-subtle)}
+.thead,.trow{display:grid;grid-template-columns:minmax(0,1fr) 168px 196px 156px 104px;align-items:center;gap:16px;padding:0 24px}
+.thead{position:sticky;top:0;z-index:2;height:36px;border-bottom:1px solid var(--border);background:var(--bg);color:var(--fg-subtle);font-size:12px;font-weight:500}
+.trow{width:100%;min-height:60px;border:0;border-bottom:1px solid var(--border);background:transparent;color:var(--fg);text-align:left;cursor:pointer;font-size:13px}
+.trow:hover{background:var(--bg-subtle)}
+.thumb{width:36px;height:36px;border-radius:6px;flex:none}
+.mrow{display:flex;gap:12px;width:100%;padding:12px 16px;border:0;border-bottom:1px solid var(--border);background:transparent;color:var(--fg);text-align:left;cursor:pointer}
+.mrow:active{background:var(--bg-muted)}
+.title-input{display:block;width:100%;padding:0;border:0;background:transparent;color:var(--fg);font-size:28px;line-height:36px;font-weight:600;letter-spacing:-.02em;outline:none}
+.title-input::placeholder{color:var(--fg-subtle)}
+.slug{display:flex;align-items:center;height:32px;border:1px solid var(--border);border-radius:6px;background:var(--bg);overflow:hidden;box-shadow:var(--shadow-xs)}
+.slug:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.slug-pre{display:flex;align-items:center;height:100%;padding:0 8px 0 10px;background:var(--bg-muted);border-right:1px solid var(--border);color:var(--fg-subtle);white-space:nowrap;font-size:13px}
+.rte-wrap{border:1px solid var(--border);border-radius:10px;background:var(--bg);box-shadow:var(--shadow-xs)}
+.rte-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.rte-bar{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:2px;padding:4px;border-bottom:1px solid var(--border);background:var(--bg);border-radius:10px 10px 0 0}
+.tb{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 6px;border:0;border-radius:6px;background:transparent;color:var(--fg-muted);font-size:12px;font-weight:600;cursor:pointer;flex:none}
+.tb:hover{background:var(--bg-muted);color:var(--fg)}
+.rte{min-height:280px;padding:16px 20px 24px;outline:none;font-size:15px;line-height:26px;color:var(--fg)}
+.rte p{margin:0 0 12px}
+.rte h2{margin:20px 0 8px;font-size:19px;line-height:28px;font-weight:600;letter-spacing:-.01em}
+.rte h3{margin:16px 0 6px;font-size:16px;line-height:24px;font-weight:600}
+.rte ul,.rte ol{margin:0 0 12px;padding-left:22px}
+.rte li{margin:2px 0}
+.rte blockquote{margin:12px 0;padding:2px 0 2px 16px;border-left:2px solid var(--border-strong);color:var(--fg-muted)}
+.rte a{color:var(--accent-text);text-decoration:underline}
+.rte p:only-child:empty::before{content:"Start writing";color:var(--fg-subtle)}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:180px;border:1px dashed var(--border-strong);border-radius:10px;background:var(--bg-subtle);color:var(--fg-subtle);text-align:center}
+.serp{display:flex;flex-direction:column;gap:2px;padding:12px;border-radius:8px;background:var(--bg-subtle);border:1px solid var(--border)}
+.serp-t{color:var(--accent-text);font-size:15px;line-height:20px;font-weight:500}
+.ver{display:flex;gap:12px;width:100%;padding:12px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--fg);text-align:left;cursor:pointer}
+.ver:hover{background:var(--bg-muted)}
+.ver[data-active="true"]{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
+.rail{display:flex;flex-direction:column;align-items:center;padding-top:4px;flex:none}
+.rail-dot{width:8px;height:8px;border-radius:999px;border:2px solid var(--fg-subtle);background:var(--bg)}
+.ver[data-active="true"] .rail-dot{border-color:var(--accent);background:var(--accent)}
+.toast{position:absolute;left:50%;bottom:24px;z-index:80;display:flex;align-items:center;gap:12px;min-height:40px;padding:0 6px 0 14px;border-radius:10px;background:#18181B;color:#FAFAFA;box-shadow:var(--shadow-lg);font-size:13px;white-space:nowrap;animation:ssToast .2s ease-out;transform:translateX(-50%)}
+.ss[data-theme="dark"] .toast{background:#26262B;border:1px solid var(--border-strong)}
+.toast button{height:28px;padding:0 10px;border-radius:6px;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:500;cursor:pointer}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:50;display:flex;flex-direction:column;max-height:80%;background:var(--bg-elevated);border-top:1px solid var(--border);border-radius:16px 16px 0 0;box-shadow:0 -16px 40px -16px rgba(16,16,20,.3);animation:ssUp .22s cubic-bezier(.2,.8,.2,1)}
+.grab{width:36px;height:4px;border-radius:999px;background:var(--border-strong);margin:8px auto 0;flex:none}
+.scrim{position:absolute;inset:0;z-index:45;width:100%;height:100%;padding:0;border:0;background:var(--scrim);cursor:default;animation:ssFade .15s}
+.ss[data-layout="mobile"] .btn{height:40px;font-size:14px;padding:0 14px}
+.ss[data-layout="mobile"] .ibtn{width:40px;height:40px}
+.ss[data-layout="mobile"] .input,.ss[data-layout="mobile"] .bare{height:40px;font-size:16px}
+.ss[data-layout="mobile"] .search{height:40px}
+.ss[data-layout="mobile"] .textarea{font-size:16px;line-height:24px}
+.ss[data-layout="mobile"] .chip{height:32px;padding:0 12px;font-size:13px}
+.ss[data-layout="mobile"] .slug{height:40px}
+.ss[data-layout="mobile"] .slug .bare{font-size:15px}
+.ss[data-layout="mobile"] .title-input{font-size:24px;line-height:32px}
+.ss[data-layout="mobile"] .rte{min-height:200px;padding:12px 16px 20px;font-size:16px}
+.ss[data-layout="mobile"] .tb{min-width:36px;height:36px}
+@keyframes ssPop{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes ssUp{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@keyframes ssFade{from{opacity:0}to{opacity:1}}
+@keyframes ssSlide{from{transform:translateX(16px);opacity:0}to{transform:none;opacity:1}}
+@keyframes ssToast{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes ssSpin{to{transform:rotate(360deg)}}
+.spin{animation:ssSpin .8s linear infinite}
+</style>
+</helmet>
+<div class="ss" data-theme="{{ theme }}" data-layout="{{ lay }}" ref="{{ setRoot }}" tabIndex="-1" onKeyDown="{{ onKey }}" style="position: relative; display: flex; width: 100%; height: {{ height }}; min-height: 480px; overflow: hidden; --accent: {{ accent }}">
+
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<aside style="display: flex; flex-direction: column; width: 240px; flex: none; min-height: 0; background: var(--bg-subtle); border-right: 1px solid var(--border)">
+<div style="display: flex; align-items: center; gap: 8px; height: 56px; padding: 0 12px; border-bottom: 1px solid var(--border)">
+<button class="btn btn-ghost" style="flex: 1; justify-content: flex-start; gap: 8px; padding: 0 8px; color: var(--fg)">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #1F5C4A; color: #fff; font-size: 11px; font-weight: 700">T</span>
+<span style="display: flex; flex-direction: column; align-items: flex-start; min-width: 0; line-height: 16px"><span class="trunc" style="font-weight: 600">Teakline Studio</span><span class="hint">teakline.selfsite.in</span></span>
+<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true" style="margin-left: auto; color: var(--fg-subtle)"><path d="M8 10l4-4 4 4 M8 14l4 4 4-4"></path></svg>
+</button>
+</div>
+<nav aria-label="Site" class="scroll" style="display: flex; flex-direction: column; gap: 2px; flex: 1; padding: 8px">
+<a class="item" href="Main.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v4h4"></path></svg>Pages<span class="hint" style="margin-left: auto">5</span></a>
+<div class="item" style="cursor: default; color: var(--fg)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3z M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6 M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"></path></svg>Collections</div>
+<sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
+<button class="item" data-active="{{ c.active }}" aria-current="{{ c.current }}" onClick="{{ c.pick }}" style="padding-left: 34px"><span class="trunc">{{ c.label }}</span><span class="hint" style="margin-left: auto">{{ c.count }}</span></button>
+</sc-for>
+<button class="item" style="padding-left: 34px; color: var(--fg-subtle)"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>New collection</button>
+<button class="item"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z M4 16l5-5 4 4 2-2 5 5 M15 9h.01"></path></svg>Media<span class="hint" style="margin-left: auto">214</span></button>
+<a class="item" href="Design.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.7 1.6-1.5 0-1.1-.9-1.4-.9-2.4 0-.9.7-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.8 17 3 12 3z M7.5 11.5h.01 M10 7.5h.01 M14.5 7.5h.01"></path></svg>Site design</a>
+<button class="item"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9 M17 7h3 M15 5v4 M4 17h3 M11 17h9 M9 15v4"></path></svg>Settings</button>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border)">
+<div class="label"><span>Storage</span><span class="hint">182 MB of 500 MB</span></div>
+<div class="meter"><span style="width: 36%"></span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 8px 12px 16px">
+<span class="av" style="width: 28px; height: 28px; font-size: 11px; background: #E4DED3">PR</span>
+<span style="display: flex; flex-direction: column; flex: 1; min-width: 0; line-height: 16px"><span class="trunc" style="font-weight: 500">Priya Raman</span><span class="hint">Owner</span></span>
+<button class="ibtn" onClick="{{ toggleTheme }}" aria-label="Switch light or dark theme"><sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 2.5v2 M12 19.5v2 M4.6 4.6l1.4 1.4 M18 18l1.4 1.4 M2.5 12h2 M19.5 12h2 M4.6 19.4L6 18 M18 6l1.4-1.4"></path></svg></sc-if><sc-if value="{{ light }}" hint-placeholder-val="{{ true }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+</div>
+</aside>
+</sc-if>
+
+<div style="position: relative; display: flex; flex-direction: column; flex: 1; min-width: 0; min-height: 0">
+
+<sc-if value="{{ showList }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<header style="display: flex; align-items: center; gap: 12px; height: 56px; padding: 0 24px; flex: none; border-bottom: 1px solid var(--border)">
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0">
+<span style="font-size: 15px; font-weight: 600; line-height: 20px">{{ col.label }}</span>
+<span class="hint">{{ col.sub }}</span>
+</div>
+<button class="btn">Fields</button>
+<button class="btn btn-primary" onClick="{{ newEntry }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>New {{ col.one }}</button>
+</header>
+</sc-if>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<header style="display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 8px; flex: none; border-bottom: 1px solid var(--border)">
+<a class="ibtn" href="Editor-mobile.dc.html" aria-label="Back to pages"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></a>
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-size: 15px; font-weight: 600; line-height: 20px">Collections</span><span class="hint">Teakline Studio</span></div>
+<button class="ibtn" onClick="{{ toggleTheme }}" aria-label="Switch light or dark theme"><sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 2.5v2 M12 19.5v2 M4.6 4.6l1.4 1.4 M18 18l1.4 1.4 M2.5 12h2 M19.5 12h2 M4.6 19.4L6 18 M18 6l1.4-1.4"></path></svg></sc-if><sc-if value="{{ light }}" hint-placeholder-val="{{ true }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<button class="btn btn-primary" onClick="{{ newEntry }}" aria-label="New {{ col.one }}" style="padding: 0 12px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>New</button>
+</header>
+<div class="hscroll" role="tablist" aria-label="Collections" style="display: flex; gap: 4px; padding: 8px 12px 0; flex: none; border-bottom: 1px solid var(--border)">
+<sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
+<button role="tab" aria-selected="{{ c.active }}" onClick="{{ c.pick }}" style="{{ c.tabStyle }}">{{ c.label }}<span class="chip-n" style="margin-left: 6px">{{ c.count }}</span></button>
+</sc-for>
+</div>
+</sc-if>
+
+<div style="{{ toolbarStyle }}">
+<label class="search" style="{{ searchStyle }}">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M20 20l-4-4"></path></svg>
+<input class="bare" value="{{ q }}" onChange="{{ onQ }}" placeholder="{{ searchPh }}" aria-label="{{ searchPh }}">
+<sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}"><button class="ibtn ibtn-sm" onClick="{{ clearQ }}" aria-label="Clear search"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button></sc-if>
+</label>
+<div class="{{ chipsClass }}" role="group" aria-label="Filter by status" style="display: flex; flex-wrap: {{ chipsWrap }}; align-items: center; gap: 6px; min-width: 0">
+<sc-for list="{{ statusOpts }}" as="o" hint-placeholder-count="5">
+<button class="chip" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}<span class="chip-n">{{ o.n }}</span></button>
+</sc-for>
+<div style="position: relative; flex: none">
+<button class="chip" aria-pressed="{{ tagActive }}" aria-expanded="{{ tagMenu }}" onClick="{{ toggleTagMenu }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z M7.5 7.5h.01"></path></svg>{{ tagLabel }}<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"></path></svg></button>
+<sc-if value="{{ tagMenuDesk }}" hint-placeholder-val="{{ false }}">
+<div class="menu" style="position: absolute; top: 36px; left: 0; width: 240px; z-index: 30">
+<div class="label" style="padding: 4px 8px">Filter by tag</div>
+<sc-for list="{{ tagOpts }}" as="t" hint-placeholder-count="5">
+<button class="item" data-active="{{ t.on }}" onClick="{{ t.pick }}">
+<span style="display: inline-flex; width: 16px"><sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></sc-if></span>
+<span style="flex: 1">{{ t.label }}</span><span class="hint">{{ t.n }}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}"><span class="hint" style="margin-left: auto; white-space: nowrap">Sorted by last edited</span></sc-if>
+</div>
+<sc-if value="{{ tagMenuMob }}" hint-placeholder-val="{{ false }}">
+<div class="menu" style="{{ tagMenuStyle }}">
+<div class="label" style="padding: 4px 8px">Filter by tag</div>
+<sc-for list="{{ tagOpts }}" as="t" hint-placeholder-count="5">
+<button class="item" data-active="{{ t.on }}" onClick="{{ t.pick }}">
+<span style="display: inline-flex; width: 16px"><sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></sc-if></span>
+<span style="flex: 1">{{ t.label }}</span><span class="hint">{{ t.n }}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+<div class="scroll" style="flex: 1; min-height: 0; position: relative">
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<div class="thead" role="row"><span>Title</span><span>Status</span><span>Tags</span><span>Author</span><span>Edited</span></div>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+<button class="trow" onClick="{{ r.open }}" aria-label="Open {{ r.title }}">
+<span style="display: flex; align-items: center; gap: 12px; min-width: 0">
+<span class="thumb" style="background: {{ r.tone }}"></span>
+<span style="display: flex; flex-direction: column; min-width: 0"><span class="trunc" style="font-weight: 500">{{ r.title }}</span><span class="hint trunc">{{ r.url }}</span></span>
+</span>
+<span><span class="badge" data-k="{{ r.status }}"><span class="dot"></span>{{ r.statusLabel }}</span></span>
+<span style="display: flex; gap: 4px; min-width: 0; overflow: hidden"><sc-for list="{{ r.tags }}" as="t" hint-placeholder-count="2"><span class="tag">{{ t.label }}</span></sc-for></span>
+<span style="display: flex; align-items: center; gap: 8px; min-width: 0"><span class="av" style="background: {{ r.avTone }}">{{ r.ini }}</span><span class="trunc">{{ r.by }}</span></span>
+<span class="hint">{{ r.edited }}</span>
+</button>
+</sc-for>
+</sc-if>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+<button class="mrow" onClick="{{ r.open }}">
+<span class="thumb" style="width: 48px; height: 48px; background: {{ r.tone }}"></span>
+<span style="display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0">
+<span class="clamp2" style="font-size: 15px; line-height: 20px; font-weight: 500">{{ r.title }}</span>
+<span style="display: flex; align-items: center; gap: 8px; min-width: 0"><span class="badge" data-k="{{ r.status }}"><span class="dot"></span>{{ r.statusShort }}</span><span class="hint trunc">{{ r.meta }}</span></span>
+</span>
+</button>
+</sc-for>
+</sc-if>
+<sc-if value="{{ noRows }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 64px 24px; text-align: center">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--bg-muted); color: var(--fg-subtle)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M20 20l-4-4"></path></svg></span>
+<span style="font-weight: 600">No {{ col.many }} match these filters</span>
+<span class="hint">Try another word, or clear the status and tag filters.</span>
+<button class="btn" onClick="{{ clearFilters }}">Clear filters</button>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; gap: 16px; height: 36px; padding: 0 24px; flex: none; border-top: 1px solid var(--border); background: var(--bg-subtle)">
+<span class="hint">{{ footText }}</span>
+<span class="hint" style="margin-left: auto">Shown on the site at {{ col.path }}</span>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ showEditor }}" hint-placeholder-val="{{ false }}">
+<header style="{{ edHeaderStyle }}">
+<button class="btn btn-ghost" onClick="{{ backToList }}" style="padding: 0 8px; gap: 4px" aria-label="Back to {{ col.label }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg><span>{{ col.label }}</span></button>
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<span style="color: var(--border-strong)">/</span>
+<span class="trunc" style="font-weight: 500; min-width: 0; max-width: 420px">{{ fTitleShown }}</span>
+<span class="badge" data-k="{{ ed.status }}"><span class="dot"></span>{{ ed.statusLabel }}</span>
+<span style="flex: 1"></span>
+<span class="hint" style="white-space: nowrap">{{ savedText }}</span>
+<button class="btn" onClick="{{ openHistory }}" aria-pressed="{{ histOpen }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-9-9 M3 12V7 M3 12h5 M12 7v5l3 2"></path></svg>Version history</button>
+<button class="btn" onClick="{{ saveDraft }}" disabled="{{ notDirty }}">Save draft</button>
+<button class="btn btn-primary" onClick="{{ publishEntry }}" disabled="{{ publishDisabled }}" style="min-width: 96px"><sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}"><svg class="ic ic-sm spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg></sc-if>{{ publishLabel }}</button>
+</sc-if>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<span style="flex: 1"></span>
+<span class="badge" data-k="{{ ed.status }}"><span class="dot"></span>{{ ed.statusShort }}</span>
+<button class="ibtn" onClick="{{ openHistory }}" aria-label="Version history"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-9-9 M3 12V7 M3 12h5 M12 7v5l3 2"></path></svg></button>
+</sc-if>
+</header>
+
+<div class="scroll" style="flex: 1; min-height: 0">
+<div style="{{ edGridStyle }}">
+<div style="display: flex; flex-direction: column; gap: 24px; flex: 999 1 560px; min-width: 0">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<input class="title-input" value="{{ f.title }}" onChange="{{ onTitle }}" placeholder="{{ titlePh }}" aria-label="Title">
+<div class="field">
+<div class="label"><label for="f-slug">Address</label>
+<sc-if value="{{ slugLocked }}" hint-placeholder-val="{{ true }}"><button class="btn btn-ghost btn-sm" onClick="{{ unlockSlug }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6z M9 11V8a3 3 0 0 1 6 0v3"></path></svg>Edit address</button></sc-if>
+<sc-if value="{{ slugAuto }}" hint-placeholder-val="{{ false }}"><span class="hint">Follows the title</span></sc-if>
+</div>
+<div class="slug"><span class="slug-pre">{{ urlPrefix }}</span><input id="f-slug" class="bare" style="padding: 0 10px" value="{{ f.slug }}" onChange="{{ onSlug }}" readOnly="{{ slugLocked }}"></div>
+<sc-if value="{{ slugWarn }}" hint-placeholder-val="{{ false }}"><span class="hint" style="color: var(--warn)">This {{ col.one }} is live. Changing the address keeps a redirect from the old one, so shared links still work.</span></sc-if>
+</div>
+</div>
+
+<div class="field">
+<div class="label"><span>Cover image</span><sc-if value="{{ hasImg }}" hint-placeholder-val="{{ true }}"><span class="hint">{{ f.imgFile }} · 1600 × 1000</span></sc-if></div>
+<sc-if value="{{ hasImg }}" hint-placeholder-val="{{ true }}">
+<div style="position: relative; aspect-ratio: 16 / 9; max-height: 320px; border-radius: 10px; background: {{ f.imgTone }}; overflow: hidden">
+<div style="position: absolute; right: 12px; bottom: 12px; display: flex; gap: 8px">
+<button class="btn btn-sm" onClick="{{ replaceImg }}">Replace</button>
+<button class="btn btn-sm" onClick="{{ removeImg }}">Remove</button>
+</div>
+</div>
+<div class="field"><div class="label"><label for="f-alt">Alt text</label><button class="btn btn-ghost btn-sm" onClick="{{ aiAlt }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>Write with AI · 1 credit</button></div><input id="f-alt" class="input" value="{{ f.alt }}" onChange="{{ onAlt }}" placeholder="Describe the photo for people using screen readers"></div>
+</sc-if>
+<sc-if value="{{ noImg }}" hint-placeholder-val="{{ false }}">
+<div class="drop">
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 20px; height: 20px"><path d="M12 15V4 M7.5 8.5L12 4l4.5 4.5 M4 15v4h16v-4"></path></svg>
+<span style="color: var(--fg); font-weight: 500">Drop a photo here</span>
+<span class="hint">JPG, PNG or WebP, up to 10 MB. We resize it for every screen.</span>
+<button class="btn btn-sm" onClick="{{ addImg }}" style="margin-top: 4px">Choose from Media</button>
+</div>
+</sc-if>
+</div>
+
+<div class="field">
+<div class="label"><span>Body</span><span class="hint">{{ wordsText }}</span></div>
+<div class="rte-wrap">
+<div class="rte-bar hscroll" role="toolbar" aria-label="Formatting">
+<button class="tb" onMouseDown="{{ fmt.p }}" aria-label="Paragraph" title="Paragraph">Text</button>
+<button class="tb" onMouseDown="{{ fmt.h2 }}" aria-label="Heading" title="Heading">H2</button>
+<button class="tb" onMouseDown="{{ fmt.h3 }}" aria-label="Subheading" title="Subheading">H3</button>
+<span style="width: 1px; height: 18px; background: var(--border); margin: 0 4px; flex: none"></span>
+<button class="tb" onMouseDown="{{ fmt.bold }}" aria-label="Bold" title="Bold"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7z M7 12h7a3.5 3.5 0 0 1 0 7H7z"></path></svg></button>
+<button class="tb" onMouseDown="{{ fmt.italic }}" aria-label="Italic" title="Italic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5h8 M6 19h8 M14 5l-4 14"></path></svg></button>
+<button class="tb" onMouseDown="{{ fmt.link }}" aria-label="Link" title="Link"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 1 0-5.66-5.66l-1 1 M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 1 0 5.66 5.66l1-1"></path></svg></button>
+<span style="width: 1px; height: 18px; background: var(--border); margin: 0 4px; flex: none"></span>
+<button class="tb" onMouseDown="{{ fmt.ul }}" aria-label="Bulleted list" title="Bulleted list"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11 M9 12h11 M9 18h11 M4.5 6h.01 M4.5 12h.01 M4.5 18h.01"></path></svg></button>
+<button class="tb" onMouseDown="{{ fmt.ol }}" aria-label="Numbered list" title="Numbered list"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6h10 M10 12h10 M10 18h10 M4 5l1.5-1v5 M4 14.5a1.5 1.5 0 0 1 3 .2c0 1.3-3 2.3-3 3.8h3"></path></svg></button>
+<button class="tb" onMouseDown="{{ fmt.quote }}" aria-label="Quote" title="Quote"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18v-5a5 5 0 0 1 4-5 M5 13h4v5H5 M14 18v-5a5 5 0 0 1 4-5 M14 13h4v5h-4"></path></svg></button>
+<button class="tb" onMouseDown="{{ fmt.photo }}" aria-label="Insert photo" title="Insert photo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z M4 16l5-5 4 4 2-2 5 5 M15 9h.01"></path></svg></button>
+<span style="flex: 1"></span>
+<button class="btn btn-ghost btn-sm" onMouseDown="{{ fmt.ai }}" style="flex: none"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>Improve selection</button>
+</div>
+<div class="rte" contentEditable="true" suppressContentEditableWarning="{{ yes }}" spellCheck="true" role="textbox" aria-multiline="true" aria-label="Body" ref="{{ setRte }}" onInput="{{ onBodyInput }}">
+<sc-for list="{{ body }}" as="bl" hint-placeholder-count="4">
+<sc-if value="{{ bl.isP }}" hint-placeholder-val="{{ true }}"><p>{{ bl.text }}</p></sc-if>
+<sc-if value="{{ bl.isH2 }}" hint-placeholder-val="{{ false }}"><h2>{{ bl.text }}</h2></sc-if>
+<sc-if value="{{ bl.isQuote }}" hint-placeholder-val="{{ false }}"><blockquote>{{ bl.text }}</blockquote></sc-if>
+<sc-if value="{{ bl.isUl }}" hint-placeholder-val="{{ false }}"><ul><sc-for list="{{ bl.items }}" as="li" hint-placeholder-count="3"><li>{{ li.t }}</li></sc-for></ul></sc-if>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div class="field">
+<div class="label"><span>Tags</span><span class="hint">Used for filters on {{ col.path }}</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 40px; padding: 4px 6px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg)">
+<sc-for list="{{ fTags }}" as="t" hint-placeholder-count="2">
+<span class="tag">{{ t.label }}<button onClick="{{ t.remove }}" aria-label="Remove tag {{ t.label }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button></span>
+</sc-for>
+<input class="bare" style="min-width: 120px; height: 28px" value="{{ tagDraft }}" onChange="{{ onTagDraft }}" onKeyDown="{{ onTagKey }}" placeholder="Add a tag and press Enter" aria-label="Add a tag">
+</div>
+<sc-if value="{{ hasSuggest }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px">
+<span class="hint">Suggested</span>
+<sc-for list="{{ suggest }}" as="t" hint-placeholder-count="3"><button class="chip" onClick="{{ t.add }}" style="height: 24px; padding: 0 8px"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14 M5 12h14"></path></svg>{{ t.label }}</button></sc-for>
+</div>
+</sc-if>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px; flex: 1 1 300px; min-width: 0; max-width: {{ sideMax }}">
+<div class="card">
+<div class="card-h"><span>Publishing</span><span class="badge" data-k="{{ ed.status }}"><span class="dot"></span>{{ ed.statusLabel }}</span></div>
+<div class="card-b" style="gap: 10px">
+<div class="kv"><span>Visibility</span><span>Public</span></div>
+<div class="kv"><span>{{ dateLabel }}</span><span>{{ dateValue }}</span></div>
+<div class="kv"><span>Author</span><span style="display: inline-flex; align-items: center; gap: 6px"><span class="av" style="background: {{ ed.avTone }}">{{ ed.ini }}</span>{{ ed.by }}</span></div>
+<div class="kv"><span>Last saved</span><span>{{ lastSaved }}</span></div>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}"><div class="kv"><span>Words</span><span>{{ wordsText }}</span></div></sc-if>
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<div class="sep"></div>
+<button class="btn btn-ghost btn-sm" onClick="{{ openHistory }}" style="justify-content: flex-start; margin: 0 -8px"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-9-9 M3 12V7 M3 12h5 M12 7v5l3 2"></path></svg>{{ versionCount }} versions · view history</button>
+</sc-if>
+</div>
+</div>
+
+<div class="card">
+<div class="card-h"><span>Search and sharing</span><span class="hint">SEO</span></div>
+<div class="card-b">
+<div class="field">
+<div class="label"><label for="f-st">Search title</label><span class="hint" style="color: {{ seoTitleColor }}">{{ seoTitleCount }} / 60</span></div>
+<input id="f-st" class="input" value="{{ f.seoTitle }}" onChange="{{ onSeoTitle }}" placeholder="{{ seoTitlePh }}">
+</div>
+<div class="field">
+<div class="label"><label for="f-sd">Search description</label><span class="hint" style="color: {{ seoDescColor }}">{{ seoDescCount }} / 160</span></div>
+<textarea id="f-sd" class="textarea" rows="4" value="{{ f.seoDesc }}" onChange="{{ onSeoDesc }}" placeholder="One or two sentences that make people want to click"></textarea>
+<button class="btn btn-ghost btn-sm" onClick="{{ aiSeo }}" style="align-self: flex-start; margin-left: -8px"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>{{ aiSeoLabel }}</button>
+</div>
+<div class="field">
+<span class="label">Preview</span>
+<div class="serp">
+<span class="hint trunc">{{ serpUrl }}</span>
+<span class="serp-t clamp2">{{ serpTitle }}</span>
+<span class="clamp2" style="color: var(--fg-muted); font-size: 13px; line-height: 20px">{{ serpDesc }}</span>
+</div>
+</div>
+<div class="kv"><span>Social image</span><span>Cover image</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; gap: 8px; padding: 8px 12px 12px; flex: none; border-top: 1px solid var(--border); background: var(--bg)">
+<button class="btn" onClick="{{ saveDraft }}" disabled="{{ notDirty }}" style="flex: 1">Save draft</button>
+<button class="btn btn-primary" onClick="{{ publishEntry }}" disabled="{{ publishDisabled }}" style="flex: 1"><sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}"><svg class="ic ic-sm spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg></sc-if>{{ publishLabel }}</button>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ histOpen }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}"><button class="scrim" onClick="{{ closeHistory }}" aria-label="Close version history"></button></sc-if>
+<aside class="{{ histClass }}" style="{{ histStyle }}" aria-label="Version history">
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}"><div class="grab"></div></sc-if>
+<div style="display: flex; align-items: center; gap: 8px; height: 52px; padding: 0 8px 0 16px; flex: none; border-bottom: 1px solid var(--border)">
+<span style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-weight: 600">Version history</span><span class="hint trunc">{{ fTitleShown }}</span></span>
+<button class="ibtn" onClick="{{ closeHistory }}" aria-label="Close version history"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+</div>
+<div class="scroll" style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-height: 0; padding: 8px">
+<sc-for list="{{ versions }}" as="v" hint-placeholder-count="4">
+<button class="ver" data-active="{{ v.active }}" onClick="{{ v.pick }}">
+<span class="rail"><span class="rail-dot"></span></span>
+<span style="display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0">
+<span style="display: flex; align-items: center; gap: 8px"><span style="font-weight: 500">{{ v.when }}</span><sc-if value="{{ v.hasKind }}" hint-placeholder-val="{{ true }}"><span class="badge" data-k="{{ v.kindKey }}" style="height: 20px">{{ v.kind }}</span></sc-if></span>
+<span class="hint" style="display: inline-flex; align-items: center; gap: 6px"><span class="av" style="width: 16px; height: 16px; font-size: 8px; background: {{ v.avTone }}">{{ v.ini }}</span>{{ v.who }}</span>
+<span class="hint">{{ v.summary }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{ hasVerSel }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px; flex: none; border-top: 1px solid var(--border); background: var(--bg-subtle)">
+<span class="label" style="justify-content: flex-start">Title in this version</span>
+<span style="font-weight: 500">{{ verSel.title }}</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{ verSel.changes }}" as="c" hint-placeholder-count="2"><span class="tag">{{ c.t }}</span></sc-for></div>
+<sc-if value="{{ verSel.restorable }}" hint-placeholder-val="{{ true }}">
+<button class="btn btn-primary" onClick="{{ restore }}"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5 M4 9h10.5a5.5 5.5 0 0 1 0 11H11"></path></svg>Restore this version</button>
+<span class="hint">Restoring loads it as a draft. Nothing goes live until you publish.</span>
+</sc-if>
+<sc-if value="{{ verSel.isCurrent }}" hint-placeholder-val="{{ false }}"><span class="hint">This is what you are editing now.</span></sc-if>
+</div>
+</sc-if>
+</aside>
+</sc-if>
+</div>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<div class="toast" role="status" style="{{ toastStyle }}"><span>{{ toastText }}</span><sc-if value="{{ toastUndo }}" hint-placeholder-val="{{ false }}"><button onClick="{{ undo }}">Undo</button></sc-if></div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"layout":{"editor":"enum","options":["auto","mobile","desktop"],"default":"auto"},"view":{"editor":"enum","options":["list","editor"],"default":"list"},"accent":{"editor":"color","default":"#2563EB","options":["#2563EB","#0F766E","#C2410C","#18181B"]},"entry":{"editor":null,"default":"b-light"},"history":{"editor":null,"default":false},"height":{"editor":null,"default":"100vh"},"$preview":{"width":1440,"height":900}}'>
+const COLS = [
+  { id: 'blog', label: 'Blog posts', one: 'post', many: 'posts', path: '/journal', sub: 'Articles in the Journal section' },
+  { id: 'projects', label: 'Projects', one: 'project', many: 'projects', path: '/projects', sub: 'Case studies with photos' },
+  { id: 'testimonials', label: 'Testimonials', one: 'testimonial', many: 'testimonials', path: '/#kind-words', sub: 'Client quotes for the home page' }
+];
+const TEAM = {
+  pr: { name: 'Priya Raman', ini: 'PR', tone: '#E4DED3' },
+  am: { name: 'Arjun Menon', ini: 'AM', tone: '#D6DEE2' },
+  ks: { name: 'Kavya S', ini: 'KS', tone: '#E0DAE6' }
+};
+const STATUS = {
+  published: ['Published', 'Live'],
+  draft: ['Draft', 'Draft'],
+  scheduled: ['Scheduled', 'Scheduled'],
+  changed: ['Unpublished edits', 'Edited']
+};
+const E = [
+  { id: 'b-light', col: 'blog', title: 'How to light a small living room', slug: 'how-to-light-a-small-living-room', status: 'published', tags: ['Lighting', 'Small spaces'], by: 'pr', edited: '2 days ago', date: '3 Nov 2026', img: ['living-room-lamps.webp', '#D6CBBE'], alt: 'Small living room lit by two table lamps and a floor lamp beside a cane chair', prev: 'Lighting a small living room in three layers',
+    seoTitle: 'How to light a small living room · Teakline Studio', seoDesc: 'Three layers of light, warm bulbs and switches where you sit: how we light small living rooms in Coimbatore apartments.',
+    body: ['Most living rooms in Coimbatore apartments have one window and one ceiling point. That single light, usually a bright panel, is why the room feels flat at night.', '## Start with three layers', '- A soft ceiling light for cleaning and guests', '- Two lamps at sitting height, so faces are lit from the side', '- One accent light on something you love: a shelf, a painting, a plant', 'Warm white bulbs (2700K) make teak and cane look their best. Cool white flattens wood and makes skin look tired.', '## Put switches where you sit', 'Ask your electrician for a switch for the lamps beside the sofa. If you have to get up to change the mood, you won’t.', '> The best lighting plan is the one you actually use every evening.'] },
+  { id: 'b-wood', col: 'blog', title: 'Teak, sheesham or rubberwood? Choosing wood for Coimbatore weather', slug: 'choosing-wood-for-coimbatore-weather', status: 'published', tags: ['Materials'], by: 'am', edited: '28 Oct', date: '28 Oct 2026', img: ['wood-samples.webp', '#CBB9A4'],
+    body: ['Coimbatore is kind to furniture, but the monsoon months still test every joint. Here is how the three woods we use most behave in a real home.', '## Teak', 'Heavy, expensive and almost unbothered by humidity. Worth it for dining tables, door frames and anything near a window.', '## Sheesham', 'Beautiful grain at a lower price. It moves more with the seasons, so we use it indoors for beds, shelves and cabinets.'] },
+  { id: 'b-cost', col: 'blog', title: 'What a 2BHK interior really costs in 2026', slug: 'what-a-2bhk-interior-costs', status: 'draft', tags: ['Budget', 'Planning'], by: 'pr', edited: 'Yesterday', img: ['site-visit-notes.webp', '#D9D3C8'],
+    body: ['Every week someone asks us for a per-square-foot rate. We understand why, but two flats of the same size can differ by half.', '## Where the money goes', '- Modular kitchen and wardrobes, usually the biggest line', '- Electrical work and false ceilings', '- Loose furniture, curtains and lights', 'Add the worked example from the Saravanampatti flat before this goes live.'] },
+  { id: 'b-monsoon', col: 'blog', title: 'Monsoon-proofing a balcony garden', slug: 'monsoon-proofing-a-balcony-garden', status: 'scheduled', when: '12 Nov, 9:00 am', tags: ['Outdoor'], by: 'ks', edited: '3 Nov', img: ['balcony-ooty.webp', '#C3CABF'],
+    body: ['The north-east monsoon brings most of our rain between October and December. A balcony that looks lovely in March can be a puddle by November.', '- Raise pots on feet so water can drain', '- Slope the floor towards the outlet, not the wall', '- Choose plants that like wet roots, such as spider lily and money plant'] },
+  { id: 'b-kitchen', col: 'blog', title: 'Five storage ideas for a narrow kitchen', slug: 'narrow-kitchen-storage-ideas', status: 'changed', tags: ['Kitchen', 'Small spaces'], by: 'am', edited: '3 hours ago', date: '19 Oct 2026', img: ['kitchen-peelamedu.webp', '#CCD0C6'],
+    body: ['Most apartment kitchens we see are galleys under seven feet wide. These five ideas came out of the Peelamedu project.', '- A tall pull-out larder next to the fridge', '- A rail and hooks under the top cabinets', '- A corner carousel instead of a dead corner', '- A shallow spice drawer beside the hob', '- One open shelf for the things you use every day'] },
+  { id: 'b-visit', col: 'blog', title: 'Our site-visit checklist, shared', slug: 'site-visit-checklist', status: 'draft', tags: ['Planning'], by: 'pr', edited: '30 Oct', img: null,
+    body: ['Before we draw anything, we spend an hour in your home with a tape measure and a notebook. This is the list we carry.', '- Where the sun falls at 9 am and at 4 pm', '- Every switch, socket and water point', '- What you want to keep, and what you are happy to give away'] },
+  { id: 'b-daylight', col: 'blog', title: 'Why we design around daylight first', slug: 'design-around-daylight', status: 'published', tags: ['Lighting'], by: 'ks', edited: '21 Oct', date: '21 Oct 2026', img: ['living-room-rs-puram.webp', '#D8CDBF'],
+    body: ['Electric light can be fixed later. Daylight can only be planned around.', 'We start every plan by marking where light comes in, then put the rooms you use in the morning on that side.'] },
+  { id: 'b-sofa', col: 'blog', title: 'Choosing a sofa that survives kids and pets', slug: 'sofa-for-kids-and-pets', status: 'published', tags: ['Furniture'], by: 'am', edited: '14 Oct', date: '14 Oct 2026', img: ['sofa-fabric-swatches.webp', '#C9C2B8'],
+    body: ['Fabric matters more than the frame. Tight weaves and performance blends shrug off spills that ruin linen in a week.', 'Removable covers cost a little more and save the sofa.'] },
+  { id: 'p-peelamedu', col: 'projects', title: 'Peelamedu apartment kitchen', slug: 'peelamedu-apartment-kitchen', status: 'published', tags: ['Kitchen', 'Apartment'], by: 'pr', edited: '2 Nov', date: '2 Nov 2026', img: ['kitchen-peelamedu.webp', '#CCD0C6'],
+    body: ['A 6 by 11 foot galley kitchen for a family of four who cook twice a day.', 'We moved the fridge out of the work triangle, added a tall larder and replaced the overhead lofts with open rails.', '## Materials', '- Marine ply carcasses with laminate shutters', '- Quartz counter in a warm grey', '- Brass handles from a Coimbatore foundry'] },
+  { id: 'p-racecourse', col: 'projects', title: 'Race Course bungalow', slug: 'race-course-bungalow', status: 'published', tags: ['Whole home'], by: 'pr', edited: '25 Oct', date: '25 Oct 2026', img: ['bedroom-race-course.webp', '#D8CDBF'],
+    body: ['A 1970s bungalow, opened up for a couple who host often.', 'We kept the original red-oxide floors and built everything else around them.'] },
+  { id: 'p-ooty', col: 'projects', title: 'Ooty holiday home', slug: 'ooty-holiday-home', status: 'draft', tags: ['Whole home', 'Hill station'], by: 'ks', edited: 'Today', img: ['ooty-cottage.webp', '#C3CABF'],
+    body: ['A three-bedroom cottage above Lovedale, used by three generations on weekends.', 'Photos from the final shoot arrive next week.'] },
+  { id: 'p-saibaba', col: 'projects', title: 'Saibaba Colony 3BHK', slug: 'saibaba-colony-3bhk', status: 'published', tags: ['Apartment'], by: 'am', edited: '9 Oct', date: '9 Oct 2026', img: ['dining-nook-saibaba-colony.webp', '#CFC5B6'],
+    body: ['Calm, warm rooms for a retired couple and a great many books.', 'The dining nook by the window became the heart of the flat.'] },
+  { id: 'p-vadavalli', col: 'projects', title: 'Vadavalli studio apartment', slug: 'vadavalli-studio-apartment', status: 'scheduled', when: '20 Nov, 10:00 am', tags: ['Apartment', 'Small spaces'], by: 'ks', edited: '1 Nov', img: ['study-vadavalli.webp', '#D2C8BC'],
+    body: ['420 square feet for a doctor on night shifts: blackout curtains, a fold-down desk and a bed that hides a wardrobe.'] },
+  { id: 'p-clinic', col: 'projects', title: 'RS Puram clinic waiting room', slug: 'rs-puram-clinic-waiting-room', status: 'draft', tags: ['Commercial'], by: 'am', edited: '31 Oct', img: ['clinic-waiting-room.webp', '#D3D1C4'],
+    body: ['A children’s clinic that wanted its waiting room to feel like a living room.'] },
+  { id: 't-anitha', col: 'testimonials', title: 'Anitha and Karthik, Peelamedu', slug: 'anitha-and-karthik', status: 'published', tags: ['Kitchen'], by: 'pr', edited: '2 Nov', date: '2 Nov 2026', img: ['portrait-anitha-karthik.webp', '#DCD3C6'],
+    body: ['> They listened more than they talked. Our kitchen is small, but for the first time everything has a place.', 'Project: Peelamedu apartment kitchen, 2026'] },
+  { id: 't-meera', col: 'testimonials', title: 'Dr. Meera Sundaram, RS Puram', slug: 'meera-sundaram', status: 'published', tags: ['Commercial'], by: 'am', edited: '27 Oct', date: '27 Oct 2026', img: ['portrait-meera.webp', '#D6D0C6'],
+    body: ['> Parents tell us the waiting room feels calm. That was exactly the brief.', 'Project: RS Puram clinic waiting room'] },
+  { id: 't-rahul', col: 'testimonials', title: 'Rahul Menon, Ooty', slug: 'rahul-menon', status: 'published', tags: ['Whole home'], by: 'ks', edited: '18 Oct', date: '18 Oct 2026', img: null,
+    body: ['> They ran everything from Coimbatore while we were in Bengaluru. We arrived to a finished home.'] },
+  { id: 't-lakshmi', col: 'testimonials', title: 'Lakshmi Narayanan, Saravanampatti', slug: 'lakshmi-narayanan', status: 'draft', tags: ['Apartment'], by: 'pr', edited: 'Yesterday', img: null,
+    body: ['> Every rupee was explained before it was spent.', 'Waiting for Lakshmi to approve the wording.'] },
+  { id: 't-farah', col: 'testimonials', title: 'Farah Siddiqui, Race Course', slug: 'farah-siddiqui', status: 'published', tags: ['Whole home'], by: 'pr', edited: '6 Oct', date: '6 Oct 2026', img: ['portrait-farah.webp', '#D9D1C4'],
+    body: ['> The house still feels like ours, only lighter.'] },
+  { id: 't-joseph', col: 'testimonials', title: 'Joseph and Ann, Vadavalli', slug: 'joseph-and-ann', status: 'changed', tags: ['Apartment'], by: 'ks', edited: '5 hours ago', date: '1 Nov 2026', img: ['portrait-joseph-ann.webp', '#CFD2CB'],
+    body: ['> Our studio finally works for the way we live, and it took six weeks, not six months.'] }
+];
+const TONES = ['#D3C7BA', '#C9CEC4', '#D8CDBF', '#C4C9CE', '#DDD3C3', '#CBC3B8'];
+function clone(x) { return JSON.parse(JSON.stringify(x)); }
+function slugify(t) { return String(t || '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 64); }
+function clock() { try { return new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); } catch (e) { return 'now'; } }
+function parseBody(lines) {
+  const out = [];
+  (lines || []).forEach((ln) => {
+    if (ln.indexOf('## ') === 0) out.push({ isH2: true, text: ln.slice(3) });
+    else if (ln.indexOf('> ') === 0) out.push({ isQuote: true, text: ln.slice(2) });
+    else if (ln.indexOf('- ') === 0) {
+      const last = out[out.length - 1];
+      if (last && last.isUl) last.items.push({ t: ln.slice(2) });
+      else out.push({ isUl: true, items: [{ t: ln.slice(2) }] });
+    } else out.push({ isP: true, text: ln });
+  });
+  if (!out.length) out.push({ isP: true, text: '' });
+  return out;
+}
+function countWords(lines) { return (lines || []).join(' ').replace(/^[#>\-]+\s/gm, '').split(/\s+/).filter(Boolean).length; }
+function rel(t) { t = String(t || ''); return /^\d/.test(t) ? t : t.charAt(0).toLowerCase() + t.slice(1); }
+function excerpt(e) { const p = (e.body || []).find((l) => l && l[0] !== '#' && l[0] !== '-' ); return p ? p.replace(/^>\s/, '') : ''; }
+
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      entries: clone(E), col: undefined, view: undefined, openId: undefined, form: null, hist: undefined, verSel: null,
+      q: '', status: 'all', tag: null, tagMenu: false, tagDraft: '', toast: null, dark: undefined, w: 0,
+      busy: false, saved: {}, extraVersions: {}, words: null, credits: 38, aiSeoBusy: false
+    };
+    this.setRoot = (el) => { this.root = el; };
+    this.setRte = (el) => { this.rte = el; };
+    this.measure = () => {
+      const el = this.root;
+      const w = Math.round(el ? el.getBoundingClientRect().width : (window.innerWidth || 0));
+      if (w && w !== this.state.w) this.setState({ w });
+    };
+  }
+  componentDidMount() {
+    this.measure();
+    try {
+      if (window.ResizeObserver && this.root) { this.ro = new ResizeObserver(this.measure); this.ro.observe(this.root); }
+      else { window.addEventListener('resize', this.measure); }
+    } catch (e) {}
+  }
+  componentWillUnmount() {
+    if (this.ro) this.ro.disconnect();
+    window.removeEventListener('resize', this.measure);
+    [this.tt, this.tp, this.to, this.ta].forEach((t) => clearTimeout(t));
+  }
+  flash(toast) { clearTimeout(this.tt); this.setState({ toast }); this.tt = setTimeout(() => this.setState({ toast: null }), 4200); }
+  entry(id) { return this.state.entries.find((x) => x.id === id) || null; }
+  formFrom(e) {
+    return {
+      id: e.id, title: e.title, slug: e.slug, slugLocked: e.status !== 'draft', slugTouched: false,
+      imgFile: e.img ? e.img[0] : '', imgTone: e.img ? e.img[1] : '', hasImg: !!e.img, alt: e.alt || '',
+      tags: (e.tags || []).slice(), seoTitle: e.seoTitle || '', seoDesc: e.seoDesc || '', dirty: false
+    };
+  }
+  form() {
+    const s = this.state;
+    const id = this._openId;
+    if (s.form && s.form.id === id) return s.form;
+    const e = this.entry(id);
+    return e ? this.formFrom(e) : null;
+  }
+  edit(ch) {
+    const f = this.form();
+    if (!f) return;
+    const next = Object.assign({}, f, ch, { dirty: true });
+    if (ch.title !== undefined && !f.slugLocked && !f.slugTouched) next.slug = slugify(ch.title) || f.slug;
+    this.setState({ form: next });
+  }
+  open(id) {
+    this.setState({ openId: null, view: 'editor', form: null, hist: false, verSel: null, words: null, tagMenu: false });
+    clearTimeout(this.to);
+    this.to = setTimeout(() => this.setState({ openId: id }), 0);
+  }
+  newEntry() {
+    const col = this._col;
+    const id = 'n-' + Date.now();
+    const meta = COLS.find((c) => c.id === col);
+    const e = { id, col, title: '', slug: '', status: 'draft', tags: [], by: 'pr', edited: 'Just now', img: null, body: [''], isNew: true };
+    this.setState((s) => ({ entries: [e].concat(s.entries) }));
+    this.open(id);
+    this.flash({ text: 'New ' + meta.one + ' created as a draft' });
+  }
+  commitEntry(status, kind) {
+    const f = this.form();
+    const e = this.entry(this._openId);
+    if (!f || !e) return;
+    const now = 'Today, ' + clock();
+    const changes = [];
+    if (f.title !== e.title) changes.push('Title changed');
+    if (f.slug !== e.slug) changes.push('Address changed');
+    if (f.seoDesc !== (e.seoDesc || '') || f.seoTitle !== (e.seoTitle || '')) changes.push('SEO updated');
+    if ((f.tags || []).join() !== (e.tags || []).join()) changes.push('Tags changed');
+    if (this.bodyEdited) changes.push('Body edited');
+    if (!changes.length) changes.push(kind === 'Published' ? 'Published as is' : 'Saved');
+    const ver = { id: 'x' + Date.now(), when: now, by: 'pr', kind, title: f.title || 'Untitled', changes };
+    this.bodyEdited = false;
+    this.setState((s) => ({
+      entries: s.entries.map((x) => (x.id === e.id ? Object.assign({}, x, {
+        title: f.title || 'Untitled ' + COLS.find((c) => c.id === x.col).one, slug: f.slug || slugify(f.title) || x.id, tags: f.tags, seoTitle: f.seoTitle, seoDesc: f.seoDesc,
+        img: f.hasImg ? [f.imgFile, f.imgTone] : null, alt: f.alt, status, edited: 'Just now', date: status === 'published' ? '5 Nov 2026' : x.date
+      }) : x)),
+      form: Object.assign({}, f, { dirty: false, slugLocked: status !== 'draft' ? true : f.slugLocked }),
+      saved: Object.assign({}, s.saved, { [e.id]: clock() }),
+      extraVersions: Object.assign({}, s.extraVersions, { [e.id]: [ver].concat(s.extraVersions[e.id] || []) })
+    }));
+  }
+  saveDraft() {
+    const f = this.form(), e = this.entry(this._openId);
+    if (!f || !e) return;
+    if (!f.dirty) { this.flash({ text: 'No changes to save' }); return; }
+    const next = e.status === 'published' || e.status === 'changed' ? 'changed' : e.status;
+    this.commitEntry(next, 'Draft');
+    this.flash({ text: next === 'changed' ? 'Draft saved. The live version stays as it is until you publish.' : 'Draft saved' });
+  }
+  publishEntry() {
+    const e = this.entry(this._openId);
+    if (!e || this.state.busy) return;
+    this.setState({ busy: true });
+    clearTimeout(this.tp);
+    this.tp = setTimeout(() => {
+      this.commitEntry('published', 'Published');
+      this.setState({ busy: false });
+      const f = this.form();
+      const col = COLS.find((c) => c.id === e.col);
+      this.flash({ text: 'Published to teakline.selfsite.in' + col.path.replace('/#kind-words', '') + '/' + ((f && f.slug) || e.slug) });
+    }, 900);
+  }
+  versions(e, f) {
+    const by = TEAM[e.by] || TEAM.pr;
+    const other = e.by === 'am' ? TEAM.ks : TEAM.am;
+    const list = [];
+    list.push({ id: 'cur', when: f && f.dirty ? 'Unsaved changes' : 'Current version', who: 'Priya Raman (you)', ini: 'PR', tone: TEAM.pr.tone, kind: f && f.dirty ? 'Editing' : '', kindKey: 'draft', title: (f && f.title) || e.title || 'Untitled', changes: [{ t: 'What you see now' }], current: true });
+    (this.state.extraVersions[e.id] || []).forEach((v) => list.push({ id: v.id, when: v.when, who: TEAM.pr.name, ini: 'PR', tone: TEAM.pr.tone, kind: v.kind, kindKey: v.kind === 'Published' ? 'published' : 'draft', title: v.title, changes: v.changes.map((t) => ({ t })) }));
+    if (!e.isNew) {
+      if (e.status === 'published' || e.status === 'changed') list.push({ id: 'v3', when: e.date ? e.date + ', 4:12 pm' : '3 Nov, 4:12 pm', who: by.name, ini: by.ini, tone: by.tone, kind: 'Published', kindKey: 'published', title: e.title, changes: [{ t: 'Body edited' }, { t: 'Tags changed' }] });
+      list.push({ id: 'v2', when: '1 Nov, 11:30 am', who: other.name, ini: other.ini, tone: other.tone, kind: 'Draft', kindKey: 'draft', title: e.prev || e.title, changes: [{ t: 'Title changed' }, { t: 'Cover image replaced' }, { t: '2 paragraphs edited' }] });
+      list.push({ id: 'v1', when: '28 Oct, 6:05 pm', who: by.name, ini: by.ini, tone: by.tone, kind: 'Created', kindKey: 'draft', title: e.prev || e.title, changes: [{ t: 'First draft' }] });
+    }
+    return list;
+  }
+  fmt(cmd, val) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      if (this.rte && document.activeElement !== this.rte && !this.rte.contains(document.activeElement)) this.rte.focus();
+      try { document.execCommand(cmd, false, val); } catch (x) {}
+      this.bodyEdited = true;
+      const f = this.form();
+      if (f && !f.dirty) this.edit({});
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    const p = this.props || {};
+    const dark = s.dark === undefined ? !!p.dark : s.dark;
+    const lay = p.layout && p.layout !== 'auto' ? p.layout : (s.w && s.w < 760 ? 'mobile' : 'desktop');
+    const mobile = lay === 'mobile';
+    const view = s.view === undefined ? (p.view || 'list') : s.view;
+    const openId = s.openId === undefined ? (p.entry || 'b-light') : s.openId;
+    const histOpen = s.hist === undefined ? !!p.history && view === 'editor' : s.hist;
+    const entryForCol = this.entry(openId);
+    const colId = s.col === undefined ? (view === 'editor' && entryForCol ? entryForCol.col : 'blog') : s.col;
+    this._openId = openId; this._col = colId; this._mobile = mobile;
+    const col = COLS.find((c) => c.id === colId);
+    const all = s.entries.filter((e) => e.col === colId);
+    const q = s.q.trim().toLowerCase();
+    const matchQ = (e) => !q || (e.title + ' ' + e.slug + ' ' + (e.tags || []).join(' ')).toLowerCase().indexOf(q) >= 0;
+    const matchTag = (e) => !s.tag || (e.tags || []).indexOf(s.tag) >= 0;
+    const base = all.filter((e) => matchQ(e) && matchTag(e));
+    const filtered = base.filter((e) => s.status === 'all' || e.status === s.status);
+    const countBy = (k) => base.filter((e) => e.status === k).length;
+    const tagCounts = {};
+    all.forEach((e) => (e.tags || []).forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
+    const tagNames = Object.keys(tagCounts).sort();
+    const rows = filtered.map((e) => {
+      const tm = TEAM[e.by] || TEAM.pr;
+      const st = STATUS[e.status];
+      return {
+        id: e.id, title: e.title || 'Untitled', url: col.path.replace('/#kind-words', '') + '/' + (e.slug || 'untitled'),
+        tone: e.img ? e.img[1] : 'var(--bg-muted)', status: e.status,
+        statusLabel: e.status === 'scheduled' ? 'Scheduled · ' + e.when.split(',')[0] : st[0], statusShort: e.status === 'scheduled' ? e.when.split(',')[0] : st[1],
+        tags: (e.tags || []).slice(0, 2).map((t) => ({ label: t })),
+        by: tm.name, ini: tm.ini, avTone: tm.tone, edited: e.edited,
+        meta: 'Edited ' + rel(e.edited) + ((e.tags && e.tags[0]) ? ' · ' + e.tags[0] : ''),
+        open: () => this.open(e.id)
+      };
+    });
+    const showEditor = view === 'editor' && !!openId && !!this.entry(openId);
+    const e = showEditor ? this.entry(openId) : null;
+    const f = showEditor ? this.form() : null;
+    const tmE = e ? (TEAM[e.by] || TEAM.pr) : TEAM.pr;
+    const effStatus = e ? (f && f.dirty && e.status === 'published' ? 'changed' : e.status) : 'draft';
+    const versions = e ? this.versions(e, f) : [];
+    const verSelId = s.verSel || (versions[1] ? versions[1].id : null);
+    const vs = versions.find((v) => v.id === verSelId) || null;
+    const words = s.words !== null ? s.words : (e ? countWords(e.body) : 0);
+    const prefix = 'teakline.selfsite.in' + (col.id === 'testimonials' ? '/kind-words/' : col.path + '/');
+    let publishLabel = 'Publish';
+    if (s.busy) publishLabel = 'Publishing';
+    else if (e && e.status === 'scheduled') publishLabel = 'Publish now';
+    else if (e && (effStatus === 'changed')) publishLabel = 'Publish changes';
+    else if (e && e.status === 'published') publishLabel = 'Published';
+    const publishDisabled = !!(e && e.status === 'published' && f && !f.dirty) || s.busy;
+    const seoTitle = f ? (f.seoTitle || '') : '';
+    const seoDesc = f ? (f.seoDesc || '') : '';
+    const fallbackDesc = e ? excerpt(e) : '';
+    const suggest = f ? tagNames.filter((t) => f.tags.indexOf(t) < 0).slice(0, 4) : [];
+    const histStyle = mobile
+      ? 'max-height: 78%'
+      : 'position: absolute; top: 56px; right: 0; bottom: 0; z-index: 40; display: flex; flex-direction: column; width: 380px; background: var(--bg-elevated); border-left: 1px solid var(--border); box-shadow: var(--shadow-lg); animation: ssSlide .18s ease-out';
+    const toast = s.toast;
+    return {
+      theme: dark ? 'dark' : 'light', dark, light: !dark, lay, mobile, desktop: !mobile, yes: true,
+      height: p.height || '100vh', accent: p.accent || '#2563EB',
+      setRoot: this.setRoot, setRte: this.setRte,
+      toggleTheme: () => this.setState({ dark: !dark }),
+      onKey: (ev) => {
+        if (ev.key !== 'Escape') return;
+        if (this.state.tagMenu) this.setState({ tagMenu: false });
+        else if (histOpen) this.setState({ hist: false });
+      },
+      cols: COLS.map((c) => {
+        const on = c.id === colId;
+        return {
+          label: c.label, count: s.entries.filter((x) => x.col === c.id).length, active: on, current: on ? 'page' : 'false',
+          tabStyle: 'display: inline-flex; align-items: center; height: 40px; padding: 0 12px; border: 0; border-bottom: 2px solid ' + (on ? 'var(--fg)' : 'transparent') + '; margin-bottom: -1px; background: transparent; color: ' + (on ? 'var(--fg)' : 'var(--fg-subtle)') + '; font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer',
+          pick: () => this.setState({ col: c.id, view: 'list', q: '', status: 'all', tag: null, tagMenu: false, hist: false })
+        };
+      }),
+      col,
+      showList: view === 'list', showEditor,
+      newEntry: () => this.newEntry(),
+      toolbarStyle: mobile
+        ? 'display: flex; flex-direction: column; gap: 8px; padding: 12px 12px 8px; flex: none'
+        : 'display: flex; align-items: center; gap: 12px; padding: 12px 24px; flex: none; border-bottom: 1px solid var(--border)',
+      searchStyle: mobile ? 'width: 100%' : 'width: 280px; flex: none',
+      searchPh: 'Search ' + col.many, q: s.q, hasQ: !!s.q,
+      onQ: (ev) => this.setState({ q: ev.target.value }), clearQ: () => this.setState({ q: '' }),
+      statusOpts: [['all', 'All', base.length], ['published', 'Published', countBy('published')], ['changed', 'Edited', countBy('changed')], ['draft', 'Drafts', countBy('draft')], ['scheduled', 'Scheduled', countBy('scheduled')]]
+        .map((o) => ({ label: o[1], n: o[2], on: s.status === o[0], pick: () => this.setState({ status: o[0] }) })),
+      tagMenu: s.tagMenu, tagMenuDesk: s.tagMenu && !mobile, tagMenuMob: s.tagMenu && mobile,
+      chipsClass: mobile ? 'hscroll' : '', chipsWrap: mobile ? 'nowrap' : 'wrap',
+      tagActive: !!s.tag, tagLabel: s.tag ? s.tag : 'Any tag',
+      toggleTagMenu: () => this.setState({ tagMenu: !s.tagMenu }),
+      tagMenuStyle: mobile ? 'position: absolute; top: 210px; left: 12px; right: 12px; z-index: 30' : 'position: absolute; top: 108px; left: 590px; width: 240px; z-index: 30',
+      tagOpts: [{ label: 'Any tag', n: all.length, on: !s.tag, pick: () => this.setState({ tag: null, tagMenu: false }) }]
+        .concat(tagNames.map((t) => ({ label: t, n: tagCounts[t], on: s.tag === t, pick: () => this.setState({ tag: t, tagMenu: false }) }))),
+      rows, noRows: rows.length === 0,
+      clearFilters: () => this.setState({ q: '', status: 'all', tag: null }),
+      footText: filtered.length + ' of ' + all.length + ' ' + col.many + ' · ' + all.filter((x) => x.status === 'published' || x.status === 'changed').length + ' live on the site',
+      edHeaderStyle: mobile
+        ? 'display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 8px; flex: none; border-bottom: 1px solid var(--border)'
+        : 'display: flex; align-items: center; gap: 8px; height: 56px; padding: 0 16px 0 12px; flex: none; border-bottom: 1px solid var(--border)',
+      edGridStyle: mobile
+        ? 'display: flex; flex-direction: column; gap: 24px; padding: 16px 16px 32px'
+        : 'display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px; max-width: 1120px; margin: 0 auto; padding: 32px 32px 80px',
+      sideMax: mobile ? 'none' : '340px',
+      backToList: () => this.setState({ view: 'list', hist: false, form: null }),
+      ed: e ? { status: effStatus, statusLabel: effStatus === 'scheduled' ? 'Scheduled · ' + e.when : STATUS[effStatus][0], statusShort: STATUS[effStatus][1], by: tmE.name, ini: tmE.ini, avTone: tmE.tone } : {},
+      f: f || {}, fTitleShown: f ? (f.title || 'Untitled ' + col.one) : '', titlePh: 'Untitled ' + col.one,
+      onTitle: (ev) => this.edit({ title: ev.target.value }),
+      onSlug: (ev) => this.edit({ slug: slugify(ev.target.value) || ev.target.value.toLowerCase(), slugTouched: true }),
+      slugLocked: !!(f && f.slugLocked), slugAuto: !!(f && !f.slugLocked && !f.slugTouched),
+      unlockSlug: () => this.edit({ slugLocked: false, slugTouched: true }),
+      slugWarn: !!(f && !f.slugLocked && e && e.status !== 'draft'),
+      urlPrefix: mobile ? '/' + (col.id === 'testimonials' ? 'kind-words' : col.path.slice(1)) + '/' : prefix,
+      hasImg: !!(f && f.hasImg), noImg: !!(f && !f.hasImg),
+      replaceImg: () => { const k = (TONES.indexOf(f.imgTone) + 1) % TONES.length; this.edit({ imgTone: TONES[k], imgFile: 'upload-' + (k + 1) + '.webp' }); },
+      removeImg: () => this.edit({ hasImg: false }),
+      addImg: () => this.edit({ hasImg: true, imgFile: f.imgFile || 'site-visit-notes.webp', imgTone: f.imgTone || '#D9D3C8' }),
+      onAlt: (ev) => this.edit({ alt: ev.target.value }),
+      aiAlt: () => { this.edit({ alt: 'Photo for “' + (f.title || 'this ' + col.one) + '”: ' + (e && e.alt ? e.alt.toLowerCase() : 'a warm, sunlit room with teak furniture') }); this.setState({ credits: s.credits - 1 }); this.flash({ text: 'Alt text written · 1 credit used' }); },
+      body: e ? parseBody(e.body) : [],
+      onBodyInput: (ev) => {
+        this.bodyEdited = true;
+        const txt = (ev.currentTarget && ev.currentTarget.innerText) || '';
+        const n = txt.split(/\s+/).filter(Boolean).length;
+        const fm = this.form();
+        if (fm && !fm.dirty) this.setState({ words: n, form: Object.assign({}, fm, { dirty: true }) });
+        else this.setState({ words: n });
+      },
+      wordsText: words + ' words · ' + Math.max(1, Math.round(words / 200)) + ' min read',
+      fmt: {
+        p: this.fmt('formatBlock', 'p'), h2: this.fmt('formatBlock', 'h2'), h3: this.fmt('formatBlock', 'h3'),
+        bold: this.fmt('bold'), italic: this.fmt('italic'), link: this.fmt('createLink', '/contact'),
+        ul: this.fmt('insertUnorderedList'), ol: this.fmt('insertOrderedList'), quote: this.fmt('formatBlock', 'blockquote'),
+        photo: (ev) => { if (ev) ev.preventDefault(); this.flash({ text: 'Pick a photo from Media to place it here' }); },
+        ai: (ev) => { if (ev) ev.preventDefault(); this.flash({ text: 'Select a sentence first, then Improve selection rewrites it · 1 credit' }); }
+      },
+      fTags: f ? f.tags.map((t) => ({ label: t, remove: () => this.edit({ tags: f.tags.filter((x) => x !== t) }) })) : [],
+      tagDraft: s.tagDraft,
+      onTagDraft: (ev) => this.setState({ tagDraft: ev.target.value }),
+      onTagKey: (ev) => {
+        const v = String(this.state.tagDraft || '').trim();
+        if ((ev.key === 'Enter' || ev.key === ',') && v) {
+          ev.preventDefault();
+          const fm = this.form();
+          const name = v.charAt(0).toUpperCase() + v.slice(1);
+          if (fm && fm.tags.indexOf(name) < 0) this.edit({ tags: fm.tags.concat([name]) });
+          this.setState({ tagDraft: '' });
+        } else if (ev.key === 'Backspace' && !v) {
+          const fm = this.form();
+          if (fm && fm.tags.length) this.edit({ tags: fm.tags.slice(0, -1) });
+        }
+      },
+      hasSuggest: suggest.length > 0,
+      suggest: suggest.map((t) => ({ label: t, add: () => this.edit({ tags: f.tags.concat([t]) }) })),
+      dateLabel: e && e.status === 'scheduled' ? 'Goes live' : 'Published',
+      dateValue: e ? (e.status === 'scheduled' ? e.when : (e.date || 'Not yet')) : '',
+      lastSaved: e ? (s.saved[e.id] ? 'Today, ' + s.saved[e.id] : e.edited) : '',
+      savedText: f && f.dirty ? 'Unsaved changes' : (e && s.saved[e.id] ? 'Saved at ' + s.saved[e.id] : (e ? 'Edited ' + rel(e.edited) : '')),
+      versionCount: versions.length,
+      seoTitleCount: seoTitle.length, seoDescCount: seoDesc.length,
+      seoTitleColor: seoTitle.length > 60 ? 'var(--warn)' : 'var(--fg-subtle)', seoDescColor: seoDesc.length > 160 ? 'var(--warn)' : 'var(--fg-subtle)',
+      seoTitlePh: f ? ((f.title || 'Untitled') + ' · Teakline Studio') : '',
+      onSeoTitle: (ev) => this.edit({ seoTitle: ev.target.value }),
+      onSeoDesc: (ev) => this.edit({ seoDesc: ev.target.value }),
+      aiSeoLabel: s.aiSeoBusy ? 'Writing…' : 'Write description with AI · 1 credit',
+      aiSeo: () => {
+        if (this.state.aiSeoBusy) return;
+        this.setState({ aiSeoBusy: true });
+        clearTimeout(this.ta);
+        this.ta = setTimeout(() => {
+          const ex = fallbackDesc.length > 150 ? fallbackDesc.slice(0, 147).replace(/\s+\S*$/, '') + '…' : fallbackDesc;
+          this.edit({ seoDesc: ex || ('From Teakline Studio in Coimbatore: ' + (f.title || 'a new ' + col.one) + '.') });
+          this.setState({ aiSeoBusy: false, credits: this.state.credits - 1 });
+          this.flash({ text: 'Description written · 1 credit used' });
+        }, 800);
+      },
+      serpUrl: prefix.replace(/\/$/, '') + ' › ' + (f && f.slug ? f.slug : 'untitled'),
+      serpTitle: seoTitle || ((f && f.title) || 'Untitled') + ' · Teakline Studio',
+      serpDesc: seoDesc || fallbackDesc || 'Add a description so search results show something useful.',
+      notDirty: !(f && f.dirty), busy: s.busy, publishLabel, publishDisabled,
+      saveDraft: () => this.saveDraft(), publishEntry: () => this.publishEntry(),
+      histOpen, openHistory: () => this.setState({ hist: !histOpen, verSel: null }), closeHistory: () => this.setState({ hist: false }),
+      histClass: mobile ? 'sheet' : '', histStyle,
+      versions: versions.map((v) => ({
+        when: v.when, who: v.who, ini: v.ini, avTone: v.tone, kind: v.kind, hasKind: !!v.kind, kindKey: v.kindKey,
+        summary: v.changes.map((c) => c.t).join(' · '), active: v.id === verSelId,
+        pick: () => this.setState({ verSel: v.id })
+      })),
+      hasVerSel: !!vs,
+      verSel: vs ? { title: vs.title, changes: vs.changes, restorable: !vs.current, isCurrent: !!vs.current } : {},
+      restore: () => {
+        if (!vs || vs.current) return;
+        const before = this.form();
+        this.edit({ title: vs.title });
+        this.setState({ hist: false });
+        this.flash({ text: 'Restored the ' + vs.when.split(',')[0] + ' version as a draft', undo: { form: before } });
+      },
+      hasToast: !!toast, toastText: toast ? toast.text : '', toastUndo: !!(toast && toast.undo),
+      undo: () => { const t = this.state.toast; if (t && t.undo) { clearTimeout(this.tt); this.setState({ form: t.undo.form, toast: null }); } },
+      toastStyle: mobile ? 'bottom: 76px; max-width: calc(100% - 24px); white-space: normal' : ''
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>selfsite landing page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+.ss{--accent:#2563EB;--accent-hover:color-mix(in srgb,var(--accent) 85%,#000);--accent-soft:color-mix(in srgb,var(--accent) 8%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 24%,transparent);--accent-text:color-mix(in srgb,var(--accent) 86%,#000);--bg:#FFFFFF;--bg-subtle:#F9F9FA;--bg-muted:#F3F3F5;--bg-emphasis:#EBEBEE;--bg-elevated:#FFFFFF;--canvas:#F1F1F3;--border:#E6E6E9;--border-strong:#D5D5DA;--fg:#18181B;--fg-muted:#52525B;--fg-subtle:#6B6B74;--danger:#C8322B;--ok:#15803D;--ok-soft:#EBF8F0;--ok-dot:#16A34A;--warn:#9A4D00;--warn-soft:#FFF5E1;--warn-dot:#E8930C;--scrim:rgba(16,16,20,.28);--shadow-xs:0 1px 1px rgba(16,16,20,.04);--shadow-sm:0 1px 2px rgba(16,16,20,.07);--shadow-md:0 4px 12px -2px rgba(16,16,20,.08),0 1px 3px rgba(16,16,20,.06);--shadow-lg:0 16px 40px -12px rgba(16,16,20,.24),0 2px 6px rgba(16,16,20,.06);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13px;line-height:20px;color:var(--fg);background:var(--bg-subtle);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01";outline:none}
+.ss[data-theme="dark"]{--accent-text:color-mix(in srgb,var(--accent) 55%,#fff);--accent-soft:color-mix(in srgb,var(--accent) 16%,transparent);--accent-ring:color-mix(in srgb,var(--accent) 38%,transparent);--bg:#141416;--bg-subtle:#0F0F11;--bg-muted:#1C1C1F;--bg-emphasis:#26262A;--bg-elevated:#1A1A1D;--canvas:#0A0A0B;--border:#26262B;--border-strong:#36363D;--fg:#EDEDEF;--fg-muted:#A8A8B1;--fg-subtle:#8C8C96;--danger:#F87171;--ok:#4ADE80;--ok-soft:rgba(74,222,128,.1);--ok-dot:#22C55E;--warn:#FBBF24;--warn-soft:rgba(251,191,36,.1);--warn-dot:#F59E0B;--scrim:rgba(0,0,0,.5);--shadow-xs:none;--shadow-sm:0 1px 2px rgba(0,0,0,.5);--shadow-md:0 8px 20px -6px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03);--shadow-lg:0 24px 56px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.05);color-scheme:dark}
+.ss *,.ss *::before,.ss *::after{box-sizing:border-box}
+.ss button,.ss input,.ss textarea{font:inherit;color:inherit;letter-spacing:inherit;margin:0}
+.ss a{color:inherit;text-decoration:none}
+.ss p,.ss h1,.ss h2,.ss h3{margin:0}
+.ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+.ic-sm{width:14px;height:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:13px;font-weight:500;line-height:1;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap;transition:background .12s,border-color .12s,color .12s}
+.btn:hover{background:var(--bg-muted);border-color:var(--border-strong)}
+.btn:focus-visible,.ibtn:focus-visible,.lp-q:focus-visible,.lp-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-primary{background:var(--accent);border-color:transparent;color:#fff;box-shadow:0 1px 2px rgba(16,16,20,.14),inset 0 1px 0 rgba(255,255,255,.12)}
+.btn-primary:hover{background:var(--accent-hover);border-color:transparent}
+.btn-ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--fg-muted)}
+.btn-ghost:hover{background:var(--bg-muted);color:var(--fg);border-color:transparent}
+.btn-lg{height:44px;padding:0 18px;font-size:14px;border-radius:8px}
+.ibtn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border-radius:6px;border:1px solid transparent;background:transparent;color:var(--fg-muted);cursor:pointer;flex:none}
+.ibtn:hover{background:var(--bg-muted);color:var(--fg)}
+.hint{font-size:12px;line-height:16px;color:var(--fg-subtle)}
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:4px;border:1px solid var(--border);background:var(--bg-subtle);color:var(--fg-subtle);font-size:11px;font-weight:500;line-height:1}
+.badge{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;font-size:12px;font-weight:500;line-height:1;border:1px solid var(--border);background:var(--bg);color:var(--fg-muted);white-space:nowrap}
+.badge-ok{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.badge-warn{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.badge-info{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.dot{width:6px;height:6px;border-radius:999px;background:currentColor;flex:none}
+.trunc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lp-wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 32px}
+.ss[data-layout="mobile"] .lp-wrap{padding:0 16px}
+.lp-nav{position:sticky;top:0;z-index:40;height:64px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--border)}
+.ss[data-layout="mobile"] .lp-nav{height:56px}
+.lp-logo{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--fg)}
+.lp-mark{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:var(--fg);color:var(--bg);font-size:14px;font-weight:700;line-height:1}
+.lp-link{display:inline-flex;align-items:center;height:32px;padding:0 10px;border-radius:6px;color:var(--fg-muted);font-size:13px;font-weight:500}
+.lp-link:hover{color:var(--fg);background:var(--bg-muted)}
+.lp-pill{display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px 0 6px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--fg-muted);font-size:12px;font-weight:500;box-shadow:var(--shadow-xs)}
+.lp-pill b{display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:999px;background:var(--accent-soft);color:var(--accent-text);font-weight:600;font-size:11px}
+.lp-h1{font-size:64px;line-height:1.04;font-weight:600;letter-spacing:-.035em;color:var(--fg);text-wrap:balance}
+.ss[data-layout="mobile"] .lp-h1{font-size:40px;line-height:1.08;letter-spacing:-.03em}
+.lp-h2{font-size:40px;line-height:1.1;font-weight:600;letter-spacing:-.03em;color:var(--fg);text-wrap:balance}
+.ss[data-layout="mobile"] .lp-h2{font-size:30px;line-height:1.15}
+.lp-h3{font-size:15px;line-height:22px;font-weight:600;color:var(--fg)}
+.lp-lead{font-size:18px;line-height:28px;color:var(--fg-muted);text-wrap:pretty}
+.ss[data-layout="mobile"] .lp-lead{font-size:16px;line-height:26px}
+.lp-p{font-size:14px;line-height:22px;color:var(--fg-muted)}
+.lp-eyebrow{font-size:13px;line-height:20px;font-weight:500;color:var(--accent-text)}
+.lp-sec{padding:96px 0;border-top:1px solid var(--border);background:var(--bg)}
+.ss[data-layout="mobile"] .lp-sec{padding:64px 0}
+.lp-sec-alt{background:var(--bg-subtle)}
+.lp-head{display:flex;flex-direction:column;gap:12px;max-width:640px;margin-bottom:48px}
+.ss[data-layout="mobile"] .lp-head{margin-bottom:32px}
+.lp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ss[data-layout="mobile"] .lp-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+.lp-card{display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--bg);box-shadow:var(--shadow-xs)}
+.ss[data-layout="mobile"] .lp-card{padding:20px}
+.lp-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);color:var(--fg)}
+.lp-snip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:auto;padding-top:8px}
+.lp-win{border:1px solid var(--border);border-radius:12px;background:var(--bg);box-shadow:0 32px 80px -24px rgba(16,16,20,.28),0 2px 8px rgba(16,16,20,.06);overflow:hidden}
+.ss[data-theme="dark"] .lp-win{box-shadow:0 32px 80px -24px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.04)}
+.lp-win-bar{display:flex;align-items:center;gap:8px;height:28px;padding:0 12px;border-bottom:1px solid var(--border);background:var(--bg-subtle)}
+.lp-win-bar i{width:10px;height:10px;border-radius:999px;background:var(--border-strong)}
+.lp-phone{position:relative;overflow:hidden;border:8px solid #111113;border-radius:40px;background:#111113;box-shadow:0 32px 64px -20px rgba(16,16,20,.45)}
+.lp-phone-in{overflow:hidden;border-radius:32px;background:var(--bg)}
+.lp-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ss[data-layout="mobile"] .lp-strip{grid-template-columns:minmax(0,1fr);gap:16px}
+.lp-strip div{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:22px;color:var(--fg-muted)}
+.lp-strip b{color:var(--fg);font-weight:600}
+.lp-step{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;border:1px solid var(--border-strong);font-size:13px;font-weight:600;color:var(--fg)}
+.lp-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:64px;align-items:center}
+.ss[data-layout="mobile"] .lp-split{grid-template-columns:minmax(0,1fr);gap:32px}
+.lp-check{display:flex;gap:10px;font-size:14px;line-height:22px;color:var(--fg-muted)}
+.lp-check .ic{margin-top:3px;color:var(--accent-text)}
+.lp-panel{border:1px solid var(--border);border-radius:12px;background:var(--bg);box-shadow:var(--shadow-md);overflow:hidden}
+.lp-row{display:grid;grid-template-columns:minmax(0,1fr) auto 88px;align-items:center;gap:16px;min-height:52px;padding:0 16px;border-top:1px solid var(--border);font-size:13px}
+.ss[data-layout="mobile"] .lp-row{grid-template-columns:minmax(0,1fr) auto;gap:10px}
+.ss[data-layout="mobile"] .lp-row .lp-when{display:none}
+.lp-band{border-radius:16px;padding:48px;background:var(--fg);color:var(--bg)}
+.ss[data-layout="mobile"] .lp-band{padding:28px 20px;border-radius:12px}
+.lp-band .lp-h2{color:var(--bg)}
+.lp-band-p{font-size:16px;line-height:26px;color:color-mix(in srgb,var(--bg) 72%,var(--fg))}
+.lp-band .btn{background:var(--bg);color:var(--fg);border-color:transparent}
+.lp-band .btn:hover{background:color-mix(in srgb,var(--bg) 90%,var(--fg))}
+.lp-faq{border-top:1px solid var(--border)}
+.lp-q{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:60px;padding:16px 0;border:0;border-bottom:1px solid var(--border);background:transparent;color:var(--fg);text-align:left;font-size:15px;line-height:22px;font-weight:500;cursor:pointer}
+.lp-a{padding:0 48px 20px 0;border-bottom:1px solid var(--border);font-size:14px;line-height:22px;color:var(--fg-muted);margin-top:-1px}
+.ss[data-layout="mobile"] .lp-a{padding-right:0}
+.lp-foot{padding:48px 0 40px;border-top:1px solid var(--border);background:var(--bg-subtle)}
+.lp-foot-grid{display:grid;grid-template-columns:2fr repeat(3,minmax(0,1fr));gap:32px}
+.ss[data-layout="mobile"] .lp-foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.lp-foot-h{font-size:12px;font-weight:500;color:var(--fg-subtle);margin-bottom:12px}
+.lp-foot a{display:block;font-size:13px;line-height:28px;color:var(--fg-muted)}
+.lp-foot a:hover{color:var(--fg)}
+@keyframes ssFade{from{opacity:0}to{opacity:1}}
+</style>
+</helmet>
+<div class="ss" data-theme="{{ theme }}" data-layout="{{ lay }}" ref="{{ setRoot }}" style="position: relative; width: 100%; min-height: 100vh; --accent: {{ accent }}">
+
+<header class="lp-nav">
+<div class="lp-wrap" style="display: flex; align-items: center; gap: 8px; height: 100%">
+<a class="lp-logo" href="#top" aria-label="selfsite home"><span class="lp-mark">s</span>selfsite</a>
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<nav aria-label="Main" style="display: flex; gap: 2px; margin-left: 24px">
+<a class="lp-link" href="#features">Product</a>
+<a class="lp-link" href="#how">How it works</a>
+<a class="lp-link" href="#agency">Done for you</a>
+<a class="lp-link" href="#faq">Questions</a>
+</nav>
+<span style="flex: 1"></span>
+<button class="ibtn" onClick="{{ toggleTheme }}" aria-label="Switch light or dark theme"><sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 2.5v2 M12 19.5v2 M4.6 4.6l1.4 1.4 M18 18l1.4 1.4 M2.5 12h2 M19.5 12h2 M4.6 19.4L6 18 M18 6l1.4-1.4"></path></svg></sc-if><sc-if value="{{ light }}" hint-placeholder-val="{{ true }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<a class="btn btn-ghost" href="{{ appLink }}">Sign in</a>
+<a class="btn btn-primary" href="{{ appLink }}">Start free trial</a>
+</sc-if>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<span style="flex: 1"></span>
+<a class="btn btn-primary" href="{{ appLink }}" style="height: 36px">Start free trial</a>
+<button class="ibtn" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="Menu" style="width: 40px; height: 40px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ menuIcon }}"></path></svg></button>
+</sc-if>
+</div>
+<sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; right: 0; top: 56px; display: flex; flex-direction: column; padding: 8px 16px 16px; background: var(--bg); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); animation: ssFade .15s">
+<a class="lp-link" href="#features" onClick="{{ closeMenu }}" style="height: 44px; font-size: 15px">Product</a>
+<a class="lp-link" href="#how" onClick="{{ closeMenu }}" style="height: 44px; font-size: 15px">How it works</a>
+<a class="lp-link" href="#agency" onClick="{{ closeMenu }}" style="height: 44px; font-size: 15px">Done for you</a>
+<a class="lp-link" href="#faq" onClick="{{ closeMenu }}" style="height: 44px; font-size: 15px">Questions</a>
+<div style="display: flex; gap: 8px; margin-top: 8px">
+<a class="btn" href="{{ appLink }}" style="flex: 1; height: 44px">Sign in</a>
+<button class="btn" onClick="{{ toggleTheme }}" style="height: 44px">{{ themeLabel }}</button>
+</div>
+</div>
+</sc-if>
+</header>
+
+<section id="top" style="padding: {{ heroPad }}; background: var(--bg); overflow: hidden">
+<div class="lp-wrap" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px">
+<span class="lp-pill"><b>New</b>Phone-first page editor, now in early access</span>
+<h1 class="lp-h1" style="max-width: 860px">Your business website, edited from your phone.</h1>
+<p class="lp-lead" style="max-width: 600px">selfsite gives small businesses a fast, good-looking site they can keep up to date themselves. Change text, photos, prices and opening hours, then publish in one tap.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
+<a class="btn btn-primary btn-lg" href="{{ appLink }}">Start free trial</a>
+<a class="btn btn-lg" href="{{ editorLink }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg>See the editor</a>
+</div>
+<span class="hint">No card needed · Your site goes live at yourname.selfsite.in</span>
+</div>
+
+<div class="lp-wrap" style="margin-top: {{ mockGap }}">
+<div style="position: relative; display: flex; justify-content: center; padding-bottom: {{ mockPadBottom }}">
+<sc-if value="{{ showWin }}" hint-placeholder-val="{{ true }}">
+<div class="lp-win" style="width: {{ winW }}px" inert="">
+<div class="lp-win-bar"><i></i><i></i><i></i><span class="hint" style="flex: 1; text-align: center; margin-right: 46px">app.selfsite.in</span></div>
+<div style="position: relative; width: {{ winW }}px; height: {{ winH }}px; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 1440px; height: 900px; transform: scale({{ winScale }}); transform-origin: 0 0; pointer-events: none">
+<dc-import name="Main" layout="desktop" height="900px" selected="b1" dark="{{ dark }}" hint-size="1440px,900px"></dc-import>
+</div>
+</div>
+</div>
+</sc-if>
+<div class="lp-phone" inert="" style="{{ phoneStyle }}">
+<div class="lp-phone-in" style="position: relative; width: {{ phW }}px; height: {{ phH }}px">
+<div aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 390px; height: 780px; transform: scale({{ phScale }}); transform-origin: 0 0; pointer-events: none">
+<dc-import name="Main" layout="mobile" height="780px" selected="b2" dark="{{ dark }}" hint-size="390px,780px"></dc-import>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding: 40px 0; border-top: 1px solid var(--border); background: var(--bg-subtle)">
+<div class="lp-wrap">
+<div class="lp-strip">
+<div><span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M3 12h18 M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"></path></svg></span><span><b>Your own domain</b> on every paid plan. Bring the one you have, or we buy and set it up for you.</span></div>
+<div><span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z M4 16l5-5 4 4 2-2 5 5 M15 9h.01"></path></svg></span><span><b>Room for your photos.</b> About 500 MB per site, resized for every screen automatically.</span></div>
+<div><span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L5 13h6l-1 8 8-10h-6z"></path></svg></span><span><b>Plain, fast pages.</b> Your site is built into static HTML when you publish, so it loads quickly on any phone.</span></div>
+</div>
+</div>
+</section>
+
+<section id="features" class="lp-sec">
+<div class="lp-wrap">
+<div class="lp-head">
+<span class="lp-eyebrow">Product</span>
+<h2 class="lp-h2">Everything you need to keep your site current. Nothing you don’t.</h2>
+<p class="lp-lead">Built for the owner who updates the menu on a Sunday night, not for web developers.</p>
+</div>
+<div class="lp-grid">
+<div class="lp-card">
+<span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z M14 6l4 4"></path></svg></span>
+<h3 class="lp-h3">Edit right on the page</h3>
+<p class="lp-p">Tap a heading, photo or button and change it where it sits. Settings for each block slide up from the bottom on your phone.</p>
+</div>
+<div class="lp-card">
+<span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"></path></svg></span>
+<h3 class="lp-h3">Blocks, not code</h3>
+<p class="lp-p">Hero, text, image, gallery and call-to-action blocks, each in a few tasteful layouts. Add, reorder and delete in seconds.</p>
+<div class="lp-snip"><span class="badge">Hero</span><span class="badge">Gallery · Masonry</span><span class="badge">WhatsApp card</span></div>
+</div>
+<div class="lp-card">
+<span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4 M7.5 8.5L12 4l4.5 4.5 M4 15v4h16v-4"></path></svg></span>
+<h3 class="lp-h3">Draft first, then publish</h3>
+<p class="lp-p">Changes stay a draft until you are happy. Every publish is kept, so you can roll back to an earlier version.</p>
+<div class="lp-snip"><span class="badge"><span class="dot" style="color: var(--warn-dot)"></span>Draft · 3 changes</span><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="M5 12h14 M13 6l6 6-6 6"></path></svg><span class="badge badge-ok"><span class="dot"></span>Published</span></div>
+</div>
+<div class="lp-card">
+<span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3z M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6 M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"></path></svg></span>
+<h3 class="lp-h3">Collections for what changes</h3>
+<p class="lp-p">Blog posts, projects, testimonials, menus. Add an entry, set its tags and search preview, and the right pages update.</p>
+</div>
+<div class="lp-card">
+<span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.7 1.6-1.5 0-1.1-.9-1.4-.9-2.4 0-.9.7-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.8 17 3 12 3z M7.5 11.5h.01 M10 7.5h.01 M14.5 7.5h.01"></path></svg></span>
+<h3 class="lp-h3">Your colours, your fonts</h3>
+<p class="lp-p">Pick a brand colour, fonts, spacing and corner style, and watch the whole site follow. Contrast is checked for you.</p>
+<div class="lp-snip"><span style="width: 20px; height: 20px; border-radius: 999px; background: #1F5C4A"></span><span style="width: 20px; height: 20px; border-radius: 999px; background: #8A5A35"></span><span style="width: 20px; height: 20px; border-radius: 999px; background: #B4532A"></span><span style="width: 20px; height: 20px; border-radius: 999px; background: #33449A"></span><span class="hint" style="margin-left: 4px">White text 7.6:1 · passes</span></div>
+</div>
+<div class="lp-card">
+<span class="lp-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg></span>
+<h3 class="lp-h3">AI for the small jobs</h3>
+<p class="lp-p">Rewrite a heading, translate a paragraph or write alt text for a photo. Every button shows its credit cost before you tap it.</p>
+<div class="lp-snip"><span class="btn" style="height: 28px; font-size: 12px; pointer-events: none"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L15 9 M13 7l4 4 M18 3v4 M16 5h4 M7 4v2 M6 5h2"></path></svg>Rewrite · 1 credit</span><span class="hint">38 of 50 left this month</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="how" class="lp-sec lp-sec-alt">
+<div class="lp-wrap">
+<div class="lp-head">
+<span class="lp-eyebrow">How it works</span>
+<h2 class="lp-h2">Live in an afternoon. Up to date for years.</h2>
+</div>
+<div class="lp-grid">
+<div class="lp-card">
+<span class="lp-step">1</span>
+<h3 class="lp-h3">Start from a design made for your business</h3>
+<p class="lp-p">Salons, studios, clinics, cafés and shops each get layouts that fit what they sell. Or have Maverick Creatives build yours by hand.</p>
+</div>
+<div class="lp-card">
+<span class="lp-step">2</span>
+<h3 class="lp-h3">Make it yours</h3>
+<p class="lp-p">Swap in your photos, prices, timings and contact details. Your phone number and hours live in one place and show up everywhere.</p>
+</div>
+<div class="lp-card">
+<span class="lp-step">3</span>
+<h3 class="lp-h3">Publish, then keep it fresh</h3>
+<p class="lp-p">Go live at yourname.selfsite.in, connect your own domain when you are ready, and update it whenever something changes.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="lp-sec">
+<div class="lp-wrap">
+<div class="lp-split">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<span class="lp-eyebrow">Collections</span>
+<h2 class="lp-h2">Posts, projects and reviews, in one tidy list.</h2>
+<p class="lp-lead">Write in a real editor, schedule for later, and see exactly how each entry will look in search before it goes live.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="lp-check"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Search, filter by status and tag, and spot drafts at a glance</span>
+<span class="lp-check"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Save drafts, publish when ready, or schedule a date</span>
+<span class="lp-check"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Version history with one-click restore</span>
+<span class="lp-check"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Search title, description and preview for every entry</span>
+</div>
+<div><a class="btn" href="{{ cmsLink }}">Open the collections demo<svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14 M13 6l6 6-6 6"></path></svg></a></div>
+</div>
+<div class="lp-panel" aria-hidden="true">
+<div style="display: flex; align-items: center; gap: 12px; height: 52px; padding: 0 16px">
+<span style="font-weight: 600; flex: 1">Blog posts</span>
+<span class="btn btn-primary" style="height: 28px; font-size: 12px">New post</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px">
+<span class="badge" style="background: var(--fg); color: var(--bg); border-color: var(--fg)">All 8</span><span class="badge">Published 4</span><span class="badge">Drafts 2</span><span class="badge">Scheduled 1</span>
+</div>
+<div class="lp-row"><span style="display: flex; align-items: center; gap: 10px; min-width: 0"><span style="width: 32px; height: 32px; border-radius: 6px; background: #D6CBBE; flex: none"></span><span class="trunc" style="font-weight: 500">How to light a small living room</span></span><span class="badge badge-ok"><span class="dot"></span>Published</span><span class="hint lp-when">2 days ago</span></div>
+<div class="lp-row"><span style="display: flex; align-items: center; gap: 10px; min-width: 0"><span style="width: 32px; height: 32px; border-radius: 6px; background: #CCD0C6; flex: none"></span><span class="trunc" style="font-weight: 500">Five storage ideas for a narrow kitchen</span></span><span class="badge badge-warn"><span class="dot"></span>Edited</span><span class="hint lp-when">3 hours ago</span></div>
+<div class="lp-row"><span style="display: flex; align-items: center; gap: 10px; min-width: 0"><span style="width: 32px; height: 32px; border-radius: 6px; background: #C3CABF; flex: none"></span><span class="trunc" style="font-weight: 500">Monsoon-proofing a balcony garden</span></span><span class="badge badge-info"><span class="dot"></span>12 Nov</span><span class="hint lp-when">3 Nov</span></div>
+<div class="lp-row"><span style="display: flex; align-items: center; gap: 10px; min-width: 0"><span style="width: 32px; height: 32px; border-radius: 6px; background: #D9D3C8; flex: none"></span><span class="trunc" style="font-weight: 500">What a 2BHK interior really costs in 2026</span></span><span class="badge" style="background: var(--bg-muted); border-color: transparent"><span class="dot"></span>Draft</span><span class="hint lp-when">Yesterday</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="agency" class="lp-sec lp-sec-alt">
+<div class="lp-wrap">
+<div class="lp-band">
+<div class="lp-split" style="gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 13px; font-weight: 500; opacity: .7">Done for you</span>
+<h2 class="lp-h2">Rather not build it yourself?</h2>
+<p class="lp-band-p">Maverick Creatives, our sister studio, designs and hand-builds your site, then hands you the keys in selfsite so you can keep it current.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: baseline; gap: 10px"><span style="font-size: 40px; line-height: 1; font-weight: 600; letter-spacing: -.03em">₹5,000</span><span class="lp-band-p">one-time, website and editor together</span></div>
+<p class="lp-band-p">Handcrafted design, your content set up for you, and a little AI help included. The studio’s first ten customers also get selfsite free for life.</p>
+<div><a class="btn btn-lg" href="#faq">Talk to Maverick Creatives</a></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faq" class="lp-sec">
+<div class="lp-wrap">
+<div class="lp-split" style="align-items: start">
+<div class="lp-head" style="margin-bottom: 0">
+<span class="lp-eyebrow">Questions</span>
+<h2 class="lp-h2">Good to know before you start.</h2>
+<p class="lp-lead">Still unsure? Message us and a person, not a bot, will reply.</p>
+</div>
+<div class="lp-faq">
+<sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+<button class="lp-q" aria-expanded="{{ f.open }}" onClick="{{ f.toggle }}"><span>{{ f.q }}</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--fg-subtle)"><path d="{{ f.icon }}"></path></svg></button>
+<sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><p class="lp-a">{{ f.a }}</p></sc-if>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section class="lp-sec lp-sec-alt" style="text-align: center">
+<div class="lp-wrap" style="display: flex; flex-direction: column; align-items: center; gap: 20px">
+<h2 class="lp-h2" style="max-width: 640px">Your site, kept up to date by you.</h2>
+<p class="lp-lead" style="max-width: 520px">Start a free trial, put your business online today, and change it whenever you like.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
+<a class="btn btn-primary btn-lg" href="{{ appLink }}">Start free trial</a>
+<a class="btn btn-lg" href="{{ editorLink }}">See the editor</a>
+</div>
+</div>
+</section>
+
+<footer class="lp-foot">
+<div class="lp-wrap">
+<div class="lp-foot-grid">
+<div style="display: flex; flex-direction: column; gap: 12px; grid-column: {{ footSpan }}">
+<span class="lp-logo"><span class="lp-mark">s</span>selfsite</span>
+<span class="hint" style="max-width: 280px">Websites small businesses can run themselves. A MaverickCloud product.</span>
+</div>
+<div><p class="lp-foot-h">Product</p><a href="{{ editorLink }}">Page editor</a><a href="{{ cmsLink }}">Collections</a><a href="{{ designLink }}">Site design</a></div>
+<div><p class="lp-foot-h">Company</p><a href="#agency">Maverick Creatives</a><a href="#faq">Contact</a></div>
+<div><p class="lp-foot-h">Legal</p><a href="#top">Privacy policy</a><a href="#top">Terms of service</a></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border)">
+<span class="hint">© 2026 MaverickCloud</span>
+<button class="btn btn-ghost" onClick="{{ toggleTheme }}" style="height: 28px; font-size: 12px"><svg class="ic ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>{{ themeLabel }}</button>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"layout":{"editor":"enum","options":["auto","mobile","desktop"],"default":"auto"},"accent":{"editor":"color","default":"#2563EB","options":["#2563EB","#0F766E","#C2410C","#18181B"]},"$preview":{"width":1440,"height":5600}}'>
+const FAQ = [
+  ['Do I need to know how to code?', 'No. You change text and photos where they appear on the page and pick layouts from a list. If you can post on Instagram, you can update your site.'],
+  ['Can I use my own domain?', 'Yes, on every paid plan. Bring a domain you already own and add two records at your registrar, or we can buy and manage one for you. During the trial your site lives at yourname.selfsite.in.'],
+  ['What happens when the trial ends?', 'Your site goes offline, but you can still sign in. We keep your content and photos for 30 days, so choosing a plan brings everything straight back.'],
+  ['How does the AI work?', 'It handles small jobs: rewriting a heading, translating a paragraph, writing alt text for a photo. Each action shows its credit cost before you tap it, and your plan includes a monthly allowance.'],
+  ['Can I undo a publish?', 'Yes. Every publish is saved, so you can roll back to an earlier version of your site. How far back you can go depends on your plan.'],
+  ['Who owns my content?', 'You do. Your text and photos are yours, and you can ask for a copy at any time.']
+];
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    this.state = { dark: undefined, w: 0, menu: false, open: 0 };
+    this.setRoot = (el) => { this.root = el; };
+    this.measure = () => {
+      const el = this.root;
+      const w = Math.round(el ? el.getBoundingClientRect().width : (window.innerWidth || 0));
+      if (w && w !== this.state.w) this.setState({ w });
+    };
+  }
+  componentDidMount() {
+    this.measure();
+    try {
+      if (window.ResizeObserver && this.root) { this.ro = new ResizeObserver(this.measure); this.ro.observe(this.root); }
+      else { window.addEventListener('resize', this.measure); }
+    } catch (e) {}
+  }
+  componentWillUnmount() { if (this.ro) this.ro.disconnect(); window.removeEventListener('resize', this.measure); }
+  renderVals() {
+    const s = this.state;
+    const p = this.props || {};
+    const dark = s.dark === undefined ? !!p.dark : s.dark;
+    const w = s.w || 1440;
+    const lay = p.layout && p.layout !== 'auto' ? p.layout : (w < 760 ? 'mobile' : 'desktop');
+    const mobile = lay === 'mobile';
+    const inner = Math.min(w, 1200) - (mobile ? 32 : 64);
+    const winW = Math.max(320, Math.round(inner));
+    const winScale = winW / 1440;
+    const winH = Math.round(900 * winScale);
+    const phScale = mobile ? Math.min(0.86, (w - 64) / 390) : Math.max(0.5, Math.min(0.74, winW / 1440 * 0.9));
+    const phW = Math.round(390 * phScale), phH = Math.round(780 * phScale);
+    const phoneStyle = mobile
+      ? 'position: relative'
+      : 'position: absolute; left: ' + Math.round(-Math.min(24, winW * 0.02)) + 'px; bottom: 0';
+    return {
+      theme: dark ? 'dark' : 'light', dark, light: !dark, lay, mobile, desktop: !mobile,
+      accent: p.accent || '#2563EB', setRoot: this.setRoot,
+      toggleTheme: () => this.setState({ dark: !dark }), themeLabel: dark ? 'Light theme' : 'Dark theme',
+      menuOpen: s.menu, showMenu: mobile && s.menu, toggleMenu: () => this.setState({ menu: !s.menu }), closeMenu: () => this.setState({ menu: false }),
+      menuIcon: s.menu ? 'M6 6l12 12 M18 6L6 18' : 'M4 7h16 M4 12h16 M4 17h16',
+      appLink: mobile ? 'Editor-mobile.dc.html' : 'Main.dc.html',
+      editorLink: mobile ? 'Focus-mobile.dc.html' : 'Focus.dc.html',
+      cmsLink: mobile ? 'Collections-mobile.dc.html' : 'Collections.dc.html',
+      designLink: mobile ? 'Design-mobile.dc.html' : 'Design.dc.html',
+      heroPad: mobile ? '48px 0 56px' : '88px 0 96px',
+      mockGap: mobile ? '40px' : '64px',
+      showWin: !mobile, winW, winH, winScale,
+      phScale, phW, phH, phoneStyle,
+      mockPadBottom: mobile ? '0' : Math.round(phH * 0.28) + 'px',
+      footSpan: mobile ? '1 / -1' : 'auto',
+      faqs: FAQ.map((f, i) => ({
+        q: f[0], a: f[1], open: s.open === i,
+        icon: s.open === i ? 'M5 12h14' : 'M12 5v14 M5 12h14',
+        toggle: () => this.setState({ open: s.open === i ? -1 : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
