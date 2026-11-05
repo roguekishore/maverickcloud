@@ -1,0 +1,86 @@
+[
+  {
+    "id": "P0",
+    "title": "Distil artifacts 1, 2 and 3",
+    "prompt": "phases/P0.md",
+    "depends_on": [],
+    "verify": "test $(wc -c < ~/runs/selfsite-wire/reports/inspiration.md) -gt 3000"
+  },
+  {
+    "id": "V1",
+    "title": "Variant 1: Today",
+    "prompt": "phases/V1.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 1"
+  },
+  {
+    "id": "V2",
+    "title": "Variant 2: Say it",
+    "prompt": "phases/V2.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 2"
+  },
+  {
+    "id": "V3",
+    "title": "Variant 3: Tap the page",
+    "prompt": "phases/V3.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 3"
+  },
+  {
+    "id": "V4",
+    "title": "Variant 4: Profile first",
+    "prompt": "phases/V4.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 4"
+  },
+  {
+    "id": "V5",
+    "title": "Variant 5: Card deck",
+    "prompt": "phases/V5.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 5"
+  },
+  {
+    "id": "V6",
+    "title": "Variant 6: Coach",
+    "prompt": "phases/V6.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 6"
+  },
+  {
+    "id": "V7",
+    "title": "Variant 7: Photos first",
+    "prompt": "phases/V7.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 7"
+  },
+  {
+    "id": "V8",
+    "title": "Variant 8: Split peek",
+    "prompt": "phases/V8.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 8"
+  },
+  {
+    "id": "V9",
+    "title": "Variant 9: Find it",
+    "prompt": "phases/V9.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 9"
+  },
+  {
+    "id": "V10",
+    "title": "Variant 10: This week",
+    "prompt": "phases/V10.md",
+    "depends_on": [],
+    "verify": "python3 ~/runs/selfsite-wire/check.py 10"
+  },
+  {
+    "id": "H",
+    "title": "Handoff",
+    "prompt": "phases/H.md",
+    "depends_on": [],
+    "verify": "test -s ~/runs/selfsite-wire/reports/handoff.md"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "name": "selfsite-wire",
+  "app": "maverickcloud",
+  "repo_dir": "repo",
+  "branch": "wireframes",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "phase_timeout_min": 75,
+  "verify_timeout_min": 10,
+  "max_attempts": 2,
+  "header": "header.md",
+  "finish": "bash finish.sh",
+  "forbid_commit_globs": ["*.pem", ".env", ".env.*", "*.local.*", "*.db", "*.png", "*.mp4"]
+}
