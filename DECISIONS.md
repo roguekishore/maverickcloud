@@ -2,7 +2,33 @@
 
 Only what the user has fixed, agreed to, or rejected. Leanings, proposals and open
 questions stay in [`SCRATCHPAD.md`](SCRATCHPAD.md) and
-[`FRONTEND-CONTENT-MODEL.md`](FRONTEND-CONTENT-MODEL.md). Last updated 2026-10-19.
+[`FRONTEND-CONTENT-MODEL.md`](FRONTEND-CONTENT-MODEL.md). Last updated 2026-11-04.
+
+---
+
+## Fresh start, accounts and operations (2026-11-04)
+
+- **MaverickCloud is a fresh start.** It does not continue Storefront or STOREFRONT-V2,
+  and neither is a reference for it.
+- **Swappable by design:** anything that can reasonably be swapped sits behind an
+  interface.
+- **Two AWS accounts:**
+  - **Production** stays in one long-lived account (user: "most likely"); it is not
+    rotated.
+  - **A separate account for dev and testing** (a credit account), possibly with its own
+    domain, so features can be tested properly away from production.
+- **The repository is private.** The code is proprietary.
+- **This repo keeps its own `mise.toml`** (tool versions and tasks), an exception to the
+  workspace rule in `D:\PROJECTS\VERSION-STACK-PLAN.md`.
+- **The admin panel is its own PWA**, separate from the CMS.
+- **Monitoring is open now** (no longer parked). Every detail is logged and monitored,
+  and all ops and monitoring must be easy to reach. Design:
+  [`ENGINEERING-SETUP.md`](ENGINEERING-SETUP.md) §11.
+- **Monitoring split (agreed 2026-11-04):** **New Relic** watches the inside of the app
+  (each endpoint, request traces, logs, errors, the CMS and admin in owners' browsers).
+  **Warden** watches servers, AWS, cost and the database, and stays the front door: New
+  Relic's headline numbers and alerts come into Warden, with links into New Relic for deep
+  dives. **No Sentry.**
 
 ---
 
@@ -109,17 +135,28 @@ overwhelm one box.
 
 ## Owner login (2026-10-19)
 
+> **Changed 2026-11-04 (user): Clerk handles sign-in.** Clerk runs the sign-in itself
+> (Google and email codes now; MFA and passkeys later) with its React components. Java
+> checks Clerk's token once, then issues **its own session cookie** as before, so owners
+> keep editing if Clerk is down; only new sign-ins wait. Java keeps its own `users` table
+> linked to the Clerk user ID. The Google OAuth client below is now set up inside Clerk.
+> **Replaced:** Java verifying Google ID tokens itself, and sending OTP codes itself
+> (Clerk sends them). Everything else in this section still stands. Clerk Pro is free
+> while the user is a student (GitHub Student Pack); after that, Clerk's free plan
+> (50,000 monthly users) or Pro.
+
 - **Owners sign in to `app.selfsite.in` with Google login and email OTP**, both at
-  launch. OTP codes go only to emails that already have an account.
+  launch. OTP codes go only to emails that already have an account (with Clerk:
+  restricted sign-up, owners join by invitation from the admin panel; PROPOSED).
   - **Set up in the Google Cloud Console** (not Firestore/Firebase): a project with an
     OAuth consent screen (basic scopes only: `openid`, `email`, `profile`; published to
     "In production") and a "Web application" OAuth client ID for
     `https://app.selfsite.in`.
   - **No billing account on that project**, so it can never be charged.
-  - React shows the "Sign in with Google" button (Google Identity Services); Java
+  - ~~React shows the "Sign in with Google" button (Google Identity Services); Java
     verifies the ID token (client ID, issuer, expiry, verified email), stores the Google
-    user ID (`sub`) and email, and issues **its own session cookie** (HttpOnly, Secure,
-    30+ days). Nothing else from Google is stored.
+    user ID (`sub`) and email,~~ (replaced by Clerk, 2026-11-04) and issues **its own
+    session cookie** (HttpOnly, Secure, 30+ days). Nothing else from Google is stored.
   - The project is owned by a long-lived business Google account with 2-step
     verification, plus a second owner.
   - The consent screen needs privacy policy and terms URLs on selfsite.in. A logo

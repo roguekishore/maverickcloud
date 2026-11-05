@@ -375,9 +375,7 @@ All DNS, domain, certificate-summary and email-DNS decisions and open items live
 # SCRATCHPAD — base plan (2026-10-17)
 
 The base plan for maverickcreatives.in + selfsite.in, from the planning conversation of
-2026-10-16/17. It **supersedes** the earlier `SCRATCHPAD-2026-10-15.md` (from the old
-STOREFRONT repo) where they differ; that file is still the source for pricing research,
-cost estimates and the AI feature verdicts referenced in §10.
+2026-10-16/17.
 
 Status tags: **DECIDED** (user's word, don't reopen) · **PROPOSED** (suggested, not
 confirmed) · **OPEN** (needs research or a decision) · **HOLD** (parked) · **DROPPED**
@@ -679,8 +677,6 @@ maverickcreatives.in and selfsite.in themselves on the platform.
 | Asset | Use |
 |---|---|
 | **SITE-FOUNDRY** | Offline Fable agents generating mobile-first HTML + Tailwind blocks and templates under a strict contract (`--sf-*` tokens, slots, options, motion levels). **Source of block designs** for Phase 1. Original work; runtime libs MIT (motion, lenis, three, Tailwind); fonts via Fontsource |
-| **STOREFRONT-V2** | Overnight vibecoded build. **Reference only, not the base.** Worth reading for: edit-command design, AI prompts, block field schemas, design tokens, locked vs unlocked editing |
-| **STOREFRONT (v1)** | Docs/specs only, no code. Archive |
 | **PROSPECTOR** + **CRM** | Lead discovery and relationship tracking (§8) |
 | **AWS-COMMAND-CENTER (Warden)** | Monitoring, accounts, budgets. Stays where it is (manages all accounts) |
 
@@ -698,8 +694,6 @@ D:\PROJECTS\MAVERICKCLOUD\
   MAVERICKCREATIVES\     ← agency business material
   CLIENTS\<client>\      ← materials only, no code
   FOUNDRY\               ← SITE-FOUNDRY
-  _REFERENCE\STOREFRONT-V2\
-  _ARCHIVE\              ← STOREFRONT v1, NIGHTRUN
   SCRATCHPAD.md          ← this file
 ```
 

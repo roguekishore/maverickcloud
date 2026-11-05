@@ -1,5 +1,10 @@
 # Owner login and accounts (2026-10-19)
 
+> **2026-11-04: sign-in moved to Clerk** ([`DECISIONS.md`](DECISIONS.md), "Owner login").
+> Java's own sessions stay. Parts of this page that assume Java verifies Google tokens or
+> sends OTP codes itself (the `otp_codes` table, OTP limits, SES for codes) are superseded;
+> the rest is to be re-checked against Clerk.
+
 From the conversation of 2026-10-19. Status tags: **FIXED** (the user's word) ·
 **AGREED** (user said yes to Claude's proposal) · **PROPOSED** (Claude's recommendation,
 not yet confirmed) · **LATER** · **OPEN**. The database is the user's to design; table
