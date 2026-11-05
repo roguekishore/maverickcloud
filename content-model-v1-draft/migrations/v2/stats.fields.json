@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "label": "Figures",
+  "block": "anchorage-stats",
+  "fields": {
+    "title": { "type": "text", "label": "Heading", "required": true, "max": 80 },
+    "stats": {
+      "type": "list",
+      "label": "Figures",
+      "min": 1,
+      "max": 4,
+      "fields": {
+        "number": { "type": "number", "label": "Number", "required": true, "min": 0 },
+        "prefix": { "type": "text", "label": "Before the number", "help": "e.g. ₹", "max": 4 },
+        "suffix": { "type": "text", "label": "After the number", "help": "e.g. + or ★", "max": 6 },
+        "label": { "type": "text", "label": "Caption", "required": true, "max": 40 }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "m_logo": { "kind": "image", "width": 64, "height": 64, "mime": "image/svg+xml" },
+  "m_footer_art": { "kind": "image", "width": 1600, "height": 240, "mime": "image/svg+xml" },
+  "m_hero_video": { "kind": "video", "width": 1920, "height": 1080, "mime": "video/mp4", "poster": "m_hero_poster" },
+  "m_hero_poster": { "kind": "image", "width": 1920, "height": 1080, "mime": "image/webp" },
+  "m_chair1": { "kind": "image", "width": 1600, "height": 1200, "mime": "image/webp" },
+  "m_chair2": { "kind": "image", "width": 1600, "height": 1200, "mime": "image/webp" },
+  "m_xray": { "kind": "video", "width": 1280, "height": 720, "mime": "video/mp4" },
+  "m_team": { "kind": "image", "width": 1200, "height": 1200, "mime": "image/webp" },
+  "m_patient1": { "kind": "image", "width": 1200, "height": 900, "mime": "image/webp" },
+  "m_patient2": { "kind": "image", "width": 1200, "height": 900, "mime": "image/webp" },
+  "m_thumb1": { "kind": "image", "width": 400, "height": 400, "mime": "image/webp" },
+  "m_thumb2": { "kind": "image", "width": 400, "height": 400, "mime": "image/webp" },
+  "m_ins1": { "kind": "image", "width": 160, "height": 40, "mime": "image/svg+xml" },
+  "m_ins2": { "kind": "image", "width": 160, "height": 40, "mime": "image/svg+xml" },
+  "m_ins3": { "kind": "image", "width": 160, "height": 40, "mime": "image/svg+xml" },
+  "m_ins4": { "kind": "image", "width": 160, "height": 40, "mime": "image/svg+xml" },
+  "m_press_portrait": { "kind": "image", "width": 800, "height": 1000, "mime": "image/webp" },
+  "m_news1": { "kind": "image", "width": 1600, "height": 900, "mime": "image/webp" },
+  "m_news2": { "kind": "image", "width": 1600, "height": 900, "mime": "image/webp" },
+  "m_branch1": { "kind": "image", "width": 1200, "height": 1500, "mime": "image/webp" },
+  "m_branch2": { "kind": "image", "width": 1200, "height": 1500, "mime": "image/webp" }
+}

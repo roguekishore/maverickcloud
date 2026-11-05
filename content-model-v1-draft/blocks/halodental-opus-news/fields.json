@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "label": "News and articles",
+  "block": "halodental-opus-news",
+  "fields": {
+    "title": { "type": "text", "label": "Heading", "required": true, "max": 60 },
+    "link": { "type": "link", "label": "Button beside the heading" },
+    "items": {
+      "type": "list",
+      "label": "Articles",
+      "min": 1,
+      "max": 6,
+      "fields": {
+        "title": { "type": "text", "label": "Headline", "required": true, "max": 100 },
+        "text": { "type": "longtext", "label": "Summary", "required": true, "max": 240 },
+        "link": { "type": "link", "label": "Article link", "required": true, "linkText": "none" },
+        "date": { "type": "date", "label": "Date" },
+        "media": { "type": "media", "label": "Photo", "accept": ["image"] }
+      }
+    },
+    "more": { "type": "link", "label": "Button under the list" }
+  }
+}

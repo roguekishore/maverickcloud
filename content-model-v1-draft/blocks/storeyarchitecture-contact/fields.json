@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "label": "Contact form",
+  "block": "storeyarchitecture-contact",
+  "uses": ["name", "phone", "email", "address", "hours"],
+  "fields": {
+    "heading": { "type": "text", "label": "Heading", "required": true, "max": 60 },
+    "intro": { "type": "longtext", "label": "Paragraph", "max": 300 },
+    "formTitle": { "type": "longtext", "label": "Form title", "help": "One line per row.", "max": 80 },
+    "formMark": { "type": "text", "label": "Small mark on the form", "max": 12 },
+    "fields": {
+      "type": "list",
+      "label": "Form fields",
+      "min": 1,
+      "max": 8,
+      "fields": {
+        "label": { "type": "text", "label": "Label", "required": true, "max": 40 },
+        "input": {
+          "type": "choice",
+          "label": "Answer type",
+          "required": true,
+          "options": [
+            { "value": "text", "label": "Short text" },
+            { "value": "email", "label": "Email" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "message", "label": "Message" },
+            { "value": "choice", "label": "Tick boxes" }
+          ]
+        },
+        "options": {
+          "type": "list",
+          "label": "Options (tick boxes only)",
+          "max": 6,
+          "fields": {
+            "text": { "type": "text", "label": "Option", "required": true, "max": 40 }
+          }
+        }
+      }
+    },
+    "submitLabel": { "type": "text", "label": "Send button", "required": true, "max": 24 }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "label": "About with button",
+  "block": "halodental-opus-about",
+  "fields": {
+    "title": { "type": "text", "label": "Heading", "required": true, "max": 60 },
+    "text": { "type": "richtext", "label": "Paragraph", "required": true, "max": 500, "marks": ["strong", "em", "link"] },
+    "cta": { "type": "link", "label": "Button", "help": "Leave empty to use the site's booking link." },
+    "media": { "type": "media", "label": "Photo", "accept": ["image"] }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "s_logos",
+  "type": "logos",
+  "values": {
+    "caption": "Cashless treatment with",
+    "logos": [
+      { "id": "i_logo_arogya", "name": "Arogya Mutual", "logo": { "id": "m_ins1" } },
+      { "id": "i_logo_kaveri", "name": "Kaveri Assurance", "logo": { "id": "m_ins2" } },
+      { "id": "i_logo_neem", "name": "Neem Health", "logo": { "id": "m_ins3" } },
+      { "id": "i_logo_banyan", "name": "Banyan Insurance", "logo": { "id": "m_ins4" } }
+    ]
+  }
+}

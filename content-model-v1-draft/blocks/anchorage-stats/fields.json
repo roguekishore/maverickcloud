@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "label": "Figures",
+  "block": "anchorage-stats",
+  "fields": {
+    "title": { "type": "text", "label": "Heading", "required": true, "max": 80 },
+    "stats": {
+      "type": "list",
+      "label": "Figures",
+      "min": 1,
+      "max": 4,
+      "fields": {
+        "value": { "type": "text", "label": "Figure", "help": "e.g. 12+ or 4.9★", "required": true, "max": 12 },
+        "label": { "type": "text", "label": "Caption", "required": true, "max": 40 }
+      }
+    }
+  }
+}

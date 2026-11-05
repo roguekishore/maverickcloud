@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "label": "Header",
+  "block": "halodental-opus-header",
+  "uses": ["name", "logo"],
+  "fields": {
+    "links": {
+      "type": "list",
+      "label": "Menu",
+      "max": 6,
+      "fields": {
+        "link": { "type": "link", "label": "Menu item", "required": true }
+      }
+    },
+    "cta": { "type": "link", "label": "Button", "required": true },
+    "ctaShort": { "type": "text", "label": "Button text on phones", "max": 16 },
+    "tiles": {
+      "type": "list",
+      "label": "Small icon buttons",
+      "max": 3,
+      "fields": {
+        "icon": { "type": "icon", "label": "Icon", "required": true },
+        "link": { "type": "link", "label": "Link", "help": "The text is read out by screen readers.", "required": true }
+      }
+    }
+  }
+}

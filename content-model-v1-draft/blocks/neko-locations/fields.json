@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "label": "Branches",
+  "block": "neko-locations",
+  "fields": {
+    "label": { "type": "text", "label": "Small line above the heading", "max": 40 },
+    "title": { "type": "text", "label": "Heading", "required": true, "max": 60 },
+    "locations": {
+      "type": "list",
+      "label": "Branches",
+      "min": 1,
+      "max": 8,
+      "fields": {
+        "city": { "type": "text", "label": "Area", "required": true, "max": 30 },
+        "name": { "type": "text", "label": "Branch name", "required": true, "max": 60 },
+        "address": { "type": "address", "label": "Address", "required": true },
+        "map": { "type": "link", "label": "Google Maps link", "linkText": "none" },
+        "media": { "type": "media", "label": "Photo", "accept": ["image"] }
+      }
+    }
+  }
+}

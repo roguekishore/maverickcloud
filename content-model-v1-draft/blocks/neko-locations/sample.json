@@ -1,0 +1,25 @@
+{
+  "id": "s_locations",
+  "type": "locations",
+  "values": {
+    "label": "Two clinics",
+    "title": "Near home or near work",
+    "locations": [
+      {
+        "id": "i_loc_gopalapuram",
+        "city": "Gopalapuram",
+        "name": "Lumo Race Course",
+        "address": { "line1": "14 Race Course Road", "area": "Gopalapuram", "city": "Coimbatore", "state": "Tamil Nadu", "postcode": "641018", "country": "IN" },
+        "map": { "href": "https://maps.app.goo.gl/example" },
+        "media": { "id": "m_branch1", "alt": "The Race Course clinic entrance" }
+      },
+      {
+        "id": "i_loc_saravanampatti",
+        "city": "Saravanampatti",
+        "name": "Lumo Saravanampatti",
+        "address": { "line1": "2nd Floor, 88 Sathy Road", "area": "Saravanampatti", "city": "Coimbatore", "state": "Tamil Nadu", "postcode": "641035", "country": "IN" },
+        "media": { "id": "m_branch2", "alt": "The Saravanampatti clinic reception" }
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "s_features",
+  "type": "features",
+  "values": {
+    "title": "Modern care, explained",
+    "text": [
+      { "p": ["We show you your X-rays on screen and talk you through ", { "text": "every option", "strong": true }, " before we start."] },
+      { "p": ["Nervous about the dentist? ", { "text": "Tell us on WhatsApp", "href": "action:whatsapp" }, " and we'll plan a gentler first visit."] }
+    ],
+    "features": [
+      { "id": "i_feat_xray", "icon": "lucide:scan-line", "label": "Digital X-rays with less radiation" },
+      { "id": "i_feat_time", "icon": "lucide:clock", "label": "On time, every time" },
+      { "id": "i_feat_kits", "icon": "lucide:shield-check", "label": "A sterilised kit for every patient" },
+      { "id": "i_feat_kids", "icon": "lucide:baby", "label": "Children welcome" }
+    ],
+    "cta": { "label": "See treatments", "href": "page:p_care" },
+    "slides": [
+      { "id": "i_slide_chair1", "media": { "id": "m_chair1", "alt": "The treatment chair by the window" } },
+      { "id": "i_slide_chair2", "media": { "id": "m_chair2", "alt": "Our hygienist preparing a kit" } },
+      { "id": "i_slide_xray", "media": { "id": "m_xray", "alt": "A digital X-ray on the screen" } }
+    ]
+  }
+}

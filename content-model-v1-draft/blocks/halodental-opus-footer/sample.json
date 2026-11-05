@@ -1,0 +1,32 @@
+{
+  "id": "s_footer",
+  "type": "footer",
+  "values": {
+    "groups": [
+      {
+        "id": "i_fg_clinic",
+        "title": "Clinic",
+        "links": [
+          { "id": "i_fl_care", "link": { "label": "Treatments", "href": "page:p_care" } },
+          { "id": "i_fl_prices", "link": { "label": "Prices", "href": "page:p_care#s_pricing" } },
+          { "id": "i_fl_faq", "link": { "label": "Questions", "href": "page:p_care#s_faq" } }
+        ]
+      },
+      {
+        "id": "i_fg_patients",
+        "title": "Patients",
+        "links": [
+          { "id": "i_fl_form", "link": { "label": "New patient form", "href": "https://forms.lumodental.example.com/new" } },
+          { "id": "i_fl_insurance", "link": { "label": "Insurance", "href": "page:p_home#s_logos" } }
+        ]
+      }
+    ],
+    "contactColumn": true,
+    "primary": { "label": "Book a visit", "href": "page:p_care#s_contact" },
+    "secondary": { "label": "WhatsApp us", "href": "action:whatsapp" },
+    "legal": [
+      { "id": "i_fl_privacy", "link": { "label": "Privacy", "href": "https://lumodental.example.com/privacy" } }
+    ],
+    "media": { "id": "m_footer_art" }
+  }
+}

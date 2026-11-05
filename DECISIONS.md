@@ -2,7 +2,7 @@
 
 Only what the user has fixed, agreed to, or rejected. Leanings, proposals and open
 questions stay in [`SCRATCHPAD.md`](SCRATCHPAD.md) and
-[`FRONTEND-CONTENT-MODEL.md`](FRONTEND-CONTENT-MODEL.md). Last updated 2026-11-04.
+[`FRONTEND-CONTENT-MODEL.md`](FRONTEND-CONTENT-MODEL.md). Last updated 2026-11-05.
 
 ---
 
@@ -101,7 +101,20 @@ questions stay in [`SCRATCHPAD.md`](SCRATCHPAD.md) and
 - Proposed, part of the deferred content model: each build records its content
   revision; a rollback restores that revision into the draft. If nothing is missing it
   goes live at once (the kept build); otherwise the placeholder rule applies.
-- Content model: **deferred** (FRONTEND-CONTENT-MODEL.md §4).
+- Content model: v1 after the stress test (FRONTEND-CONTENT-MODEL.md §4); see "Content model" below.
+
+## Content model (2026-11-05)
+
+- **Not frozen: it starts as v1 and changes by rules.** v1 fixes only the outer shape and
+  the starting field types. Rules: [`FRONTEND-CONTENT-MODEL.md`](FRONTEND-CONTENT-MODEL.md)
+  §3 "Rules for change".
+- **Stored as one JSON document per revision** in MySQL, not a table per field.
+- **Every document carries a schema version; shape changes ship as tested migrations**
+  that upgrade every stored site.
+- **Agreed:** each section has an adapter from stored values to component props; sections
+  and list items have stable IDs.
+- **v1 is decided after a stress test:** an agent drafts v1 against ~15 varied
+  SITE-FOUNDRY blocks and reports what didn't fit; the user decides from the report.
 
 ## Edge security
 

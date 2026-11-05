@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "label": "Testimonials",
+  "block": "storeyarchitecture-testimonial",
+  "fields": {
+    "slides": {
+      "type": "list",
+      "label": "Testimonials",
+      "min": 1,
+      "max": 6,
+      "fields": {
+        "quote": { "type": "longtext", "label": "What they said", "required": true, "max": 400 },
+        "name": { "type": "text", "label": "Name", "required": true, "max": 60 },
+        "company": { "type": "text", "label": "Line under the name", "max": 60 },
+        "media": { "type": "media", "label": "Photo", "accept": ["image"] },
+        "thumb": { "type": "media", "label": "Small photo", "accept": ["image"] }
+      }
+    },
+    "paragraphs": {
+      "type": "list",
+      "label": "Paragraphs beside the slides",
+      "max": 2,
+      "fields": {
+        "text": { "type": "longtext", "label": "Paragraph", "required": true, "max": 400 }
+      }
+    },
+    "interval": { "type": "number", "label": "Seconds per slide", "integer": true, "min": 3, "max": 20 }
+  }
+}

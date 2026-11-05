@@ -1,0 +1,29 @@
+{
+  "id": "s_testimonials",
+  "type": "testimonials",
+  "values": {
+    "slides": [
+      {
+        "id": "i_testi_meena",
+        "quote": "I put off a root canal for two years. Dr. Arun explained everything and it was over before I knew it.",
+        "name": "Meena R.",
+        "company": "Patient since 2021",
+        "media": { "id": "m_patient1", "alt": "Meena smiling in the waiting room" },
+        "thumb": { "id": "m_thumb1", "alt": "" }
+      },
+      {
+        "id": "i_testi_karthik",
+        "quote": "They saw both my kids on a Saturday, and nobody cried. That's a first.",
+        "name": "Karthik S.",
+        "company": "Father of two",
+        "media": { "id": "m_patient2", "alt": "Karthik with his children" },
+        "thumb": { "id": "m_thumb2", "alt": "" }
+      }
+    ],
+    "paragraphs": [
+      { "id": "i_testi_p1", "text": "Most of our patients come because a friend sent them." },
+      { "id": "i_testi_p2", "text": "Here are a few of them, in their own words." }
+    ],
+    "interval": 6
+  }
+}

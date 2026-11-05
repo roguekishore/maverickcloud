@@ -1,0 +1,26 @@
+{
+  "id": "s_news",
+  "type": "news",
+  "values": {
+    "title": "From the clinic",
+    "link": { "label": "All articles", "href": "https://blog.lumodental.example.com" },
+    "items": [
+      {
+        "id": "i_news_brush",
+        "title": "How long should a toothbrush last?",
+        "text": "Three months, or sooner if the bristles splay. Here's how to tell.",
+        "link": { "href": "https://blog.lumodental.example.com/toothbrush" },
+        "date": "2026-10-12",
+        "media": { "id": "m_news1", "alt": "Three toothbrushes in a cup" }
+      },
+      {
+        "id": "i_news_branch",
+        "title": "Our second clinic opens in Saravanampatti",
+        "text": "Same team, same prices, closer to the IT parks. Open from 1 December.",
+        "link": { "href": "page:p_care#s_locations" },
+        "date": "2026-11-01",
+        "media": { "id": "m_news2", "alt": "The new clinic's waiting room" }
+      }
+    ]
+  }
+}

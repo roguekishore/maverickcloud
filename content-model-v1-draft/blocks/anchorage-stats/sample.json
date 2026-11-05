@@ -1,0 +1,12 @@
+{
+  "id": "s_stats",
+  "type": "stats",
+  "values": {
+    "title": "Trusted by families across Coimbatore",
+    "stats": [
+      { "id": "i_stat_years", "value": "12+", "label": "years in Race Course" },
+      { "id": "i_stat_patients", "value": "8,000+", "label": "patients treated" },
+      { "id": "i_stat_rating", "value": "4.9★", "label": "on Google reviews" }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "s_header",
+  "type": "header",
+  "values": {
+    "links": [
+      { "id": "i_nav_care", "link": { "label": "Treatments", "href": "page:p_care" } },
+      { "id": "i_nav_prices", "link": { "label": "Prices", "href": "page:p_care#s_pricing" } },
+      { "id": "i_nav_faq", "link": { "label": "FAQ", "href": "page:p_care#s_faq" } },
+      { "id": "i_nav_visit", "link": { "label": "Visit us", "href": "page:p_care#s_contact" } }
+    ],
+    "cta": { "label": "Call the clinic", "href": "action:call" },
+    "ctaShort": "Call",
+    "tiles": [
+      { "id": "i_tile_wa", "icon": "lucide:message-circle", "link": { "label": "Chat on WhatsApp", "href": "action:whatsapp" } },
+      { "id": "i_tile_map", "icon": "lucide:map-pin", "link": { "label": "Directions", "href": "action:directions" } }
+    ]
+  }
+}

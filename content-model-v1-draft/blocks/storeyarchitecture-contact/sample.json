@@ -1,0 +1,27 @@
+{
+  "id": "s_contact",
+  "type": "contact",
+  "values": {
+    "heading": "Book a visit",
+    "intro": "Leave your number and we'll call you back within the hour, during opening times.",
+    "formTitle": "Appointment\nrequest",
+    "formMark": "LDC",
+    "fields": [
+      { "id": "f_name", "label": "Your name", "input": "text" },
+      { "id": "f_phone", "label": "Phone", "input": "phone" },
+      {
+        "id": "f_reason",
+        "label": "What's it for?",
+        "input": "choice",
+        "options": [
+          { "id": "o_checkup", "text": "Check-up" },
+          { "id": "o_pain", "text": "Tooth pain" },
+          { "id": "o_cleaning", "text": "Cleaning" },
+          { "id": "o_other", "text": "Something else" }
+        ]
+      },
+      { "id": "f_message", "label": "Anything we should know", "input": "message" }
+    ],
+    "submitLabel": "Send request"
+  }
+}

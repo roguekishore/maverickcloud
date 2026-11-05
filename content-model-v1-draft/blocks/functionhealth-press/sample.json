@@ -1,0 +1,24 @@
+{
+  "id": "s_press",
+  "type": "press",
+  "values": {
+    "title": ["What people ", { "text": "say about us", "em": true }],
+    "text": "Awards from the city's dental association, and words from patients.",
+    "columns": [
+      {
+        "id": "i_col_a",
+        "tiles": [
+          { "id": "i_tile_award1", "kind": "award", "name": "Best family clinic", "detail": "Coimbatore Dental Forum, 2025" },
+          { "id": "i_tile_quote1", "kind": "quote", "quote": "The only dentist my father agrees to visit.", "name": "Priya, patient", "media": { "id": "m_press_portrait", "alt": "Priya" } }
+        ]
+      },
+      {
+        "id": "i_col_b",
+        "tiles": [
+          { "id": "i_tile_quote2", "kind": "quote", "quote": "Clear prices, no upselling. Rare.", "name": "Google review" },
+          { "id": "i_tile_award2", "kind": "award", "name": "Infection control certified", "detail": "2024" }
+        ]
+      }
+    ]
+  }
+}

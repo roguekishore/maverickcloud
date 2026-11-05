@@ -1,8 +1,12 @@
 # Frontend stack and content model (2026-10-17)
 
-From the conversation of 2026-10-17. Status tags: **FIXED** (the user's word) ·
-**LEANING** (explained and accepted in discussion, not formally fixed) · **DEFERRED**
-(to decide when building the CMS or designing the backend).
+From the conversation of 2026-10-17, updated 2026-11-05. Status tags: **FIXED** (the
+user's word) · **AGREED** (the user said yes to a proposal) · **LEANING** (explained and
+accepted in discussion, not formally fixed) · **DEFERRED** (to decide when building the CMS
+or designing the backend).
+
+> **2026-11-05: the content model is not frozen.** It starts as **v1** and changes by the
+> rules in §3 "Rules for change". v1 is decided after the SITE-FOUNDRY stress test (§4).
 
 ---
 
@@ -84,6 +88,8 @@ PUBLISH   Java saves content JSON → Astro build calls the same component → s
 - Images are stored as a media ID / path, never a full URL. The build turns it into the
   CDN address and sizes.
 - One shape everywhere: CMS memory → API request → Java validation → MySQL → Astro build.
+- The example predates the rules for change: v1 adds a schema version field and IDs on
+  list items (exact names come from the stress test, §4).
 
 ### Field description (`fields.json`), written once per template
 ```json
@@ -139,30 +145,55 @@ media.selfsite.in/templates/<template>/<version>/
   could break designs, and Java couldn't validate meaningfully. Level 3 gives div-level
   control wherever the template chooses to expose it.
 
-### Adding new things later without rework
-- Fixed parts are small: the outer JSON shape and the list of field types.
-- A new design need (video, map pin, price menu, 3D model upload) = a **new field type**:
-  add the type, one editor input, one Java validation rule. Existing content is untouched.
-- **Rule: never change what an existing type means; add a new type instead.**
-- A template's own fields can change with a version bump (`@1` → `@2`) and a one-time
-  update of the sites using it (an agency template is used by one site).
+### Rules for change — AGREED 2026-11-05
+
+The model is built to change. v1 fixes only the outer shape (version, template, theme,
+shared values, pages → sections → values) and the starting field types; everything else
+grows.
+
+1. **Every content document carries a schema version; shape changes ship as migrations**
+   (FIXED, DECISIONS "Content model"). Like Flyway for the JSON: a v1→v2 change comes
+   with an upgrade function that runs over every stored site and is tested against sample
+   sites. Old content is upgraded, never misread.
+2. **Content is stored as one JSON document per revision** (FIXED), not a table per
+   field, so a model change never needs a database change.
+3. **Stored content is not component props.** Each section has a small **adapter** that
+   turns stored values into its component's props. A component can be redesigned without
+   touching saved content, and the reverse. (SITE-FOUNDRY shows why: 1,950 of its props
+   are `ReactNode`, which JSON can't hold.)
+4. **Stable IDs on sections and on list items**, so reordering, AI edits and later
+   features never depend on positions.
+5. **A new design need = a new field type** (video, map pin, price menu, 3D model upload):
+   add the type, one editor input, one Java validation rule. Existing content is untouched.
+6. **Never change what an existing type means; add a new type instead.**
+7. **A template's own fields change with a version bump** (`@1` → `@2`) and a one-time
+   update of the sites using it (an agency template is used by one site).
 
 ---
 
-## 4. DEFERRED — decide when building the CMS / designing the backend
+## 4. v1 — decided after the SITE-FOUNDRY stress test
 
-Fix these first, since they're stored for every site or shared by the CMS, Java and Astro:
+v1 settles these, since they're stored for every site or shared by the CMS, Java and
+Astro. Each can still change later by the rules for change (§3).
 
-1. The exact outer shape of the content JSON.
-2. The launch field types (~10: text, long text, phone, email, link, image, list, choice,
-   colour, yes/no) and how each value is stored.
+1. The outer shape of the content JSON, including the version field and IDs.
+2. The launch field types and how each value is stored. Started as ~10 (text, long text,
+   phone, email, link, image, list, choice, colour, yes/no); a scan of SITE-FOUNDRY's
+   props (2026-11-05) adds candidates:
+   - **link as label + address**, not just a URL (737 props)
+   - **media as image or video** (239 mentions of video)
+   - **light emphasis in headings** (bold/accent words; 42 files)
+   - choice (630 props) and yes/no (364) for when level 3 comes
 3. The `fields.json` format (type, label, required, max, list items, references to
    shared values).
-4. The template package format and what every section component receives.
+4. The template package format, and the section adapter (stored values → props).
 5. Draft vs published content (mostly part of the database design).
 
-Approach: design them against one sample site (e.g. a salon) with 2–3 sections, one of
-them a carousel, then freeze them.
+**Approach (AGREED 2026-11-05):** an agent drafts v1 plus adapters for ~15 varied
+SITE-FOUNDRY blocks, with local-business shared values (name, phone, timings…), and
+reports what didn't fit. The user reviews the report and decides v1. SITE-FOUNDRY is a
+range of designs to test against, not a format to adopt. Draft and report:
+`content-model-v1-draft/`.
 
 Can come whenever needed: enabling levels 2–3, new field types, click-to-edit in the
 preview (`data-field` attributes), exact theme values, how AI rewrites plug in.

@@ -1,0 +1,929 @@
+{
+  "schema": 1,
+  "template": "stress-test@1",
+  "locale": "en-IN",
+  "theme": {
+    "primary": "#0F766E",
+    "font": "inter"
+  },
+  "business": {
+    "name": "Lumo Dental Care",
+    "tagline": "Gentle dentistry for the whole family",
+    "logo": {
+      "id": "m_logo",
+      "alt": "Lumo Dental Care"
+    },
+    "phone": "+919000012345",
+    "whatsapp": "+919000012345",
+    "email": "hello@lumodental.example.com",
+    "address": {
+      "line1": "14 Race Course Road",
+      "area": "Gopalapuram",
+      "city": "Coimbatore",
+      "state": "Tamil Nadu",
+      "postcode": "641018",
+      "country": "IN",
+      "geo": {
+        "lat": 11.0005,
+        "lng": 76.9711
+      }
+    },
+    "map": {
+      "href": "https://maps.app.goo.gl/example"
+    },
+    "hours": {
+      "slots": [
+        {
+          "id": "h_week",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat"
+          ],
+          "open": "09:00",
+          "close": "20:00"
+        },
+        {
+          "id": "h_sun",
+          "days": [
+            "sun"
+          ],
+          "open": "10:00",
+          "close": "13:00"
+        }
+      ],
+      "note": "Closed on public holidays"
+    },
+    "social": [
+      {
+        "id": "i_soc_ig",
+        "network": "instagram",
+        "link": {
+          "href": "https://www.instagram.com/lumodental.example"
+        }
+      }
+    ]
+  },
+  "shared": {
+    "booking": {
+      "label": "Book a visit",
+      "href": "page:p_care#s_contact"
+    }
+  },
+  "layout": {
+    "before": [
+      {
+        "id": "s_header",
+        "type": "header",
+        "values": {
+          "links": [
+            {
+              "id": "i_nav_care",
+              "link": {
+                "label": "Treatments",
+                "href": "page:p_care"
+              }
+            },
+            {
+              "id": "i_nav_prices",
+              "link": {
+                "label": "Prices",
+                "href": "page:p_care#s_pricing"
+              }
+            },
+            {
+              "id": "i_nav_faq",
+              "link": {
+                "label": "FAQ",
+                "href": "page:p_care#s_faq"
+              }
+            },
+            {
+              "id": "i_nav_visit",
+              "link": {
+                "label": "Visit us",
+                "href": "page:p_care#s_contact"
+              }
+            }
+          ],
+          "cta": {
+            "label": "Call the clinic",
+            "href": "action:call"
+          },
+          "ctaShort": "Call",
+          "tiles": [
+            {
+              "id": "i_tile_wa",
+              "icon": "lucide:message-circle",
+              "link": {
+                "label": "Chat on WhatsApp",
+                "href": "action:whatsapp"
+              }
+            },
+            {
+              "id": "i_tile_map",
+              "icon": "lucide:map-pin",
+              "link": {
+                "label": "Directions",
+                "href": "action:directions"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "after": [
+      {
+        "id": "s_footer",
+        "type": "footer",
+        "values": {
+          "groups": [
+            {
+              "id": "i_fg_clinic",
+              "title": "Clinic",
+              "links": [
+                {
+                  "id": "i_fl_care",
+                  "link": {
+                    "label": "Treatments",
+                    "href": "page:p_care"
+                  }
+                },
+                {
+                  "id": "i_fl_prices",
+                  "link": {
+                    "label": "Prices",
+                    "href": "page:p_care#s_pricing"
+                  }
+                },
+                {
+                  "id": "i_fl_faq",
+                  "link": {
+                    "label": "Questions",
+                    "href": "page:p_care#s_faq"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "i_fg_patients",
+              "title": "Patients",
+              "links": [
+                {
+                  "id": "i_fl_form",
+                  "link": {
+                    "label": "New patient form",
+                    "href": "https://forms.lumodental.example.com/new"
+                  }
+                },
+                {
+                  "id": "i_fl_insurance",
+                  "link": {
+                    "label": "Insurance",
+                    "href": "page:p_home#s_logos"
+                  }
+                }
+              ]
+            }
+          ],
+          "contactColumn": true,
+          "primary": {
+            "label": "Book a visit",
+            "href": "page:p_care#s_contact"
+          },
+          "secondary": {
+            "label": "WhatsApp us",
+            "href": "action:whatsapp"
+          },
+          "legal": [
+            {
+              "id": "i_fl_privacy",
+              "link": {
+                "label": "Privacy",
+                "href": "https://lumodental.example.com/privacy"
+              }
+            }
+          ],
+          "media": {
+            "id": "m_footer_art"
+          }
+        }
+      }
+    ]
+  },
+  "pages": [
+    {
+      "id": "p_home",
+      "path": "/",
+      "title": "Lumo Dental Care, Coimbatore",
+      "description": "Gentle dentistry for the whole family in Coimbatore. Same-week appointments and clear prices.",
+      "sections": [
+        {
+          "id": "s_hero",
+          "type": "hero",
+          "values": {
+            "wordmark": "Lumo",
+            "tagline": "Gentle dentistry in Coimbatore",
+            "video": {
+              "label": "Watch the clinic tour",
+              "href": "https://www.youtube.com/watch?v=example123"
+            },
+            "media": {
+              "id": "m_hero_video",
+              "alt": "A calm treatment room with morning light"
+            }
+          }
+        },
+        {
+          "id": "s_heading_home",
+          "type": "heading",
+          "values": {
+            "title": [
+              "Dental care that feels ",
+              {
+                "text": "easy",
+                "em": true
+              },
+              "\nfrom the first visit"
+            ],
+            "text": "Same-week appointments, clear prices, and a team that explains every step.",
+            "size": "section",
+            "align": "center"
+          }
+        },
+        {
+          "id": "s_features",
+          "type": "features",
+          "values": {
+            "title": "Modern care, explained",
+            "text": [
+              {
+                "p": [
+                  "We show you your X-rays on screen and talk you through ",
+                  {
+                    "text": "every option",
+                    "strong": true
+                  },
+                  " before we start."
+                ]
+              },
+              {
+                "p": [
+                  "Nervous about the dentist? ",
+                  {
+                    "text": "Tell us on WhatsApp",
+                    "href": "action:whatsapp"
+                  },
+                  " and we'll plan a gentler first visit."
+                ]
+              }
+            ],
+            "features": [
+              {
+                "id": "i_feat_xray",
+                "icon": "lucide:scan-line",
+                "label": "Digital X-rays with less radiation"
+              },
+              {
+                "id": "i_feat_time",
+                "icon": "lucide:clock",
+                "label": "On time, every time"
+              },
+              {
+                "id": "i_feat_kits",
+                "icon": "lucide:shield-check",
+                "label": "A sterilised kit for every patient"
+              },
+              {
+                "id": "i_feat_kids",
+                "icon": "lucide:baby",
+                "label": "Children welcome"
+              }
+            ],
+            "cta": {
+              "label": "See treatments",
+              "href": "page:p_care"
+            },
+            "slides": [
+              {
+                "id": "i_slide_chair1",
+                "media": {
+                  "id": "m_chair1",
+                  "alt": "The treatment chair by the window"
+                }
+              },
+              {
+                "id": "i_slide_chair2",
+                "media": {
+                  "id": "m_chair2",
+                  "alt": "Our hygienist preparing a kit"
+                }
+              },
+              {
+                "id": "i_slide_xray",
+                "media": {
+                  "id": "m_xray",
+                  "alt": "A digital X-ray on the screen"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "s_stats",
+          "type": "stats",
+          "values": {
+            "title": "Trusted by families across Coimbatore",
+            "stats": [
+              {
+                "id": "i_stat_years",
+                "value": "12+",
+                "label": "years in Race Course"
+              },
+              {
+                "id": "i_stat_patients",
+                "value": "8,000+",
+                "label": "patients treated"
+              },
+              {
+                "id": "i_stat_rating",
+                "value": "4.9★",
+                "label": "on Google reviews"
+              }
+            ]
+          }
+        },
+        {
+          "id": "s_logos",
+          "type": "logos",
+          "values": {
+            "caption": "Cashless treatment with",
+            "logos": [
+              {
+                "id": "i_logo_arogya",
+                "name": "Arogya Mutual",
+                "logo": {
+                  "id": "m_ins1"
+                }
+              },
+              {
+                "id": "i_logo_kaveri",
+                "name": "Kaveri Assurance",
+                "logo": {
+                  "id": "m_ins2"
+                }
+              },
+              {
+                "id": "i_logo_neem",
+                "name": "Neem Health",
+                "logo": {
+                  "id": "m_ins3"
+                }
+              },
+              {
+                "id": "i_logo_banyan",
+                "name": "Banyan Insurance",
+                "logo": {
+                  "id": "m_ins4"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "s_testimonials",
+          "type": "testimonials",
+          "values": {
+            "slides": [
+              {
+                "id": "i_testi_meena",
+                "quote": "I put off a root canal for two years. Dr. Arun explained everything and it was over before I knew it.",
+                "name": "Meena R.",
+                "company": "Patient since 2021",
+                "media": {
+                  "id": "m_patient1",
+                  "alt": "Meena smiling in the waiting room"
+                },
+                "thumb": {
+                  "id": "m_thumb1",
+                  "alt": ""
+                }
+              },
+              {
+                "id": "i_testi_karthik",
+                "quote": "They saw both my kids on a Saturday, and nobody cried. That's a first.",
+                "name": "Karthik S.",
+                "company": "Father of two",
+                "media": {
+                  "id": "m_patient2",
+                  "alt": "Karthik with his children"
+                },
+                "thumb": {
+                  "id": "m_thumb2",
+                  "alt": ""
+                }
+              }
+            ],
+            "paragraphs": [
+              {
+                "id": "i_testi_p1",
+                "text": "Most of our patients come because a friend sent them."
+              },
+              {
+                "id": "i_testi_p2",
+                "text": "Here are a few of them, in their own words."
+              }
+            ],
+            "interval": 6
+          }
+        },
+        {
+          "id": "s_press",
+          "type": "press",
+          "values": {
+            "title": [
+              "What people ",
+              {
+                "text": "say about us",
+                "em": true
+              }
+            ],
+            "text": "Awards from the city's dental association, and words from patients.",
+            "columns": [
+              {
+                "id": "i_col_a",
+                "tiles": [
+                  {
+                    "id": "i_tile_award1",
+                    "kind": "award",
+                    "name": "Best family clinic",
+                    "detail": "Coimbatore Dental Forum, 2025"
+                  },
+                  {
+                    "id": "i_tile_quote1",
+                    "kind": "quote",
+                    "quote": "The only dentist my father agrees to visit.",
+                    "name": "Priya, patient",
+                    "media": {
+                      "id": "m_press_portrait",
+                      "alt": "Priya"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "i_col_b",
+                "tiles": [
+                  {
+                    "id": "i_tile_quote2",
+                    "kind": "quote",
+                    "quote": "Clear prices, no upselling. Rare.",
+                    "name": "Google review"
+                  },
+                  {
+                    "id": "i_tile_award2",
+                    "kind": "award",
+                    "name": "Infection control certified",
+                    "detail": "2024"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "s_about",
+          "type": "about",
+          "values": {
+            "title": "A small team that remembers you",
+            "text": [
+              {
+                "p": [
+                  "Dr. Arun and Dr. Divya opened Lumo in 2014. Today we are ",
+                  {
+                    "text": "six people",
+                    "strong": true
+                  },
+                  ", and we still know most patients by name."
+                ]
+              }
+            ],
+            "media": {
+              "id": "m_team",
+              "alt": "The Lumo team outside the clinic"
+            }
+          }
+        },
+        {
+          "id": "s_news",
+          "type": "news",
+          "values": {
+            "title": "From the clinic",
+            "link": {
+              "label": "All articles",
+              "href": "https://blog.lumodental.example.com"
+            },
+            "items": [
+              {
+                "id": "i_news_brush",
+                "title": "How long should a toothbrush last?",
+                "text": "Three months, or sooner if the bristles splay. Here's how to tell.",
+                "link": {
+                  "href": "https://blog.lumodental.example.com/toothbrush"
+                },
+                "date": "2026-10-12",
+                "media": {
+                  "id": "m_news1",
+                  "alt": "Three toothbrushes in a cup"
+                }
+              },
+              {
+                "id": "i_news_branch",
+                "title": "Our second clinic opens in Saravanampatti",
+                "text": "Same team, same prices, closer to the IT parks. Open from 1 December.",
+                "link": {
+                  "href": "page:p_care#s_locations"
+                },
+                "date": "2026-11-01",
+                "media": {
+                  "id": "m_news2",
+                  "alt": "The new clinic's waiting room"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "p_care",
+      "path": "/care",
+      "title": "Treatments and prices",
+      "description": "Check-ups, cleaning, fillings and family plans at Lumo Dental Care, with every price listed.",
+      "sections": [
+        {
+          "id": "s_heading_care",
+          "type": "heading",
+          "values": {
+            "title": [
+              "Treatments and ",
+              {
+                "text": "honest prices",
+                "em": true
+              }
+            ],
+            "text": "Every price is shown before we start. No surprises at the counter.",
+            "size": "hero",
+            "align": "start"
+          }
+        },
+        {
+          "id": "s_pricing",
+          "type": "pricing",
+          "values": {
+            "eyebrow": "Prices",
+            "title": [
+              "Know the price ",
+              {
+                "text": "before",
+                "em": true
+              },
+              " we start"
+            ],
+            "intro": [
+              {
+                "p": [
+                  "Prices include GST. Insurance? ",
+                  {
+                    "text": "See who we work with",
+                    "href": "page:p_home#s_logos"
+                  },
+                  "."
+                ]
+              }
+            ],
+            "plansLabel": "Most asked for",
+            "plans": [
+              {
+                "id": "i_plan_checkup",
+                "name": "Check-up",
+                "description": [
+                  "Exam, X-ray and a plan"
+                ],
+                "prices": [
+                  {
+                    "id": "i_price_checkup",
+                    "amount": "₹500",
+                    "suffix": "/ visit"
+                  }
+                ],
+                "cta": {
+                  "label": "Book a check-up",
+                  "href": "page:p_care#s_contact"
+                },
+                "features": [
+                  {
+                    "id": "i_pf_exam",
+                    "text": "Full mouth exam"
+                  },
+                  {
+                    "id": "i_pf_xray",
+                    "text": "One digital X-ray"
+                  },
+                  {
+                    "id": "i_pf_plan",
+                    "text": "A written treatment plan"
+                  }
+                ]
+              },
+              {
+                "id": "i_plan_family",
+                "name": "Family plan",
+                "description": [
+                  "Up to ",
+                  {
+                    "text": "four people",
+                    "strong": true
+                  }
+                ],
+                "prices": [
+                  {
+                    "id": "i_price_fam_m",
+                    "label": "Monthly",
+                    "amount": "₹999",
+                    "suffix": "/ month"
+                  },
+                  {
+                    "id": "i_price_fam_y",
+                    "label": "Yearly",
+                    "amount": "₹9,990",
+                    "suffix": "/ year",
+                    "note": [
+                      {
+                        "text": "Two months free",
+                        "em": true
+                      }
+                    ]
+                  }
+                ],
+                "featured": true,
+                "cta": {
+                  "label": "Ask about the plan",
+                  "href": "action:whatsapp"
+                },
+                "ctaNote": [
+                  "Cancel any time"
+                ],
+                "features": [
+                  {
+                    "id": "i_pf_two",
+                    "text": "Two check-ups a year each"
+                  },
+                  {
+                    "id": "i_pf_clean",
+                    "text": "Two cleanings a year each"
+                  },
+                  {
+                    "id": "i_pf_disc",
+                    "text": "15% off fillings and crowns"
+                  }
+                ],
+                "footnote": [
+                  "Orthodontics not included."
+                ]
+              }
+            ],
+            "compare": {
+              "title": [
+                "What each covers"
+              ],
+              "columns": [
+                {
+                  "id": "i_col_what"
+                },
+                {
+                  "id": "i_col_checkup",
+                  "label": "Check-up"
+                },
+                {
+                  "id": "i_col_family",
+                  "label": "Family plan"
+                }
+              ],
+              "rows": [
+                {
+                  "id": "i_row_exam",
+                  "cells": [
+                    {
+                      "id": "i_c_exam_0",
+                      "text": "Exam and X-ray"
+                    },
+                    {
+                      "id": "i_c_exam_1",
+                      "text": "Once"
+                    },
+                    {
+                      "id": "i_c_exam_2",
+                      "text": "Twice a year"
+                    }
+                  ]
+                },
+                {
+                  "id": "i_row_clean",
+                  "ours": true,
+                  "cells": [
+                    {
+                      "id": "i_c_clean_0",
+                      "text": "Cleaning"
+                    },
+                    {
+                      "id": "i_c_clean_1",
+                      "text": "₹1,200 extra"
+                    },
+                    {
+                      "id": "i_c_clean_2",
+                      "text": "Included"
+                    }
+                  ]
+                }
+              ],
+              "note": [
+                "Prices from November 2026."
+              ]
+            }
+          }
+        },
+        {
+          "id": "s_faq",
+          "type": "faq",
+          "values": {
+            "eyebrow": "Questions",
+            "title": [
+              "Asked ",
+              {
+                "text": "every week",
+                "em": true
+              }
+            ],
+            "items": [
+              {
+                "id": "i_faq_pain",
+                "question": "Will it hurt?",
+                "answer": [
+                  {
+                    "p": [
+                      "Most treatments are painless with a local anaesthetic. ",
+                      {
+                        "text": "Tell us if you're nervous",
+                        "strong": true
+                      },
+                      " and we'll go slower."
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "i_faq_book",
+                "question": "How do I book?",
+                "answer": [
+                  {
+                    "p": [
+                      "Call us, ",
+                      {
+                        "text": "message us on WhatsApp",
+                        "href": "action:whatsapp"
+                      },
+                      ", or use the form below."
+                    ]
+                  },
+                  {
+                    "p": [
+                      "We usually reply within an hour during opening times."
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "i_faq_kids",
+                "question": "From what age do you see children?",
+                "answer": [
+                  {
+                    "p": [
+                      "From their first tooth. See the ",
+                      {
+                        "text": "family plan",
+                        "href": "#s_pricing"
+                      },
+                      "."
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "s_locations",
+          "type": "locations",
+          "values": {
+            "label": "Two clinics",
+            "title": "Near home or near work",
+            "locations": [
+              {
+                "id": "i_loc_gopalapuram",
+                "city": "Gopalapuram",
+                "name": "Lumo Race Course",
+                "address": {
+                  "line1": "14 Race Course Road",
+                  "area": "Gopalapuram",
+                  "city": "Coimbatore",
+                  "state": "Tamil Nadu",
+                  "postcode": "641018",
+                  "country": "IN"
+                },
+                "map": {
+                  "href": "https://maps.app.goo.gl/example"
+                },
+                "media": {
+                  "id": "m_branch1",
+                  "alt": "The Race Course clinic entrance"
+                }
+              },
+              {
+                "id": "i_loc_saravanampatti",
+                "city": "Saravanampatti",
+                "name": "Lumo Saravanampatti",
+                "address": {
+                  "line1": "2nd Floor, 88 Sathy Road",
+                  "area": "Saravanampatti",
+                  "city": "Coimbatore",
+                  "state": "Tamil Nadu",
+                  "postcode": "641035",
+                  "country": "IN"
+                },
+                "media": {
+                  "id": "m_branch2",
+                  "alt": "The Saravanampatti clinic reception"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "s_contact",
+          "type": "contact",
+          "values": {
+            "heading": "Book a visit",
+            "intro": "Leave your number and we'll call you back within the hour, during opening times.",
+            "formTitle": "Appointment\nrequest",
+            "formMark": "LDC",
+            "fields": [
+              {
+                "id": "f_name",
+                "label": "Your name",
+                "input": "text"
+              },
+              {
+                "id": "f_phone",
+                "label": "Phone",
+                "input": "phone"
+              },
+              {
+                "id": "f_reason",
+                "label": "What's it for?",
+                "input": "choice",
+                "options": [
+                  {
+                    "id": "o_checkup",
+                    "text": "Check-up"
+                  },
+                  {
+                    "id": "o_pain",
+                    "text": "Tooth pain"
+                  },
+                  {
+                    "id": "o_cleaning",
+                    "text": "Cleaning"
+                  },
+                  {
+                    "id": "o_other",
+                    "text": "Something else"
+                  }
+                ]
+              },
+              {
+                "id": "f_message",
+                "label": "Anything we should know",
+                "input": "message"
+              }
+            ],
+            "submitLabel": "Send request"
+          }
+        }
+      ]
+    }
+  ]
+}

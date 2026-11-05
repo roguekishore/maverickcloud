@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "id": "stress-test",
+  "version": 1,
+  "theme": {
+    "primary": {
+      "type": "color",
+      "label": "Main colour",
+      "required": true
+    },
+    "font": {
+      "type": "choice",
+      "label": "Font",
+      "options": [
+        {
+          "value": "inter",
+          "label": "Inter"
+        },
+        {
+          "value": "poppins",
+          "label": "Poppins"
+        },
+        {
+          "value": "fraunces",
+          "label": "Fraunces"
+        }
+      ]
+    }
+  },
+  "shared": {
+    "booking": {
+      "type": "link",
+      "label": "Booking link",
+      "help": "Used by 'Book' buttons that are left empty."
+    }
+  },
+  "sections": {
+    "header": "halodental-opus-header",
+    "footer": "halodental-opus-footer",
+    "hero": "halodental-opus-hero",
+    "heading": "functionhealth-heading",
+    "features": "halodental-opus-product",
+    "stats": "anchorage-stats",
+    "logos": "cursor-logos",
+    "testimonials": "storeyarchitecture-testimonial",
+    "press": "functionhealth-press",
+    "about": "halodental-opus-about",
+    "news": "halodental-opus-news",
+    "pricing": "plumeform-pricing",
+    "faq": "plumeform-faq",
+    "locations": "neko-locations",
+    "contact": "storeyarchitecture-contact"
+  }
+}

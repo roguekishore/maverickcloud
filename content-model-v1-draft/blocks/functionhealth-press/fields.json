@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "label": "Awards and quotes",
+  "block": "functionhealth-press",
+  "fields": {
+    "title": { "type": "richline", "label": "Heading", "required": true, "max": 120, "marks": ["em"] },
+    "text": { "type": "text", "label": "Line under the heading", "max": 200 },
+    "columns": {
+      "type": "list",
+      "label": "Columns",
+      "min": 1,
+      "max": 4,
+      "fields": {
+        "tiles": {
+          "type": "list",
+          "label": "Tiles",
+          "min": 1,
+          "max": 3,
+          "kinds": {
+            "award": {
+              "label": "Award",
+              "fields": {
+                "name": { "type": "text", "label": "Award or publication", "required": true, "max": 60 },
+                "detail": { "type": "text", "label": "Small caption", "max": 60 }
+              }
+            },
+            "quote": {
+              "label": "Quote",
+              "fields": {
+                "quote": { "type": "longtext", "label": "Quote", "required": true, "max": 280 },
+                "name": { "type": "text", "label": "Who said it", "required": true, "max": 60 },
+                "media": { "type": "media", "label": "Portrait", "accept": ["image"] }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "s_faq",
+  "type": "faq",
+  "values": {
+    "eyebrow": "Questions",
+    "title": ["Asked ", { "text": "every week", "em": true }],
+    "items": [
+      {
+        "id": "i_faq_pain",
+        "question": "Will it hurt?",
+        "answer": [
+          { "p": ["Most treatments are painless with a local anaesthetic. ", { "text": "Tell us if you're nervous", "strong": true }, " and we'll go slower."] }
+        ]
+      },
+      {
+        "id": "i_faq_book",
+        "question": "How do I book?",
+        "answer": [
+          { "p": ["Call us, ", { "text": "message us on WhatsApp", "href": "action:whatsapp" }, ", or use the form below."] },
+          { "p": ["We usually reply within an hour during opening times."] }
+        ]
+      },
+      {
+        "id": "i_faq_kids",
+        "question": "From what age do you see children?",
+        "answer": [{ "p": ["From their first tooth. See the ", { "text": "family plan", "href": "#s_pricing" }, "."] }]
+      }
+    ]
+  }
+}

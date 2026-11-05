@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "label": "Hero",
+  "block": "halodental-opus-hero",
+  "uses": ["name"],
+  "fields": {
+    "wordmark": { "type": "text", "label": "Big word", "help": "Leave empty to use the business name.", "max": 24 },
+    "tagline": { "type": "text", "label": "Headline", "required": true, "max": 60 },
+    "video": { "type": "link", "label": "Film button (phones)" },
+    "media": { "type": "media", "label": "Background photo or video", "accept": ["image", "video"] }
+  }
+}

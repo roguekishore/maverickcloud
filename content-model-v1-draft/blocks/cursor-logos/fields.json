@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "label": "Logos",
+  "block": "cursor-logos",
+  "fields": {
+    "caption": { "type": "text", "label": "Line above the logos", "required": true, "max": 80 },
+    "logos": {
+      "type": "list",
+      "label": "Logos",
+      "min": 1,
+      "max": 8,
+      "fields": {
+        "name": { "type": "text", "label": "Name (read by screen readers)", "required": true, "max": 40 },
+        "logo": { "type": "media", "label": "Logo", "required": true, "accept": ["image"] }
+      }
+    }
+  }
+}

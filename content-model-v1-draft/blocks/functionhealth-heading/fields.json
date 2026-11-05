@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "label": "Heading",
+  "block": "functionhealth-heading",
+  "fields": {
+    "title": {
+      "type": "richline",
+      "label": "Heading",
+      "help": "Mark words as emphasis to set them in the accent style.",
+      "required": true,
+      "max": 120,
+      "marks": ["em"]
+    },
+    "text": { "type": "text", "label": "Line under the heading", "max": 200 },
+    "size": {
+      "type": "choice",
+      "label": "Size",
+      "options": [
+        { "value": "section", "label": "Section" },
+        { "value": "hero", "label": "Large" }
+      ]
+    },
+    "align": {
+      "type": "choice",
+      "label": "Alignment",
+      "options": [
+        { "value": "center", "label": "Centred" },
+        { "value": "start", "label": "Left" }
+      ]
+    }
+  }
+}

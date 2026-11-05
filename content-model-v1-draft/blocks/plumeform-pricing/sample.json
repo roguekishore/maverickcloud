@@ -1,0 +1,72 @@
+{
+  "id": "s_pricing",
+  "type": "pricing",
+  "values": {
+    "eyebrow": "Prices",
+    "title": ["Know the price ", { "text": "before", "em": true }, " we start"],
+    "intro": [
+      { "p": ["Prices include GST. Insurance? ", { "text": "See who we work with", "href": "page:p_home#s_logos" }, "."] }
+    ],
+    "plansLabel": "Most asked for",
+    "plans": [
+      {
+        "id": "i_plan_checkup",
+        "name": "Check-up",
+        "description": ["Exam, X-ray and a plan"],
+        "prices": [{ "id": "i_price_checkup", "amount": "₹500", "suffix": "/ visit" }],
+        "cta": { "label": "Book a check-up", "href": "page:p_care#s_contact" },
+        "features": [
+          { "id": "i_pf_exam", "text": "Full mouth exam" },
+          { "id": "i_pf_xray", "text": "One digital X-ray" },
+          { "id": "i_pf_plan", "text": "A written treatment plan" }
+        ]
+      },
+      {
+        "id": "i_plan_family",
+        "name": "Family plan",
+        "description": ["Up to ", { "text": "four people", "strong": true }],
+        "prices": [
+          { "id": "i_price_fam_m", "label": "Monthly", "amount": "₹999", "suffix": "/ month" },
+          { "id": "i_price_fam_y", "label": "Yearly", "amount": "₹9,990", "suffix": "/ year", "note": [{ "text": "Two months free", "em": true }] }
+        ],
+        "featured": true,
+        "cta": { "label": "Ask about the plan", "href": "action:whatsapp" },
+        "ctaNote": ["Cancel any time"],
+        "features": [
+          { "id": "i_pf_two", "text": "Two check-ups a year each" },
+          { "id": "i_pf_clean", "text": "Two cleanings a year each" },
+          { "id": "i_pf_disc", "text": "15% off fillings and crowns" }
+        ],
+        "footnote": ["Orthodontics not included."]
+      }
+    ],
+    "compare": {
+      "title": ["What each covers"],
+      "columns": [
+        { "id": "i_col_what" },
+        { "id": "i_col_checkup", "label": "Check-up" },
+        { "id": "i_col_family", "label": "Family plan" }
+      ],
+      "rows": [
+        {
+          "id": "i_row_exam",
+          "cells": [
+            { "id": "i_c_exam_0", "text": "Exam and X-ray" },
+            { "id": "i_c_exam_1", "text": "Once" },
+            { "id": "i_c_exam_2", "text": "Twice a year" }
+          ]
+        },
+        {
+          "id": "i_row_clean",
+          "ours": true,
+          "cells": [
+            { "id": "i_c_clean_0", "text": "Cleaning" },
+            { "id": "i_c_clean_1", "text": "₹1,200 extra" },
+            { "id": "i_c_clean_2", "text": "Included" }
+          ]
+        }
+      ],
+      "note": ["Prices from November 2026."]
+    }
+  }
+}

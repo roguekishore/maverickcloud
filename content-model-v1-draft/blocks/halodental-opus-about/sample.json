@@ -1,0 +1,11 @@
+{
+  "id": "s_about",
+  "type": "about",
+  "values": {
+    "title": "A small team that remembers you",
+    "text": [
+      { "p": ["Dr. Arun and Dr. Divya opened Lumo in 2014. Today we are ", { "text": "six people", "strong": true }, ", and we still know most patients by name."] }
+    ],
+    "media": { "id": "m_team", "alt": "The Lumo team outside the clinic" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "label": "Questions",
+  "block": "plumeform-faq",
+  "fields": {
+    "eyebrow": { "type": "text", "label": "Small line above the heading", "max": 40 },
+    "title": { "type": "richline", "label": "Heading", "required": true, "max": 80, "marks": ["em"] },
+    "items": {
+      "type": "list",
+      "label": "Questions",
+      "min": 1,
+      "max": 20,
+      "fields": {
+        "question": { "type": "text", "label": "Question", "required": true, "max": 140 },
+        "answer": { "type": "richtext", "label": "Answer", "required": true, "max": 1200, "marks": ["strong", "em", "link"] }
+      }
+    }
+  }
+}

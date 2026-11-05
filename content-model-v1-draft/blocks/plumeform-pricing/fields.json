@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "label": "Prices",
+  "block": "plumeform-pricing",
+  "fields": {
+    "eyebrow": { "type": "text", "label": "Small line above the heading", "max": 40 },
+    "title": { "type": "richline", "label": "Heading", "required": true, "max": 80, "marks": ["em"] },
+    "intro": { "type": "richtext", "label": "Paragraph", "max": 400, "marks": ["strong", "em", "link"] },
+    "sideLink": { "type": "link", "label": "Link beside the heading" },
+    "plansLabel": { "type": "text", "label": "Label over the cards", "max": 40 },
+    "plans": {
+      "type": "list",
+      "label": "Price cards",
+      "min": 1,
+      "max": 3,
+      "fields": {
+        "name": { "type": "text", "label": "Name", "required": true, "max": 40 },
+        "description": { "type": "richline", "label": "Line under the name", "max": 120, "marks": ["strong", "em"] },
+        "prices": {
+          "type": "list",
+          "label": "Prices (two or more show a switch)",
+          "min": 1,
+          "max": 3,
+          "fields": {
+            "label": { "type": "text", "label": "Switch label", "help": "e.g. Monthly", "max": 20 },
+            "amount": { "type": "text", "label": "Price", "help": "e.g. ₹1,200", "required": true, "max": 20 },
+            "suffix": { "type": "text", "label": "After the price", "help": "e.g. / visit", "max": 20 },
+            "note": { "type": "richline", "label": "Line under the price", "max": 80, "marks": ["strong", "em"] }
+          }
+        },
+        "featured": { "type": "toggle", "label": "Highlight this card" },
+        "cta": { "type": "link", "label": "Button", "required": true },
+        "ctaNote": { "type": "richline", "label": "Small print under the button", "max": 80, "marks": ["em", "link"] },
+        "features": {
+          "type": "list",
+          "label": "What's included",
+          "max": 12,
+          "fields": {
+            "text": { "type": "text", "label": "Item", "required": true, "max": 80 }
+          }
+        },
+        "footnote": { "type": "richline", "label": "Small print at the foot", "max": 120, "marks": ["em", "link"] }
+      }
+    },
+    "compare": {
+      "type": "group",
+      "label": "Comparison table",
+      "fields": {
+        "title": { "type": "richline", "label": "Table heading", "max": 80, "marks": ["em"] },
+        "columns": {
+          "type": "list",
+          "label": "Columns",
+          "max": 5,
+          "fields": {
+            "label": { "type": "text", "label": "Column heading", "max": 30 }
+          }
+        },
+        "rows": {
+          "type": "list",
+          "label": "Rows",
+          "max": 12,
+          "fields": {
+            "cells": {
+              "type": "list",
+              "label": "Cells",
+              "max": 5,
+              "fields": {
+                "text": { "type": "text", "label": "Cell", "max": 40 }
+              }
+            },
+            "ours": { "type": "toggle", "label": "Highlight this row" }
+          }
+        },
+        "note": { "type": "richline", "label": "Small print under the table", "max": 160, "marks": ["em", "link"] }
+      }
+    }
+  }
+}

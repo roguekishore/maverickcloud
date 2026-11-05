@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "label": "Footer",
+  "block": "halodental-opus-footer",
+  "uses": ["name", "address", "phone"],
+  "fields": {
+    "groups": {
+      "type": "list",
+      "label": "Link columns",
+      "max": 4,
+      "fields": {
+        "title": { "type": "text", "label": "Column heading", "required": true, "max": 40 },
+        "links": {
+          "type": "list",
+          "label": "Links",
+          "max": 8,
+          "fields": {
+            "link": { "type": "link", "label": "Link", "required": true }
+          }
+        }
+      }
+    },
+    "contactColumn": { "type": "toggle", "label": "Add a 'Visit us' column (address, phone, WhatsApp)" },
+    "primary": { "type": "link", "label": "Main button" },
+    "secondary": { "type": "link", "label": "Second button" },
+    "legal": {
+      "type": "list",
+      "label": "Small links",
+      "max": 4,
+      "fields": {
+        "link": { "type": "link", "label": "Link", "required": true }
+      }
+    },
+    "copyright": { "type": "text", "label": "Copyright line", "help": "Leave empty for © year and business name.", "max": 120 },
+    "media": { "type": "media", "label": "Illustration", "accept": ["image"] }
+  }
+}

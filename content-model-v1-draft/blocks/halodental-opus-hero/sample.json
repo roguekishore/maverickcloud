@@ -1,0 +1,10 @@
+{
+  "id": "s_hero",
+  "type": "hero",
+  "values": {
+    "wordmark": "Lumo",
+    "tagline": "Gentle dentistry in Coimbatore",
+    "video": { "label": "Watch the clinic tour", "href": "https://www.youtube.com/watch?v=example123" },
+    "media": { "id": "m_hero_video", "alt": "A calm treatment room with morning light" }
+  }
+}

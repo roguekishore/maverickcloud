@@ -35,7 +35,7 @@ Claude's suggested sequence, not agreed yet: the content model first, because th
 
 1. **Settle the blockers** below, then architecture planning.
 2. **Repo and machine:** monorepo layout, GitHub remote, JDK, Docker, MySQL 8.4.
-3. **Content model + first template:** freeze the JSON, field types, `fields.json` and package format against one sample site with 2–3 sections (one a carousel).
+3. **Content model v1 + first template:** stress-test a draft v1 against ~15 SITE-FOUNDRY blocks (running, `content-model-v1-draft/`), then settle the JSON, field types, `fields.json` and package format. Not frozen: later changes go through migrations (DECISIONS "Content model").
 4. **API core:** login (Google + email OTP), sessions, sites and members, content save with validation against `fields.json`.
 5. **CMS core:** login, iframe preview from `sections.js`, edit forms, save.
 6. **Publish:** Astro build locally first, then on Lambda → S3 → box, with rollback.
@@ -51,7 +51,7 @@ Seven questions, each yours to answer.
 - [ ] **Java baseline.** Boot/JDK version, Flyway vs `ddl-auto`, base package, time type, error shape (open since 21 Oct). VANTAGE-REWRITE, the style reference, is no longer under `D:\PROJECTS\APPS`: where is it? Other apps run Boot 3.2–4.0.2 on Java 17, no Flyway, no Testcontainers.
 - [ ] **Who builds what.** Hand-written, interactive Claude Code, nightrun on a cloud box, or NIGHTSHIFT (`D:\PROJECTS\NIGHTSHIFT` is missing on this machine). Decides how specs are written.
 - [ ] **Database schema.** Yours to design. All of it up front, or confirm the `AUTH.md` tables and design the rest per feature?
-- [ ] **Content model freeze** (`FRONTEND-CONTENT-MODEL.md` §4). Which sample site: a real first customer or a made-up salon?
+- [ ] **Content model v1** (`FRONTEND-CONTENT-MODEL.md` §4). Not a freeze: stored as versioned JSON with migrations (2026-11-05). Stress test against SITE-FOUNDRY running; you decide v1 from its report.
 - [x] **AWS accounts** (2026-11-04): production in one long-lived account; a separate dev/test credit account, possibly with its own domain. Still to name: which account is which.
 - [ ] **Repo shape and scope.** Private (2026-11-04). Still open: one monorepo? Do the selfsite.in marketing site and maverickcreatives.in live here?
 - [ ] **Phone-first CMS?** Shapes the CMS layout from the first screen.

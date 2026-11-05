@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "label": "Features with photos",
+  "block": "halodental-opus-product",
+  "fields": {
+    "title": { "type": "text", "label": "Heading", "required": true, "max": 60 },
+    "text": { "type": "richtext", "label": "Paragraph", "max": 600, "marks": ["strong", "em", "link"] },
+    "features": {
+      "type": "list",
+      "label": "Features",
+      "max": 6,
+      "fields": {
+        "icon": { "type": "icon", "label": "Icon" },
+        "label": { "type": "text", "label": "Feature", "required": true, "max": 60 }
+      }
+    },
+    "cta": { "type": "link", "label": "Button" },
+    "slides": {
+      "type": "list",
+      "label": "Photos or videos",
+      "min": 1,
+      "max": 5,
+      "fields": {
+        "media": { "type": "media", "label": "Photo or video", "required": true, "accept": ["image", "video"] }
+      }
+    }
+  }
+}

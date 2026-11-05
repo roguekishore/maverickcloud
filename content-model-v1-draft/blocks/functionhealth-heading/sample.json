@@ -1,0 +1,10 @@
+{
+  "id": "s_heading_home",
+  "type": "heading",
+  "values": {
+    "title": ["Dental care that feels ", { "text": "easy", "em": true }, "\nfrom the first visit"],
+    "text": "Same-week appointments, clear prices, and a team that explains every step.",
+    "size": "section",
+    "align": "center"
+  }
+}
